@@ -3,4 +3,4 @@
 jse-model
 =========
 
-Java parser and language model.
+Java 8 parser, language model and tools.
