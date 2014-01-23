@@ -8,6 +8,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: com.digiarea.common;bundle-version="1.0.0"
 Export-Package: com.digiarea.jse,
  com.digiarea.jse.arrow,
+ com.digiarea.jse.builder,
  com.digiarea.jse.io,
  com.digiarea.jse.parser,
  com.digiarea.jse.utils,

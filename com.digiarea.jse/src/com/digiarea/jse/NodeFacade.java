@@ -665,4 +665,7 @@ public class NodeFacade extends NodeFactory {
 				null, null, null, null, 0, 0);
 	}
 
+	public static Project Project(List<CompilationUnit> units) {
+		return Project(NodeList(units), null, 0, 0);
+	}
 }
