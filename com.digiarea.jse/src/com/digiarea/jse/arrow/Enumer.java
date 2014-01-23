@@ -30,6 +30,7 @@ import com.digiarea.jse.ForStmt;
 import com.digiarea.jse.JavadocComment;
 import com.digiarea.jse.MethodCallExpr;
 import com.digiarea.jse.MethodDeclaration;
+import com.digiarea.jse.Modifiers;
 import com.digiarea.jse.Node;
 import com.digiarea.jse.NodeFacade;
 import com.digiarea.jse.ObjectCreationExpr;
@@ -42,6 +43,7 @@ import com.digiarea.jse.TypeDeclaration;
 import com.digiarea.jse.UnaryExpr;
 import com.digiarea.jse.VariableDeclarator;
 import com.digiarea.jse.VariableDeclaratorId;
+import com.digiarea.jse.utils.NodeUtils;
 
 /**
  * The Class Enumer.
@@ -95,8 +97,7 @@ public class Enumer extends Identity {
 		decls.add(varDecl);
 		img.setVariables(NodeFacade.NodeList(decls));
 		// set modifiers to public static final
-		img.setModifiers(ModifierSet.PUBLIC | ModifierSet.STATIC
-				| ModifierSet.FINAL);
+		img.setModifiers(NodeFacade.Modifiers(Modifiers.PUBLIC | Modifiers.STATIC | Modifiers.FINAL));
 		if (n.getJavaDoc() != null) {
 			img.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, ctx));
 		}
@@ -119,7 +120,7 @@ public class Enumer extends Identity {
 		initExpr.setType(newType);
 		// make NodeFacade.inner class
 		ClassDeclaration clazz = NodeFacade.ClassDeclaration();
-		clazz.setModifiers(ModifierSet.PRIVATE | ModifierSet.STATIC);
+		clazz.setModifiers(NodeFacade.Modifiers(Modifiers.PRIVATE | Modifiers.STATIC));
 		clazz.setName(n.getName());
 		clazz.setExtendsType(type);
 		List<BodyDeclaration> classBody = new ArrayList<BodyDeclaration>();
@@ -138,7 +139,7 @@ public class Enumer extends Identity {
 		classBody.add(makeOrdinalMethod((Integer) ctx.getObject()));
 		classBody.add(makeNameMethod(n.getName()));
 		clazz.setMembers(NodeFacade.NodeList(classBody));
-		NodeFacade.addMember(encolsing, clazz);
+		NodeUtils.addMember(encolsing, clazz);
 
 		ctx.setNode(node);
 		return img;
@@ -160,15 +161,15 @@ public class Enumer extends Identity {
 		img.setName(n.getName());
 		// set the abstract modifier for the class (enums does not allow
 		// abstract modifier) but we need this for 'ordinal' abstract method
-		img.setModifiers(ModifierSet.addModifier(n.getModifiers(),
-				ModifierSet.ABSTRACT));
+		img.setModifiers(NodeFacade.Modifiers(Modifiers.addModifier(n
+				.getModifiers().getModifiers(), Modifiers.ABSTRACT)));
 		// every enum type implements comparable
 		img.setImplementsList(copyClassOrInterfaceTypes(n.getImplementsList(),
 				ctx));
 		ClassOrInterfaceType impl = NodeFacade.ClassOrInterfaceType(NodeFacade
 				.NameExpr("Comparable"));
-		Type typeArg = NodeFacade.ClassOrInterfaceType(NodeFacade.NameExpr(
-				img.getName()));
+		Type typeArg = NodeFacade.ClassOrInterfaceType(NodeFacade.NameExpr(img
+				.getName()));
 		impl.setTypeArgs(NodeFacade.NodeList(typeArg));
 		if (img.getImplementsList() == null) {
 			img.setImplementsList(NodeFacade.NodeList(impl));
@@ -179,9 +180,9 @@ public class Enumer extends Identity {
 		// reconstruct the static modifier if it is not presented in enum
 		// declaration if we are not in compilation unit context
 		if (ctx.getNode() instanceof TypeDeclaration
-				&& !ModifierSet.isStatic(img.getModifiers())) {
-			img.setModifiers(ModifierSet.addModifier(img.getModifiers(),
-					ModifierSet.STATIC));
+				&& !Modifiers.isStatic(img.getModifiers().getModifiers())) {
+			img.setModifiers(NodeFacade.Modifiers(Modifiers.addModifier(img
+					.getModifiers().getModifiers(), Modifiers.STATIC)));
 		}
 		ctx.setNode(img);
 		if (n.getJavaDoc() != null) {
@@ -234,7 +235,7 @@ public class Enumer extends Identity {
 			annotations = new ArrayList<>();
 		}
 		// make javax.annotation.Generated
-		annotations.add(NodeFacade.makeGenerated(new String[] {
+		annotations.add(NodeUtils.makeGenerated(new String[] {
 				getClass().getName(), ctx.getEnclosure().toString() },
 				"Generated from: " + ctx.getEnclosure().toString()));
 		return img;
@@ -269,9 +270,10 @@ public class Enumer extends Identity {
 						|| paramNumber == 0) {
 					// change modifier of the enclosing abstract class to
 					// package level for private constructors
-					if (ModifierSet.isPrivate(decl.getModifiers())) {
-						decl.setModifiers(ModifierSet.removeModifier(
-								decl.getModifiers(), ModifierSet.PRIVATE));
+					if (Modifiers.isPrivate(decl.getModifiers().getModifiers())) {
+						decl.setModifiers(NodeFacade.Modifiers(Modifiers
+								.removeModifier(decl.getModifiers()
+										.getModifiers(), Modifiers.PRIVATE)));
 					}
 					ConstructorDeclaration cd = (ConstructorDeclaration) decl
 							.accept(this, ctx);
@@ -303,8 +305,8 @@ public class Enumer extends Identity {
 	private FieldDeclaration makeReferenceField(ReferenceType valuesType,
 			List<Expression> exprs, String name) {
 		FieldDeclaration values = NodeFacade.FieldDeclaration();
-		values.setModifiers(ModifierSet.PRIVATE | ModifierSet.STATIC
-				| ModifierSet.FINAL);
+		values.setModifiers(NodeFacade.Modifiers(Modifiers.PRIVATE
+				| Modifiers.STATIC | Modifiers.FINAL));
 		values.setType(valuesType);
 		values.setVariables(NodeFacade.NodeList(NodeFacade.VariableDeclarator(
 				NodeFacade.VariableDeclaratorId(name),
@@ -325,13 +327,14 @@ public class Enumer extends Identity {
 			String name) {
 		// public static EnumType[] values() { return $VALUES.clone(); }
 		MethodDeclaration method = NodeFacade.MethodDeclaration();
-		method.setModifiers(ModifierSet.PUBLIC | ModifierSet.STATIC);
+		method.setModifiers(NodeFacade.Modifiers(Modifiers.PUBLIC
+				| Modifiers.STATIC));
 		method.setType(valuesType);
 		method.setName("values");
 		MethodCallExpr expr = NodeFacade.MethodCallExpr(
-				NodeFacade.NameExpr(name), "clone");
+				NodeFacade.NameExpr(name), null, "clone", null);
 		Statement stmt = NodeFacade.ReturnStmt(expr);
-		method.setBody(NodeFacade.BlockStmt(Arrays.asList(stmt)));
+		method.setBlock(NodeFacade.BlockStmt(Arrays.asList(stmt)));
 		return method;
 	}
 
@@ -349,7 +352,8 @@ public class Enumer extends Identity {
 		 * $VALUES[i]; } } return null; }
 		 */
 		MethodDeclaration method = NodeFacade.MethodDeclaration();
-		method.setModifiers(ModifierSet.PUBLIC | ModifierSet.STATIC);
+		method.setModifiers(NodeFacade.Modifiers(Modifiers.PUBLIC
+				| Modifiers.STATIC));
 		method.setType(type);
 		method.setName("valueOf");
 		Parameter param = NodeFacade.Parameter(
@@ -359,8 +363,8 @@ public class Enumer extends Identity {
 		// for statement
 		ForStmt forStmt = NodeFacade.ForStmt();
 		Expression init = NodeFacade.VariableDeclarationExpr(
-				NodeFacade.PrimitiveType(PrimitiveType.Primitive.Int),
-				"i", NodeFacade.IntegerLiteralExpr(1));
+				NodeFacade.PrimitiveType(PrimitiveType.Primitive.Int), "i",
+				NodeFacade.IntegerLiteralExpr(1));
 		// set init
 		forStmt.setInit(NodeFacade.NodeList(init));
 		// set compare
@@ -376,12 +380,13 @@ public class Enumer extends Identity {
 		Expression refExpr = NodeFacade.ArrayAccessExpr(
 				NodeFacade.NameExpr(STRINGS_FIELD_NAME),
 				NodeFacade.NameExpr("i"));
-		MethodCallExpr condition = NodeFacade.MethodCallExpr(refExpr, "equals",
+		MethodCallExpr condition = NodeFacade.MethodCallExpr(refExpr, null,
+				"equals",
 				Arrays.asList((Expression) NodeFacade.NameExpr("name")));
 		Statement returnStmt = NodeFacade.ReturnStmt(NodeFacade
 				.ArrayAccessExpr(NodeFacade.NameExpr(VALUES_FIELD_NAME),
 						NodeFacade.NameExpr("i")));
-		// if statment
+		// if statement
 		Statement ifStmt = NodeFacade.IfStmt(condition,
 				NodeFacade.BlockStmt(NodeFacade.NodeList(returnStmt)), null);
 		// set body
@@ -403,9 +408,8 @@ public class Enumer extends Identity {
 	private MethodDeclaration makeOrdinalMethod(Integer ordinal) {
 		// public int ordinal() { return ordinal; }
 		MethodDeclaration method = NodeFacade.MethodDeclaration();
-		method.setModifiers(ModifierSet.PUBLIC);
-		method.setType(NodeFacade.PrimitiveType(PrimitiveType.Primitive.Int,
-				null));
+		method.setModifiers(NodeFacade.Modifiers(Modifiers.PUBLIC));
+		method.setType(NodeFacade.PrimitiveType(PrimitiveType.Primitive.Int));
 		method.setName("ordinal");
 		Statement stmt = NodeFacade.ReturnStmt(NodeFacade
 				.IntegerLiteralExpr(ordinal));
@@ -421,7 +425,8 @@ public class Enumer extends Identity {
 	private MethodDeclaration makeAbstractOrdinalMethod() {
 		// public abstract int ordinal();
 		MethodDeclaration method = NodeFacade.MethodDeclaration();
-		method.setModifiers(ModifierSet.PUBLIC | ModifierSet.ABSTRACT);
+		method.setModifiers(NodeFacade.Modifiers(Modifiers.PUBLIC
+				| Modifiers.ABSTRACT));
 		method.setType(NodeFacade.INT_TYPE);
 		method.setName("ordinal");
 		return method;
@@ -437,7 +442,7 @@ public class Enumer extends Identity {
 	private MethodDeclaration makeNameMethod(String name) {
 		// public String name() { return name; }
 		MethodDeclaration method = NodeFacade.MethodDeclaration();
-		method.setModifiers(ModifierSet.PUBLIC);
+		method.setModifiers(NodeFacade.Modifiers(Modifiers.PUBLIC));
 		method.setType(NodeFacade.ClassOrInterfaceType(NodeFacade
 				.NameExpr("String")));
 		method.setName("name");
@@ -455,7 +460,8 @@ public class Enumer extends Identity {
 	private MethodDeclaration makeAbstractNameMethod() {
 		// public abstract String name();
 		MethodDeclaration method = NodeFacade.MethodDeclaration();
-		method.setModifiers(ModifierSet.PUBLIC | ModifierSet.ABSTRACT);
+		method.setModifiers(NodeFacade.Modifiers(Modifiers.PUBLIC
+				| Modifiers.ABSTRACT));
 		method.setType(NodeFacade.ClassOrInterfaceType(NodeFacade
 				.NameExpr("String")));
 		method.setName("name");
@@ -473,7 +479,7 @@ public class Enumer extends Identity {
 		// public int compareTo(EnumType type)
 		// { return this.ordinal() - type.ordinal(); }
 		MethodDeclaration method = NodeFacade.MethodDeclaration();
-		method.setModifiers(ModifierSet.PUBLIC);
+		method.setModifiers(NodeFacade.Modifiers(Modifiers.PUBLIC));
 		method.setType(NodeFacade.INT_TYPE);
 		method.setName("compareTo");
 		Parameter param = NodeFacade.Parameter(typeArg, "type");

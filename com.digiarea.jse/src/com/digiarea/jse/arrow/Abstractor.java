@@ -13,18 +13,16 @@ package com.digiarea.jse.arrow;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.digiarea.jse.BlockStmt;
-import com.digiarea.jse.BooleanLiteralExpr;
 import com.digiarea.jse.ClassDeclaration;
 import com.digiarea.jse.EnumDeclaration;
 import com.digiarea.jse.Expression;
-import com.digiarea.jse.IntegerLiteralExpr;
 import com.digiarea.jse.InterfaceDeclaration;
 import com.digiarea.jse.MethodDeclaration;
+import com.digiarea.jse.Modifiers;
 import com.digiarea.jse.Node;
+import com.digiarea.jse.NodeFacade;
 import com.digiarea.jse.NullLiteralExpr;
 import com.digiarea.jse.PrimitiveType;
-import com.digiarea.jse.ReturnStmt;
 import com.digiarea.jse.Statement;
 import com.digiarea.jse.Type;
 
@@ -55,12 +53,11 @@ public class Abstractor extends Identity {
 	public Node visit(EnumDeclaration n, Context ctx) throws Exception {
 		ctx.setObject(new Boolean(false));
 		EnumDeclaration img = (EnumDeclaration) super.visit(n, ctx);
-		int modifiers = img.getModifiers();
-		if (ModifierSet.isAbstract(modifiers)) {
+		int modifiers = img.getModifiers().getModifiers();
+		if (Modifiers.isAbstract(modifiers)) {
 			// remove abstract modifier
-			modifiers = ModifierSet.removeModifier(modifiers,
-					ModifierSet.ABSTRACT);
-			img.setModifiers(modifiers);
+			modifiers = Modifiers.removeModifier(modifiers, Modifiers.ABSTRACT);
+			img.setModifiers(NodeFacade.Modifiers(modifiers));
 		}
 		return img;
 	}
@@ -76,12 +73,11 @@ public class Abstractor extends Identity {
 	public Node visit(ClassDeclaration n, Context ctx) throws Exception {
 		ctx.setObject(new Boolean(false));
 		ClassDeclaration img = (ClassDeclaration) super.visit(n, ctx);
-		int modifiers = img.getModifiers();
-		if (ModifierSet.isAbstract(modifiers)) {
+		int modifiers = img.getModifiers().getModifiers();
+		if (Modifiers.isAbstract(modifiers)) {
 			// remove abstract modifier
-			modifiers = ModifierSet.removeModifier(modifiers,
-					ModifierSet.ABSTRACT);
-			img.setModifiers(modifiers);
+			modifiers = Modifiers.removeModifier(modifiers, Modifiers.ABSTRACT);
+			img.setModifiers(NodeFacade.Modifiers(modifiers));
 		}
 		return img;
 	}
@@ -90,12 +86,11 @@ public class Abstractor extends Identity {
 	public Node visit(InterfaceDeclaration n, Context ctx) throws Exception {
 		ctx.setObject(new Boolean(true));
 		InterfaceDeclaration img = (InterfaceDeclaration) super.visit(n, ctx);
-		int modifiers = img.getModifiers();
-		if (ModifierSet.isAbstract(modifiers)) {
+		int modifiers = img.getModifiers().getModifiers();
+		if (Modifiers.isAbstract(modifiers)) {
 			// remove abstract modifier
-			modifiers = ModifierSet.removeModifier(modifiers,
-					ModifierSet.ABSTRACT);
-			img.setModifiers(modifiers);
+			modifiers = Modifiers.removeModifier(modifiers, Modifiers.ABSTRACT);
+			img.setModifiers(NodeFacade.Modifiers(modifiers));
 		}
 		return img;
 	}
@@ -110,30 +105,29 @@ public class Abstractor extends Identity {
 	@Override
 	public Node visit(MethodDeclaration n, Context ctx) throws Exception {
 		MethodDeclaration img = (MethodDeclaration) super.visit(n, ctx);
-		int modifiers = img.getModifiers();
-		if (ModifierSet.isAbstract(modifiers)) {
+		int modifiers = img.getModifiers().getModifiers();
+		if (Modifiers.isAbstract(modifiers)) {
 			// remove abstract modifier
-			modifiers = ModifierSet.removeModifier(modifiers,
-					ModifierSet.ABSTRACT);
-			img.setModifiers(modifiers);
+			modifiers = Modifiers.removeModifier(modifiers, Modifiers.ABSTRACT);
+			img.setModifiers(NodeFacade.Modifiers(modifiers));
 			Object obj = ctx.getObject();
 			if (!(obj != null && obj instanceof Boolean && (Boolean) obj)) {
 				// not an interface - add body
 				List<Statement> stmts = new ArrayList<Statement>();
-				img.setBody(new BlockStmt(stmts, null));
+				img.setBlock(NodeFacade.BlockStmt(stmts));
 				Type type = img.getType();
-				if (type != NodeUtils.VOID_TYPE) {
+				if (type != NodeFacade.VOID_TYPE) {
 					Expression expr = null;
 					if (type instanceof PrimitiveType) {
-						if (type == NodeUtils.BOOLEAN_TYPE) {
-							expr = new BooleanLiteralExpr(false, null);
+						if (type == NodeFacade.BOOLEAN_TYPE) {
+							expr = NodeFacade.BooleanLiteralExpr(false);
 						} else {
-							expr = new IntegerLiteralExpr(0, null);
+							expr = NodeFacade.IntegerLiteralExpr(0);
 						}
 					} else {
 						expr = new NullLiteralExpr();
 					}
-					stmts.add(new ReturnStmt(expr, null));
+					stmts.add(NodeFacade.ReturnStmt(expr));
 				}
 			}
 		}

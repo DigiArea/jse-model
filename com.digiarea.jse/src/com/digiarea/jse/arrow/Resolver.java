@@ -31,6 +31,7 @@ import com.digiarea.jse.Project;
 import com.digiarea.jse.QualifiedNameExpr;
 import com.digiarea.jse.SingleMemberAnnotationExpr;
 import com.digiarea.jse.utils.LangUtils;
+import com.digiarea.jse.utils.NodeUtils;
 import com.digiarea.jse.visitor.ResolverVisitor;
 import com.digiarea.jse.visitor.ResolverVisitor.ResolvedData;
 
@@ -355,7 +356,8 @@ public class Resolver implements Arrow<Project, Project> {
 				ctx.setName(true);
 				for (ClassOrInterfaceType type : img.getThrowsList()) {
 					NameExpr name = type.getName();
-					throws_.add(NodeFacade.ClassOrInterfaceType(unresolve(name, ctx)));
+					throws_.add(NodeFacade.ClassOrInterfaceType(unresolve(name,
+							ctx)));
 				}
 				ctx.setName(false);
 				img.setThrowsList(NodeFacade.NodeList(throws_));

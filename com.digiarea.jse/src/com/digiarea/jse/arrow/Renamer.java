@@ -21,6 +21,7 @@ import com.digiarea.jse.Node;
 import com.digiarea.jse.NodeFacade;
 import com.digiarea.jse.PackageDeclaration;
 import com.digiarea.jse.QualifiedNameExpr;
+import com.digiarea.jse.utils.NodeUtils;
 
 /**
  * The Class Renamer.
@@ -65,14 +66,6 @@ public class Renamer extends Quiver {
 			return renames.put(key, value);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * 
-		 * biz.inetgames.tools.tf.arrow.Identity#visit(biz.inetgames.tools.tf.
-		 * NameExpr , biz.inetgames.tools.tf.visitor.Context)
-		 */
 		@Override
 		public Node visit(NameExpr n, Context ctx) throws Exception {
 			NameExpr img = (NameExpr) super.visit(n, ctx);
@@ -83,13 +76,6 @@ public class Renamer extends Quiver {
 			return img;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * biz.inetgames.tools.tf.arrow.Identity#visit(biz.inetgames.tools.tf.
-		 * QualifiedNameExpr, biz.inetgames.tools.tf.visitor.Context)
-		 */
 		@Override
 		public Node visit(QualifiedNameExpr n, Context ctx) throws Exception {
 			QualifiedNameExpr img = (QualifiedNameExpr) super.visit(n, ctx);
@@ -114,13 +100,6 @@ public class Renamer extends Quiver {
 			return img;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * biz.inetgames.tools.tf.arrow.Identity#visit(biz.inetgames.tools.tf.
-		 * ConstructorDeclaration, biz.inetgames.tools.tf.visitor.Context)
-		 */
 		@Override
 		public Node visit(ConstructorDeclaration n, Context ctx)
 				throws Exception {
@@ -129,38 +108,22 @@ public class Renamer extends Quiver {
 			CompilationUnit unit = ctx.getUnit();
 			String key = NodeUtils.getQualifiedName(unit).toString();
 			if (renames.containsKey(key)) {
-				img.setName(NodeFacade.NameExpr(renames.get(key))
-						.getName());
+				img.setName(NodeFacade.NameExpr(renames.get(key)).getName());
 			}
 			return img;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * biz.inetgames.tools.tf.arrow.Identity#visit(biz.inetgames.tools.tf.
-		 * ClassDeclaration, biz.inetgames.tools.tf.visitor.Context)
-		 */
 		@Override
 		public Node visit(ClassDeclaration n, Context ctx) throws Exception {
 			CompilationUnit unit = ctx.getUnit();
 			ClassDeclaration img = (ClassDeclaration) super.visit(n, ctx);
 			String key = NodeUtils.getQualifiedName(unit).toString();
 			if (renames.containsKey(key)) {
-				img.setName(NodeFacade.NameExpr(renames.get(key))
-						.getName());
+				img.setName(NodeFacade.NameExpr(renames.get(key)).getName());
 			}
 			return img;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * biz.inetgames.tools.tf.arrow.Identity#visit(biz.inetgames.tools.tf.
-		 * CompilationUnit, biz.inetgames.tools.tf.visitor.Context)
-		 */
 		@Override
 		public Node visit(CompilationUnit n, Context ctx) throws Exception {
 			CompilationUnit img = (CompilationUnit) super.visit(n, ctx);

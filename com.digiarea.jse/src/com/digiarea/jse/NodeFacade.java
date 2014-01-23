@@ -655,4 +655,14 @@ public class NodeFacade extends NodeFactory {
 		}
 	}
 
+	public static MethodCallExpr MethodCallExpr(Expression scope, String name) {
+		return MethodCallExpr(scope, null, name, null);
+	}
+
+	public static ConstructorDeclaration ConstructorDeclaration(int modifiers,
+			String name) {
+		return ConstructorDeclaration(modifiers, null, name, null, null, null,
+				null, null, 0, 0);
+	}
+
 }

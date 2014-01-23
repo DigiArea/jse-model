@@ -27,6 +27,7 @@ import com.digiarea.jse.NodeFacade;
 import com.digiarea.jse.PackageDeclaration;
 import com.digiarea.jse.Project;
 import com.digiarea.jse.arrow.Context;
+import com.digiarea.jse.utils.NodeUtils;
 
 /**
  * The Class ResolverVisitor.

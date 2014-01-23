@@ -19,6 +19,7 @@ import com.digiarea.jse.ImportDeclaration;
 import com.digiarea.jse.NameExpr;
 import com.digiarea.jse.Node;
 import com.digiarea.jse.Project;
+import com.digiarea.jse.utils.NodeUtils;
 
 /**
  * The Class Cleaner.
