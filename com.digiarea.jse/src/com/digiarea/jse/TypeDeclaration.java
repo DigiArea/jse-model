@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2011 - 2014 DigiArea, Inc. and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     DigiArea, Inc. - initial API and implementation
- *******************************************************************************/
 package com.digiarea.jse;
 
 import com.digiarea.jse.BodyDeclaration;
@@ -15,10 +5,8 @@ import com.digiarea.jse.Modifiers;
 import com.digiarea.jse.NodeList;
 import com.digiarea.jse.JavadocComment;
 import com.digiarea.jse.AnnotationExpr;
-import com.digiarea.jse.visitor.VoidVisitor;
-import com.digiarea.jse.visitor.GenericVisitor;
 
-public class TypeDeclaration extends BodyDeclaration {
+public abstract class TypeDeclaration extends BodyDeclaration {
 
     private Modifiers modifiers;
 
@@ -59,16 +47,6 @@ public class TypeDeclaration extends BodyDeclaration {
         this.modifiers = modifiers;
         this.name = name;
         this.members = members;
-    }
-
-    @Override
-    public <C> void accept(VoidVisitor<C> v, C ctx) throws Exception {
-        v.visit(this, ctx);
-    }
-
-    @Override
-    public <R, C> R accept(GenericVisitor<R, C> v, C ctx) throws Exception {
-        return v.visit(this, ctx);
     }
 
 }

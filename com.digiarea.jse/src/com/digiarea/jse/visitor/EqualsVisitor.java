@@ -1,20 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2011 - 2014 DigiArea, Inc. and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     DigiArea, Inc. - initial API and implementation
- *******************************************************************************/
 package com.digiarea.jse.visitor;
 
 import com.digiarea.jse.Node;
 import com.digiarea.jse.visitor.GenericVisitor;
 import java.util.List;
 import com.digiarea.jse.AnnotationDeclaration;
-import com.digiarea.jse.AnnotationExpr;
 import com.digiarea.jse.AnnotationMemberDeclaration;
 import com.digiarea.jse.ArrayAccessExpr;
 import com.digiarea.jse.ArrayCreationExpr;
@@ -27,7 +16,6 @@ import com.digiarea.jse.BinaryExpr;
 import com.digiarea.jse.BinaryExpr.BinaryOperator;
 import com.digiarea.jse.BlockComment;
 import com.digiarea.jse.BlockStmt;
-import com.digiarea.jse.BodyDeclaration;
 import com.digiarea.jse.BooleanLiteralExpr;
 import com.digiarea.jse.BreakStmt;
 import com.digiarea.jse.CastExpr;
@@ -36,7 +24,6 @@ import com.digiarea.jse.CharLiteralExpr;
 import com.digiarea.jse.ClassDeclaration;
 import com.digiarea.jse.ClassExpr;
 import com.digiarea.jse.ClassOrInterfaceType;
-import com.digiarea.jse.Comment;
 import com.digiarea.jse.CompilationUnit;
 import com.digiarea.jse.ConditionalExpr;
 import com.digiarea.jse.ConstructorDeclaration;
@@ -51,7 +38,6 @@ import com.digiarea.jse.EnclosedExpr;
 import com.digiarea.jse.EnumConstantDeclaration;
 import com.digiarea.jse.EnumDeclaration;
 import com.digiarea.jse.ExplicitConstructorInvocationStmt;
-import com.digiarea.jse.Expression;
 import com.digiarea.jse.ExpressionStmt;
 import com.digiarea.jse.FieldAccessExpr;
 import com.digiarea.jse.FieldDeclaration;
@@ -65,11 +51,9 @@ import com.digiarea.jse.IntegerLiteralExpr;
 import com.digiarea.jse.InterfaceDeclaration;
 import com.digiarea.jse.JavadocComment;
 import com.digiarea.jse.LabeledStmt;
-import com.digiarea.jse.Lambda;
 import com.digiarea.jse.LambdaBlock;
 import com.digiarea.jse.LambdaExpr;
 import com.digiarea.jse.LineComment;
-import com.digiarea.jse.LiteralExpr;
 import com.digiarea.jse.LongLiteralExpr;
 import com.digiarea.jse.MarkerAnnotationExpr;
 import com.digiarea.jse.MemberValuePair;
@@ -93,7 +77,6 @@ import com.digiarea.jse.QualifiedNameExpr;
 import com.digiarea.jse.ReferenceType;
 import com.digiarea.jse.ReturnStmt;
 import com.digiarea.jse.SingleMemberAnnotationExpr;
-import com.digiarea.jse.Statement;
 import com.digiarea.jse.StringLiteralExpr;
 import com.digiarea.jse.SuperExpr;
 import com.digiarea.jse.SwitchEntryStmt;
@@ -102,8 +85,6 @@ import com.digiarea.jse.SynchronizedStmt;
 import com.digiarea.jse.ThisExpr;
 import com.digiarea.jse.ThrowStmt;
 import com.digiarea.jse.TryStmt;
-import com.digiarea.jse.Type;
-import com.digiarea.jse.TypeDeclaration;
 import com.digiarea.jse.TypeDeclarationStmt;
 import com.digiarea.jse.TypeParameter;
 import com.digiarea.jse.UnaryExpr;
@@ -187,18 +168,6 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
             return java.lang.Boolean.FALSE;
         }
         if (!nodeEquals(n.getMembers(), x.getMembers())) {
-            return java.lang.Boolean.FALSE;
-        }
-        if (!nodeEquals(n.getAnnotations(), x.getAnnotations())) {
-            return java.lang.Boolean.FALSE;
-        }
-        return java.lang.Boolean.TRUE;
-    }
-
-    @Override
-    public Boolean visit(AnnotationExpr n, Node ctx) throws Exception {
-        AnnotationExpr x = (AnnotationExpr) ctx;
-        if (!nodeEquals(n.getName(), x.getName())) {
             return java.lang.Boolean.FALSE;
         }
         if (!nodeEquals(n.getAnnotations(), x.getAnnotations())) {
@@ -371,15 +340,6 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
     }
 
     @Override
-    public Boolean visit(BodyDeclaration n, Node ctx) throws Exception {
-        BodyDeclaration x = (BodyDeclaration) ctx;
-        if (!nodeEquals(n.getAnnotations(), x.getAnnotations())) {
-            return java.lang.Boolean.FALSE;
-        }
-        return java.lang.Boolean.TRUE;
-    }
-
-    @Override
     public Boolean visit(BooleanLiteralExpr n, Node ctx) throws Exception {
         BooleanLiteralExpr x = (BooleanLiteralExpr) ctx;
         if (n.isValue() != x.isValue()) {
@@ -500,18 +460,6 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
             return java.lang.Boolean.FALSE;
         }
         if (!nodeEquals(n.getTypeArgs(), x.getTypeArgs())) {
-            return java.lang.Boolean.FALSE;
-        }
-        if (!nodeEquals(n.getAnnotations(), x.getAnnotations())) {
-            return java.lang.Boolean.FALSE;
-        }
-        return java.lang.Boolean.TRUE;
-    }
-
-    @Override
-    public Boolean visit(Comment n, Node ctx) throws Exception {
-        Comment x = (Comment) ctx;
-        if (!objEquals(n.getContent(), x.getContent())) {
             return java.lang.Boolean.FALSE;
         }
         if (!nodeEquals(n.getAnnotations(), x.getAnnotations())) {
@@ -746,15 +694,6 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
     }
 
     @Override
-    public Boolean visit(Expression n, Node ctx) throws Exception {
-        Expression x = (Expression) ctx;
-        if (!nodeEquals(n.getAnnotations(), x.getAnnotations())) {
-            return java.lang.Boolean.FALSE;
-        }
-        return java.lang.Boolean.TRUE;
-    }
-
-    @Override
     public Boolean visit(ExpressionStmt n, Node ctx) throws Exception {
         ExpressionStmt x = (ExpressionStmt) ctx;
         if (!nodeEquals(n.getExpression(), x.getExpression())) {
@@ -971,18 +910,6 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
     }
 
     @Override
-    public Boolean visit(Lambda n, Node ctx) throws Exception {
-        Lambda x = (Lambda) ctx;
-        if (!nodeEquals(n.getParameters(), x.getParameters())) {
-            return java.lang.Boolean.FALSE;
-        }
-        if (!nodeEquals(n.getAnnotations(), x.getAnnotations())) {
-            return java.lang.Boolean.FALSE;
-        }
-        return java.lang.Boolean.TRUE;
-    }
-
-    @Override
     public Boolean visit(LambdaBlock n, Node ctx) throws Exception {
         LambdaBlock x = (LambdaBlock) ctx;
         if (!nodeEquals(n.getBlockStmt(), x.getBlockStmt())) {
@@ -1018,15 +945,6 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
         if (!objEquals(n.getContent(), x.getContent())) {
             return java.lang.Boolean.FALSE;
         }
-        if (!nodeEquals(n.getAnnotations(), x.getAnnotations())) {
-            return java.lang.Boolean.FALSE;
-        }
-        return java.lang.Boolean.TRUE;
-    }
-
-    @Override
-    public Boolean visit(LiteralExpr n, Node ctx) throws Exception {
-        LiteralExpr x = (LiteralExpr) ctx;
         if (!nodeEquals(n.getAnnotations(), x.getAnnotations())) {
             return java.lang.Boolean.FALSE;
         }
@@ -1381,15 +1299,6 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
     }
 
     @Override
-    public Boolean visit(Statement n, Node ctx) throws Exception {
-        Statement x = (Statement) ctx;
-        if (!nodeEquals(n.getAnnotations(), x.getAnnotations())) {
-            return java.lang.Boolean.FALSE;
-        }
-        return java.lang.Boolean.TRUE;
-    }
-
-    @Override
     public Boolean visit(StringLiteralExpr n, Node ctx) throws Exception {
         StringLiteralExpr x = (StringLiteralExpr) ctx;
         if (!objEquals(n.getValue(), x.getValue())) {
@@ -1495,33 +1404,6 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
             return java.lang.Boolean.FALSE;
         }
         if (!nodeEquals(n.getFinallyBlock(), x.getFinallyBlock())) {
-            return java.lang.Boolean.FALSE;
-        }
-        if (!nodeEquals(n.getAnnotations(), x.getAnnotations())) {
-            return java.lang.Boolean.FALSE;
-        }
-        return java.lang.Boolean.TRUE;
-    }
-
-    @Override
-    public Boolean visit(Type n, Node ctx) throws Exception {
-        Type x = (Type) ctx;
-        if (!nodeEquals(n.getAnnotations(), x.getAnnotations())) {
-            return java.lang.Boolean.FALSE;
-        }
-        return java.lang.Boolean.TRUE;
-    }
-
-    @Override
-    public Boolean visit(TypeDeclaration n, Node ctx) throws Exception {
-        TypeDeclaration x = (TypeDeclaration) ctx;
-        if (!objEquals(n.getName(), x.getName())) {
-            return java.lang.Boolean.FALSE;
-        }
-        if (!nodeEquals(n.getModifiers(), x.getModifiers())) {
-            return java.lang.Boolean.FALSE;
-        }
-        if (!nodeEquals(n.getMembers(), x.getMembers())) {
             return java.lang.Boolean.FALSE;
         }
         if (!nodeEquals(n.getAnnotations(), x.getAnnotations())) {

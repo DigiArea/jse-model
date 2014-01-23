@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2011 - 2014 DigiArea, Inc. and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     DigiArea, Inc. - initial API and implementation
- *******************************************************************************/
 package com.digiarea.jse.visitor;
 
 import com.digiarea.jse.Node;
@@ -18,7 +8,6 @@ import com.digiarea.jse.BodyDeclaration;
 import com.digiarea.jse.NodeList;
 import com.digiarea.jse.JavadocComment;
 import com.digiarea.jse.AnnotationExpr;
-import com.digiarea.jse.NameExpr;
 import com.digiarea.jse.AnnotationMemberDeclaration;
 import com.digiarea.jse.Type;
 import com.digiarea.jse.Expression;
@@ -43,11 +32,12 @@ import com.digiarea.jse.ClassDeclaration;
 import com.digiarea.jse.TypeParameter;
 import com.digiarea.jse.ClassOrInterfaceType;
 import com.digiarea.jse.ClassExpr;
-import com.digiarea.jse.Comment;
+import com.digiarea.jse.NameExpr;
 import com.digiarea.jse.CompilationUnit;
 import com.digiarea.jse.PackageDeclaration;
 import com.digiarea.jse.ImportDeclaration;
 import com.digiarea.jse.TypeDeclaration;
+import com.digiarea.jse.Comment;
 import com.digiarea.jse.ConditionalExpr;
 import com.digiarea.jse.ConstructorDeclaration;
 import com.digiarea.jse.Parameter;
@@ -75,11 +65,9 @@ import com.digiarea.jse.InstanceOfExpr;
 import com.digiarea.jse.IntegerLiteralExpr;
 import com.digiarea.jse.InterfaceDeclaration;
 import com.digiarea.jse.LabeledStmt;
-import com.digiarea.jse.Lambda;
 import com.digiarea.jse.LambdaBlock;
 import com.digiarea.jse.LambdaExpr;
 import com.digiarea.jse.LineComment;
-import com.digiarea.jse.LiteralExpr;
 import com.digiarea.jse.LongLiteralExpr;
 import com.digiarea.jse.MarkerAnnotationExpr;
 import com.digiarea.jse.MemberValuePair;
@@ -131,20 +119,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         }
         if (n.getJavaDoc() != null) {
             img.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, ctx));
-        }
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        img.setPosBegin(n.getPosBegin());
-        img.setPosEnd(n.getPosEnd());
-        return img;
-    }
-
-    @Override
-    public Node visit(AnnotationExpr n, C ctx) throws Exception {
-        AnnotationExpr img = new AnnotationExpr();
-        if (n.getName() != null) {
-            img.setName((NameExpr) n.getName().accept(this, ctx));
         }
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -333,20 +307,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
     }
 
     @Override
-    public Node visit(BodyDeclaration n, C ctx) throws Exception {
-        BodyDeclaration img = new BodyDeclaration();
-        if (n.getJavaDoc() != null) {
-            img.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, ctx));
-        }
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        img.setPosBegin(n.getPosBegin());
-        img.setPosEnd(n.getPosEnd());
-        return img;
-    }
-
-    @Override
     public Node visit(BooleanLiteralExpr n, C ctx) throws Exception {
         BooleanLiteralExpr img = new BooleanLiteralExpr();
         img.setValue(n.isValue());
@@ -474,18 +434,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         if (n.getTypeArgs() != null) {
             img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
         }
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        img.setPosBegin(n.getPosBegin());
-        img.setPosEnd(n.getPosEnd());
-        return img;
-    }
-
-    @Override
-    public Node visit(Comment n, C ctx) throws Exception {
-        Comment img = new Comment();
-        img.setContent(n.getContent());
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
         }
@@ -750,17 +698,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
     }
 
     @Override
-    public Node visit(Expression n, C ctx) throws Exception {
-        Expression img = new Expression();
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        img.setPosBegin(n.getPosBegin());
-        img.setPosEnd(n.getPosEnd());
-        return img;
-    }
-
-    @Override
     public Node visit(ExpressionStmt n, C ctx) throws Exception {
         ExpressionStmt img = new ExpressionStmt();
         if (n.getExpression() != null) {
@@ -996,20 +933,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
     }
 
     @Override
-    public Node visit(Lambda n, C ctx) throws Exception {
-        Lambda img = new Lambda();
-        if (n.getParameters() != null) {
-            img.setParameters((NodeList<Parameter>) n.getParameters().accept(this, ctx));
-        }
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        img.setPosBegin(n.getPosBegin());
-        img.setPosEnd(n.getPosEnd());
-        return img;
-    }
-
-    @Override
     public Node visit(LambdaBlock n, C ctx) throws Exception {
         LambdaBlock img = new LambdaBlock();
         if (n.getBlockStmt() != null) {
@@ -1047,17 +970,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
     public Node visit(LineComment n, C ctx) throws Exception {
         LineComment img = new LineComment();
         img.setContent(n.getContent());
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        img.setPosBegin(n.getPosBegin());
-        img.setPosEnd(n.getPosEnd());
-        return img;
-    }
-
-    @Override
-    public Node visit(LiteralExpr n, C ctx) throws Exception {
-        LiteralExpr img = new LiteralExpr();
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
         }
@@ -1445,17 +1357,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
     }
 
     @Override
-    public Node visit(Statement n, C ctx) throws Exception {
-        Statement img = new Statement();
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        img.setPosBegin(n.getPosBegin());
-        img.setPosEnd(n.getPosEnd());
-        return img;
-    }
-
-    @Override
     public Node visit(StringLiteralExpr n, C ctx) throws Exception {
         StringLiteralExpr img = new StringLiteralExpr();
         img.setValue(n.getValue());
@@ -1574,38 +1475,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         }
         if (n.getFinallyBlock() != null) {
             img.setFinallyBlock((BlockStmt) n.getFinallyBlock().accept(this, ctx));
-        }
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        img.setPosBegin(n.getPosBegin());
-        img.setPosEnd(n.getPosEnd());
-        return img;
-    }
-
-    @Override
-    public Node visit(Type n, C ctx) throws Exception {
-        Type img = new Type();
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        img.setPosBegin(n.getPosBegin());
-        img.setPosEnd(n.getPosEnd());
-        return img;
-    }
-
-    @Override
-    public Node visit(TypeDeclaration n, C ctx) throws Exception {
-        TypeDeclaration img = new TypeDeclaration();
-        if (n.getModifiers() != null) {
-            img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
-        }
-        img.setName(n.getName());
-        if (n.getMembers() != null) {
-            img.setMembers((NodeList<BodyDeclaration>) n.getMembers().accept(this, ctx));
-        }
-        if (n.getJavaDoc() != null) {
-            img.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, ctx));
         }
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));

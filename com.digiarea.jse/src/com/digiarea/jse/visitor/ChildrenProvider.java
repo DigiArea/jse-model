@@ -1,20 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2011 - 2014 DigiArea, Inc. and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     DigiArea, Inc. - initial API and implementation
- *******************************************************************************/
 package com.digiarea.jse.visitor;
 
 import java.util.List;
 import com.digiarea.jse.visitor.GenericVisitor;
 import com.digiarea.jse.AnnotationDeclaration;
 import java.util.ArrayList;
-import com.digiarea.jse.AnnotationExpr;
 import com.digiarea.jse.AnnotationMemberDeclaration;
 import com.digiarea.jse.ArrayAccessExpr;
 import com.digiarea.jse.ArrayCreationExpr;
@@ -27,7 +16,6 @@ import com.digiarea.jse.BinaryExpr;
 import com.digiarea.jse.BinaryExpr.BinaryOperator;
 import com.digiarea.jse.BlockComment;
 import com.digiarea.jse.BlockStmt;
-import com.digiarea.jse.BodyDeclaration;
 import com.digiarea.jse.BooleanLiteralExpr;
 import com.digiarea.jse.BreakStmt;
 import com.digiarea.jse.CastExpr;
@@ -36,7 +24,6 @@ import com.digiarea.jse.CharLiteralExpr;
 import com.digiarea.jse.ClassDeclaration;
 import com.digiarea.jse.ClassExpr;
 import com.digiarea.jse.ClassOrInterfaceType;
-import com.digiarea.jse.Comment;
 import com.digiarea.jse.CompilationUnit;
 import com.digiarea.jse.ConditionalExpr;
 import com.digiarea.jse.ConstructorDeclaration;
@@ -51,7 +38,6 @@ import com.digiarea.jse.EnclosedExpr;
 import com.digiarea.jse.EnumConstantDeclaration;
 import com.digiarea.jse.EnumDeclaration;
 import com.digiarea.jse.ExplicitConstructorInvocationStmt;
-import com.digiarea.jse.Expression;
 import com.digiarea.jse.ExpressionStmt;
 import com.digiarea.jse.FieldAccessExpr;
 import com.digiarea.jse.FieldDeclaration;
@@ -65,11 +51,9 @@ import com.digiarea.jse.IntegerLiteralExpr;
 import com.digiarea.jse.InterfaceDeclaration;
 import com.digiarea.jse.JavadocComment;
 import com.digiarea.jse.LabeledStmt;
-import com.digiarea.jse.Lambda;
 import com.digiarea.jse.LambdaBlock;
 import com.digiarea.jse.LambdaExpr;
 import com.digiarea.jse.LineComment;
-import com.digiarea.jse.LiteralExpr;
 import com.digiarea.jse.LongLiteralExpr;
 import com.digiarea.jse.MarkerAnnotationExpr;
 import com.digiarea.jse.MemberValuePair;
@@ -94,7 +78,6 @@ import com.digiarea.jse.QualifiedNameExpr;
 import com.digiarea.jse.ReferenceType;
 import com.digiarea.jse.ReturnStmt;
 import com.digiarea.jse.SingleMemberAnnotationExpr;
-import com.digiarea.jse.Statement;
 import com.digiarea.jse.StringLiteralExpr;
 import com.digiarea.jse.SuperExpr;
 import com.digiarea.jse.SwitchEntryStmt;
@@ -103,8 +86,6 @@ import com.digiarea.jse.SynchronizedStmt;
 import com.digiarea.jse.ThisExpr;
 import com.digiarea.jse.ThrowStmt;
 import com.digiarea.jse.TryStmt;
-import com.digiarea.jse.Type;
-import com.digiarea.jse.TypeDeclaration;
 import com.digiarea.jse.TypeDeclarationStmt;
 import com.digiarea.jse.TypeParameter;
 import com.digiarea.jse.UnaryExpr;
@@ -130,20 +111,6 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         }
         if (n.getJavaDoc() != null) {
             img.add(n.getJavaDoc());
-        }
-        if (n.getAnnotations() != null) {
-            img.add(n.getAnnotations());
-        }
-        img.add(n.getPosBegin());
-        img.add(n.getPosEnd());
-        return img;
-    }
-
-    @Override
-    public List<Object> visit(AnnotationExpr n, Void ctx) throws Exception {
-        List<Object> img = new ArrayList<Object>();
-        if (n.getName() != null) {
-            img.add(n.getName());
         }
         if (n.getAnnotations() != null) {
             img.add(n.getAnnotations());
@@ -332,20 +299,6 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
     }
 
     @Override
-    public List<Object> visit(BodyDeclaration n, Void ctx) throws Exception {
-        List<Object> img = new ArrayList<Object>();
-        if (n.getJavaDoc() != null) {
-            img.add(n.getJavaDoc());
-        }
-        if (n.getAnnotations() != null) {
-            img.add(n.getAnnotations());
-        }
-        img.add(n.getPosBegin());
-        img.add(n.getPosEnd());
-        return img;
-    }
-
-    @Override
     public List<Object> visit(BooleanLiteralExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
         img.add(n.isValue());
@@ -473,18 +426,6 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         if (n.getTypeArgs() != null) {
             img.add(n.getTypeArgs());
         }
-        if (n.getAnnotations() != null) {
-            img.add(n.getAnnotations());
-        }
-        img.add(n.getPosBegin());
-        img.add(n.getPosEnd());
-        return img;
-    }
-
-    @Override
-    public List<Object> visit(Comment n, Void ctx) throws Exception {
-        List<Object> img = new ArrayList<Object>();
-        img.add(n.getContent());
         if (n.getAnnotations() != null) {
             img.add(n.getAnnotations());
         }
@@ -749,17 +690,6 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
     }
 
     @Override
-    public List<Object> visit(Expression n, Void ctx) throws Exception {
-        List<Object> img = new ArrayList<Object>();
-        if (n.getAnnotations() != null) {
-            img.add(n.getAnnotations());
-        }
-        img.add(n.getPosBegin());
-        img.add(n.getPosEnd());
-        return img;
-    }
-
-    @Override
     public List<Object> visit(ExpressionStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
         if (n.getExpression() != null) {
@@ -995,20 +925,6 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
     }
 
     @Override
-    public List<Object> visit(Lambda n, Void ctx) throws Exception {
-        List<Object> img = new ArrayList<Object>();
-        if (n.getParameters() != null) {
-            img.add(n.getParameters());
-        }
-        if (n.getAnnotations() != null) {
-            img.add(n.getAnnotations());
-        }
-        img.add(n.getPosBegin());
-        img.add(n.getPosEnd());
-        return img;
-    }
-
-    @Override
     public List<Object> visit(LambdaBlock n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
         if (n.getBlockStmt() != null) {
@@ -1046,17 +962,6 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
     public List<Object> visit(LineComment n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
         img.add(n.getContent());
-        if (n.getAnnotations() != null) {
-            img.add(n.getAnnotations());
-        }
-        img.add(n.getPosBegin());
-        img.add(n.getPosEnd());
-        return img;
-    }
-
-    @Override
-    public List<Object> visit(LiteralExpr n, Void ctx) throws Exception {
-        List<Object> img = new ArrayList<Object>();
         if (n.getAnnotations() != null) {
             img.add(n.getAnnotations());
         }
@@ -1438,17 +1343,6 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
     }
 
     @Override
-    public List<Object> visit(Statement n, Void ctx) throws Exception {
-        List<Object> img = new ArrayList<Object>();
-        if (n.getAnnotations() != null) {
-            img.add(n.getAnnotations());
-        }
-        img.add(n.getPosBegin());
-        img.add(n.getPosEnd());
-        return img;
-    }
-
-    @Override
     public List<Object> visit(StringLiteralExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
         img.add(n.getValue());
@@ -1567,38 +1461,6 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         }
         if (n.getFinallyBlock() != null) {
             img.add(n.getFinallyBlock());
-        }
-        if (n.getAnnotations() != null) {
-            img.add(n.getAnnotations());
-        }
-        img.add(n.getPosBegin());
-        img.add(n.getPosEnd());
-        return img;
-    }
-
-    @Override
-    public List<Object> visit(Type n, Void ctx) throws Exception {
-        List<Object> img = new ArrayList<Object>();
-        if (n.getAnnotations() != null) {
-            img.add(n.getAnnotations());
-        }
-        img.add(n.getPosBegin());
-        img.add(n.getPosEnd());
-        return img;
-    }
-
-    @Override
-    public List<Object> visit(TypeDeclaration n, Void ctx) throws Exception {
-        List<Object> img = new ArrayList<Object>();
-        if (n.getModifiers() != null) {
-            img.add(n.getModifiers());
-        }
-        img.add(n.getName());
-        if (n.getMembers() != null) {
-            img.add(n.getMembers());
-        }
-        if (n.getJavaDoc() != null) {
-            img.add(n.getJavaDoc());
         }
         if (n.getAnnotations() != null) {
             img.add(n.getAnnotations());

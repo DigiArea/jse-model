@@ -12,7 +12,7 @@ package com.digiarea.jse.visitor;
 
 import java.util.Iterator;
 
-import com.digiarea.common.SourcePrinter;
+import com.digiarea.common.utils.SourcePrinter;
 import com.digiarea.jse.*;
 import com.digiarea.jse.AssignExpr.AssignOperator;
 import com.digiarea.jse.BinaryExpr.BinaryOperator;
@@ -33,10 +33,13 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 
 	/**
 	 * Prints the members.
-	 *
-	 * @param members the members
-	 * @param printer the printer
-	 * @throws Exception the exception
+	 * 
+	 * @param members
+	 *            the members
+	 * @param printer
+	 *            the printer
+	 * @throws Exception
+	 *             the exception
 	 */
 	protected void printMembers(NodeList<BodyDeclaration> members,
 			SourcePrinter printer) throws Exception {
@@ -49,10 +52,13 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 
 	/**
 	 * Prints the member annotations.
-	 *
-	 * @param annotations the annotations
-	 * @param printer the printer
-	 * @throws Exception the exception
+	 * 
+	 * @param annotations
+	 *            the annotations
+	 * @param printer
+	 *            the printer
+	 * @throws Exception
+	 *             the exception
 	 */
 	public void printMemberAnnotations(NodeList<AnnotationExpr> annotations,
 			SourcePrinter printer) throws Exception {
@@ -66,10 +72,13 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 
 	/**
 	 * Prints the type annotations.
-	 *
-	 * @param annotations the annotations
-	 * @param printer the printer
-	 * @throws Exception the exception
+	 * 
+	 * @param annotations
+	 *            the annotations
+	 * @param printer
+	 *            the printer
+	 * @throws Exception
+	 *             the exception
 	 */
 	public void printTypeAnnotations(NodeList<AnnotationExpr> annotations,
 			SourcePrinter printer) throws Exception {
@@ -83,10 +92,13 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 
 	/**
 	 * Prints the annotations.
-	 *
-	 * @param annotations the annotations
-	 * @param printer the printer
-	 * @throws Exception the exception
+	 * 
+	 * @param annotations
+	 *            the annotations
+	 * @param printer
+	 *            the printer
+	 * @throws Exception
+	 *             the exception
 	 */
 	protected void printAnnotations(NodeList<AnnotationExpr> annotations,
 			SourcePrinter printer) throws Exception {
@@ -100,10 +112,13 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 
 	/**
 	 * Prints the type args.
-	 *
-	 * @param args the args
-	 * @param printer the printer
-	 * @throws Exception the exception
+	 * 
+	 * @param args
+	 *            the args
+	 * @param printer
+	 *            the printer
+	 * @throws Exception
+	 *             the exception
 	 */
 	protected void printTypeArgs(NodeList<Type> args, SourcePrinter printer)
 			throws Exception {
@@ -122,10 +137,13 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 
 	/**
 	 * Prints the type parameters.
-	 *
-	 * @param args the args
-	 * @param printer the printer
-	 * @throws Exception the exception
+	 * 
+	 * @param args
+	 *            the args
+	 * @param printer
+	 *            the printer
+	 * @throws Exception
+	 *             the exception
 	 */
 	protected void printTypeParameters(NodeList<TypeParameter> args,
 			SourcePrinter printer) throws Exception {
@@ -144,10 +162,13 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 
 	/**
 	 * Prints the arguments.
-	 *
-	 * @param args the args
-	 * @param printer the printer
-	 * @throws Exception the exception
+	 * 
+	 * @param args
+	 *            the args
+	 * @param printer
+	 *            the printer
+	 * @throws Exception
+	 *             the exception
 	 */
 	protected void printArguments(NodeList<Expression> args,
 			SourcePrinter printer) throws Exception {
@@ -166,10 +187,13 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 
 	/**
 	 * Prints the javadoc.
-	 *
-	 * @param javadoc the javadoc
-	 * @param printer the printer
-	 * @throws Exception the exception
+	 * 
+	 * @param javadoc
+	 *            the javadoc
+	 * @param printer
+	 *            the printer
+	 * @throws Exception
+	 *             the exception
 	 */
 	protected void printJavadoc(JavadocComment javadoc, SourcePrinter printer)
 			throws Exception {
@@ -235,8 +259,12 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 		printer.print(n.getName());
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.QualifiedNameExpr, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.QualifiedNameExpr
+	 * , java.lang.Object)
 	 */
 	@Override
 	public void visit(QualifiedNameExpr n, SourcePrinter printer)
@@ -309,8 +337,11 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 		printer.print("}");
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.InterfaceDeclaration, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.
+	 * InterfaceDeclaration, java.lang.Object)
 	 */
 	@Override
 	public void visit(InterfaceDeclaration n, SourcePrinter printer)
@@ -1795,24 +1826,36 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.UnaryExpr.UnaryOperator, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.UnaryExpr
+	 * .UnaryOperator, java.lang.Object)
 	 */
 	@Override
 	public void visit(UnaryOperator n, SourcePrinter printer) throws Exception {
 		printer.print(n.getString());
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.BinaryExpr.BinaryOperator, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.BinaryExpr
+	 * .BinaryOperator, java.lang.Object)
 	 */
 	@Override
 	public void visit(BinaryOperator n, SourcePrinter printer) throws Exception {
 		printer.print(n.getString());
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.Modifiers, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.Modifiers,
+	 * java.lang.Object)
 	 */
 	@Override
 	public void visit(Modifiers n, SourcePrinter printer) throws Exception {
@@ -1854,24 +1897,36 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.AssignExpr.AssignOperator, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.AssignExpr
+	 * .AssignOperator, java.lang.Object)
 	 */
 	@Override
 	public void visit(AssignOperator n, SourcePrinter printer) throws Exception {
 		printer.print(n.getString());
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.PrimitiveType.Primitive, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.PrimitiveType
+	 * .Primitive, java.lang.Object)
 	 */
 	@Override
 	public void visit(Primitive n, SourcePrinter printer) throws Exception {
 		printer.print(n.getString());
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.NodeList, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.NodeList,
+	 * java.lang.Object)
 	 */
 	@Override
 	public <E extends Node> void visit(NodeList<E> n, SourcePrinter printer)
@@ -1894,91 +1949,12 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 		printer.print("]");
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.AnnotationExpr, java.lang.Object)
-	 */
-	@Override
-	public void visit(AnnotationExpr n, SourcePrinter printer) throws Exception {
-		// Make literal presentation for this node
-		throw new Exception("No literal presentation for this node");
-	}
-
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.BodyDeclaration, java.lang.Object)
-	 */
-	@Override
-	public void visit(BodyDeclaration n, SourcePrinter printer)
-			throws Exception {
-		// Make literal presentation for this node
-		throw new Exception("No literal presentation for this node");
-	}
-
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.Comment, java.lang.Object)
-	 */
-	@Override
-	public void visit(Comment n, SourcePrinter printer) throws Exception {
-		// Make literal presentation for this node
-		throw new Exception("No literal presentation for this node");
-	}
-
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.Expression, java.lang.Object)
-	 */
-	@Override
-	public void visit(Expression n, SourcePrinter printer) throws Exception {
-		// Make literal presentation for this node
-		throw new Exception("No literal presentation for this node");
-	}
-
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.LiteralExpr, java.lang.Object)
-	 */
-	@Override
-	public void visit(LiteralExpr n, SourcePrinter printer) throws Exception {
-		// Make literal presentation for this node
-		throw new Exception("No literal presentation for this node");
-	}
-
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.Statement, java.lang.Object)
-	 */
-	@Override
-	public void visit(Statement n, SourcePrinter printer) throws Exception {
-		// Make literal presentation for this node
-		throw new Exception("No literal presentation for this node");
-	}
-
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.Type, java.lang.Object)
-	 */
-	@Override
-	public void visit(Type n, SourcePrinter printer) throws Exception {
-		// Make literal presentation for this node
-		throw new Exception("No literal presentation for this node");
-	}
-
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.TypeDeclaration, java.lang.Object)
-	 */
-	@Override
-	public void visit(TypeDeclaration n, SourcePrinter printer)
-			throws Exception {
-		// Make literal presentation for this node
-		throw new Exception("No literal presentation for this node");
-	}
-
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.Lambda, java.lang.Object)
-	 */
-	@Override
-	public void visit(Lambda n, SourcePrinter printer) throws Exception {
-		// Make literal presentation for this node
-		throw new Exception("No literal presentation for this node");
-	}
-
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.LambdaBlock, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.LambdaBlock,
+	 * java.lang.Object)
 	 */
 	@Override
 	public void visit(LambdaBlock n, SourcePrinter printer) throws Exception {
@@ -1998,8 +1974,12 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 		n.getBlockStmt().accept(this, printer);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.LambdaExpr, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.LambdaExpr,
+	 * java.lang.Object)
 	 */
 	@Override
 	public void visit(LambdaExpr n, SourcePrinter printer) throws Exception {
@@ -2019,8 +1999,12 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 		n.getExpression().accept(this, printer);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.MethodTypeRef, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.MethodTypeRef
+	 * , java.lang.Object)
 	 */
 	@Override
 	public void visit(MethodTypeRef n, SourcePrinter printer) throws Exception {
@@ -2032,8 +2016,12 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 		printer.print(n.getName());
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.MethodExprRef, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.MethodExprRef
+	 * , java.lang.Object)
 	 */
 	@Override
 	public void visit(MethodExprRef n, SourcePrinter printer) throws Exception {
@@ -2045,8 +2033,12 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 		printer.print(n.getName());
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.MethodRef, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.MethodRef,
+	 * java.lang.Object)
 	 */
 	@Override
 	public void visit(MethodRef n, SourcePrinter printer) throws Exception {
@@ -2054,8 +2046,12 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 		throw new Exception("No literal presentation for this node");
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ArraySlot, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ArraySlot,
+	 * java.lang.Object)
 	 */
 	@Override
 	public void visit(ArraySlot n, SourcePrinter printer) throws Exception {
@@ -2070,8 +2066,12 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 		printer.print("]");
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.Ellipsis, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.Ellipsis,
+	 * java.lang.Object)
 	 */
 	@Override
 	public void visit(Ellipsis n, SourcePrinter printer) throws Exception {

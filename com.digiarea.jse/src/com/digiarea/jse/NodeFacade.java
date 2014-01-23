@@ -643,4 +643,16 @@ public class NodeFacade extends NodeFactory {
 				null, 0, 0);
 	}
 
+	public static ReferenceType ReferenceType(Type type, int slotsNumber) {
+		if (slotsNumber != 0) {
+			List<ArraySlot> slots = new ArrayList<>();
+			for (int i = 0; i < slotsNumber; i++) {
+				slots.add(new ArraySlot());
+			}
+			return ReferenceType(type, slots);
+		} else {
+			return ReferenceType(type, null);
+		}
+	}
+
 }

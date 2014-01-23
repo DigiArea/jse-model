@@ -13,7 +13,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.digiarea.common.FileExtensions;
+import com.digiarea.common.utils.FileExtensions;
 import com.digiarea.jse.CompilationUnit;
 import com.digiarea.jse.NodeFacade;
 import com.digiarea.jse.Project;

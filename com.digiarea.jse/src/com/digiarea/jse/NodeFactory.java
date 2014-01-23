@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2011 - 2014 DigiArea, Inc. and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     DigiArea, Inc. - initial API and implementation
- *******************************************************************************/
 package com.digiarea.jse;
 
 import com.digiarea.jse.AnnotationDeclaration;
@@ -16,7 +6,6 @@ import com.digiarea.jse.BodyDeclaration;
 import com.digiarea.jse.NodeList;
 import com.digiarea.jse.JavadocComment;
 import com.digiarea.jse.AnnotationExpr;
-import com.digiarea.jse.NameExpr;
 import com.digiarea.jse.AnnotationMemberDeclaration;
 import com.digiarea.jse.Type;
 import com.digiarea.jse.Expression;
@@ -39,11 +28,12 @@ import com.digiarea.jse.ClassDeclaration;
 import com.digiarea.jse.TypeParameter;
 import com.digiarea.jse.ClassOrInterfaceType;
 import com.digiarea.jse.ClassExpr;
-import com.digiarea.jse.Comment;
+import com.digiarea.jse.NameExpr;
 import com.digiarea.jse.CompilationUnit;
 import com.digiarea.jse.PackageDeclaration;
 import com.digiarea.jse.ImportDeclaration;
 import com.digiarea.jse.TypeDeclaration;
+import com.digiarea.jse.Comment;
 import com.digiarea.jse.ConditionalExpr;
 import com.digiarea.jse.ConstructorDeclaration;
 import com.digiarea.jse.Parameter;
@@ -71,11 +61,9 @@ import com.digiarea.jse.InstanceOfExpr;
 import com.digiarea.jse.IntegerLiteralExpr;
 import com.digiarea.jse.InterfaceDeclaration;
 import com.digiarea.jse.LabeledStmt;
-import com.digiarea.jse.Lambda;
 import com.digiarea.jse.LambdaBlock;
 import com.digiarea.jse.LambdaExpr;
 import com.digiarea.jse.LineComment;
-import com.digiarea.jse.LiteralExpr;
 import com.digiarea.jse.LongLiteralExpr;
 import com.digiarea.jse.MarkerAnnotationExpr;
 import com.digiarea.jse.MemberValuePair;
@@ -118,14 +106,6 @@ public class NodeFactory {
 
     public static AnnotationDeclaration AnnotationDeclaration(Modifiers modifiers, String name, NodeList<BodyDeclaration> members, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         return new AnnotationDeclaration(modifiers, name, members, javaDoc, annotations, posBegin, posEnd);
-    }
-
-    public static AnnotationExpr AnnotationExpr() {
-        return new AnnotationExpr();
-    }
-
-    public static AnnotationExpr AnnotationExpr(NameExpr name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
-        return new AnnotationExpr(name, annotations, posBegin, posEnd);
     }
 
     public static AnnotationMemberDeclaration AnnotationMemberDeclaration() {
@@ -208,14 +188,6 @@ public class NodeFactory {
         return new BlockStmt(statements, annotations, posBegin, posEnd);
     }
 
-    public static BodyDeclaration BodyDeclaration() {
-        return new BodyDeclaration();
-    }
-
-    public static BodyDeclaration BodyDeclaration(JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
-        return new BodyDeclaration(javaDoc, annotations, posBegin, posEnd);
-    }
-
     public static BooleanLiteralExpr BooleanLiteralExpr() {
         return new BooleanLiteralExpr();
     }
@@ -278,14 +250,6 @@ public class NodeFactory {
 
     public static ClassOrInterfaceType ClassOrInterfaceType(ClassOrInterfaceType scope, NameExpr name, NodeList<Type> typeArgs, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         return new ClassOrInterfaceType(scope, name, typeArgs, annotations, posBegin, posEnd);
-    }
-
-    public static Comment Comment() {
-        return new Comment();
-    }
-
-    public static Comment Comment(String content, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
-        return new Comment(content, annotations, posBegin, posEnd);
     }
 
     public static CompilationUnit CompilationUnit() {
@@ -400,14 +364,6 @@ public class NodeFactory {
         return new ExplicitConstructorInvocationStmt(typeArgs, isThis, expression, args, annotations, posBegin, posEnd);
     }
 
-    public static Expression Expression() {
-        return new Expression();
-    }
-
-    public static Expression Expression(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
-        return new Expression(annotations, posBegin, posEnd);
-    }
-
     public static ExpressionStmt ExpressionStmt() {
         return new ExpressionStmt();
     }
@@ -512,14 +468,6 @@ public class NodeFactory {
         return new LabeledStmt(label, stmt, annotations, posBegin, posEnd);
     }
 
-    public static Lambda Lambda() {
-        return new Lambda();
-    }
-
-    public static Lambda Lambda(NodeList<Parameter> parameters, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
-        return new Lambda(parameters, annotations, posBegin, posEnd);
-    }
-
     public static LambdaBlock LambdaBlock() {
         return new LambdaBlock();
     }
@@ -542,14 +490,6 @@ public class NodeFactory {
 
     public static LineComment LineComment(String content, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         return new LineComment(content, annotations, posBegin, posEnd);
-    }
-
-    public static LiteralExpr LiteralExpr() {
-        return new LiteralExpr();
-    }
-
-    public static LiteralExpr LiteralExpr(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
-        return new LiteralExpr(annotations, posBegin, posEnd);
     }
 
     public static LongLiteralExpr LongLiteralExpr() {
@@ -728,14 +668,6 @@ public class NodeFactory {
         return new SingleMemberAnnotationExpr(memberValue, name, annotations, posBegin, posEnd);
     }
 
-    public static Statement Statement() {
-        return new Statement();
-    }
-
-    public static Statement Statement(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
-        return new Statement(annotations, posBegin, posEnd);
-    }
-
     public static StringLiteralExpr StringLiteralExpr() {
         return new StringLiteralExpr();
     }
@@ -798,22 +730,6 @@ public class NodeFactory {
 
     public static TryStmt TryStmt(NodeList<VariableDeclarationExpr> resources, BlockStmt tryBlock, NodeList<CatchClause> catchClauses, BlockStmt finallyBlock, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         return new TryStmt(resources, tryBlock, catchClauses, finallyBlock, annotations, posBegin, posEnd);
-    }
-
-    public static Type Type() {
-        return new Type();
-    }
-
-    public static Type Type(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
-        return new Type(annotations, posBegin, posEnd);
-    }
-
-    public static TypeDeclaration TypeDeclaration() {
-        return new TypeDeclaration();
-    }
-
-    public static TypeDeclaration TypeDeclaration(Modifiers modifiers, String name, NodeList<BodyDeclaration> members, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
-        return new TypeDeclaration(modifiers, name, members, javaDoc, annotations, posBegin, posEnd);
     }
 
     public static TypeDeclarationStmt TypeDeclarationStmt() {

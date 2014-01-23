@@ -1,17 +1,6 @@
-/*******************************************************************************
- * Copyright (c) 2011 - 2014 DigiArea, Inc. and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     DigiArea, Inc. - initial API and implementation
- *******************************************************************************/
 package com.digiarea.jse.visitor;
 
 import com.digiarea.jse.AnnotationDeclaration;
-import com.digiarea.jse.AnnotationExpr;
 import com.digiarea.jse.AnnotationMemberDeclaration;
 import com.digiarea.jse.ArrayAccessExpr;
 import com.digiarea.jse.ArrayCreationExpr;
@@ -24,7 +13,6 @@ import com.digiarea.jse.BinaryExpr;
 import com.digiarea.jse.BinaryExpr.BinaryOperator;
 import com.digiarea.jse.BlockComment;
 import com.digiarea.jse.BlockStmt;
-import com.digiarea.jse.BodyDeclaration;
 import com.digiarea.jse.BooleanLiteralExpr;
 import com.digiarea.jse.BreakStmt;
 import com.digiarea.jse.CastExpr;
@@ -33,7 +21,6 @@ import com.digiarea.jse.CharLiteralExpr;
 import com.digiarea.jse.ClassDeclaration;
 import com.digiarea.jse.ClassExpr;
 import com.digiarea.jse.ClassOrInterfaceType;
-import com.digiarea.jse.Comment;
 import com.digiarea.jse.CompilationUnit;
 import com.digiarea.jse.ConditionalExpr;
 import com.digiarea.jse.ConstructorDeclaration;
@@ -48,7 +35,6 @@ import com.digiarea.jse.EnclosedExpr;
 import com.digiarea.jse.EnumConstantDeclaration;
 import com.digiarea.jse.EnumDeclaration;
 import com.digiarea.jse.ExplicitConstructorInvocationStmt;
-import com.digiarea.jse.Expression;
 import com.digiarea.jse.ExpressionStmt;
 import com.digiarea.jse.FieldAccessExpr;
 import com.digiarea.jse.FieldDeclaration;
@@ -62,11 +48,9 @@ import com.digiarea.jse.IntegerLiteralExpr;
 import com.digiarea.jse.InterfaceDeclaration;
 import com.digiarea.jse.JavadocComment;
 import com.digiarea.jse.LabeledStmt;
-import com.digiarea.jse.Lambda;
 import com.digiarea.jse.LambdaBlock;
 import com.digiarea.jse.LambdaExpr;
 import com.digiarea.jse.LineComment;
-import com.digiarea.jse.LiteralExpr;
 import com.digiarea.jse.LongLiteralExpr;
 import com.digiarea.jse.MarkerAnnotationExpr;
 import com.digiarea.jse.MemberValuePair;
@@ -91,7 +75,6 @@ import com.digiarea.jse.QualifiedNameExpr;
 import com.digiarea.jse.ReferenceType;
 import com.digiarea.jse.ReturnStmt;
 import com.digiarea.jse.SingleMemberAnnotationExpr;
-import com.digiarea.jse.Statement;
 import com.digiarea.jse.StringLiteralExpr;
 import com.digiarea.jse.SuperExpr;
 import com.digiarea.jse.SwitchEntryStmt;
@@ -100,8 +83,6 @@ import com.digiarea.jse.SynchronizedStmt;
 import com.digiarea.jse.ThisExpr;
 import com.digiarea.jse.ThrowStmt;
 import com.digiarea.jse.TryStmt;
-import com.digiarea.jse.Type;
-import com.digiarea.jse.TypeDeclaration;
 import com.digiarea.jse.TypeDeclarationStmt;
 import com.digiarea.jse.TypeParameter;
 import com.digiarea.jse.UnaryExpr;
@@ -116,8 +97,6 @@ import com.digiarea.jse.WildcardType;
 public interface GenericVisitor<R, C> {
 
     public R visit(AnnotationDeclaration n, C ctx) throws Exception;
-
-    public R visit(AnnotationExpr n, C ctx) throws Exception;
 
     public R visit(AnnotationMemberDeclaration n, C ctx) throws Exception;
 
@@ -143,8 +122,6 @@ public interface GenericVisitor<R, C> {
 
     public R visit(BlockStmt n, C ctx) throws Exception;
 
-    public R visit(BodyDeclaration n, C ctx) throws Exception;
-
     public R visit(BooleanLiteralExpr n, C ctx) throws Exception;
 
     public R visit(BreakStmt n, C ctx) throws Exception;
@@ -160,8 +137,6 @@ public interface GenericVisitor<R, C> {
     public R visit(ClassExpr n, C ctx) throws Exception;
 
     public R visit(ClassOrInterfaceType n, C ctx) throws Exception;
-
-    public R visit(Comment n, C ctx) throws Exception;
 
     public R visit(CompilationUnit n, C ctx) throws Exception;
 
@@ -191,8 +166,6 @@ public interface GenericVisitor<R, C> {
 
     public R visit(ExplicitConstructorInvocationStmt n, C ctx) throws Exception;
 
-    public R visit(Expression n, C ctx) throws Exception;
-
     public R visit(ExpressionStmt n, C ctx) throws Exception;
 
     public R visit(FieldAccessExpr n, C ctx) throws Exception;
@@ -219,15 +192,11 @@ public interface GenericVisitor<R, C> {
 
     public R visit(LabeledStmt n, C ctx) throws Exception;
 
-    public R visit(Lambda n, C ctx) throws Exception;
-
     public R visit(LambdaBlock n, C ctx) throws Exception;
 
     public R visit(LambdaExpr n, C ctx) throws Exception;
 
     public R visit(LineComment n, C ctx) throws Exception;
-
-    public R visit(LiteralExpr n, C ctx) throws Exception;
 
     public R visit(LongLiteralExpr n, C ctx) throws Exception;
 
@@ -275,8 +244,6 @@ public interface GenericVisitor<R, C> {
 
     public R visit(SingleMemberAnnotationExpr n, C ctx) throws Exception;
 
-    public R visit(Statement n, C ctx) throws Exception;
-
     public R visit(StringLiteralExpr n, C ctx) throws Exception;
 
     public R visit(SuperExpr n, C ctx) throws Exception;
@@ -292,10 +259,6 @@ public interface GenericVisitor<R, C> {
     public R visit(ThrowStmt n, C ctx) throws Exception;
 
     public R visit(TryStmt n, C ctx) throws Exception;
-
-    public R visit(Type n, C ctx) throws Exception;
-
-    public R visit(TypeDeclaration n, C ctx) throws Exception;
 
     public R visit(TypeDeclarationStmt n, C ctx) throws Exception;
 

@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2011 - 2014 DigiArea, Inc. and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     DigiArea, Inc. - initial API and implementation
- *******************************************************************************/
 package com.digiarea.jse.visitor;
 
 import com.digiarea.jse.Node;
@@ -19,7 +9,6 @@ import com.digiarea.jse.BodyDeclaration;
 import com.digiarea.jse.NodeList;
 import com.digiarea.jse.JavadocComment;
 import com.digiarea.jse.AnnotationExpr;
-import com.digiarea.jse.NameExpr;
 import com.digiarea.jse.AnnotationMemberDeclaration;
 import com.digiarea.jse.Type;
 import com.digiarea.jse.Expression;
@@ -44,11 +33,12 @@ import com.digiarea.jse.ClassDeclaration;
 import com.digiarea.jse.TypeParameter;
 import com.digiarea.jse.ClassOrInterfaceType;
 import com.digiarea.jse.ClassExpr;
-import com.digiarea.jse.Comment;
+import com.digiarea.jse.NameExpr;
 import com.digiarea.jse.CompilationUnit;
 import com.digiarea.jse.PackageDeclaration;
 import com.digiarea.jse.ImportDeclaration;
 import com.digiarea.jse.TypeDeclaration;
+import com.digiarea.jse.Comment;
 import com.digiarea.jse.ConditionalExpr;
 import com.digiarea.jse.ConstructorDeclaration;
 import com.digiarea.jse.Parameter;
@@ -76,11 +66,9 @@ import com.digiarea.jse.InstanceOfExpr;
 import com.digiarea.jse.IntegerLiteralExpr;
 import com.digiarea.jse.InterfaceDeclaration;
 import com.digiarea.jse.LabeledStmt;
-import com.digiarea.jse.Lambda;
 import com.digiarea.jse.LambdaBlock;
 import com.digiarea.jse.LambdaExpr;
 import com.digiarea.jse.LineComment;
-import com.digiarea.jse.LiteralExpr;
 import com.digiarea.jse.LongLiteralExpr;
 import com.digiarea.jse.MarkerAnnotationExpr;
 import com.digiarea.jse.MemberValuePair;
@@ -139,31 +127,6 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         }
         if (n.getJavaDoc() != null) {
             img.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, ctx));
-        }
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        if (ctx.containsKey(n.getPosBegin())) {
-            img.setPosBegin((int) ctx.get(n.getPosBegin()));
-        } else {
-            img.setPosBegin(n.getPosBegin());
-        }
-        if (ctx.containsKey(n.getPosEnd())) {
-            img.setPosEnd((int) ctx.get(n.getPosEnd()));
-        } else {
-            img.setPosEnd(n.getPosEnd());
-        }
-        return img;
-    }
-
-    @Override
-    public Node visit(AnnotationExpr n, Map<Object, Object> ctx) throws Exception {
-        if (ctx.containsKey(n)) {
-            return (Node) ctx.get(n);
-        }
-        AnnotationExpr img = new AnnotationExpr();
-        if (n.getName() != null) {
-            img.setName((NameExpr) n.getName().accept(this, ctx));
         }
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -486,31 +449,6 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
     }
 
     @Override
-    public Node visit(BodyDeclaration n, Map<Object, Object> ctx) throws Exception {
-        if (ctx.containsKey(n)) {
-            return (Node) ctx.get(n);
-        }
-        BodyDeclaration img = new BodyDeclaration();
-        if (n.getJavaDoc() != null) {
-            img.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, ctx));
-        }
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        if (ctx.containsKey(n.getPosBegin())) {
-            img.setPosBegin((int) ctx.get(n.getPosBegin()));
-        } else {
-            img.setPosBegin(n.getPosBegin());
-        }
-        if (ctx.containsKey(n.getPosEnd())) {
-            img.setPosEnd((int) ctx.get(n.getPosEnd()));
-        } else {
-            img.setPosEnd(n.getPosEnd());
-        }
-        return img;
-    }
-
-    @Override
     public Node visit(BooleanLiteralExpr n, Map<Object, Object> ctx) throws Exception {
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
@@ -741,33 +679,6 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         }
         if (n.getTypeArgs() != null) {
             img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
-        }
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        if (ctx.containsKey(n.getPosBegin())) {
-            img.setPosBegin((int) ctx.get(n.getPosBegin()));
-        } else {
-            img.setPosBegin(n.getPosBegin());
-        }
-        if (ctx.containsKey(n.getPosEnd())) {
-            img.setPosEnd((int) ctx.get(n.getPosEnd()));
-        } else {
-            img.setPosEnd(n.getPosEnd());
-        }
-        return img;
-    }
-
-    @Override
-    public Node visit(Comment n, Map<Object, Object> ctx) throws Exception {
-        if (ctx.containsKey(n)) {
-            return (Node) ctx.get(n);
-        }
-        Comment img = new Comment();
-        if (ctx.containsKey(n.getContent())) {
-            img.setContent((String) ctx.get(n.getContent()));
-        } else {
-            img.setContent(n.getContent());
         }
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -1227,28 +1138,6 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
     }
 
     @Override
-    public Node visit(Expression n, Map<Object, Object> ctx) throws Exception {
-        if (ctx.containsKey(n)) {
-            return (Node) ctx.get(n);
-        }
-        Expression img = new Expression();
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        if (ctx.containsKey(n.getPosBegin())) {
-            img.setPosBegin((int) ctx.get(n.getPosBegin()));
-        } else {
-            img.setPosBegin(n.getPosBegin());
-        }
-        if (ctx.containsKey(n.getPosEnd())) {
-            img.setPosEnd((int) ctx.get(n.getPosEnd()));
-        } else {
-            img.setPosEnd(n.getPosEnd());
-        }
-        return img;
-    }
-
-    @Override
     public Node visit(ExpressionStmt n, Map<Object, Object> ctx) throws Exception {
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
@@ -1659,31 +1548,6 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
     }
 
     @Override
-    public Node visit(Lambda n, Map<Object, Object> ctx) throws Exception {
-        if (ctx.containsKey(n)) {
-            return (Node) ctx.get(n);
-        }
-        Lambda img = new Lambda();
-        if (n.getParameters() != null) {
-            img.setParameters((NodeList<Parameter>) n.getParameters().accept(this, ctx));
-        }
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        if (ctx.containsKey(n.getPosBegin())) {
-            img.setPosBegin((int) ctx.get(n.getPosBegin()));
-        } else {
-            img.setPosBegin(n.getPosBegin());
-        }
-        if (ctx.containsKey(n.getPosEnd())) {
-            img.setPosEnd((int) ctx.get(n.getPosEnd()));
-        } else {
-            img.setPosEnd(n.getPosEnd());
-        }
-        return img;
-    }
-
-    @Override
     public Node visit(LambdaBlock n, Map<Object, Object> ctx) throws Exception {
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
@@ -1750,28 +1614,6 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         } else {
             img.setContent(n.getContent());
         }
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        if (ctx.containsKey(n.getPosBegin())) {
-            img.setPosBegin((int) ctx.get(n.getPosBegin()));
-        } else {
-            img.setPosBegin(n.getPosBegin());
-        }
-        if (ctx.containsKey(n.getPosEnd())) {
-            img.setPosEnd((int) ctx.get(n.getPosEnd()));
-        } else {
-            img.setPosEnd(n.getPosEnd());
-        }
-        return img;
-    }
-
-    @Override
-    public Node visit(LiteralExpr n, Map<Object, Object> ctx) throws Exception {
-        if (ctx.containsKey(n)) {
-            return (Node) ctx.get(n);
-        }
-        LiteralExpr img = new LiteralExpr();
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
         }
@@ -2456,28 +2298,6 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
     }
 
     @Override
-    public Node visit(Statement n, Map<Object, Object> ctx) throws Exception {
-        if (ctx.containsKey(n)) {
-            return (Node) ctx.get(n);
-        }
-        Statement img = new Statement();
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        if (ctx.containsKey(n.getPosBegin())) {
-            img.setPosBegin((int) ctx.get(n.getPosBegin()));
-        } else {
-            img.setPosBegin(n.getPosBegin());
-        }
-        if (ctx.containsKey(n.getPosEnd())) {
-            img.setPosEnd((int) ctx.get(n.getPosEnd()));
-        } else {
-            img.setPosEnd(n.getPosEnd());
-        }
-        return img;
-    }
-
-    @Override
     public Node visit(StringLiteralExpr n, Map<Object, Object> ctx) throws Exception {
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
@@ -2680,64 +2500,6 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         }
         if (n.getFinallyBlock() != null) {
             img.setFinallyBlock((BlockStmt) n.getFinallyBlock().accept(this, ctx));
-        }
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        if (ctx.containsKey(n.getPosBegin())) {
-            img.setPosBegin((int) ctx.get(n.getPosBegin()));
-        } else {
-            img.setPosBegin(n.getPosBegin());
-        }
-        if (ctx.containsKey(n.getPosEnd())) {
-            img.setPosEnd((int) ctx.get(n.getPosEnd()));
-        } else {
-            img.setPosEnd(n.getPosEnd());
-        }
-        return img;
-    }
-
-    @Override
-    public Node visit(Type n, Map<Object, Object> ctx) throws Exception {
-        if (ctx.containsKey(n)) {
-            return (Node) ctx.get(n);
-        }
-        Type img = new Type();
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        if (ctx.containsKey(n.getPosBegin())) {
-            img.setPosBegin((int) ctx.get(n.getPosBegin()));
-        } else {
-            img.setPosBegin(n.getPosBegin());
-        }
-        if (ctx.containsKey(n.getPosEnd())) {
-            img.setPosEnd((int) ctx.get(n.getPosEnd()));
-        } else {
-            img.setPosEnd(n.getPosEnd());
-        }
-        return img;
-    }
-
-    @Override
-    public Node visit(TypeDeclaration n, Map<Object, Object> ctx) throws Exception {
-        if (ctx.containsKey(n)) {
-            return (Node) ctx.get(n);
-        }
-        TypeDeclaration img = new TypeDeclaration();
-        if (n.getModifiers() != null) {
-            img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
-        }
-        if (ctx.containsKey(n.getName())) {
-            img.setName((String) ctx.get(n.getName()));
-        } else {
-            img.setName(n.getName());
-        }
-        if (n.getMembers() != null) {
-            img.setMembers((NodeList<BodyDeclaration>) n.getMembers().accept(this, ctx));
-        }
-        if (n.getJavaDoc() != null) {
-            img.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, ctx));
         }
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));

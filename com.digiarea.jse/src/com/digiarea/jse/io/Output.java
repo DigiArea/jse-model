@@ -3,8 +3,8 @@ package com.digiarea.jse.io;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import com.digiarea.common.FileExtensions;
-import com.digiarea.common.SourcePrinter;
+import com.digiarea.common.utils.FileExtensions;
+import com.digiarea.common.utils.SourcePrinter;
 import com.digiarea.jse.CompilationUnit;
 import com.digiarea.jse.NodeList;
 import com.digiarea.jse.Project;
