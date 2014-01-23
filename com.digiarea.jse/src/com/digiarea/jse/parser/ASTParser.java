@@ -1408,7 +1408,6 @@ public final class ASTParser implements ASTParserConstants {
     parameters = FormalParameters();
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case THROWS:
-      jj_consume_token(THROWS);
       throws_ = ThrowsList();
       break;
     default:
@@ -5823,7 +5822,6 @@ public final class ASTParser implements ASTParserConstants {
   }
 
   private boolean jj_3R_395() {
-    if (jj_scan_token(THROWS)) return true;
     if (jj_3R_415()) return true;
     return false;
   }
