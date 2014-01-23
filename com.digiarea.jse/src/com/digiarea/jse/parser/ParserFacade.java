@@ -111,7 +111,7 @@ public class ParserFacade {
 			parser.reset(is);
 		}
 		try {
-			Node node = parser.CompilationUnit();
+			Node node = parser.CompilationUnit(null);
 			if (parser.getNextToken().kind == ASTParserConstants.EOF) {
 				return node;
 			}

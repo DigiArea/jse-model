@@ -105,7 +105,7 @@ public class Input implements Runnable {
 				} else if (item.toString().endsWith(EXT)) {
 					try (FileInputStream stream = new FileInputStream(file)) {
 						compilationUnits.add(new ASTParser(stream, encoding)
-								.CompilationUnit());
+								.CompilationUnit(getUnitName(file)));
 						stream.close();
 					} catch (Exception e) {
 						throw new Error(e.getMessage());
@@ -121,6 +121,12 @@ public class Input implements Runnable {
 		}
 		project.setCompilationUnits(NodeFacade.NodeList(compilationUnits, null,
 				0, 0));
+	}
+
+	private String getUnitName(File file) {
+		String fName = file.getName();
+		int offset = EXT.length();
+		return fName.substring(0, fName.length() - offset);
 	}
 
 }
