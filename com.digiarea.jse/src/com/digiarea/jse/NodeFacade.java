@@ -661,8 +661,8 @@ public class NodeFacade extends NodeFactory {
 
 	public static ConstructorDeclaration ConstructorDeclaration(int modifiers,
 			String name) {
-		return ConstructorDeclaration(modifiers, null, name, null, null, null,
-				null, null, 0, 0);
+		return ConstructorDeclaration(Modifiers(modifiers), null, name, null,
+				null, null, null, null, 0, 0);
 	}
 
 }
