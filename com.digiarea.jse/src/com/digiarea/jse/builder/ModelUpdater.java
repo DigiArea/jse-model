@@ -16,7 +16,6 @@ import com.digiarea.jse.EnumConstantDeclaration;
 import com.digiarea.jse.EnumDeclaration;
 import com.digiarea.jse.FieldDeclaration;
 import com.digiarea.jse.InterfaceDeclaration;
-import com.digiarea.jse.Modifiers;
 import com.digiarea.jse.NameExpr;
 import com.digiarea.jse.NodeFacade;
 import com.digiarea.jse.Parameter;
@@ -80,7 +79,7 @@ public class ModelUpdater {
 			isGeneric = typeParameters != null;
 			isInterface = false;
 			isClass = !isInterface;
-			hasExtends = NodeUtils.hasExtends(clazz);
+			hasExtends = clazz.getExtendsType() != null;
 			if (hasExtends) {
 				extendsType = clazz.getExtendsType();
 			}
@@ -93,12 +92,13 @@ public class ModelUpdater {
 					|| maxConstructorParameters.size() == 0) {
 				hasPublicConstructor = true;
 			}
-			isAbstract = NodeUtils.isAbstract(clazz);
+			isAbstract = clazz.getModifiers().isAbstract();
 		} else if (typeDeclaration instanceof InterfaceDeclaration) {
 			InterfaceDeclaration clazz = (InterfaceDeclaration) typeDeclaration;
 			isInterface = true;
 			isClass = !isInterface;
-			hasExtends = NodeUtils.hasExtends(clazz);
+			hasExtends = clazz.getExtendsList() != null
+					&& !clazz.getExtendsList().isEmpty();
 			if (hasExtends) {
 				extendsList = clazz.getExtendsList();
 			}
@@ -120,8 +120,7 @@ public class ModelUpdater {
 				BodyDeclaration bodyDeclaration = iterator.next();
 				if (bodyDeclaration instanceof ConstructorDeclaration) {
 					ConstructorDeclaration m = (ConstructorDeclaration) bodyDeclaration;
-					boolean hasPublicModifier = Modifiers.hasModifier(
-							m.getModifiers(), Modifiers.PUBLIC);
+					boolean hasPublicModifier = m.getModifiers().isPublic();
 					if (!hasPublicConstructor && hasPublicModifier) {
 						hasPublicConstructor = true;
 					}
@@ -152,20 +151,8 @@ public class ModelUpdater {
 	private List<FieldDeclaration> getFields(ClassDeclaration clazz,
 			boolean withSupers, ClassOrInterfaceType extendsType) {
 		List<FieldDeclaration> fields = new ArrayList<FieldDeclaration>();
-		// FIXME - will be fixed in the second iteration - Annotation API :)
-		if (extendsType != null
-				&& "com.dagxp.dag.core.AProject".equals(extendsType.getName()
-						.toString())) {
-			fields.add(NodeUtils.createFieldDeclaration(Modifiers.PRIVATE,
-					NodeUtils.createListType(NodeUtils
-							.toClassOrInterfaceType(extendsType.getTypeArgs()
-									.get(0).toString())), "compilationUnits",
-					null));
-			return fields;
-		} else {
-			getFields(fields, clazz, withSupers);
-			return fields;
-		}
+		getFields(fields, clazz, withSupers);
+		return fields;
 	}
 
 	private List<FieldDeclaration> getFields(EnumDeclaration clazz,
@@ -192,7 +179,7 @@ public class ModelUpdater {
 			}
 		}
 		// get fields from super class
-		if (withSupers && NodeUtils.hasExtends(clazz)) {
+		if (withSupers && clazz.getExtendsType() != null) {
 			ClassOrInterfaceType extType = clazz.getExtendsType();
 			getFields(fields, extType);
 		}

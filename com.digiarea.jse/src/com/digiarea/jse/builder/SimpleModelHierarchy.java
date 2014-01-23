@@ -23,6 +23,7 @@ import com.digiarea.jse.TypeDeclaration;
 import com.digiarea.jse.builder.ModelBuilder.BuilderType;
 import com.digiarea.jse.utils.Enclosure;
 import com.digiarea.jse.utils.NodeUtils;
+import com.digiarea.jse.utils.ReflectUtils;
 import com.digiarea.jse.visitor.VoidVisitorAdapter;
 
 public class SimpleModelHierarchy implements ModelHierarchy {

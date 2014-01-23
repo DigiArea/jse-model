@@ -251,7 +251,7 @@ public class NodeUtils {
 		return LangUtils.isQualifiedWrappedType(NodeFacade.NameExpr(type
 				.toString()));
 	}
-	
+
 	public static boolean isBoolean(Type type, boolean isNative) {
 		if (type instanceof PrimitiveType) {
 			return type.equals(NodeFacade.BOOLEAN_TYPE);
@@ -266,6 +266,46 @@ public class NodeUtils {
 
 	public static boolean isBoolean(Type type) {
 		return isBoolean(type, false);
+	}
+
+	/**
+	 * Merge projects.
+	 * 
+	 * @param projects
+	 *            the projects
+	 * @return the project
+	 */
+	public static Project mergeProjects(Project... projects) {
+		Project p = new Project();
+		List<CompilationUnit> units = new ArrayList<CompilationUnit>();
+		p.setCompilationUnits(NodeFacade.NodeList(units));
+		for (Project project : projects) {
+			List<CompilationUnit> compilationUnits = project
+					.getCompilationUnits();
+			if (compilationUnits != null) {
+				units.addAll(compilationUnits);
+			}
+		}
+		return p;
+	}
+
+	/**
+	 * Gets the main type.
+	 * 
+	 * @param unit
+	 *            the unit
+	 * @return the main type
+	 */
+	public static TypeDeclaration getMainType(CompilationUnit unit) {
+		if (unit.getTypes() != null) {
+			for (TypeDeclaration type : unit.getTypes()) {
+				if (type.getName().equals(
+						NodeFacade.NameExpr(unit.getName()).getName())) {
+					return type;
+				}
+			}
+		}
+		return null;
 	}
 
 }

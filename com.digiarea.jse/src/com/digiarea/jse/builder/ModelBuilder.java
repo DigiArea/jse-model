@@ -7,26 +7,16 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-import com.digiarea.jse.AnnotationDeclaration;
 import com.digiarea.jse.AnnotationExpr;
-import com.digiarea.jse.AnnotationMemberDeclaration;
 import com.digiarea.jse.AssignExpr;
 import com.digiarea.jse.AssignExpr.AssignOperator;
-import com.digiarea.jse.BlockStmt;
 import com.digiarea.jse.BodyDeclaration;
-import com.digiarea.jse.ClassDeclaration;
 import com.digiarea.jse.ClassOrInterfaceType;
 import com.digiarea.jse.CompilationUnit;
 import com.digiarea.jse.ConstructorDeclaration;
 import com.digiarea.jse.EnumConstantDeclaration;
-import com.digiarea.jse.EnumDeclaration;
 import com.digiarea.jse.Expression;
-import com.digiarea.jse.ExpressionStmt;
-import com.digiarea.jse.FieldAccessExpr;
-import com.digiarea.jse.InterfaceDeclaration;
 import com.digiarea.jse.JavadocComment;
-import com.digiarea.jse.MethodCallExpr;
-import com.digiarea.jse.MethodDeclaration;
 import com.digiarea.jse.Modifiers;
 import com.digiarea.jse.NameExpr;
 import com.digiarea.jse.NodeFacade;
@@ -34,10 +24,10 @@ import com.digiarea.jse.PackageDeclaration;
 import com.digiarea.jse.Parameter;
 import com.digiarea.jse.QualifiedNameExpr;
 import com.digiarea.jse.Statement;
-import com.digiarea.jse.ThisExpr;
 import com.digiarea.jse.Type;
 import com.digiarea.jse.TypeDeclaration;
 import com.digiarea.jse.TypeParameter;
+import com.digiarea.jse.utils.NodeUtils;
 
 public abstract class ModelBuilder {
 
@@ -186,8 +176,8 @@ public abstract class ModelBuilder {
 			pkg = NodeFacade.PackageDeclaration(
 					((QualifiedNameExpr) qualifiedName).getQualifier(), null);
 		}
-		return new CompilationUnit(pkg, null, Arrays.asList(typeDeclaration),
-				null, NodeFacade.toString(qualifiedName), null);
+		return NodeFacade.CompilationUnit(pkg, null, Arrays.asList(typeDeclaration),
+				null, NodeUtils.toString(qualifiedName), null);
 	}
 
 	protected void buildBody() {
@@ -202,10 +192,10 @@ public abstract class ModelBuilder {
 			String name = item.getFieldName();
 			Expression init = item.getDefaultValue();
 			// full constructor parameters
-			parameters.add(NodeFacade.createParameter(type, name));
+			parameters.add(NodeFacade.Parameter(type, name));
 			// field
-			addMember(NodeFacade.createFieldDeclaration(Modifiers.PRIVATE,
-					type, name, init));
+			addMember(NodeFacade.FieldDeclaration(Modifiers.PRIVATE, type,
+					name, init));
 			if (item.isWithGetter()) {
 				// getter
 				addMember(NodeFacade.createGetterDeclaration(type, name));
@@ -215,10 +205,11 @@ public abstract class ModelBuilder {
 				addMember(NodeFacade.createSetterDeclaration(type, name));
 			}
 			// full constructor statements
-			fullStmts.add(new ExpressionStmt(new AssignExpr(
-					new FieldAccessExpr(new ThisExpr(), null, name, null),
-					new NameExpr(name, null), AssignOperator.assign, null),
-					null));
+			fullStmts.add(NodeFacade.ExpressionStmt(
+					new AssignExpr(NodeFacade.FieldAccessExpr(
+							NodeFacade.ThisExpr(), null, name, null),
+							NodeFacade.NameExpr(name), AssignOperator.assign,
+							null), null));
 		}
 		// make constructors
 		makeConstructors(cuName, parameters, fullStmts);
@@ -315,9 +306,9 @@ public abstract class ModelBuilder {
 
 			@Override
 			public TypeDeclaration getTypeDeclaration() {
-				return NodeFacade.ClassDeclaration(javaDoc, modifiers, annotations,
-						qualifiedName.getName(), typeParameters, extendsType,
-						implementsList, members);
+				return NodeFacade.ClassDeclaration(javaDoc, modifiers,
+						annotations, qualifiedName.getName(), typeParameters,
+						extendsType, implementsList, members);
 			}
 		};
 	}
@@ -342,9 +333,9 @@ public abstract class ModelBuilder {
 			protected void buildBody() {
 				for (FieldItem item : fieldItems) {
 					// field is turned out to method declaration
-					addMember(NodeFacade.MethodDeclaration(javaDoc, 0, null, null,
-							item.getFieldType(), item.getFieldName(), null, 0,
-							null, null));
+					addMember(NodeFacade.MethodDeclaration(javaDoc, 0, null,
+							null, item.getFieldType(), item.getFieldName(),
+							null, 0, null, null));
 				}
 			}
 		};
@@ -369,9 +360,9 @@ public abstract class ModelBuilder {
 								return arg0.getName().compareTo(arg1.getName());
 							}
 						});
-				return NodeFacade.EnumDeclaration(javaDoc, modifiers, annotations,
-						qualifiedName.getName(), implementsList, entries,
-						members);
+				return NodeFacade.EnumDeclaration(javaDoc, modifiers,
+						annotations, qualifiedName.getName(), implementsList,
+						entries, members);
 			}
 		};
 	}
@@ -395,9 +386,9 @@ public abstract class ModelBuilder {
 			protected void buildBody() {
 				for (FieldItem item : fieldItems) {
 					// annotation member
-					addMember(NodeFacade.AnnotationMemberDeclaration(Modifiers.PUBLIC,
-							item.getFieldType(), item.getFieldName(),
-							item.getDefaultValue()));
+					addMember(NodeFacade.AnnotationMemberDeclaration(
+							Modifiers.PUBLIC, item.getFieldType(),
+							item.getFieldName(), item.getDefaultValue()));
 				}
 			}
 		};
@@ -422,23 +413,23 @@ public abstract class ModelBuilder {
 	protected void makeConstructors(String cuName, List<Parameter> parameters,
 			List<Statement> fullStmts) {
 		if (makeConstructor && !parameters.isEmpty()) {
-			ConstructorDeclaration fullConstructor = NodeFacade.ConstructorDeclaration(
-					isEnumeration() ? Modifiers.PRIVATE : Modifiers.PUBLIC,
-					cuName);
-			fullConstructor.setParameters(parameters);
-			fullConstructor.setBlock(NodeFacade.BlockStmt(fullStmts, null));
+			ConstructorDeclaration fullConstructor = NodeFacade
+					.ConstructorDeclaration(isEnumeration() ? Modifiers.PRIVATE
+							: Modifiers.PUBLIC, cuName);
+			fullConstructor.setParameters(NodeFacade.NodeList(parameters));
+			fullConstructor.setBlock(NodeFacade.BlockStmt(fullStmts));
 			// fullStmts.add(new ExpressionStmt(new MethodCallExpr(null,
 			// "this")));
 			addMember(fullConstructor);
 		}
 		if (makeDefaultConstructor && !isEnumeration()) {
 			// make default constructor
-			ConstructorDeclaration defaultConstructor = NodeFacade.ConstructorDeclaration(
-					Modifiers.PUBLIC, cuName);
+			ConstructorDeclaration defaultConstructor = NodeFacade
+					.ConstructorDeclaration(Modifiers.PUBLIC, cuName);
 			List<Statement> defaultStmts = new ArrayList<Statement>();
-			defaultConstructor.setBlock(NodeFacade.BlockStmt(defaultStmts, null));
-			defaultStmts.add(NodeFacade.ExpressionStmt(NodeFacade.MethodCallExpr(null,
-					"super"), null));
+			defaultConstructor.setBlock(NodeFacade.BlockStmt(defaultStmts));
+			defaultStmts.add(NodeFacade.ExpressionStmt(NodeFacade
+					.MethodCallExpr(null, "super")));
 			addMember(defaultConstructor);
 		}
 	}
