@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2011 - 2014 DigiArea, Inc. and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     DigiArea, Inc. - initial API and implementation
+ *******************************************************************************/
 package com.digiarea.jse.builder;
 
 import java.util.ArrayList;
@@ -158,28 +168,34 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		// printUpdaters();
 	}
 
+	@Override
 	public void update() throws Exception {
 		// scan the model
 		updaters.clear();
 		new ModelScanner().visit(project, new Enclosure());
 	}
 
+	@Override
 	public boolean addModelVisitor(ModelVisitor visitor) {
 		return visitors.add(visitor);
 	}
 
+	@Override
 	public boolean removeModelVisitor(ModelVisitor visitor) {
 		return visitors.remove(visitor);
 	}
 
+	@Override
 	public void clearModelVisitors() {
 		visitors.clear();
 	}
 
+	@Override
 	public boolean updaterExists(String qualifiedName) {
 		return updaters.containsKey(qualifiedName);
 	}
 
+	@Override
 	public ModelUpdater getUpdater(String qualifiedName) {
 		if (updaters.containsKey(qualifiedName)) {
 			return updaters.get(qualifiedName);
@@ -198,18 +214,22 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		}
 	}
 
+	@Override
 	public Map<String, ModelUpdater> getUpdaters() {
 		return updaters;
 	}
 
+	@Override
 	public boolean builderExists(String qualifiedName) {
 		return builders.containsKey(qualifiedName);
 	}
 
+	@Override
 	public ModelBuilder getBuilder(String qualifiedName) {
 		return builders.get(qualifiedName);
 	}
 
+	@Override
 	public TypeDeclaration removeBuilder(String qualifiedName) {
 		if (builders.containsKey(qualifiedName)) {
 			TypeDeclaration type = builders.get(qualifiedName)
@@ -220,6 +240,7 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		return null;
 	}
 
+	@Override
 	public ModelBuilder getBuilder(String qualifiedName, BuilderType builderType) {
 		if (builders.containsKey(qualifiedName)) {
 			return getBuilder(qualifiedName);
@@ -231,10 +252,12 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		}
 	}
 
+	@Override
 	public ModelBuilder putBuilder(String qualifiedName, ModelBuilder value) {
 		return builders.put(qualifiedName, value);
 	}
 
+	@Override
 	public Project getBuilders() {
 		List<CompilationUnit> compilationUnits = new ArrayList<CompilationUnit>();
 		for (Map.Entry<String, ModelBuilder> entry : builders.entrySet()) {
@@ -243,14 +266,17 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		return NodeFacade.Project(compilationUnits);
 	}
 
+	@Override
 	public Project getProject() {
 		return project;
 	}
 
+	@Override
 	public Project getResult() {
 		return NodeUtils.mergeProjects(getBuilders(), getProject());
 	}
 
+	@Override
 	public final void process() throws Exception {
 		// visit nodes
 		for (Map.Entry<String, ModelUpdater> entry : updaters.entrySet()) {
@@ -261,6 +287,7 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		}
 	}
 
+	@Override
 	public List<ClassOrInterfaceType> getSubTypes(ModelUpdater u) {
 		List<ClassOrInterfaceType> values = new ArrayList<ClassOrInterfaceType>();
 		getValues(u.getQualifiedName().toString(), values);
@@ -281,6 +308,7 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		}
 	}
 
+	@Override
 	public void printUpdaters() {
 		for (Map.Entry<String, ModelUpdater> entry : updaters.entrySet()) {
 			System.out.println(entry.getKey() + " : "
@@ -288,6 +316,7 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		}
 	}
 
+	@Override
 	public ModelUpdater getRoot() {
 		return root;
 	}

@@ -668,4 +668,21 @@ public class NodeFacade extends NodeFactory {
 	public static Project Project(List<CompilationUnit> units) {
 		return Project(NodeList(units), null, 0, 0);
 	}
+
+	public static MethodDeclaration MethodDeclaration(Type returnType,
+			String methodName) {
+		return MethodDeclaration(0, null, returnType, methodName, null, null,
+				null, null, null, null);
+	}
+
+	public static EnumConstantDeclaration EnumConstantDeclaration(String name) {
+		return EnumConstantDeclaration(name, null, null, null, null);
+	}
+
+	public static FieldDeclaration FieldDeclaration(int modifiers, Type type,
+			String name, Expression init) {
+		VariableDeclarator var = VariableDeclarator(VariableDeclaratorId(name),
+				init);
+		return FieldDeclaration(modifiers, type, Arrays.asList(var), null, null);
+	}
 }

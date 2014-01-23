@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2011 - 2014 DigiArea, Inc. and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     DigiArea, Inc. - initial API and implementation
+ *******************************************************************************/
 package com.digiarea.jse.builder;
 
 import java.util.ArrayList;
@@ -8,7 +18,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.digiarea.jse.AnnotationExpr;
-import com.digiarea.jse.AssignExpr;
 import com.digiarea.jse.AssignExpr.AssignOperator;
 import com.digiarea.jse.BodyDeclaration;
 import com.digiarea.jse.ClassOrInterfaceType;
@@ -176,8 +185,9 @@ public abstract class ModelBuilder {
 			pkg = NodeFacade.PackageDeclaration(
 					((QualifiedNameExpr) qualifiedName).getQualifier(), null);
 		}
-		return NodeFacade.CompilationUnit(pkg, null, Arrays.asList(typeDeclaration),
-				null, NodeUtils.toString(qualifiedName), null);
+		return NodeFacade.CompilationUnit(pkg, null,
+				Arrays.asList(typeDeclaration), null,
+				NodeUtils.toString(qualifiedName));
 	}
 
 	protected void buildBody() {
@@ -198,18 +208,17 @@ public abstract class ModelBuilder {
 					name, init));
 			if (item.isWithGetter()) {
 				// getter
-				addMember(NodeFacade.createGetterDeclaration(type, name));
+				addMember(NodeUtils.createGetterDeclaration(type, name));
 			}
 			if (item.isWithSetter()) {
 				// setter
-				addMember(NodeFacade.createSetterDeclaration(type, name));
+				addMember(NodeUtils.createSetterDeclaration(type, name));
 			}
 			// full constructor statements
-			fullStmts.add(NodeFacade.ExpressionStmt(
-					new AssignExpr(NodeFacade.FieldAccessExpr(
-							NodeFacade.ThisExpr(), null, name, null),
-							NodeFacade.NameExpr(name), AssignOperator.assign,
-							null), null));
+			fullStmts.add(NodeFacade.ExpressionStmt(NodeFacade.AssignExpr(
+					NodeFacade.FieldAccessExpr(NodeFacade.ThisExpr(), null,
+							name), NodeFacade.NameExpr(name),
+					AssignOperator.assign)));
 		}
 		// make constructors
 		makeConstructors(cuName, parameters, fullStmts);
@@ -250,7 +259,7 @@ public abstract class ModelBuilder {
 	}
 
 	public Expression getModifiersExpression() {
-		return NodeFacade.modifiersToExpression(modifiers);
+		return NodeUtils.modifiersToExpression(modifiers);
 	}
 
 	public void setModifiers(int modifiers) {
@@ -258,7 +267,7 @@ public abstract class ModelBuilder {
 	}
 
 	public void setModifiers(Expression modifiers) {
-		this.modifiers = NodeFacade.getModifiers(modifiers);
+		this.modifiers = NodeUtils.getModifiers(modifiers);
 	}
 
 	public final void addFieldItem(Type fieldType, String fieldName,
@@ -306,9 +315,9 @@ public abstract class ModelBuilder {
 
 			@Override
 			public TypeDeclaration getTypeDeclaration() {
-				return NodeFacade.ClassDeclaration(javaDoc, modifiers,
-						annotations, qualifiedName.getName(), typeParameters,
-						extendsType, implementsList, members);
+				return NodeFacade.ClassDeclaration(typeParameters, extendsType,
+						implementsList, modifiers, qualifiedName.getName(),
+						members, javaDoc, annotations);
 			}
 		};
 	}
@@ -324,18 +333,20 @@ public abstract class ModelBuilder {
 
 			@Override
 			public TypeDeclaration getTypeDeclaration() {
-				return NodeFacade.InterfaceDeclaration(javaDoc, modifiers,
-						annotations, qualifiedName.getName(), typeParameters,
-						extendsList, members);
+				return NodeFacade.InterfaceDeclaration(typeParameters,
+						extendsList, modifiers, qualifiedName.getName(),
+						members, javaDoc, annotations);
 			}
 
 			@Override
 			protected void buildBody() {
 				for (FieldItem item : fieldItems) {
 					// field is turned out to method declaration
-					addMember(NodeFacade.MethodDeclaration(javaDoc, 0, null,
-							null, item.getFieldType(), item.getFieldName(),
-							null, 0, null, null));
+					BodyDeclaration methodDeclaration = NodeFacade
+							.MethodDeclaration(item.getFieldType(),
+									item.getFieldName());
+					methodDeclaration.setJavaDoc(javaDoc);
+					addMember(methodDeclaration);
 				}
 			}
 		};
@@ -360,9 +371,9 @@ public abstract class ModelBuilder {
 								return arg0.getName().compareTo(arg1.getName());
 							}
 						});
-				return NodeFacade.EnumDeclaration(javaDoc, modifiers,
-						annotations, qualifiedName.getName(), implementsList,
-						entries, members);
+				return NodeFacade.EnumDeclaration(implementsList, entries,
+						modifiers, qualifiedName.getName(), members, javaDoc,
+						annotations);
 			}
 		};
 	}
@@ -378,8 +389,8 @@ public abstract class ModelBuilder {
 
 			@Override
 			public TypeDeclaration getTypeDeclaration() {
-				return NodeFacade.AnnotationDeclaration(javaDoc, modifiers,
-						annotations, qualifiedName.getName(), members);
+				return NodeFacade.AnnotationDeclaration(modifiers,
+						qualifiedName.getName(), members, javaDoc, annotations);
 			}
 
 			@Override
@@ -388,7 +399,8 @@ public abstract class ModelBuilder {
 					// annotation member
 					addMember(NodeFacade.AnnotationMemberDeclaration(
 							Modifiers.PUBLIC, item.getFieldType(),
-							item.getFieldName(), item.getDefaultValue()));
+							item.getFieldName(), item.getDefaultValue(), null,
+							null));
 				}
 			}
 		};

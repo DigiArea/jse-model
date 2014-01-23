@@ -13,29 +13,48 @@ package com.digiarea.jse.utils;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
 import com.digiarea.common.utils.Delimiter;
+import com.digiarea.common.utils.StringUtils;
+import com.digiarea.jse.AssignExpr.AssignOperator;
+import com.digiarea.jse.BinaryExpr;
+import com.digiarea.jse.BinaryExpr.BinaryOperator;
 import com.digiarea.jse.BodyDeclaration;
 import com.digiarea.jse.ClassOrInterfaceType;
 import com.digiarea.jse.CompilationUnit;
 import com.digiarea.jse.Expression;
+import com.digiarea.jse.FieldAccessExpr;
+import com.digiarea.jse.IntegerLiteralExpr;
 import com.digiarea.jse.MemberValuePair;
+import com.digiarea.jse.MethodDeclaration;
+import com.digiarea.jse.Modifiers;
 import com.digiarea.jse.NameExpr;
 import com.digiarea.jse.NodeFacade;
 import com.digiarea.jse.NormalAnnotationExpr;
+import com.digiarea.jse.Parameter;
 import com.digiarea.jse.PrimitiveType;
 import com.digiarea.jse.Project;
 import com.digiarea.jse.QualifiedNameExpr;
 import com.digiarea.jse.ReferenceType;
+import com.digiarea.jse.Statement;
 import com.digiarea.jse.Type;
 import com.digiarea.jse.TypeDeclaration;
 
 public class NodeUtils {
 
 	private static final String JAVAX_ANNOTATION_GENERATED = "javax.annotation.Generated";
+
+	private static final String ADD_ALL = "addAll";
+
+	private static final String SET = "set";
+
+	private static final String IS = "is";
+
+	private static final String GET = "get";
 
 	/**
 	 * Equals by last.
@@ -303,6 +322,230 @@ public class NodeUtils {
 						NodeFacade.NameExpr(unit.getName()).getName())) {
 					return type;
 				}
+			}
+		}
+		return null;
+	}
+
+	public static int getModifiers(Expression modifiers) {
+		if (modifiers instanceof IntegerLiteralExpr) {
+			return Integer.valueOf(((IntegerLiteralExpr) modifiers).getValue());
+		} else if (modifiers instanceof FieldAccessExpr) {
+			FieldAccessExpr field = (FieldAccessExpr) modifiers;
+			return NodeUtils.getModifiersValue(field.getField());
+		} else if (modifiers instanceof BinaryExpr) {
+			BinaryExpr expr = (BinaryExpr) modifiers;
+			if (expr.getOperator() == BinaryExpr.BinaryOperator.binOr) {
+				return getModifiers(expr.getLeft())
+						| getModifiers(expr.getRight());
+			}
+		}
+		return 0;
+	}
+
+	public static int getModifiersValue(String name) {
+		if ("ABSTRACT".equals(name))
+			return Modifiers.ABSTRACT;
+		else if ("FINAL".equals(name))
+			return Modifiers.FINAL;
+		else if ("NATIVE".equals(name))
+			return Modifiers.NATIVE;
+		else if ("PRIVATE".equals(name))
+			return Modifiers.PRIVATE;
+		else if ("PROTECTED".equals(name))
+			return Modifiers.PROTECTED;
+		else if ("PUBLIC".equals(name))
+			return Modifiers.PUBLIC;
+		else if ("STATIC".equals(name))
+			return Modifiers.STATIC;
+		else if ("STRICTFP".equals(name))
+			return Modifiers.STRICTFP;
+		else if ("SYNCHRONIZED".equals(name))
+			return Modifiers.SYNCHRONIZED;
+		else if ("TRANSIENT".equals(name))
+			return Modifiers.TRANSIENT;
+		else if ("VOLATILE".equals(name))
+			return Modifiers.VOLATILE;
+		else
+			return 0;
+	}
+
+	public static Expression modifiersToExpression(int modifiers) {
+		Expression expression = null;
+		Expression scope = NodeFacade.NameExpr("com.digiarea.jse.Modifiers");
+		if (Modifiers.isPrivate(modifiers)) {
+			expression = addModifiers(expression,
+					NodeFacade.FieldAccessExpr(scope, null, "PRIVATE"));
+		}
+		if (Modifiers.isProtected(modifiers)) {
+			expression = addModifiers(expression,
+					NodeFacade.FieldAccessExpr(scope, null, "PROTECTED"));
+		}
+		if (Modifiers.isPublic(modifiers)) {
+			expression = addModifiers(expression,
+					NodeFacade.FieldAccessExpr(scope, null, "PUBLIC"));
+		}
+		if (Modifiers.isAbstract(modifiers)) {
+			expression = addModifiers(expression,
+					NodeFacade.FieldAccessExpr(scope, null, "ABSTRACT"));
+		}
+		if (Modifiers.isStatic(modifiers)) {
+			expression = addModifiers(expression,
+					NodeFacade.FieldAccessExpr(scope, null, "STATIC"));
+		}
+		if (Modifiers.isFinal(modifiers)) {
+			expression = addModifiers(expression,
+					NodeFacade.FieldAccessExpr(scope, null, "FINAL"));
+		}
+		if (Modifiers.isNative(modifiers)) {
+			expression = addModifiers(expression,
+					NodeFacade.FieldAccessExpr(scope, null, "NATIVE"));
+		}
+		if (Modifiers.isStrictfp(modifiers)) {
+			expression = addModifiers(expression,
+					NodeFacade.FieldAccessExpr(scope, null, "STRICTFP"));
+		}
+		if (Modifiers.isSynchronized(modifiers)) {
+			expression = addModifiers(expression,
+					NodeFacade.FieldAccessExpr(scope, null, "SYNCHRONIZE"));
+		}
+		if (Modifiers.isTransient(modifiers)) {
+			expression = addModifiers(expression,
+					NodeFacade.FieldAccessExpr(scope, null, "TRANSIENT"));
+		}
+		if (Modifiers.isVolatile(modifiers)) {
+			expression = addModifiers(expression,
+					NodeFacade.FieldAccessExpr(scope, null, "VOLATIVE"));
+		}
+		return expression;
+	}
+
+	private static final Expression addModifiers(Expression left,
+			Expression right) {
+		if (left == null) {
+			return right;
+		} else if (right == null) {
+			return left;
+		} else {
+			return NodeFacade.BinaryExpr(left, right, BinaryOperator.binOr);
+		}
+	}
+
+	/**
+	 * Creates the getter declaration.
+	 * 
+	 * @param type
+	 *            the type
+	 * @param string
+	 *            the string
+	 * @return the method declaration
+	 */
+	public static MethodDeclaration createGetterDeclaration(Type type,
+			String string, boolean isProperty) {
+		boolean isBoolean = type.equals(NodeFacade.BOOLEAN_TYPE);
+		String methodName = null;
+		if (isBoolean) {
+			if (string.length() > 2 && string.substring(0, 2).equals(IS)) {
+				methodName = string;
+			} else {
+				methodName = IS + StringUtils.firstToUpper(string);
+			}
+		} else {
+			methodName = GET + StringUtils.firstToUpper(string);
+		}
+		MethodDeclaration method = NodeFacade.MethodDeclaration(type,
+				methodName);
+		Expression result = NodeFacade.NameExpr(string);
+		if (isProperty) {
+			result = NodeFacade.MethodCallExpr(result, GET);
+		}
+		Statement stmt = NodeFacade.ReturnStmt(result);
+		method.setBlock(NodeFacade.BlockStmt(Arrays.asList(stmt)));
+		return method;
+	}
+
+	public static MethodDeclaration createGetterDeclaration(Type type,
+			String string) {
+		return createGetterDeclaration(type, string, false);
+	}
+
+	/**
+	 * Creates the setter declaration.
+	 * 
+	 * @param type
+	 *            the type
+	 * @param string
+	 *            the string
+	 * @return the method declaration
+	 */
+	public static MethodDeclaration createSetterDeclaration(Type type,
+			String string, boolean isProperty) {
+		Parameter param = NodeFacade.Parameter(type, string);
+		boolean isBoolean = type.equals(NodeFacade.BOOLEAN_TYPE);
+		String methodName = null;
+		if (isBoolean && string.length() > 2
+				&& string.substring(0, 2).equals(IS)) {
+			methodName = SET + StringUtils.firstToUpper(string.substring(2));
+		} else {
+			methodName = SET + StringUtils.firstToUpper(string);
+		}
+		MethodDeclaration method = NodeFacade.MethodDeclaration(
+				Modifiers.PUBLIC, null, NodeFacade.VOID_TYPE, methodName,
+				Arrays.asList(param), null, null, null, null, null);
+		Expression expr = NodeFacade.NameExpr(string);
+		if (isProperty) {
+			String name = isList(type) ? ADD_ALL : SET;
+			expr = NodeFacade.MethodCallExpr(NodeFacade.FieldAccessExpr(
+					NodeFacade.ThisExpr(), null, string), null, name, Arrays
+					.asList(expr));
+		} else {
+			expr = NodeFacade.AssignExpr(NodeFacade.FieldAccessExpr(
+					NodeFacade.ThisExpr(), null, string), expr,
+					AssignOperator.assign);
+		}
+		Statement stmt = NodeFacade.ExpressionStmt(expr);
+		method.setBlock(NodeFacade.BlockStmt(Arrays.asList(stmt)));
+		return method;
+	}
+
+	public static MethodDeclaration createSetterDeclaration(Type type,
+			String string) {
+		return createSetterDeclaration(type, string, false);
+	}
+
+	/**
+	 * Checks if is list.
+	 * 
+	 * @param type
+	 *            the type
+	 * @return true, if is list
+	 */
+	public static boolean isList(Type type) {
+		if (type instanceof ReferenceType) {
+			return isList(((ReferenceType) type).getType());
+		} else if (type instanceof ClassOrInterfaceType) {
+			String name = toNameExpr((ClassOrInterfaceType) type).toString();
+			return name.equals("java.util.List")
+					|| name.equals("java.util.ArrayList");
+		}
+		return false;
+	}
+
+	/**
+	 * Gets the type from list.
+	 * 
+	 * @param type
+	 *            the type
+	 * @return the type from list
+	 */
+	public static Type getTypeFromList(Type type) {
+		if (type instanceof ReferenceType) {
+			return getTypeFromList(((ReferenceType) type).getType());
+		} else if (type instanceof ClassOrInterfaceType) {
+			ClassOrInterfaceType cType = (ClassOrInterfaceType) type;
+			List<Type> types = cType.getTypeArgs();
+			if (types != null && !types.isEmpty()) {
+				return types.get(0);
 			}
 		}
 		return null;

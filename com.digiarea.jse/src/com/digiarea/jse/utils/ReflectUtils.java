@@ -52,7 +52,7 @@ public final class ReflectUtils {
 				makeAnnotations(pack.getAnnotations()));
 		return NodeFacade.CompilationUnit(pkg, null,
 				Arrays.asList(makeTypeDeclaration(clazz)), null,
-				clazz.getCanonicalName(), null);
+				clazz.getCanonicalName());
 	}
 
 	public static List<TypeDeclaration> makeTypeDeclarations(Class<?> clazz) {
@@ -77,34 +77,36 @@ public final class ReflectUtils {
 	}
 
 	public static ClassDeclaration makeClassDeclaration(Class<?> clazz) {
-		return NodeFacade.ClassDeclaration(null, clazz.getModifiers(),
-				makeAnnotations(clazz.getAnnotations()), clazz.getSimpleName(),
+		return NodeFacade.ClassDeclaration(
 				makeTypeParameters(clazz.getTypeParameters()),
 				makeExtendsType(clazz), makeImplements(clazz),
-				makeMembers(clazz));
+				clazz.getModifiers(), clazz.getSimpleName(),
+				makeMembers(clazz), null,
+				makeAnnotations(clazz.getAnnotations()));
 
 	}
 
 	public static InterfaceDeclaration makeInterfaceDeclaration(Class<?> clazz) {
-		return NodeFacade.InterfaceDeclaration(null, clazz.getModifiers(),
-				makeAnnotations(clazz.getAnnotations()), clazz.getSimpleName(),
+		return NodeFacade.InterfaceDeclaration(
 				makeTypeParameters(clazz.getTypeParameters()),
-				makeExtendsList(clazz), makeMembers(clazz));
+				makeExtendsList(clazz), clazz.getModifiers(),
+				clazz.getSimpleName(), makeMembers(clazz), null,
+				makeAnnotations(clazz.getAnnotations()));
 	}
 
 	public static EnumDeclaration makeEnumDeclaration(Class<?> clazz) {
 		// TODO try to fix enumerations members
 		int modifiers = Modifiers.removeModifier(clazz.getModifiers(),
 				Modifiers.FINAL);
-		return NodeFacade.EnumDeclaration(null, modifiers,
-				makeAnnotations(clazz.getAnnotations()), clazz.getSimpleName(),
-				makeImplements(clazz), makeEntries(clazz), null);
+		return NodeFacade.EnumDeclaration(makeImplements(clazz),
+				makeEntries(clazz), modifiers, clazz.getSimpleName(), null,
+				null, makeAnnotations(clazz.getAnnotations()));
 	}
 
 	public static AnnotationDeclaration makeAnnotationDeclaration(Class<?> clazz) {
-		return NodeFacade.AnnotationDeclaration(null, clazz.getModifiers(),
-				makeAnnotations(clazz.getAnnotations()), clazz.getSimpleName(),
-				makeMembers(clazz));
+		return NodeFacade.AnnotationDeclaration(clazz.getModifiers(),
+				clazz.getSimpleName(), makeMembers(clazz), null,
+				makeAnnotations(clazz.getAnnotations()));
 	}
 
 	public static List<BodyDeclaration> makeMembers(Class<?> clazz) {
@@ -128,9 +130,8 @@ public final class ReflectUtils {
 				result.add(NodeFacade.FieldDeclaration(field.getModifiers(),
 						makeType(field.getGenericType()), Arrays
 								.asList(NodeFacade.VariableDeclarator(
-										NodeFacade.VariableDeclaratorId(
-												field.getName(), 0, null),
-										null, null)), null,
+										NodeFacade.VariableDeclaratorId(field
+												.getName()), null)), null,
 						makeAnnotations(field.getDeclaredAnnotations())));
 			}
 		}
@@ -173,26 +174,26 @@ public final class ReflectUtils {
 					}
 				}
 				result.add(NodeFacade.MethodDeclaration(
-						null,
 						method.getModifiers(),
-						makeAnnotations(method.getDeclaredAnnotations()),
 						makeTypeParameters(method.getTypeParameters()),
 						type,
 						method.getName(),
 						makeParameters(method.getGenericParameterTypes(),
 								method.getParameterAnnotations(),
-								method.isVarArgs()), 0, makeThrowsList(method
-								.getExceptionTypes()), stmt));
+								method.isVarArgs()), null,
+						makeThrowsList(method.getExceptionTypes()), stmt, null,
+						makeAnnotations(method.getDeclaredAnnotations())));
 			}
 
 		}
 		return result;
 	}
 
-	public static List<NameExpr> makeThrowsList(Class<?>[] exceptionTypes) {
-		List<NameExpr> result = new ArrayList<NameExpr>();
+	public static List<ClassOrInterfaceType> makeThrowsList(
+			Class<?>[] exceptionTypes) {
+		List<ClassOrInterfaceType> result = new ArrayList<>();
 		for (Class<?> clazz : exceptionTypes) {
-			result.add(NodeFacade.NameExpr(clazz.getName()));
+			result.add(NodeFacade.ClassOrInterfaceType(clazz.getName()));
 		}
 		if (result.isEmpty()) {
 			return null;
@@ -212,9 +213,10 @@ public final class ReflectUtils {
 				varArgs = isVarArgs;
 			}
 			Type type = makeType(parameterTypes[i]);
-			result.add(NodeFacade.Parameter(0, makeAnnotations(annotations[i]),
-					type, varArgs, NodeFacade
-							.VariableDeclaratorId(makeUniqueName(type, taken))));
+			result.add(NodeFacade.Parameter(0, type,
+					varArgs ? NodeFacade.Ellipsis() : null, NodeFacade
+							.VariableDeclaratorId(makeUniqueName(type, taken)),
+					makeAnnotations(annotations[i])));
 		}
 		if (result.isEmpty()) {
 			return null;
@@ -272,8 +274,7 @@ public final class ReflectUtils {
 		for (Object constant : enumConstants) {
 			Enum<?> enumConstant = (Enum<?>) constant;
 			// TODO try to fix full entries
-			result.add(NodeFacade.EnumConstantDeclaration(null, null,
-					enumConstant.name(), null, null));
+			result.add(NodeFacade.EnumConstantDeclaration(enumConstant.name()));
 		}
 		if (result.isEmpty()) {
 			return null;
@@ -400,9 +401,9 @@ public final class ReflectUtils {
 	private static String makeName(Type type) {
 		Type inner = type;
 		boolean isUnique = true;
-		if (NodeFacade.isList(type)) {
+		if (NodeUtils.isList(type)) {
 			isUnique = false;
-			inner = NodeFacade.getTypeFromList(inner);
+			inner = NodeUtils.getTypeFromList(inner);
 		}
 		if (inner instanceof ReferenceType) {
 			ReferenceType rType = (ReferenceType) type;
