@@ -53,11 +53,11 @@ public abstract class Node {
 		this.posEnd = posEnd;
 	}
 
-	public Node() {
+	Node() {
 		super();
 	}
 
-	public Node(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+	Node(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
 		super();
 		this.annotations = annotations;
 		this.posBegin = posBegin;

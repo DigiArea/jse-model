@@ -18,11 +18,11 @@ import com.digiarea.jse.visitor.GenericVisitor;
 
 public class Ellipsis extends Node {
 
-    public Ellipsis() {
+    Ellipsis() {
         super();
     }
 
-    public Ellipsis(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    Ellipsis(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
     }
 

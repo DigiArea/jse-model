@@ -28,11 +28,11 @@ public final class QualifiedNameExpr extends NameExpr {
         this.qualifier = qualifier;
     }
 
-    public QualifiedNameExpr() {
+    QualifiedNameExpr() {
         super();
     }
 
-    public QualifiedNameExpr(NameExpr qualifier, String name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    QualifiedNameExpr(NameExpr qualifier, String name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(name, annotations, posBegin, posEnd);
         this.qualifier = qualifier;
     }

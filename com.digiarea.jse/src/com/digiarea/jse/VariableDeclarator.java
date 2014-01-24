@@ -40,11 +40,11 @@ public final class VariableDeclarator extends Node {
         this.init = init;
     }
 
-    public VariableDeclarator() {
+    VariableDeclarator() {
         super();
     }
 
-    public VariableDeclarator(VariableDeclaratorId id, Expression init, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    VariableDeclarator(VariableDeclaratorId id, Expression init, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.id = id;
         this.init = init;

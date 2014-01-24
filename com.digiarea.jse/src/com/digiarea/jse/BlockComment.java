@@ -18,11 +18,11 @@ import com.digiarea.jse.visitor.GenericVisitor;
 
 public final class BlockComment extends Comment {
 
-    public BlockComment() {
+    BlockComment() {
         super();
     }
 
-    public BlockComment(String content, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    BlockComment(String content, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(content, annotations, posBegin, posEnd);
     }
 

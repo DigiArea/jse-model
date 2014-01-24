@@ -39,11 +39,11 @@ public final class WildcardType extends Type {
         this.superType = superType;
     }
 
-    public WildcardType() {
+    WildcardType() {
         super();
     }
 
-    public WildcardType(ReferenceType extendsType, ReferenceType superType, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    WildcardType(ReferenceType extendsType, ReferenceType superType, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.extendsType = extendsType;
         this.superType = superType;

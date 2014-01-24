@@ -49,11 +49,11 @@ public final class ImportDeclaration extends Node {
         this.isAsterisk = isAsterisk;
     }
 
-    public ImportDeclaration() {
+    ImportDeclaration() {
         super();
     }
 
-    public ImportDeclaration(NameExpr name, boolean isStatic, boolean isAsterisk, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ImportDeclaration(NameExpr name, boolean isStatic, boolean isAsterisk, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.name = name;
         this.isStatic = isStatic;

@@ -29,11 +29,11 @@ public final class NormalAnnotationExpr extends AnnotationExpr {
         this.pairs = pairs;
     }
 
-    public NormalAnnotationExpr() {
+    NormalAnnotationExpr() {
         super();
     }
 
-    public NormalAnnotationExpr(NodeList<MemberValuePair> pairs, NameExpr name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    NormalAnnotationExpr(NodeList<MemberValuePair> pairs, NameExpr name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(name, annotations, posBegin, posEnd);
         this.pairs = pairs;
     }

@@ -51,11 +51,11 @@ public final class ArrayCreationExpr extends Expression {
         this.initializer = initializer;
     }
 
-    public ArrayCreationExpr() {
+    ArrayCreationExpr() {
         super();
     }
 
-    public ArrayCreationExpr(Type type, NodeList<ArraySlot> slots, ArrayInitializerExpr initializer, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ArrayCreationExpr(Type type, NodeList<ArraySlot> slots, ArrayInitializerExpr initializer, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.type = type;
         this.slots = slots;

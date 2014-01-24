@@ -80,11 +80,11 @@ public final class PrimitiveType extends Type {
         this.type = type;
     }
 
-    public PrimitiveType() {
+    PrimitiveType() {
         super();
     }
 
-    public PrimitiveType(PrimitiveType.Primitive type, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    PrimitiveType(PrimitiveType.Primitive type, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.type = type;
     }

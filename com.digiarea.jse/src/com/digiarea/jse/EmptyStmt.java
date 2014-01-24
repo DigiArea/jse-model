@@ -18,11 +18,11 @@ import com.digiarea.jse.visitor.GenericVisitor;
 
 public final class EmptyStmt extends Statement {
 
-    public EmptyStmt() {
+    EmptyStmt() {
         super();
     }
 
-    public EmptyStmt(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    EmptyStmt(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
     }
 

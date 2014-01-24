@@ -28,11 +28,11 @@ public final class EnclosedExpr extends Expression {
         this.inner = inner;
     }
 
-    public EnclosedExpr() {
+    EnclosedExpr() {
         super();
     }
 
-    public EnclosedExpr(Expression inner, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    EnclosedExpr(Expression inner, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.inner = inner;
     }

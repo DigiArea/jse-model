@@ -133,11 +133,11 @@ public final class BinaryExpr extends Expression {
         this.operator = operator;
     }
 
-    public BinaryExpr() {
+    BinaryExpr() {
         super();
     }
 
-    public BinaryExpr(Expression left, Expression right, BinaryExpr.BinaryOperator operator, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    BinaryExpr(Expression left, Expression right, BinaryExpr.BinaryOperator operator, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.left = left;
         this.right = right;

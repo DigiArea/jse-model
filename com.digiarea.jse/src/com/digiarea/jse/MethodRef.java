@@ -39,11 +39,11 @@ public class MethodRef extends Expression {
         this.name = name;
     }
 
-    public MethodRef() {
+    MethodRef() {
         super();
     }
 
-    public MethodRef(NodeList<Type> typeArgs, String name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    MethodRef(NodeList<Type> typeArgs, String name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.typeArgs = typeArgs;
         this.name = name;

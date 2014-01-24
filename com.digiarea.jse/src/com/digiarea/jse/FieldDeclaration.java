@@ -52,11 +52,11 @@ public final class FieldDeclaration extends BodyDeclaration {
         this.variables = variables;
     }
 
-    public FieldDeclaration() {
+    FieldDeclaration() {
         super();
     }
 
-    public FieldDeclaration(Modifiers modifiers, Type type, NodeList<VariableDeclarator> variables, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    FieldDeclaration(Modifiers modifiers, Type type, NodeList<VariableDeclarator> variables, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(javaDoc, annotations, posBegin, posEnd);
         this.modifiers = modifiers;
         this.type = type;

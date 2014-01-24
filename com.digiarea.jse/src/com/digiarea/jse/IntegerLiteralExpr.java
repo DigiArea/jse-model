@@ -22,11 +22,11 @@ public class IntegerLiteralExpr extends StringLiteralExpr {
 
     protected static final String MIN_VALUE = "-" + UNSIGNED_MIN_VALUE;
 
-    public IntegerLiteralExpr() {
+    IntegerLiteralExpr() {
         super();
     }
 
-    public IntegerLiteralExpr(String value, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    IntegerLiteralExpr(String value, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(value, annotations, posBegin, posEnd);
     }
 

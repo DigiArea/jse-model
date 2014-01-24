@@ -18,11 +18,11 @@ import com.digiarea.jse.visitor.GenericVisitor;
 
 public final class MarkerAnnotationExpr extends AnnotationExpr {
 
-    public MarkerAnnotationExpr() {
+    MarkerAnnotationExpr() {
         super();
     }
 
-    public MarkerAnnotationExpr(NameExpr name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    MarkerAnnotationExpr(NameExpr name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(name, annotations, posBegin, posEnd);
     }
 

@@ -59,11 +59,11 @@ public final class MethodCallExpr extends Expression {
         this.args = args;
     }
 
-    public MethodCallExpr() {
+    MethodCallExpr() {
         super();
     }
 
-    public MethodCallExpr(Expression scope, NodeList<Type> typeArgs, String name, NodeList<Expression> args, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    MethodCallExpr(Expression scope, NodeList<Type> typeArgs, String name, NodeList<Expression> args, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.scope = scope;
         this.typeArgs = typeArgs;

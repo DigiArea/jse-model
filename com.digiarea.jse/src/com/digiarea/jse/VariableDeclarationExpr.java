@@ -51,11 +51,11 @@ public final class VariableDeclarationExpr extends Expression {
         this.vars = vars;
     }
 
-    public VariableDeclarationExpr() {
+    VariableDeclarationExpr() {
         super();
     }
 
-    public VariableDeclarationExpr(Modifiers modifiers, Type type, NodeList<VariableDeclarator> vars, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    VariableDeclarationExpr(Modifiers modifiers, Type type, NodeList<VariableDeclarator> vars, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.modifiers = modifiers;
         this.type = type;

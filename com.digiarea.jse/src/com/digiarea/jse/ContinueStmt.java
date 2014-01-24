@@ -28,11 +28,11 @@ public final class ContinueStmt extends Statement {
         this.id = id;
     }
 
-    public ContinueStmt() {
+    ContinueStmt() {
         super();
     }
 
-    public ContinueStmt(String id, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ContinueStmt(String id, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.id = id;
     }

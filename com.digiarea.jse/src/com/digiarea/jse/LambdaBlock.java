@@ -30,11 +30,11 @@ public final class LambdaBlock extends Lambda {
         this.blockStmt = blockStmt;
     }
 
-    public LambdaBlock() {
+    LambdaBlock() {
         super();
     }
 
-    public LambdaBlock(BlockStmt blockStmt, NodeList<Parameter> parameters, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    LambdaBlock(BlockStmt blockStmt, NodeList<Parameter> parameters, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(parameters, annotations, posBegin, posEnd);
         this.blockStmt = blockStmt;
     }

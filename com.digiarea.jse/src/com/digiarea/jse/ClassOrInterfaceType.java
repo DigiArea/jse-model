@@ -49,11 +49,11 @@ public final class ClassOrInterfaceType extends Type {
         this.typeArgs = typeArgs;
     }
 
-    public ClassOrInterfaceType() {
+    ClassOrInterfaceType() {
         super();
     }
 
-    public ClassOrInterfaceType(ClassOrInterfaceType scope, NameExpr name, NodeList<Type> typeArgs, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ClassOrInterfaceType(ClassOrInterfaceType scope, NameExpr name, NodeList<Type> typeArgs, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.scope = scope;
         this.name = name;

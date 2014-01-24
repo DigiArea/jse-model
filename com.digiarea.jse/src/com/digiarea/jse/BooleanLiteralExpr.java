@@ -28,11 +28,11 @@ public final class BooleanLiteralExpr extends LiteralExpr {
         this.value = value;
     }
 
-    public BooleanLiteralExpr() {
+    BooleanLiteralExpr() {
         super();
     }
 
-    public BooleanLiteralExpr(boolean value, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    BooleanLiteralExpr(boolean value, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.value = value;
     }

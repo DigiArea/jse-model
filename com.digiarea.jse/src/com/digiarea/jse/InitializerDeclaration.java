@@ -40,11 +40,11 @@ public final class InitializerDeclaration extends BodyDeclaration {
         this.block = block;
     }
 
-    public InitializerDeclaration() {
+    InitializerDeclaration() {
         super();
     }
 
-    public InitializerDeclaration(boolean isStatic, BlockStmt block, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    InitializerDeclaration(boolean isStatic, BlockStmt block, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(javaDoc, annotations, posBegin, posEnd);
         this.isStatic = isStatic;
         this.block = block;

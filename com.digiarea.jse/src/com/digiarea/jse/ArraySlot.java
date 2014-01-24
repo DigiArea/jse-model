@@ -29,11 +29,11 @@ public class ArraySlot extends Node {
         this.expression = expression;
     }
 
-    public ArraySlot() {
+    ArraySlot() {
         super();
     }
 
-    public ArraySlot(Expression expression, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ArraySlot(Expression expression, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.expression = expression;
     }

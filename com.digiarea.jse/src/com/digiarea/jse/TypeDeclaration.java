@@ -48,11 +48,11 @@ public abstract class TypeDeclaration extends BodyDeclaration {
         this.members = members;
     }
 
-    public TypeDeclaration() {
+    TypeDeclaration() {
         super();
     }
 
-    public TypeDeclaration(Modifiers modifiers, String name, NodeList<BodyDeclaration> members, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    TypeDeclaration(Modifiers modifiers, String name, NodeList<BodyDeclaration> members, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(javaDoc, annotations, posBegin, posEnd);
         this.modifiers = modifiers;
         this.name = name;

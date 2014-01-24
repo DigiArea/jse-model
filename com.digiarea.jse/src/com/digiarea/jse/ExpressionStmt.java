@@ -29,11 +29,11 @@ public final class ExpressionStmt extends Statement {
         this.expression = expression;
     }
 
-    public ExpressionStmt() {
+    ExpressionStmt() {
         super();
     }
 
-    public ExpressionStmt(Expression expression, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ExpressionStmt(Expression expression, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.expression = expression;
     }

@@ -29,11 +29,11 @@ public final class ClassExpr extends Expression {
         this.type = type;
     }
 
-    public ClassExpr() {
+    ClassExpr() {
         super();
     }
 
-    public ClassExpr(Type type, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ClassExpr(Type type, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.type = type;
     }

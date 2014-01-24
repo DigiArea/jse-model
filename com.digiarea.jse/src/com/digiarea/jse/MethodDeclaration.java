@@ -106,11 +106,11 @@ public final class MethodDeclaration extends BodyDeclaration {
         this.block = block;
     }
 
-    public MethodDeclaration() {
+    MethodDeclaration() {
         super();
     }
 
-    public MethodDeclaration(Modifiers modifiers, NodeList<TypeParameter> typeParameters, Type type, String name, NodeList<Parameter> parameters, NodeList<ArraySlot> slots, NodeList<ClassOrInterfaceType> throwsList, BlockStmt block, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    MethodDeclaration(Modifiers modifiers, NodeList<TypeParameter> typeParameters, Type type, String name, NodeList<Parameter> parameters, NodeList<ArraySlot> slots, NodeList<ClassOrInterfaceType> throwsList, BlockStmt block, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(javaDoc, annotations, posBegin, posEnd);
         this.modifiers = modifiers;
         this.typeParameters = typeParameters;

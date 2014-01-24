@@ -18,11 +18,11 @@ import com.digiarea.jse.visitor.GenericVisitor;
 
 public final class JavadocComment extends Comment {
 
-    public JavadocComment() {
+    JavadocComment() {
         super();
     }
 
-    public JavadocComment(String content, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    JavadocComment(String content, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(content, annotations, posBegin, posEnd);
     }
 

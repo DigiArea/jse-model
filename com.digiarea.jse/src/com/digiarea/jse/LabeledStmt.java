@@ -38,11 +38,11 @@ public final class LabeledStmt extends Statement {
         this.stmt = stmt;
     }
 
-    public LabeledStmt() {
+    LabeledStmt() {
         super();
     }
 
-    public LabeledStmt(String label, Statement stmt, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    LabeledStmt(String label, Statement stmt, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.label = label;
         this.stmt = stmt;

@@ -26,11 +26,11 @@ public abstract class Comment extends Node {
         this.content = content;
     }
 
-    public Comment() {
+    Comment() {
         super();
     }
 
-    public Comment(String content, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    Comment(String content, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.content = content;
     }

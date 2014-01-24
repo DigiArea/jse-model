@@ -43,11 +43,11 @@ public final class InterfaceDeclaration extends TypeDeclaration {
         this.extendsList = extendsList;
     }
 
-    public InterfaceDeclaration() {
+    InterfaceDeclaration() {
         super();
     }
 
-    public InterfaceDeclaration(NodeList<TypeParameter> typeParameters, NodeList<ClassOrInterfaceType> extendsList, Modifiers modifiers, String name, NodeList<BodyDeclaration> members, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    InterfaceDeclaration(NodeList<TypeParameter> typeParameters, NodeList<ClassOrInterfaceType> extendsList, Modifiers modifiers, String name, NodeList<BodyDeclaration> members, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(modifiers, name, members, javaDoc, annotations, posBegin, posEnd);
         this.typeParameters = typeParameters;
         this.extendsList = extendsList;

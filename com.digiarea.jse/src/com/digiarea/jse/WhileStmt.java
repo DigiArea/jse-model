@@ -39,11 +39,11 @@ public final class WhileStmt extends Statement {
         this.body = body;
     }
 
-    public WhileStmt() {
+    WhileStmt() {
         super();
     }
 
-    public WhileStmt(Expression condition, Statement body, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    WhileStmt(Expression condition, Statement body, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.condition = condition;
         this.body = body;

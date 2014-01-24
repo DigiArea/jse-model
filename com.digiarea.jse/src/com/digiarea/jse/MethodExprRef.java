@@ -30,11 +30,11 @@ public class MethodExprRef extends MethodRef {
         this.scope = scope;
     }
 
-    public MethodExprRef() {
+    MethodExprRef() {
         super();
     }
 
-    public MethodExprRef(Expression scope, NodeList<Type> typeArgs, String name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    MethodExprRef(Expression scope, NodeList<Type> typeArgs, String name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(typeArgs, name, annotations, posBegin, posEnd);
         this.scope = scope;
     }

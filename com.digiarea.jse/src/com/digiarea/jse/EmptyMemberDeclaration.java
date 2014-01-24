@@ -19,11 +19,11 @@ import com.digiarea.jse.visitor.GenericVisitor;
 
 public final class EmptyMemberDeclaration extends BodyDeclaration {
 
-    public EmptyMemberDeclaration() {
+    EmptyMemberDeclaration() {
         super();
     }
 
-    public EmptyMemberDeclaration(JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    EmptyMemberDeclaration(JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(javaDoc, annotations, posBegin, posEnd);
     }
 

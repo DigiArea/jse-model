@@ -16,11 +16,11 @@ import com.digiarea.jse.NodeList;
 
 public abstract class Type extends Node {
 
-    public Type() {
+    Type() {
         super();
     }
 
-    public Type(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    Type(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
     }
 

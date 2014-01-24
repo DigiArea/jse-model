@@ -29,11 +29,11 @@ public class MethodTypeRef extends MethodRef {
         this.type = type;
     }
 
-    public MethodTypeRef() {
+    MethodTypeRef() {
         super();
     }
 
-    public MethodTypeRef(Type type, NodeList<Type> typeArgs, String name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    MethodTypeRef(Type type, NodeList<Type> typeArgs, String name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(typeArgs, name, annotations, posBegin, posEnd);
         this.type = type;
     }

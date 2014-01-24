@@ -39,11 +39,11 @@ public final class AssertStmt extends Statement {
         this.message = message;
     }
 
-    public AssertStmt() {
+    AssertStmt() {
         super();
     }
 
-    public AssertStmt(Expression check, Expression message, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    AssertStmt(Expression check, Expression message, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.check = check;
         this.message = message;

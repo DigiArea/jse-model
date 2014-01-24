@@ -40,11 +40,11 @@ public final class SwitchStmt extends Statement {
         this.entries = entries;
     }
 
-    public SwitchStmt() {
+    SwitchStmt() {
         super();
     }
 
-    public SwitchStmt(Expression selector, NodeList<SwitchEntryStmt> entries, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    SwitchStmt(Expression selector, NodeList<SwitchEntryStmt> entries, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.selector = selector;
         this.entries = entries;

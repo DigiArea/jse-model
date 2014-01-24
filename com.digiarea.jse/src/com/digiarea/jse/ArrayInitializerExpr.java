@@ -28,11 +28,11 @@ public final class ArrayInitializerExpr extends Expression {
         this.values = values;
     }
 
-    public ArrayInitializerExpr() {
+    ArrayInitializerExpr() {
         super();
     }
 
-    public ArrayInitializerExpr(NodeList<Expression> values, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ArrayInitializerExpr(NodeList<Expression> values, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.values = values;
     }

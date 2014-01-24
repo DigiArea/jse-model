@@ -62,11 +62,11 @@ public final class Parameter extends Node {
         this.id = id;
     }
 
-    public Parameter() {
+    Parameter() {
         super();
     }
 
-    public Parameter(Modifiers modifiers, Type type, Ellipsis ellipsis, VariableDeclaratorId id, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    Parameter(Modifiers modifiers, Type type, Ellipsis ellipsis, VariableDeclaratorId id, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.modifiers = modifiers;
         this.type = type;

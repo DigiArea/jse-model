@@ -65,11 +65,11 @@ public final class CatchClause extends Node {
         this.catchBlock = catchBlock;
     }
 
-    public CatchClause() {
+    CatchClause() {
         super();
     }
 
-    public CatchClause(boolean isFinal, NodeList<Type> types, String name, BlockStmt catchBlock, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    CatchClause(boolean isFinal, NodeList<Type> types, String name, BlockStmt catchBlock, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.isFinal = isFinal;
         this.types = types;

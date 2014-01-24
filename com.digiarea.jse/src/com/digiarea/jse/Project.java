@@ -29,11 +29,11 @@ public class Project extends Node {
         this.compilationUnits = compilationUnits;
     }
 
-    public Project() {
+    Project() {
         super();
     }
 
-    public Project(NodeList<CompilationUnit> compilationUnits, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    Project(NodeList<CompilationUnit> compilationUnits, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.compilationUnits = compilationUnits;
     }

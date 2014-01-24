@@ -62,11 +62,11 @@ public final class AnnotationMemberDeclaration extends BodyDeclaration {
         this.defaultValue = defaultValue;
     }
 
-    public AnnotationMemberDeclaration() {
+    AnnotationMemberDeclaration() {
         super();
     }
 
-    public AnnotationMemberDeclaration(Modifiers modifiers, Type type, String name, Expression defaultValue, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    AnnotationMemberDeclaration(Modifiers modifiers, Type type, String name, Expression defaultValue, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(javaDoc, annotations, posBegin, posEnd);
         this.modifiers = modifiers;
         this.type = type;

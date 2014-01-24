@@ -49,11 +49,11 @@ public final class IfStmt extends Statement {
         this.elseStmt = elseStmt;
     }
 
-    public IfStmt() {
+    IfStmt() {
         super();
     }
 
-    public IfStmt(Expression condition, Statement thenStmt, Statement elseStmt, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    IfStmt(Expression condition, Statement thenStmt, Statement elseStmt, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.condition = condition;
         this.thenStmt = thenStmt;

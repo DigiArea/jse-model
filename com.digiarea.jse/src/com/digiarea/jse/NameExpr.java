@@ -28,11 +28,11 @@ public class NameExpr extends Expression {
         this.name = name;
     }
 
-    public NameExpr() {
+    NameExpr() {
         super();
     }
 
-    public NameExpr(String name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    NameExpr(String name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.name = name;
     }

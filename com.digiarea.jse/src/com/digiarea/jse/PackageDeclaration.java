@@ -29,11 +29,11 @@ public final class PackageDeclaration extends Node {
         this.name = name;
     }
 
-    public PackageDeclaration() {
+    PackageDeclaration() {
         super();
     }
 
-    public PackageDeclaration(NameExpr name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    PackageDeclaration(NameExpr name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.name = name;
     }

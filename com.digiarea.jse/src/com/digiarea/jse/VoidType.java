@@ -18,11 +18,11 @@ import com.digiarea.jse.visitor.GenericVisitor;
 
 public final class VoidType extends Type {
 
-    public VoidType() {
+    VoidType() {
         super();
     }
 
-    public VoidType(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    VoidType(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
     }
 

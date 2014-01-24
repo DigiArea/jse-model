@@ -112,11 +112,11 @@ public final class AssignExpr extends Expression {
         this.operator = operator;
     }
 
-    public AssignExpr() {
+    AssignExpr() {
         super();
     }
 
-    public AssignExpr(Expression target, Expression value, AssignExpr.AssignOperator operator, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    AssignExpr(Expression target, Expression value, AssignExpr.AssignOperator operator, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.target = target;
         this.value = value;

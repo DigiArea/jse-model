@@ -108,7 +108,7 @@ import com.digiarea.jse.VoidType;
 import com.digiarea.jse.WhileStmt;
 import com.digiarea.jse.WildcardType;
 
-public class NodeFactory {
+class NodeFactory {
 
     public static AnnotationDeclaration AnnotationDeclaration() {
         return new AnnotationDeclaration();
@@ -812,10 +812,6 @@ public class NodeFactory {
 
     public static WildcardType WildcardType(ReferenceType extendsType, ReferenceType superType, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         return new WildcardType(extendsType, superType, annotations, posBegin, posEnd);
-    }
-
-    public NodeFactory() {
-        super();
     }
 
 }

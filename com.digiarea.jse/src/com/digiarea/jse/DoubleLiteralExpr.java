@@ -18,11 +18,11 @@ import com.digiarea.jse.visitor.GenericVisitor;
 
 public final class DoubleLiteralExpr extends StringLiteralExpr {
 
-    public DoubleLiteralExpr() {
+    DoubleLiteralExpr() {
         super();
     }
 
-    public DoubleLiteralExpr(String value, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    DoubleLiteralExpr(String value, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(value, annotations, posBegin, posEnd);
     }
 

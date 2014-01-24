@@ -90,14 +90,14 @@ public class Identity implements GenericVisitor<Node, Context>,
 
 	@Override
 	public Project arrow(Project input) throws Exception {
-		return (Project) input.accept(this, new Context(new Project()));
+		return (Project) input.accept(this, new Context(NodeFacade.Project()));
 	}
 
 	@Override
 	public Node visit(AnnotationDeclaration n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
 		ctx.addEnclosure(n.getName());
-		AnnotationDeclaration img = new AnnotationDeclaration();
+		AnnotationDeclaration img = NodeFacade.AnnotationDeclaration();
 		ctx.setNode(img);
 		if (n.getModifiers() != null) {
 			img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
@@ -119,7 +119,8 @@ public class Identity implements GenericVisitor<Node, Context>,
 	public Node visit(AnnotationMemberDeclaration n, Context ctx)
 			throws Exception {
 		Node node = ctx.getNode();
-		AnnotationMemberDeclaration img = new AnnotationMemberDeclaration();
+		AnnotationMemberDeclaration img = NodeFacade
+				.AnnotationMemberDeclaration();
 		ctx.setNode(img);
 		if (n.getModifiers() != null) {
 			img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
@@ -145,7 +146,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ArrayAccessExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ArrayAccessExpr img = new ArrayAccessExpr();
+		ArrayAccessExpr img = NodeFacade.ArrayAccessExpr();
 		ctx.setNode(img);
 		if (n.getName() != null) {
 			img.setName((Expression) n.getName().accept(this, ctx));
@@ -163,7 +164,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ArrayCreationExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ArrayCreationExpr img = new ArrayCreationExpr();
+		ArrayCreationExpr img = NodeFacade.ArrayCreationExpr();
 		ctx.setNode(img);
 		if (n.getType() != null) {
 			img.setType((Type) n.getType().accept(this, ctx));
@@ -185,7 +186,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ArrayInitializerExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ArrayInitializerExpr img = new ArrayInitializerExpr();
+		ArrayInitializerExpr img = NodeFacade.ArrayInitializerExpr();
 		ctx.setNode(img);
 		if (n.getValues() != null) {
 			img.setValues((NodeList<Expression>) n.getValues()
@@ -201,7 +202,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ArraySlot n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ArraySlot img = new ArraySlot();
+		ArraySlot img = NodeFacade.ArraySlot();
 		ctx.setNode(img);
 		if (n.getExpression() != null) {
 			img.setExpression((Expression) n.getExpression().accept(this, ctx));
@@ -216,7 +217,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(AssertStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		AssertStmt img = new AssertStmt();
+		AssertStmt img = NodeFacade.AssertStmt();
 		ctx.setNode(img);
 		if (n.getCheck() != null) {
 			img.setCheck((Expression) n.getCheck().accept(this, ctx));
@@ -234,7 +235,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(AssignExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		AssignExpr img = new AssignExpr();
+		AssignExpr img = NodeFacade.AssignExpr();
 		ctx.setNode(img);
 		if (n.getTarget() != null) {
 			img.setTarget((Expression) n.getTarget().accept(this, ctx));
@@ -258,7 +259,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(BinaryExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		BinaryExpr img = new BinaryExpr();
+		BinaryExpr img = NodeFacade.BinaryExpr();
 		ctx.setNode(img);
 		if (n.getLeft() != null) {
 			img.setLeft((Expression) n.getLeft().accept(this, ctx));
@@ -282,7 +283,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(BlockComment n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		BlockComment img = new BlockComment();
+		BlockComment img = NodeFacade.BlockComment();
 		ctx.setNode(img);
 		img.setContent(n.getContent());
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
@@ -295,7 +296,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(BlockStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		BlockStmt img = new BlockStmt();
+		BlockStmt img = NodeFacade.BlockStmt();
 		ctx.setNode(img);
 		if (n.getStatements() != null) {
 			img.setStatements((NodeList<Statement>) n.getStatements().accept(
@@ -311,7 +312,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(BooleanLiteralExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		BooleanLiteralExpr img = new BooleanLiteralExpr();
+		BooleanLiteralExpr img = NodeFacade.BooleanLiteralExpr();
 		ctx.setNode(img);
 		img.setValue(n.isValue());
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
@@ -324,7 +325,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(BreakStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		BreakStmt img = new BreakStmt();
+		BreakStmt img = NodeFacade.BreakStmt();
 		ctx.setNode(img);
 		img.setId(n.getId());
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
@@ -337,7 +338,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(CastExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		CastExpr img = new CastExpr();
+		CastExpr img = NodeFacade.CastExpr();
 		ctx.setNode(img);
 		if (n.getTypes() != null) {
 			img.setTypes((NodeList<Type>) n.getTypes().accept(this, ctx));
@@ -355,7 +356,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(CatchClause n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		CatchClause img = new CatchClause();
+		CatchClause img = NodeFacade.CatchClause();
 		ctx.setNode(img);
 		img.setFinal(n.isFinal());
 		if (n.getTypes() != null) {
@@ -375,7 +376,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(CharLiteralExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		CharLiteralExpr img = new CharLiteralExpr();
+		CharLiteralExpr img = NodeFacade.CharLiteralExpr();
 		ctx.setNode(img);
 		img.setValue(n.getValue());
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
@@ -389,7 +390,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	public Node visit(ClassDeclaration n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
 		ctx.addEnclosure(n.getName());
-		ClassDeclaration img = new ClassDeclaration();
+		ClassDeclaration img = NodeFacade.ClassDeclaration();
 		ctx.setNode(img);
 		img.setTypeParameters(copeTypeParameters(n.getTypeParameters(), ctx));
 		if (n.getExtendsType() != null) {
@@ -417,7 +418,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ClassExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ClassExpr img = new ClassExpr();
+		ClassExpr img = NodeFacade.ClassExpr();
 		ctx.setNode(img);
 		if (n.getType() != null) {
 			img.setType((Type) n.getType().accept(this, ctx));
@@ -432,7 +433,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ClassOrInterfaceType n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ClassOrInterfaceType img = new ClassOrInterfaceType();
+		ClassOrInterfaceType img = NodeFacade.ClassOrInterfaceType();
 		ctx.setNode(img);
 		if (n.getScope() != null) {
 			img.setScope((ClassOrInterfaceType) n.getScope().accept(this, ctx));
@@ -453,7 +454,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(CompilationUnit n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		CompilationUnit img = new CompilationUnit();
+		CompilationUnit img = NodeFacade.CompilationUnit();
 		ctx.setNode(img);
 		ctx.setUnit(img);
 		img.setName(n.getName());
@@ -461,11 +462,11 @@ public class Identity implements GenericVisitor<Node, Context>,
 			img.setPackageDeclaration((PackageDeclaration) n
 					.getPackageDeclaration().accept(this, ctx));
 		}
-		// as package might be set we can set the new enclosure
+		// as package might be set we can set the NodeFacade.enclosure
 		if (img.getPackageDeclaration() != null) {
 			ctx.setEnclosure(img.getPackageDeclaration().getName());
 		} else {
-			ctx.setEnclosure(new NameExpr());
+			ctx.setEnclosure(NodeFacade.NameExpr());
 		}
 		if (n.getImports() != null) {
 			img.setImports((NodeList<ImportDeclaration>) n.getImports().accept(
@@ -490,7 +491,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ConditionalExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ConditionalExpr img = new ConditionalExpr();
+		ConditionalExpr img = NodeFacade.ConditionalExpr();
 		ctx.setNode(img);
 		if (n.getCondition() != null) {
 			img.setCondition((Expression) n.getCondition().accept(this, ctx));
@@ -513,7 +514,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ConstructorDeclaration n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ConstructorDeclaration img = new ConstructorDeclaration();
+		ConstructorDeclaration img = NodeFacade.ConstructorDeclaration();
 		ctx.setNode(img);
 		if (n.getModifiers() != null) {
 			img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
@@ -544,7 +545,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ContinueStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ContinueStmt img = new ContinueStmt();
+		ContinueStmt img = NodeFacade.ContinueStmt();
 		ctx.setNode(img);
 		img.setId(n.getId());
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
@@ -557,7 +558,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(DoStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		DoStmt img = new DoStmt();
+		DoStmt img = NodeFacade.DoStmt();
 		ctx.setNode(img);
 		if (n.getBody() != null) {
 			img.setBody((Statement) n.getBody().accept(this, ctx));
@@ -575,7 +576,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(DoubleLiteralExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		DoubleLiteralExpr img = new DoubleLiteralExpr();
+		DoubleLiteralExpr img = NodeFacade.DoubleLiteralExpr();
 		ctx.setNode(img);
 		img.setValue(n.getValue());
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
@@ -588,7 +589,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(Ellipsis n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		Ellipsis img = new Ellipsis();
+		Ellipsis img = NodeFacade.Ellipsis();
 		ctx.setNode(img);
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
 		img.setPosBegin(n.getPosBegin());
@@ -600,7 +601,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(EmptyMemberDeclaration n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		EmptyMemberDeclaration img = new EmptyMemberDeclaration();
+		EmptyMemberDeclaration img = NodeFacade.EmptyMemberDeclaration();
 		ctx.setNode(img);
 		if (n.getJavaDoc() != null) {
 			img.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, ctx));
@@ -615,7 +616,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(EmptyStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		EmptyStmt img = new EmptyStmt();
+		EmptyStmt img = NodeFacade.EmptyStmt();
 		ctx.setNode(img);
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
 		img.setPosBegin(n.getPosBegin());
@@ -628,7 +629,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	public Node visit(EmptyTypeDeclaration n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
 		ctx.addEnclosure(n.getName());
-		EmptyTypeDeclaration img = new EmptyTypeDeclaration();
+		EmptyTypeDeclaration img = NodeFacade.EmptyTypeDeclaration();
 		ctx.setNode(img);
 		if (n.getModifiers() != null) {
 			img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
@@ -649,7 +650,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(EnclosedExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		EnclosedExpr img = new EnclosedExpr();
+		EnclosedExpr img = NodeFacade.EnclosedExpr();
 		ctx.setNode(img);
 		if (n.getInner() != null) {
 			img.setInner((Expression) n.getInner().accept(this, ctx));
@@ -664,7 +665,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(EnumConstantDeclaration n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		EnumConstantDeclaration img = new EnumConstantDeclaration();
+		EnumConstantDeclaration img = NodeFacade.EnumConstantDeclaration();
 		ctx.setNode(img);
 		img.setName(n.getName());
 		if (n.getArgs() != null) {
@@ -688,7 +689,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	public Node visit(EnumDeclaration n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
 		ctx.addEnclosure(n.getName());
-		EnumDeclaration img = new EnumDeclaration();
+		EnumDeclaration img = NodeFacade.EnumDeclaration();
 		ctx.setNode(img);
 		img.setImplementsList(copyClassOrInterfaceTypes(n.getImplementsList(),
 				ctx));
@@ -716,7 +717,8 @@ public class Identity implements GenericVisitor<Node, Context>,
 	public Node visit(ExplicitConstructorInvocationStmt n, Context ctx)
 			throws Exception {
 		Node node = ctx.getNode();
-		ExplicitConstructorInvocationStmt img = new ExplicitConstructorInvocationStmt();
+		ExplicitConstructorInvocationStmt img = NodeFacade
+				.ExplicitConstructorInvocationStmt();
 		ctx.setNode(img);
 		if (n.getTypeArgs() != null) {
 			img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
@@ -738,7 +740,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ExpressionStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ExpressionStmt img = new ExpressionStmt();
+		ExpressionStmt img = NodeFacade.ExpressionStmt();
 		ctx.setNode(img);
 		if (n.getExpression() != null) {
 			img.setExpression((Expression) n.getExpression().accept(this, ctx));
@@ -753,7 +755,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(FieldAccessExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		FieldAccessExpr img = new FieldAccessExpr();
+		FieldAccessExpr img = NodeFacade.FieldAccessExpr();
 		ctx.setNode(img);
 		if (n.getScope() != null) {
 			img.setScope((Expression) n.getScope().accept(this, ctx));
@@ -772,7 +774,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(FieldDeclaration n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		FieldDeclaration img = new FieldDeclaration();
+		FieldDeclaration img = NodeFacade.FieldDeclaration();
 		ctx.setNode(img);
 		if (n.getModifiers() != null) {
 			img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
@@ -797,7 +799,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ForeachStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ForeachStmt img = new ForeachStmt();
+		ForeachStmt img = NodeFacade.ForeachStmt();
 		ctx.setNode(img);
 		if (n.getVariable() != null) {
 			img.setVariable((VariableDeclarationExpr) n.getVariable().accept(
@@ -819,7 +821,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ForStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ForStmt img = new ForStmt();
+		ForStmt img = NodeFacade.ForStmt();
 		ctx.setNode(img);
 		if (n.getInit() != null) {
 			img.setInit((NodeList<Expression>) n.getInit().accept(this, ctx));
@@ -844,7 +846,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(IfStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		IfStmt img = new IfStmt();
+		IfStmt img = NodeFacade.IfStmt();
 		ctx.setNode(img);
 		if (n.getCondition() != null) {
 			img.setCondition((Expression) n.getCondition().accept(this, ctx));
@@ -865,7 +867,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ImportDeclaration n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ImportDeclaration img = new ImportDeclaration();
+		ImportDeclaration img = NodeFacade.ImportDeclaration();
 		ctx.setNode(img);
 		if (n.getName() != null) {
 			img.setName((NameExpr) n.getName().accept(this, ctx));
@@ -882,7 +884,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(InitializerDeclaration n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		InitializerDeclaration img = new InitializerDeclaration();
+		InitializerDeclaration img = NodeFacade.InitializerDeclaration();
 		ctx.setNode(img);
 		img.setStatic(n.isStatic());
 		if (n.getBlock() != null) {
@@ -901,7 +903,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(InstanceOfExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		InstanceOfExpr img = new InstanceOfExpr();
+		InstanceOfExpr img = NodeFacade.InstanceOfExpr();
 		ctx.setNode(img);
 		if (n.getExpression() != null) {
 			img.setExpression((Expression) n.getExpression().accept(this, ctx));
@@ -919,7 +921,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(IntegerLiteralExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		IntegerLiteralExpr img = new IntegerLiteralExpr();
+		IntegerLiteralExpr img = NodeFacade.IntegerLiteralExpr();
 		ctx.setNode(img);
 		img.setValue(n.getValue());
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
@@ -933,7 +935,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	public Node visit(InterfaceDeclaration n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
 		ctx.addEnclosure(n.getName());
-		InterfaceDeclaration img = new InterfaceDeclaration();
+		InterfaceDeclaration img = NodeFacade.InterfaceDeclaration();
 		ctx.setNode(img);
 		img.setTypeParameters(copeTypeParameters(n.getTypeParameters(), ctx));
 		img.setExtendsList(copyClassOrInterfaceTypes(n.getExtendsList(), ctx));
@@ -956,7 +958,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(JavadocComment n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		JavadocComment img = new JavadocComment();
+		JavadocComment img = NodeFacade.JavadocComment();
 		ctx.setNode(img);
 		img.setContent(n.getContent());
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
@@ -969,7 +971,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(LabeledStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		LabeledStmt img = new LabeledStmt();
+		LabeledStmt img = NodeFacade.LabeledStmt();
 		ctx.setNode(img);
 		img.setLabel(n.getLabel());
 		if (n.getStmt() != null) {
@@ -985,7 +987,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(LambdaBlock n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		LambdaBlock img = new LambdaBlock();
+		LambdaBlock img = NodeFacade.LambdaBlock();
 		ctx.setNode(img);
 		if (n.getBlockStmt() != null) {
 			img.setBlockStmt((BlockStmt) n.getBlockStmt().accept(this, ctx));
@@ -1004,7 +1006,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(LambdaExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		LambdaExpr img = new LambdaExpr();
+		LambdaExpr img = NodeFacade.LambdaExpr();
 		ctx.setNode(img);
 		if (n.getExpression() != null) {
 			img.setExpression((Expression) n.getExpression().accept(this, ctx));
@@ -1023,7 +1025,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(LineComment n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		LineComment img = new LineComment();
+		LineComment img = NodeFacade.LineComment();
 		ctx.setNode(img);
 		img.setContent(n.getContent());
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
@@ -1036,7 +1038,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(LongLiteralExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		LongLiteralExpr img = new LongLiteralExpr();
+		LongLiteralExpr img = NodeFacade.LongLiteralExpr();
 		ctx.setNode(img);
 		img.setValue(n.getValue());
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
@@ -1049,7 +1051,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(MarkerAnnotationExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		MarkerAnnotationExpr img = new MarkerAnnotationExpr();
+		MarkerAnnotationExpr img = NodeFacade.MarkerAnnotationExpr();
 		ctx.setNode(img);
 		if (n.getName() != null) {
 			img.setName((NameExpr) n.getName().accept(this, ctx));
@@ -1064,7 +1066,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(MemberValuePair n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		MemberValuePair img = new MemberValuePair();
+		MemberValuePair img = NodeFacade.MemberValuePair();
 		ctx.setNode(img);
 		img.setName(n.getName());
 		if (n.getValue() != null) {
@@ -1080,7 +1082,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(MethodCallExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		MethodCallExpr img = new MethodCallExpr();
+		MethodCallExpr img = NodeFacade.MethodCallExpr();
 		ctx.setNode(img);
 		if (n.getScope() != null) {
 			img.setScope((Expression) n.getScope().accept(this, ctx));
@@ -1102,7 +1104,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(MethodDeclaration n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		MethodDeclaration img = new MethodDeclaration();
+		MethodDeclaration img = NodeFacade.MethodDeclaration();
 		ctx.setNode(img);
 		if (n.getModifiers() != null) {
 			img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
@@ -1139,7 +1141,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(MethodExprRef n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		MethodExprRef img = new MethodExprRef();
+		MethodExprRef img = NodeFacade.MethodExprRef();
 		ctx.setNode(img);
 		if (n.getScope() != null) {
 			img.setScope((Expression) n.getScope().accept(this, ctx));
@@ -1158,7 +1160,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(MethodRef n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		MethodRef img = new MethodRef();
+		MethodRef img = NodeFacade.MethodRef();
 		ctx.setNode(img);
 		if (n.getTypeArgs() != null) {
 			img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
@@ -1174,7 +1176,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(MethodTypeRef n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		MethodTypeRef img = new MethodTypeRef();
+		MethodTypeRef img = NodeFacade.MethodTypeRef();
 		ctx.setNode(img);
 		if (n.getType() != null) {
 			img.setType((Type) n.getType().accept(this, ctx));
@@ -1193,7 +1195,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(Modifiers n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		Modifiers img = new Modifiers();
+		Modifiers img = NodeFacade.Modifiers();
 		ctx.setNode(img);
 		img.setModifiers(n.getModifiers());
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
@@ -1206,7 +1208,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(NameExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		NameExpr img = new NameExpr();
+		NameExpr img = NodeFacade.NameExpr();
 		ctx.setNode(img);
 		img.setName(n.getName());
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
@@ -1220,7 +1222,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	public <E extends Node> Node visit(NodeList<E> n, Context ctx)
 			throws Exception {
 		Node node = ctx.getNode();
-		NodeList<E> img = new NodeList<E>();
+		NodeList<E> img = NodeFacade.NodeList();
 		ctx.setNode(img);
 		if (n.getNodes() != null) {
 			List<E> nodes = new ArrayList<E>();
@@ -1242,7 +1244,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(NormalAnnotationExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		NormalAnnotationExpr img = new NormalAnnotationExpr();
+		NormalAnnotationExpr img = NodeFacade.NormalAnnotationExpr();
 		ctx.setNode(img);
 		if (n.getPairs() != null) {
 			img.setPairs((NodeList<MemberValuePair>) n.getPairs().accept(this,
@@ -1261,7 +1263,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(NullLiteralExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		NullLiteralExpr img = new NullLiteralExpr();
+		NullLiteralExpr img = NodeFacade.NullLiteralExpr();
 		ctx.setNode(img);
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
 		img.setPosBegin(n.getPosBegin());
@@ -1273,7 +1275,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ObjectCreationExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ObjectCreationExpr img = new ObjectCreationExpr();
+		ObjectCreationExpr img = NodeFacade.ObjectCreationExpr();
 		ctx.setNode(img);
 		if (n.getScope() != null) {
 			img.setScope((Expression) n.getScope().accept(this, ctx));
@@ -1301,7 +1303,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(PackageDeclaration n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		PackageDeclaration img = new PackageDeclaration();
+		PackageDeclaration img = NodeFacade.PackageDeclaration();
 		ctx.setNode(img);
 		if (n.getName() != null) {
 			img.setName((NameExpr) n.getName().accept(this, ctx));
@@ -1316,7 +1318,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(Parameter n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		Parameter img = new Parameter();
+		Parameter img = NodeFacade.Parameter();
 		ctx.setNode(img);
 		if (n.getModifiers() != null) {
 			img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
@@ -1340,7 +1342,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(PrimitiveType n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		PrimitiveType img = new PrimitiveType();
+		PrimitiveType img = NodeFacade.PrimitiveType();
 		ctx.setNode(img);
 		img.setType(n.getType());
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
@@ -1358,7 +1360,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(Project n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		Project img = new Project();
+		Project img = NodeFacade.Project();
 		ctx.setNode(img);
 		if (n.getCompilationUnits() != null) {
 			List<CompilationUnit> compilationUnits = new ArrayList<CompilationUnit>();
@@ -1383,7 +1385,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(QualifiedNameExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		QualifiedNameExpr img = new QualifiedNameExpr();
+		QualifiedNameExpr img = NodeFacade.QualifiedNameExpr();
 		ctx.setNode(img);
 		if (n.getQualifier() != null) {
 			img.setQualifier((NameExpr) n.getQualifier().accept(this, ctx));
@@ -1399,7 +1401,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ReferenceType n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ReferenceType img = new ReferenceType();
+		ReferenceType img = NodeFacade.ReferenceType();
 		ctx.setNode(img);
 		if (n.getType() != null) {
 			img.setType((Type) n.getType().accept(this, ctx));
@@ -1417,7 +1419,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ReturnStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ReturnStmt img = new ReturnStmt();
+		ReturnStmt img = NodeFacade.ReturnStmt();
 		ctx.setNode(img);
 		if (n.getExpression() != null) {
 			img.setExpression((Expression) n.getExpression().accept(this, ctx));
@@ -1433,7 +1435,8 @@ public class Identity implements GenericVisitor<Node, Context>,
 	public Node visit(SingleMemberAnnotationExpr n, Context ctx)
 			throws Exception {
 		Node node = ctx.getNode();
-		SingleMemberAnnotationExpr img = new SingleMemberAnnotationExpr();
+		SingleMemberAnnotationExpr img = NodeFacade
+				.SingleMemberAnnotationExpr();
 		ctx.setNode(img);
 		if (n.getMemberValue() != null) {
 			img.setMemberValue((Expression) n.getMemberValue()
@@ -1452,7 +1455,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(StringLiteralExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		StringLiteralExpr img = new StringLiteralExpr();
+		StringLiteralExpr img = NodeFacade.StringLiteralExpr();
 		ctx.setNode(img);
 		img.setValue(n.getValue());
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
@@ -1465,7 +1468,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(SuperExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		SuperExpr img = new SuperExpr();
+		SuperExpr img = NodeFacade.SuperExpr();
 		ctx.setNode(img);
 		if (n.getClassExpression() != null) {
 			img.setClassExpression((Expression) n.getClassExpression().accept(
@@ -1481,7 +1484,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(SwitchEntryStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		SwitchEntryStmt img = new SwitchEntryStmt();
+		SwitchEntryStmt img = NodeFacade.SwitchEntryStmt();
 		ctx.setNode(img);
 		if (n.getLabel() != null) {
 			img.setLabel((Expression) n.getLabel().accept(this, ctx));
@@ -1499,7 +1502,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(SwitchStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		SwitchStmt img = new SwitchStmt();
+		SwitchStmt img = NodeFacade.SwitchStmt();
 		ctx.setNode(img);
 		if (n.getSelector() != null) {
 			img.setSelector((Expression) n.getSelector().accept(this, ctx));
@@ -1518,7 +1521,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(SynchronizedStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		SynchronizedStmt img = new SynchronizedStmt();
+		SynchronizedStmt img = NodeFacade.SynchronizedStmt();
 		ctx.setNode(img);
 		if (n.getExpression() != null) {
 			img.setExpression((Expression) n.getExpression().accept(this, ctx));
@@ -1536,7 +1539,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ThisExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ThisExpr img = new ThisExpr();
+		ThisExpr img = NodeFacade.ThisExpr();
 		ctx.setNode(img);
 		if (n.getClassExpression() != null) {
 			img.setClassExpression((Expression) n.getClassExpression().accept(
@@ -1552,7 +1555,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(ThrowStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		ThrowStmt img = new ThrowStmt();
+		ThrowStmt img = NodeFacade.ThrowStmt();
 		ctx.setNode(img);
 		if (n.getExpression() != null) {
 			img.setExpression((Expression) n.getExpression().accept(this, ctx));
@@ -1567,7 +1570,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(TryStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		TryStmt img = new TryStmt();
+		TryStmt img = NodeFacade.TryStmt();
 		ctx.setNode(img);
 		if (n.getResources() != null) {
 			img.setResources((NodeList<VariableDeclarationExpr>) n
@@ -1594,7 +1597,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(TypeDeclarationStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		TypeDeclarationStmt img = new TypeDeclarationStmt();
+		TypeDeclarationStmt img = NodeFacade.TypeDeclarationStmt();
 		ctx.setNode(img);
 		if (n.getTypeDeclaration() != null) {
 			img.setTypeDeclaration((TypeDeclaration) n.getTypeDeclaration()
@@ -1610,7 +1613,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(TypeParameter n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		TypeParameter img = new TypeParameter();
+		TypeParameter img = NodeFacade.TypeParameter();
 		ctx.setNode(img);
 		img.setName(n.getName());
 		img.setTypeBound(copyClassOrInterfaceTypes(n.getTypeBound(), ctx));
@@ -1624,7 +1627,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(UnaryExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		UnaryExpr img = new UnaryExpr();
+		UnaryExpr img = NodeFacade.UnaryExpr();
 		ctx.setNode(img);
 		if (n.getExpression() != null) {
 			img.setExpression((Expression) n.getExpression().accept(this, ctx));
@@ -1645,7 +1648,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(VariableDeclarationExpr n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		VariableDeclarationExpr img = new VariableDeclarationExpr();
+		VariableDeclarationExpr img = NodeFacade.VariableDeclarationExpr();
 		ctx.setNode(img);
 		if (n.getModifiers() != null) {
 			img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
@@ -1667,7 +1670,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(VariableDeclarator n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		VariableDeclarator img = new VariableDeclarator();
+		VariableDeclarator img = NodeFacade.VariableDeclarator();
 		ctx.setNode(img);
 		if (n.getId() != null) {
 			img.setId((VariableDeclaratorId) n.getId().accept(this, ctx));
@@ -1685,7 +1688,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(VariableDeclaratorId n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		VariableDeclaratorId img = new VariableDeclaratorId();
+		VariableDeclaratorId img = NodeFacade.VariableDeclaratorId();
 		ctx.setNode(img);
 		img.setName(n.getName());
 		if (n.getSlots() != null) {
@@ -1701,7 +1704,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(VoidType n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		VoidType img = new VoidType();
+		VoidType img = NodeFacade.VoidType();
 		ctx.setNode(img);
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
 		img.setPosBegin(n.getPosBegin());
@@ -1713,7 +1716,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(WhileStmt n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		WhileStmt img = new WhileStmt();
+		WhileStmt img = NodeFacade.WhileStmt();
 		ctx.setNode(img);
 		if (n.getCondition() != null) {
 			img.setCondition((Expression) n.getCondition().accept(this, ctx));
@@ -1731,7 +1734,7 @@ public class Identity implements GenericVisitor<Node, Context>,
 	@Override
 	public Node visit(WildcardType n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
-		WildcardType img = new WildcardType();
+		WildcardType img = NodeFacade.WildcardType();
 		ctx.setNode(img);
 		if (n.getExtendsType() != null) {
 			img.setExtendsType((ReferenceType) n.getExtendsType().accept(this,

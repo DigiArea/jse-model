@@ -44,11 +44,11 @@ public abstract class Lambda extends Expression {
         this.parameters = parameters;
     }
 
-    public Lambda() {
+    Lambda() {
         super();
     }
 
-    public Lambda(NodeList<Parameter> parameters, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    Lambda(NodeList<Parameter> parameters, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.parameters = parameters;
     }

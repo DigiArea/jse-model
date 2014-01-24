@@ -295,7 +295,7 @@ public class NodeUtils {
 	 * @return the project
 	 */
 	public static Project mergeProjects(Project... projects) {
-		Project p = new Project();
+		Project p = NodeFacade.Project();
 		List<CompilationUnit> units = new ArrayList<CompilationUnit>();
 		p.setCompilationUnits(NodeFacade.NodeList(units));
 		for (Project project : projects) {

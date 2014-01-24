@@ -71,11 +71,11 @@ public final class ObjectCreationExpr extends Expression {
         this.anonymousClassBody = anonymousClassBody;
     }
 
-    public ObjectCreationExpr() {
+    ObjectCreationExpr() {
         super();
     }
 
-    public ObjectCreationExpr(Expression scope, ClassOrInterfaceType type, NodeList<Type> typeArgs, NodeList<Expression> args, NodeList<BodyDeclaration> anonymousClassBody, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ObjectCreationExpr(Expression scope, ClassOrInterfaceType type, NodeList<Type> typeArgs, NodeList<Expression> args, NodeList<BodyDeclaration> anonymousClassBody, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.scope = scope;
         this.type = type;

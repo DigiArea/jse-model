@@ -60,11 +60,11 @@ public final class ExplicitConstructorInvocationStmt extends Statement {
         this.args = args;
     }
 
-    public ExplicitConstructorInvocationStmt() {
+    ExplicitConstructorInvocationStmt() {
         super();
     }
 
-    public ExplicitConstructorInvocationStmt(NodeList<Type> typeArgs, boolean isThis, Expression expression, NodeList<Expression> args, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ExplicitConstructorInvocationStmt(NodeList<Type> typeArgs, boolean isThis, Expression expression, NodeList<Expression> args, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.typeArgs = typeArgs;
         this.isThis = isThis;

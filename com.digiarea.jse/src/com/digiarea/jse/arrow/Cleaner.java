@@ -18,6 +18,7 @@ import com.digiarea.jse.CompilationUnit;
 import com.digiarea.jse.ImportDeclaration;
 import com.digiarea.jse.NameExpr;
 import com.digiarea.jse.Node;
+import com.digiarea.jse.NodeFacade;
 import com.digiarea.jse.Project;
 import com.digiarea.jse.utils.NodeUtils;
 
@@ -58,7 +59,7 @@ public class Cleaner extends Identity {
 
 	@Override
 	public Project arrow(Project iProject) throws Exception {
-		Project img = new Project();
+		Project img = NodeFacade.Project();
 		Context ctx = new Context(img);
 		if (iProject.getCompilationUnits() != null) {
 			for (CompilationUnit unit : iProject.getCompilationUnits()) {

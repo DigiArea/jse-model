@@ -27,11 +27,11 @@ public abstract class BodyDeclaration extends Node {
         this.javaDoc = javaDoc;
     }
 
-    public BodyDeclaration() {
+    BodyDeclaration() {
         super();
     }
 
-    public BodyDeclaration(JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    BodyDeclaration(JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.javaDoc = javaDoc;
     }

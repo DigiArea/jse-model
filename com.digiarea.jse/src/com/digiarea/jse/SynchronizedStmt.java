@@ -40,11 +40,11 @@ public final class SynchronizedStmt extends Statement {
         this.block = block;
     }
 
-    public SynchronizedStmt() {
+    SynchronizedStmt() {
         super();
     }
 
-    public SynchronizedStmt(Expression expression, BlockStmt block, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    SynchronizedStmt(Expression expression, BlockStmt block, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.expression = expression;
         this.block = block;

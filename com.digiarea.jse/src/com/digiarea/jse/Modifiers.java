@@ -433,11 +433,11 @@ public class Modifiers extends Node {
         this.modifiers = modifiers;
     }
 
-    public Modifiers() {
+    Modifiers() {
         super();
     }
 
-    public Modifiers(int modifiers, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    Modifiers(int modifiers, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.modifiers = modifiers;
     }

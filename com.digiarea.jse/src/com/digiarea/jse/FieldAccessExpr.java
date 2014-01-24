@@ -49,11 +49,11 @@ public final class FieldAccessExpr extends Expression {
         this.field = field;
     }
 
-    public FieldAccessExpr() {
+    FieldAccessExpr() {
         super();
     }
 
-    public FieldAccessExpr(Expression scope, NodeList<Type> typeArgs, String field, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    FieldAccessExpr(Expression scope, NodeList<Type> typeArgs, String field, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.scope = scope;
         this.typeArgs = typeArgs;

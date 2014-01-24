@@ -50,11 +50,11 @@ public final class EnumConstantDeclaration extends BodyDeclaration {
         this.classBody = classBody;
     }
 
-    public EnumConstantDeclaration() {
+    EnumConstantDeclaration() {
         super();
     }
 
-    public EnumConstantDeclaration(String name, NodeList<Expression> args, NodeList<BodyDeclaration> classBody, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    EnumConstantDeclaration(String name, NodeList<Expression> args, NodeList<BodyDeclaration> classBody, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(javaDoc, annotations, posBegin, posEnd);
         this.name = name;
         this.args = args;

@@ -53,11 +53,11 @@ public final class ClassDeclaration extends TypeDeclaration {
         this.implementsList = implementsList;
     }
 
-    public ClassDeclaration() {
+    ClassDeclaration() {
         super();
     }
 
-    public ClassDeclaration(NodeList<TypeParameter> typeParameters, ClassOrInterfaceType extendsType, NodeList<ClassOrInterfaceType> implementsList, Modifiers modifiers, String name, NodeList<BodyDeclaration> members, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ClassDeclaration(NodeList<TypeParameter> typeParameters, ClassOrInterfaceType extendsType, NodeList<ClassOrInterfaceType> implementsList, Modifiers modifiers, String name, NodeList<BodyDeclaration> members, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(modifiers, name, members, javaDoc, annotations, posBegin, posEnd);
         this.typeParameters = typeParameters;
         this.extendsType = extendsType;

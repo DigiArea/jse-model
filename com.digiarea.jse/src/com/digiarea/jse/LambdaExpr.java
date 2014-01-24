@@ -30,11 +30,11 @@ public final class LambdaExpr extends Lambda {
         this.expression = expression;
     }
 
-    public LambdaExpr() {
+    LambdaExpr() {
         super();
     }
 
-    public LambdaExpr(Expression expression, NodeList<Parameter> parameters, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    LambdaExpr(Expression expression, NodeList<Parameter> parameters, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(parameters, annotations, posBegin, posEnd);
         this.expression = expression;
     }

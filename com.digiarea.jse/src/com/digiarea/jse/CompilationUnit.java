@@ -72,11 +72,11 @@ public final class CompilationUnit extends Node {
         this.name = name;
     }
 
-    public CompilationUnit() {
+    CompilationUnit() {
         super();
     }
 
-    public CompilationUnit(PackageDeclaration packageDeclaration, NodeList<ImportDeclaration> imports, NodeList<TypeDeclaration> types, NodeList<Comment> comments, String name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    CompilationUnit(PackageDeclaration packageDeclaration, NodeList<ImportDeclaration> imports, NodeList<TypeDeclaration> types, NodeList<Comment> comments, String name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.packageDeclaration = packageDeclaration;
         this.imports = imports;

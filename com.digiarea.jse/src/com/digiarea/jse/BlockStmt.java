@@ -28,11 +28,11 @@ public final class BlockStmt extends Statement {
         this.statements = statements;
     }
 
-    public BlockStmt() {
+    BlockStmt() {
         super();
     }
 
-    public BlockStmt(NodeList<Statement> statements, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    BlockStmt(NodeList<Statement> statements, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.statements = statements;
     }

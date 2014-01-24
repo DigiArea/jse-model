@@ -38,11 +38,11 @@ public final class ArrayAccessExpr extends Expression {
         this.index = index;
     }
 
-    public ArrayAccessExpr() {
+    ArrayAccessExpr() {
         super();
     }
 
-    public ArrayAccessExpr(Expression name, Expression index, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ArrayAccessExpr(Expression name, Expression index, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.name = name;
         this.index = index;

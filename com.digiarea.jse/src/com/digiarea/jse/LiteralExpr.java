@@ -16,11 +16,11 @@ import com.digiarea.jse.NodeList;
 
 public abstract class LiteralExpr extends Expression {
 
-    public LiteralExpr() {
+    LiteralExpr() {
         super();
     }
 
-    public LiteralExpr(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    LiteralExpr(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
     }
 

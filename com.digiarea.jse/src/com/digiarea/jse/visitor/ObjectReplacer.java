@@ -14,6 +14,7 @@ import com.digiarea.jse.Node;
 import java.util.Map;
 import com.digiarea.jse.visitor.GenericVisitor;
 import com.digiarea.jse.AnnotationDeclaration;
+import com.digiarea.jse.NodeFacade;
 import com.digiarea.jse.Modifiers;
 import com.digiarea.jse.BodyDeclaration;
 import com.digiarea.jse.NodeList;
@@ -123,7 +124,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        AnnotationDeclaration img = new AnnotationDeclaration();
+        AnnotationDeclaration img = NodeFacade.AnnotationDeclaration();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -159,7 +160,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        AnnotationMemberDeclaration img = new AnnotationMemberDeclaration();
+        AnnotationMemberDeclaration img = NodeFacade.AnnotationMemberDeclaration();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -198,7 +199,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ArrayAccessExpr img = new ArrayAccessExpr();
+        ArrayAccessExpr img = NodeFacade.ArrayAccessExpr();
         if (n.getName() != null) {
             img.setName((Expression) n.getName().accept(this, ctx));
         }
@@ -226,7 +227,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ArrayCreationExpr img = new ArrayCreationExpr();
+        ArrayCreationExpr img = NodeFacade.ArrayCreationExpr();
         if (n.getType() != null) {
             img.setType((Type) n.getType().accept(this, ctx));
         }
@@ -257,7 +258,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ArrayInitializerExpr img = new ArrayInitializerExpr();
+        ArrayInitializerExpr img = NodeFacade.ArrayInitializerExpr();
         if (n.getValues() != null) {
             img.setValues((NodeList<Expression>) n.getValues().accept(this, ctx));
         }
@@ -282,7 +283,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ArraySlot img = new ArraySlot();
+        ArraySlot img = NodeFacade.ArraySlot();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -307,7 +308,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        AssertStmt img = new AssertStmt();
+        AssertStmt img = NodeFacade.AssertStmt();
         if (n.getCheck() != null) {
             img.setCheck((Expression) n.getCheck().accept(this, ctx));
         }
@@ -335,7 +336,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        AssignExpr img = new AssignExpr();
+        AssignExpr img = NodeFacade.AssignExpr();
         if (n.getTarget() != null) {
             img.setTarget((Expression) n.getTarget().accept(this, ctx));
         }
@@ -373,7 +374,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        BinaryExpr img = new BinaryExpr();
+        BinaryExpr img = NodeFacade.BinaryExpr();
         if (n.getLeft() != null) {
             img.setLeft((Expression) n.getLeft().accept(this, ctx));
         }
@@ -411,7 +412,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        BlockComment img = new BlockComment();
+        BlockComment img = NodeFacade.BlockComment();
         if (ctx.containsKey(n.getContent())) {
             img.setContent((String) ctx.get(n.getContent()));
         } else {
@@ -438,7 +439,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        BlockStmt img = new BlockStmt();
+        BlockStmt img = NodeFacade.BlockStmt();
         if (n.getStatements() != null) {
             img.setStatements((NodeList<Statement>) n.getStatements().accept(this, ctx));
         }
@@ -463,7 +464,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        BooleanLiteralExpr img = new BooleanLiteralExpr();
+        BooleanLiteralExpr img = NodeFacade.BooleanLiteralExpr();
         if (ctx.containsKey(n.isValue())) {
             img.setValue((boolean) ctx.get(n.isValue()));
         } else {
@@ -490,7 +491,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        BreakStmt img = new BreakStmt();
+        BreakStmt img = NodeFacade.BreakStmt();
         if (ctx.containsKey(n.getId())) {
             img.setId((String) ctx.get(n.getId()));
         } else {
@@ -517,7 +518,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        CastExpr img = new CastExpr();
+        CastExpr img = NodeFacade.CastExpr();
         if (n.getTypes() != null) {
             img.setTypes((NodeList<Type>) n.getTypes().accept(this, ctx));
         }
@@ -545,7 +546,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        CatchClause img = new CatchClause();
+        CatchClause img = NodeFacade.CatchClause();
         if (ctx.containsKey(n.isFinal())) {
             img.setFinal((boolean) ctx.get(n.isFinal()));
         } else {
@@ -583,7 +584,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        CharLiteralExpr img = new CharLiteralExpr();
+        CharLiteralExpr img = NodeFacade.CharLiteralExpr();
         if (ctx.containsKey(n.getValue())) {
             img.setValue((String) ctx.get(n.getValue()));
         } else {
@@ -610,7 +611,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ClassDeclaration img = new ClassDeclaration();
+        ClassDeclaration img = NodeFacade.ClassDeclaration();
         if (n.getTypeParameters() != null) {
             img.setTypeParameters((NodeList<TypeParameter>) n.getTypeParameters().accept(this, ctx));
         }
@@ -655,7 +656,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ClassExpr img = new ClassExpr();
+        ClassExpr img = NodeFacade.ClassExpr();
         if (n.getType() != null) {
             img.setType((Type) n.getType().accept(this, ctx));
         }
@@ -680,7 +681,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ClassOrInterfaceType img = new ClassOrInterfaceType();
+        ClassOrInterfaceType img = NodeFacade.ClassOrInterfaceType();
         if (n.getScope() != null) {
             img.setScope((ClassOrInterfaceType) n.getScope().accept(this, ctx));
         }
@@ -711,7 +712,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        CompilationUnit img = new CompilationUnit();
+        CompilationUnit img = NodeFacade.CompilationUnit();
         if (n.getPackageDeclaration() != null) {
             img.setPackageDeclaration((PackageDeclaration) n.getPackageDeclaration().accept(this, ctx));
         }
@@ -750,7 +751,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ConditionalExpr img = new ConditionalExpr();
+        ConditionalExpr img = NodeFacade.ConditionalExpr();
         if (n.getCondition() != null) {
             img.setCondition((Expression) n.getCondition().accept(this, ctx));
         }
@@ -781,7 +782,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ConstructorDeclaration img = new ConstructorDeclaration();
+        ConstructorDeclaration img = NodeFacade.ConstructorDeclaration();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -826,7 +827,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ContinueStmt img = new ContinueStmt();
+        ContinueStmt img = NodeFacade.ContinueStmt();
         if (ctx.containsKey(n.getId())) {
             img.setId((String) ctx.get(n.getId()));
         } else {
@@ -853,7 +854,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        DoStmt img = new DoStmt();
+        DoStmt img = NodeFacade.DoStmt();
         if (n.getBody() != null) {
             img.setBody((Statement) n.getBody().accept(this, ctx));
         }
@@ -881,7 +882,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        DoubleLiteralExpr img = new DoubleLiteralExpr();
+        DoubleLiteralExpr img = NodeFacade.DoubleLiteralExpr();
         if (ctx.containsKey(n.getValue())) {
             img.setValue((String) ctx.get(n.getValue()));
         } else {
@@ -908,7 +909,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        Ellipsis img = new Ellipsis();
+        Ellipsis img = NodeFacade.Ellipsis();
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
         }
@@ -930,7 +931,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        EmptyMemberDeclaration img = new EmptyMemberDeclaration();
+        EmptyMemberDeclaration img = NodeFacade.EmptyMemberDeclaration();
         if (n.getJavaDoc() != null) {
             img.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, ctx));
         }
@@ -955,7 +956,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        EmptyStmt img = new EmptyStmt();
+        EmptyStmt img = NodeFacade.EmptyStmt();
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
         }
@@ -977,7 +978,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        EmptyTypeDeclaration img = new EmptyTypeDeclaration();
+        EmptyTypeDeclaration img = NodeFacade.EmptyTypeDeclaration();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -1013,7 +1014,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        EnclosedExpr img = new EnclosedExpr();
+        EnclosedExpr img = NodeFacade.EnclosedExpr();
         if (n.getInner() != null) {
             img.setInner((Expression) n.getInner().accept(this, ctx));
         }
@@ -1038,7 +1039,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        EnumConstantDeclaration img = new EnumConstantDeclaration();
+        EnumConstantDeclaration img = NodeFacade.EnumConstantDeclaration();
         if (ctx.containsKey(n.getName())) {
             img.setName((String) ctx.get(n.getName()));
         } else {
@@ -1074,7 +1075,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        EnumDeclaration img = new EnumDeclaration();
+        EnumDeclaration img = NodeFacade.EnumDeclaration();
         if (n.getImplementsList() != null) {
             img.setImplementsList((NodeList<ClassOrInterfaceType>) n.getImplementsList().accept(this, ctx));
         }
@@ -1116,7 +1117,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ExplicitConstructorInvocationStmt img = new ExplicitConstructorInvocationStmt();
+        ExplicitConstructorInvocationStmt img = NodeFacade.ExplicitConstructorInvocationStmt();
         if (n.getTypeArgs() != null) {
             img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
         }
@@ -1152,7 +1153,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ExpressionStmt img = new ExpressionStmt();
+        ExpressionStmt img = NodeFacade.ExpressionStmt();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -1177,7 +1178,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        FieldAccessExpr img = new FieldAccessExpr();
+        FieldAccessExpr img = NodeFacade.FieldAccessExpr();
         if (n.getScope() != null) {
             img.setScope((Expression) n.getScope().accept(this, ctx));
         }
@@ -1210,7 +1211,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        FieldDeclaration img = new FieldDeclaration();
+        FieldDeclaration img = NodeFacade.FieldDeclaration();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -1244,7 +1245,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ForeachStmt img = new ForeachStmt();
+        ForeachStmt img = NodeFacade.ForeachStmt();
         if (n.getVariable() != null) {
             img.setVariable((VariableDeclarationExpr) n.getVariable().accept(this, ctx));
         }
@@ -1275,7 +1276,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ForStmt img = new ForStmt();
+        ForStmt img = NodeFacade.ForStmt();
         if (n.getInit() != null) {
             img.setInit((NodeList<Expression>) n.getInit().accept(this, ctx));
         }
@@ -1309,7 +1310,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        IfStmt img = new IfStmt();
+        IfStmt img = NodeFacade.IfStmt();
         if (n.getCondition() != null) {
             img.setCondition((Expression) n.getCondition().accept(this, ctx));
         }
@@ -1340,7 +1341,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ImportDeclaration img = new ImportDeclaration();
+        ImportDeclaration img = NodeFacade.ImportDeclaration();
         if (n.getName() != null) {
             img.setName((NameExpr) n.getName().accept(this, ctx));
         }
@@ -1375,7 +1376,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        InitializerDeclaration img = new InitializerDeclaration();
+        InitializerDeclaration img = NodeFacade.InitializerDeclaration();
         if (ctx.containsKey(n.isStatic())) {
             img.setStatic((boolean) ctx.get(n.isStatic()));
         } else {
@@ -1408,7 +1409,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        InstanceOfExpr img = new InstanceOfExpr();
+        InstanceOfExpr img = NodeFacade.InstanceOfExpr();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -1436,7 +1437,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        IntegerLiteralExpr img = new IntegerLiteralExpr();
+        IntegerLiteralExpr img = NodeFacade.IntegerLiteralExpr();
         if (ctx.containsKey(n.getValue())) {
             img.setValue((String) ctx.get(n.getValue()));
         } else {
@@ -1463,7 +1464,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        InterfaceDeclaration img = new InterfaceDeclaration();
+        InterfaceDeclaration img = NodeFacade.InterfaceDeclaration();
         if (n.getTypeParameters() != null) {
             img.setTypeParameters((NodeList<TypeParameter>) n.getTypeParameters().accept(this, ctx));
         }
@@ -1505,7 +1506,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        JavadocComment img = new JavadocComment();
+        JavadocComment img = NodeFacade.JavadocComment();
         if (ctx.containsKey(n.getContent())) {
             img.setContent((String) ctx.get(n.getContent()));
         } else {
@@ -1532,7 +1533,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        LabeledStmt img = new LabeledStmt();
+        LabeledStmt img = NodeFacade.LabeledStmt();
         if (ctx.containsKey(n.getLabel())) {
             img.setLabel((String) ctx.get(n.getLabel()));
         } else {
@@ -1562,7 +1563,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        LambdaBlock img = new LambdaBlock();
+        LambdaBlock img = NodeFacade.LambdaBlock();
         if (n.getBlockStmt() != null) {
             img.setBlockStmt((BlockStmt) n.getBlockStmt().accept(this, ctx));
         }
@@ -1590,7 +1591,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        LambdaExpr img = new LambdaExpr();
+        LambdaExpr img = NodeFacade.LambdaExpr();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -1618,7 +1619,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        LineComment img = new LineComment();
+        LineComment img = NodeFacade.LineComment();
         if (ctx.containsKey(n.getContent())) {
             img.setContent((String) ctx.get(n.getContent()));
         } else {
@@ -1645,7 +1646,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        LongLiteralExpr img = new LongLiteralExpr();
+        LongLiteralExpr img = NodeFacade.LongLiteralExpr();
         if (ctx.containsKey(n.getValue())) {
             img.setValue((String) ctx.get(n.getValue()));
         } else {
@@ -1672,7 +1673,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        MarkerAnnotationExpr img = new MarkerAnnotationExpr();
+        MarkerAnnotationExpr img = NodeFacade.MarkerAnnotationExpr();
         if (n.getName() != null) {
             img.setName((NameExpr) n.getName().accept(this, ctx));
         }
@@ -1697,7 +1698,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        MemberValuePair img = new MemberValuePair();
+        MemberValuePair img = NodeFacade.MemberValuePair();
         if (ctx.containsKey(n.getName())) {
             img.setName((String) ctx.get(n.getName()));
         } else {
@@ -1727,7 +1728,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        MethodCallExpr img = new MethodCallExpr();
+        MethodCallExpr img = NodeFacade.MethodCallExpr();
         if (n.getScope() != null) {
             img.setScope((Expression) n.getScope().accept(this, ctx));
         }
@@ -1763,7 +1764,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        MethodDeclaration img = new MethodDeclaration();
+        MethodDeclaration img = NodeFacade.MethodDeclaration();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -1814,7 +1815,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        MethodExprRef img = new MethodExprRef();
+        MethodExprRef img = NodeFacade.MethodExprRef();
         if (n.getScope() != null) {
             img.setScope((Expression) n.getScope().accept(this, ctx));
         }
@@ -1847,7 +1848,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        MethodRef img = new MethodRef();
+        MethodRef img = NodeFacade.MethodRef();
         if (n.getTypeArgs() != null) {
             img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
         }
@@ -1877,7 +1878,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        MethodTypeRef img = new MethodTypeRef();
+        MethodTypeRef img = NodeFacade.MethodTypeRef();
         if (n.getType() != null) {
             img.setType((Type) n.getType().accept(this, ctx));
         }
@@ -1910,7 +1911,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        Modifiers img = new Modifiers();
+        Modifiers img = NodeFacade.Modifiers();
         if (ctx.containsKey(n.getModifiers())) {
             img.setModifiers((int) ctx.get(n.getModifiers()));
         } else {
@@ -1937,7 +1938,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        NameExpr img = new NameExpr();
+        NameExpr img = NodeFacade.NameExpr();
         if (ctx.containsKey(n.getName())) {
             img.setName((String) ctx.get(n.getName()));
         } else {
@@ -1964,7 +1965,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        NodeList<E> img = new NodeList<E>();
+        NodeList<E> img = NodeFacade.NodeList();
         if (n.getNodes() != null) {
             List<E> nodes = new ArrayList<E>();
             for (E item : n.getNodes()) {
@@ -1998,7 +1999,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        NormalAnnotationExpr img = new NormalAnnotationExpr();
+        NormalAnnotationExpr img = NodeFacade.NormalAnnotationExpr();
         if (n.getPairs() != null) {
             img.setPairs((NodeList<MemberValuePair>) n.getPairs().accept(this, ctx));
         }
@@ -2026,7 +2027,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        NullLiteralExpr img = new NullLiteralExpr();
+        NullLiteralExpr img = NodeFacade.NullLiteralExpr();
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
         }
@@ -2048,7 +2049,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ObjectCreationExpr img = new ObjectCreationExpr();
+        ObjectCreationExpr img = NodeFacade.ObjectCreationExpr();
         if (n.getScope() != null) {
             img.setScope((Expression) n.getScope().accept(this, ctx));
         }
@@ -2085,7 +2086,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        PackageDeclaration img = new PackageDeclaration();
+        PackageDeclaration img = NodeFacade.PackageDeclaration();
         if (n.getName() != null) {
             img.setName((NameExpr) n.getName().accept(this, ctx));
         }
@@ -2110,7 +2111,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        Parameter img = new Parameter();
+        Parameter img = NodeFacade.Parameter();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -2144,7 +2145,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        PrimitiveType img = new PrimitiveType();
+        PrimitiveType img = NodeFacade.PrimitiveType();
         if (ctx.containsKey(n.getType())) {
             img.setType((PrimitiveType.Primitive) ctx.get(n.getType()));
         } else {
@@ -2176,7 +2177,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        Project img = new Project();
+        Project img = NodeFacade.Project();
         if (n.getCompilationUnits() != null) {
             img.setCompilationUnits((NodeList<CompilationUnit>) n.getCompilationUnits().accept(this, ctx));
         }
@@ -2201,7 +2202,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        QualifiedNameExpr img = new QualifiedNameExpr();
+        QualifiedNameExpr img = NodeFacade.QualifiedNameExpr();
         if (n.getQualifier() != null) {
             img.setQualifier((NameExpr) n.getQualifier().accept(this, ctx));
         }
@@ -2231,7 +2232,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ReferenceType img = new ReferenceType();
+        ReferenceType img = NodeFacade.ReferenceType();
         if (n.getType() != null) {
             img.setType((Type) n.getType().accept(this, ctx));
         }
@@ -2259,7 +2260,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ReturnStmt img = new ReturnStmt();
+        ReturnStmt img = NodeFacade.ReturnStmt();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -2284,7 +2285,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        SingleMemberAnnotationExpr img = new SingleMemberAnnotationExpr();
+        SingleMemberAnnotationExpr img = NodeFacade.SingleMemberAnnotationExpr();
         if (n.getMemberValue() != null) {
             img.setMemberValue((Expression) n.getMemberValue().accept(this, ctx));
         }
@@ -2312,7 +2313,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        StringLiteralExpr img = new StringLiteralExpr();
+        StringLiteralExpr img = NodeFacade.StringLiteralExpr();
         if (ctx.containsKey(n.getValue())) {
             img.setValue((String) ctx.get(n.getValue()));
         } else {
@@ -2339,7 +2340,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        SuperExpr img = new SuperExpr();
+        SuperExpr img = NodeFacade.SuperExpr();
         if (n.getClassExpression() != null) {
             img.setClassExpression((Expression) n.getClassExpression().accept(this, ctx));
         }
@@ -2364,7 +2365,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        SwitchEntryStmt img = new SwitchEntryStmt();
+        SwitchEntryStmt img = NodeFacade.SwitchEntryStmt();
         if (n.getLabel() != null) {
             img.setLabel((Expression) n.getLabel().accept(this, ctx));
         }
@@ -2392,7 +2393,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        SwitchStmt img = new SwitchStmt();
+        SwitchStmt img = NodeFacade.SwitchStmt();
         if (n.getSelector() != null) {
             img.setSelector((Expression) n.getSelector().accept(this, ctx));
         }
@@ -2420,7 +2421,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        SynchronizedStmt img = new SynchronizedStmt();
+        SynchronizedStmt img = NodeFacade.SynchronizedStmt();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -2448,7 +2449,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ThisExpr img = new ThisExpr();
+        ThisExpr img = NodeFacade.ThisExpr();
         if (n.getClassExpression() != null) {
             img.setClassExpression((Expression) n.getClassExpression().accept(this, ctx));
         }
@@ -2473,7 +2474,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        ThrowStmt img = new ThrowStmt();
+        ThrowStmt img = NodeFacade.ThrowStmt();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -2498,7 +2499,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        TryStmt img = new TryStmt();
+        TryStmt img = NodeFacade.TryStmt();
         if (n.getResources() != null) {
             img.setResources((NodeList<VariableDeclarationExpr>) n.getResources().accept(this, ctx));
         }
@@ -2532,7 +2533,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        TypeDeclarationStmt img = new TypeDeclarationStmt();
+        TypeDeclarationStmt img = NodeFacade.TypeDeclarationStmt();
         if (n.getTypeDeclaration() != null) {
             img.setTypeDeclaration((TypeDeclaration) n.getTypeDeclaration().accept(this, ctx));
         }
@@ -2557,7 +2558,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        TypeParameter img = new TypeParameter();
+        TypeParameter img = NodeFacade.TypeParameter();
         if (ctx.containsKey(n.getName())) {
             img.setName((String) ctx.get(n.getName()));
         } else {
@@ -2587,7 +2588,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        UnaryExpr img = new UnaryExpr();
+        UnaryExpr img = NodeFacade.UnaryExpr();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -2622,7 +2623,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        VariableDeclarationExpr img = new VariableDeclarationExpr();
+        VariableDeclarationExpr img = NodeFacade.VariableDeclarationExpr();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -2653,7 +2654,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        VariableDeclarator img = new VariableDeclarator();
+        VariableDeclarator img = NodeFacade.VariableDeclarator();
         if (n.getId() != null) {
             img.setId((VariableDeclaratorId) n.getId().accept(this, ctx));
         }
@@ -2681,7 +2682,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        VariableDeclaratorId img = new VariableDeclaratorId();
+        VariableDeclaratorId img = NodeFacade.VariableDeclaratorId();
         if (ctx.containsKey(n.getName())) {
             img.setName((String) ctx.get(n.getName()));
         } else {
@@ -2711,7 +2712,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        VoidType img = new VoidType();
+        VoidType img = NodeFacade.VoidType();
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
         }
@@ -2733,7 +2734,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        WhileStmt img = new WhileStmt();
+        WhileStmt img = NodeFacade.WhileStmt();
         if (n.getCondition() != null) {
             img.setCondition((Expression) n.getCondition().accept(this, ctx));
         }
@@ -2761,7 +2762,7 @@ public class ObjectReplacer implements GenericVisitor<Node, Map<Object, Object>>
         if (ctx.containsKey(n)) {
             return (Node) ctx.get(n);
         }
-        WildcardType img = new WildcardType();
+        WildcardType img = NodeFacade.WildcardType();
         if (n.getExtendsType() != null) {
             img.setExtendsType((ReferenceType) n.getExtendsType().accept(this, ctx));
         }

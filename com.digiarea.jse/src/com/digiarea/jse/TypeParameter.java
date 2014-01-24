@@ -39,11 +39,11 @@ public final class TypeParameter extends Node {
         this.typeBound = typeBound;
     }
 
-    public TypeParameter() {
+    TypeParameter() {
         super();
     }
 
-    public TypeParameter(String name, NodeList<ClassOrInterfaceType> typeBound, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    TypeParameter(String name, NodeList<ClassOrInterfaceType> typeBound, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.name = name;
         this.typeBound = typeBound;

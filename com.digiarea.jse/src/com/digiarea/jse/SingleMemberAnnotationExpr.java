@@ -29,11 +29,11 @@ public final class SingleMemberAnnotationExpr extends AnnotationExpr {
         this.memberValue = memberValue;
     }
 
-    public SingleMemberAnnotationExpr() {
+    SingleMemberAnnotationExpr() {
         super();
     }
 
-    public SingleMemberAnnotationExpr(Expression memberValue, NameExpr name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    SingleMemberAnnotationExpr(Expression memberValue, NameExpr name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(name, annotations, posBegin, posEnd);
         this.memberValue = memberValue;
     }

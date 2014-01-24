@@ -84,11 +84,11 @@ public final class ConstructorDeclaration extends BodyDeclaration {
         this.block = block;
     }
 
-    public ConstructorDeclaration() {
+    ConstructorDeclaration() {
         super();
     }
 
-    public ConstructorDeclaration(Modifiers modifiers, NodeList<TypeParameter> typeParameters, String name, NodeList<Parameter> parameters, NodeList<ClassOrInterfaceType> throwsList, BlockStmt block, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ConstructorDeclaration(Modifiers modifiers, NodeList<TypeParameter> typeParameters, String name, NodeList<Parameter> parameters, NodeList<ClassOrInterfaceType> throwsList, BlockStmt block, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(javaDoc, annotations, posBegin, posEnd);
         this.modifiers = modifiers;
         this.typeParameters = typeParameters;

@@ -126,11 +126,11 @@ public class NodeList<E extends Node> extends Node implements List<E> {
         this.nodes = nodes;
     }
 
-    public NodeList() {
+    NodeList() {
         super();
     }
 
-    public NodeList(List<E> nodes, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    NodeList(List<E> nodes, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.nodes = nodes;
     }

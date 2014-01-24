@@ -187,7 +187,7 @@ public class Resolver implements Arrow<Project, Project> {
 
 		@Override
 		public Project arrow(Project iProject) throws Exception {
-			Project img = new Project();
+			Project img = NodeFacade.Project();
 			Context ctx = new Context(img);
 			ResolvedData resolve = new ResolverVisitor().resolve(iProject);
 			ctx.setObject(resolve);
@@ -413,7 +413,7 @@ public class Resolver implements Arrow<Project, Project> {
 
 		@Override
 		public Project arrow(Project iProject) throws Exception {
-			Project img = new Project();
+			Project img = NodeFacade.Project();
 			Context ctx = new Context(img);
 			ctx.setObject(new ResolverVisitor().resolve(iProject));
 			if (iProject.getCompilationUnits() != null) {

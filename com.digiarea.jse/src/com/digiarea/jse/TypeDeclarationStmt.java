@@ -29,11 +29,11 @@ public final class TypeDeclarationStmt extends Statement {
         this.typeDeclaration = typeDeclaration;
     }
 
-    public TypeDeclarationStmt() {
+    TypeDeclarationStmt() {
         super();
     }
 
-    public TypeDeclarationStmt(TypeDeclaration typeDeclaration, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    TypeDeclarationStmt(TypeDeclaration typeDeclaration, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.typeDeclaration = typeDeclaration;
     }

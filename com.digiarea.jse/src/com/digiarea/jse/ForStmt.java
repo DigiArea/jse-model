@@ -59,11 +59,11 @@ public final class ForStmt extends Statement {
         this.body = body;
     }
 
-    public ForStmt() {
+    ForStmt() {
         super();
     }
 
-    public ForStmt(NodeList<Expression> init, Expression compare, NodeList<Expression> update, Statement body, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ForStmt(NodeList<Expression> init, Expression compare, NodeList<Expression> update, Statement body, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.init = init;
         this.compare = compare;

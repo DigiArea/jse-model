@@ -28,11 +28,11 @@ public final class BreakStmt extends Statement {
         this.id = id;
     }
 
-    public BreakStmt() {
+    BreakStmt() {
         super();
     }
 
-    public BreakStmt(String id, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    BreakStmt(String id, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.id = id;
     }

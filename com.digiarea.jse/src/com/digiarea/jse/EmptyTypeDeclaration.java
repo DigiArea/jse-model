@@ -21,11 +21,11 @@ import com.digiarea.jse.visitor.GenericVisitor;
 
 public final class EmptyTypeDeclaration extends TypeDeclaration {
 
-    public EmptyTypeDeclaration() {
+    EmptyTypeDeclaration() {
         super();
     }
 
-    public EmptyTypeDeclaration(Modifiers modifiers, String name, NodeList<BodyDeclaration> members, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    EmptyTypeDeclaration(Modifiers modifiers, String name, NodeList<BodyDeclaration> members, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(modifiers, name, members, javaDoc, annotations, posBegin, posEnd);
     }
 

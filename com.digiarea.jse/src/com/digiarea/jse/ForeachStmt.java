@@ -50,11 +50,11 @@ public final class ForeachStmt extends Statement {
         this.body = body;
     }
 
-    public ForeachStmt() {
+    ForeachStmt() {
         super();
     }
 
-    public ForeachStmt(VariableDeclarationExpr variable, Expression iterable, Statement body, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ForeachStmt(VariableDeclarationExpr variable, Expression iterable, Statement body, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.variable = variable;
         this.iterable = iterable;

@@ -90,11 +90,11 @@ public final class UnaryExpr extends Expression {
         this.operator = operator;
     }
 
-    public UnaryExpr() {
+    UnaryExpr() {
         super();
     }
 
-    public UnaryExpr(Expression expression, UnaryExpr.UnaryOperator operator, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    UnaryExpr(Expression expression, UnaryExpr.UnaryOperator operator, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.expression = expression;
         this.operator = operator;

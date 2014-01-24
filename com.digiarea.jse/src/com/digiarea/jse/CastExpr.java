@@ -44,11 +44,11 @@ public final class CastExpr extends Expression {
         this.expression = expression;
     }
 
-    public CastExpr() {
+    CastExpr() {
         super();
     }
 
-    public CastExpr(NodeList<Type> types, Expression expression, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    CastExpr(NodeList<Type> types, Expression expression, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.types = types;
         this.expression = expression;

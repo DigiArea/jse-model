@@ -13,6 +13,7 @@ package com.digiarea.jse.visitor;
 import com.digiarea.jse.Node;
 import com.digiarea.jse.visitor.GenericVisitor;
 import com.digiarea.jse.AnnotationDeclaration;
+import com.digiarea.jse.NodeFacade;
 import com.digiarea.jse.Modifiers;
 import com.digiarea.jse.BodyDeclaration;
 import com.digiarea.jse.NodeList;
@@ -119,7 +120,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(AnnotationDeclaration n, C ctx) throws Exception {
-        AnnotationDeclaration img = new AnnotationDeclaration();
+        AnnotationDeclaration img = NodeFacade.AnnotationDeclaration();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -140,7 +141,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(AnnotationMemberDeclaration n, C ctx) throws Exception {
-        AnnotationMemberDeclaration img = new AnnotationMemberDeclaration();
+        AnnotationMemberDeclaration img = NodeFacade.AnnotationMemberDeclaration();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -164,7 +165,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ArrayAccessExpr n, C ctx) throws Exception {
-        ArrayAccessExpr img = new ArrayAccessExpr();
+        ArrayAccessExpr img = NodeFacade.ArrayAccessExpr();
         if (n.getName() != null) {
             img.setName((Expression) n.getName().accept(this, ctx));
         }
@@ -181,7 +182,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ArrayCreationExpr n, C ctx) throws Exception {
-        ArrayCreationExpr img = new ArrayCreationExpr();
+        ArrayCreationExpr img = NodeFacade.ArrayCreationExpr();
         if (n.getType() != null) {
             img.setType((Type) n.getType().accept(this, ctx));
         }
@@ -201,7 +202,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ArrayInitializerExpr n, C ctx) throws Exception {
-        ArrayInitializerExpr img = new ArrayInitializerExpr();
+        ArrayInitializerExpr img = NodeFacade.ArrayInitializerExpr();
         if (n.getValues() != null) {
             img.setValues((NodeList<Expression>) n.getValues().accept(this, ctx));
         }
@@ -215,7 +216,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ArraySlot n, C ctx) throws Exception {
-        ArraySlot img = new ArraySlot();
+        ArraySlot img = NodeFacade.ArraySlot();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -229,7 +230,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(AssertStmt n, C ctx) throws Exception {
-        AssertStmt img = new AssertStmt();
+        AssertStmt img = NodeFacade.AssertStmt();
         if (n.getCheck() != null) {
             img.setCheck((Expression) n.getCheck().accept(this, ctx));
         }
@@ -246,7 +247,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(AssignExpr n, C ctx) throws Exception {
-        AssignExpr img = new AssignExpr();
+        AssignExpr img = NodeFacade.AssignExpr();
         if (n.getTarget() != null) {
             img.setTarget((Expression) n.getTarget().accept(this, ctx));
         }
@@ -269,7 +270,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(BinaryExpr n, C ctx) throws Exception {
-        BinaryExpr img = new BinaryExpr();
+        BinaryExpr img = NodeFacade.BinaryExpr();
         if (n.getLeft() != null) {
             img.setLeft((Expression) n.getLeft().accept(this, ctx));
         }
@@ -292,7 +293,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(BlockComment n, C ctx) throws Exception {
-        BlockComment img = new BlockComment();
+        BlockComment img = NodeFacade.BlockComment();
         img.setContent(n.getContent());
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -304,7 +305,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(BlockStmt n, C ctx) throws Exception {
-        BlockStmt img = new BlockStmt();
+        BlockStmt img = NodeFacade.BlockStmt();
         if (n.getStatements() != null) {
             img.setStatements((NodeList<Statement>) n.getStatements().accept(this, ctx));
         }
@@ -318,7 +319,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(BooleanLiteralExpr n, C ctx) throws Exception {
-        BooleanLiteralExpr img = new BooleanLiteralExpr();
+        BooleanLiteralExpr img = NodeFacade.BooleanLiteralExpr();
         img.setValue(n.isValue());
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -330,7 +331,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(BreakStmt n, C ctx) throws Exception {
-        BreakStmt img = new BreakStmt();
+        BreakStmt img = NodeFacade.BreakStmt();
         img.setId(n.getId());
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -342,7 +343,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(CastExpr n, C ctx) throws Exception {
-        CastExpr img = new CastExpr();
+        CastExpr img = NodeFacade.CastExpr();
         if (n.getTypes() != null) {
             img.setTypes((NodeList<Type>) n.getTypes().accept(this, ctx));
         }
@@ -359,7 +360,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(CatchClause n, C ctx) throws Exception {
-        CatchClause img = new CatchClause();
+        CatchClause img = NodeFacade.CatchClause();
         img.setFinal(n.isFinal());
         if (n.getTypes() != null) {
             img.setTypes((NodeList<Type>) n.getTypes().accept(this, ctx));
@@ -378,7 +379,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(CharLiteralExpr n, C ctx) throws Exception {
-        CharLiteralExpr img = new CharLiteralExpr();
+        CharLiteralExpr img = NodeFacade.CharLiteralExpr();
         img.setValue(n.getValue());
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -390,7 +391,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ClassDeclaration n, C ctx) throws Exception {
-        ClassDeclaration img = new ClassDeclaration();
+        ClassDeclaration img = NodeFacade.ClassDeclaration();
         if (n.getTypeParameters() != null) {
             img.setTypeParameters((NodeList<TypeParameter>) n.getTypeParameters().accept(this, ctx));
         }
@@ -420,7 +421,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ClassExpr n, C ctx) throws Exception {
-        ClassExpr img = new ClassExpr();
+        ClassExpr img = NodeFacade.ClassExpr();
         if (n.getType() != null) {
             img.setType((Type) n.getType().accept(this, ctx));
         }
@@ -434,7 +435,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ClassOrInterfaceType n, C ctx) throws Exception {
-        ClassOrInterfaceType img = new ClassOrInterfaceType();
+        ClassOrInterfaceType img = NodeFacade.ClassOrInterfaceType();
         if (n.getScope() != null) {
             img.setScope((ClassOrInterfaceType) n.getScope().accept(this, ctx));
         }
@@ -454,7 +455,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(CompilationUnit n, C ctx) throws Exception {
-        CompilationUnit img = new CompilationUnit();
+        CompilationUnit img = NodeFacade.CompilationUnit();
         if (n.getPackageDeclaration() != null) {
             img.setPackageDeclaration((PackageDeclaration) n.getPackageDeclaration().accept(this, ctx));
         }
@@ -478,7 +479,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ConditionalExpr n, C ctx) throws Exception {
-        ConditionalExpr img = new ConditionalExpr();
+        ConditionalExpr img = NodeFacade.ConditionalExpr();
         if (n.getCondition() != null) {
             img.setCondition((Expression) n.getCondition().accept(this, ctx));
         }
@@ -498,7 +499,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ConstructorDeclaration n, C ctx) throws Exception {
-        ConstructorDeclaration img = new ConstructorDeclaration();
+        ConstructorDeclaration img = NodeFacade.ConstructorDeclaration();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -528,7 +529,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ContinueStmt n, C ctx) throws Exception {
-        ContinueStmt img = new ContinueStmt();
+        ContinueStmt img = NodeFacade.ContinueStmt();
         img.setId(n.getId());
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -540,7 +541,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(DoStmt n, C ctx) throws Exception {
-        DoStmt img = new DoStmt();
+        DoStmt img = NodeFacade.DoStmt();
         if (n.getBody() != null) {
             img.setBody((Statement) n.getBody().accept(this, ctx));
         }
@@ -557,7 +558,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(DoubleLiteralExpr n, C ctx) throws Exception {
-        DoubleLiteralExpr img = new DoubleLiteralExpr();
+        DoubleLiteralExpr img = NodeFacade.DoubleLiteralExpr();
         img.setValue(n.getValue());
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -569,7 +570,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(Ellipsis n, C ctx) throws Exception {
-        Ellipsis img = new Ellipsis();
+        Ellipsis img = NodeFacade.Ellipsis();
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
         }
@@ -580,7 +581,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(EmptyMemberDeclaration n, C ctx) throws Exception {
-        EmptyMemberDeclaration img = new EmptyMemberDeclaration();
+        EmptyMemberDeclaration img = NodeFacade.EmptyMemberDeclaration();
         if (n.getJavaDoc() != null) {
             img.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, ctx));
         }
@@ -594,7 +595,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(EmptyStmt n, C ctx) throws Exception {
-        EmptyStmt img = new EmptyStmt();
+        EmptyStmt img = NodeFacade.EmptyStmt();
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
         }
@@ -605,7 +606,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(EmptyTypeDeclaration n, C ctx) throws Exception {
-        EmptyTypeDeclaration img = new EmptyTypeDeclaration();
+        EmptyTypeDeclaration img = NodeFacade.EmptyTypeDeclaration();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -626,7 +627,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(EnclosedExpr n, C ctx) throws Exception {
-        EnclosedExpr img = new EnclosedExpr();
+        EnclosedExpr img = NodeFacade.EnclosedExpr();
         if (n.getInner() != null) {
             img.setInner((Expression) n.getInner().accept(this, ctx));
         }
@@ -640,7 +641,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(EnumConstantDeclaration n, C ctx) throws Exception {
-        EnumConstantDeclaration img = new EnumConstantDeclaration();
+        EnumConstantDeclaration img = NodeFacade.EnumConstantDeclaration();
         img.setName(n.getName());
         if (n.getArgs() != null) {
             img.setArgs((NodeList<Expression>) n.getArgs().accept(this, ctx));
@@ -661,7 +662,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(EnumDeclaration n, C ctx) throws Exception {
-        EnumDeclaration img = new EnumDeclaration();
+        EnumDeclaration img = NodeFacade.EnumDeclaration();
         if (n.getImplementsList() != null) {
             img.setImplementsList((NodeList<ClassOrInterfaceType>) n.getImplementsList().accept(this, ctx));
         }
@@ -688,7 +689,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ExplicitConstructorInvocationStmt n, C ctx) throws Exception {
-        ExplicitConstructorInvocationStmt img = new ExplicitConstructorInvocationStmt();
+        ExplicitConstructorInvocationStmt img = NodeFacade.ExplicitConstructorInvocationStmt();
         if (n.getTypeArgs() != null) {
             img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
         }
@@ -709,7 +710,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ExpressionStmt n, C ctx) throws Exception {
-        ExpressionStmt img = new ExpressionStmt();
+        ExpressionStmt img = NodeFacade.ExpressionStmt();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -723,7 +724,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(FieldAccessExpr n, C ctx) throws Exception {
-        FieldAccessExpr img = new FieldAccessExpr();
+        FieldAccessExpr img = NodeFacade.FieldAccessExpr();
         if (n.getScope() != null) {
             img.setScope((Expression) n.getScope().accept(this, ctx));
         }
@@ -741,7 +742,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(FieldDeclaration n, C ctx) throws Exception {
-        FieldDeclaration img = new FieldDeclaration();
+        FieldDeclaration img = NodeFacade.FieldDeclaration();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -764,7 +765,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ForeachStmt n, C ctx) throws Exception {
-        ForeachStmt img = new ForeachStmt();
+        ForeachStmt img = NodeFacade.ForeachStmt();
         if (n.getVariable() != null) {
             img.setVariable((VariableDeclarationExpr) n.getVariable().accept(this, ctx));
         }
@@ -784,7 +785,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ForStmt n, C ctx) throws Exception {
-        ForStmt img = new ForStmt();
+        ForStmt img = NodeFacade.ForStmt();
         if (n.getInit() != null) {
             img.setInit((NodeList<Expression>) n.getInit().accept(this, ctx));
         }
@@ -807,7 +808,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(IfStmt n, C ctx) throws Exception {
-        IfStmt img = new IfStmt();
+        IfStmt img = NodeFacade.IfStmt();
         if (n.getCondition() != null) {
             img.setCondition((Expression) n.getCondition().accept(this, ctx));
         }
@@ -827,7 +828,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ImportDeclaration n, C ctx) throws Exception {
-        ImportDeclaration img = new ImportDeclaration();
+        ImportDeclaration img = NodeFacade.ImportDeclaration();
         if (n.getName() != null) {
             img.setName((NameExpr) n.getName().accept(this, ctx));
         }
@@ -843,7 +844,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(InitializerDeclaration n, C ctx) throws Exception {
-        InitializerDeclaration img = new InitializerDeclaration();
+        InitializerDeclaration img = NodeFacade.InitializerDeclaration();
         img.setStatic(n.isStatic());
         if (n.getBlock() != null) {
             img.setBlock((BlockStmt) n.getBlock().accept(this, ctx));
@@ -861,7 +862,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(InstanceOfExpr n, C ctx) throws Exception {
-        InstanceOfExpr img = new InstanceOfExpr();
+        InstanceOfExpr img = NodeFacade.InstanceOfExpr();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -878,7 +879,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(IntegerLiteralExpr n, C ctx) throws Exception {
-        IntegerLiteralExpr img = new IntegerLiteralExpr();
+        IntegerLiteralExpr img = NodeFacade.IntegerLiteralExpr();
         img.setValue(n.getValue());
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -890,7 +891,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(InterfaceDeclaration n, C ctx) throws Exception {
-        InterfaceDeclaration img = new InterfaceDeclaration();
+        InterfaceDeclaration img = NodeFacade.InterfaceDeclaration();
         if (n.getTypeParameters() != null) {
             img.setTypeParameters((NodeList<TypeParameter>) n.getTypeParameters().accept(this, ctx));
         }
@@ -917,7 +918,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(JavadocComment n, C ctx) throws Exception {
-        JavadocComment img = new JavadocComment();
+        JavadocComment img = NodeFacade.JavadocComment();
         img.setContent(n.getContent());
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -929,7 +930,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(LabeledStmt n, C ctx) throws Exception {
-        LabeledStmt img = new LabeledStmt();
+        LabeledStmt img = NodeFacade.LabeledStmt();
         img.setLabel(n.getLabel());
         if (n.getStmt() != null) {
             img.setStmt((Statement) n.getStmt().accept(this, ctx));
@@ -944,7 +945,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(LambdaBlock n, C ctx) throws Exception {
-        LambdaBlock img = new LambdaBlock();
+        LambdaBlock img = NodeFacade.LambdaBlock();
         if (n.getBlockStmt() != null) {
             img.setBlockStmt((BlockStmt) n.getBlockStmt().accept(this, ctx));
         }
@@ -961,7 +962,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(LambdaExpr n, C ctx) throws Exception {
-        LambdaExpr img = new LambdaExpr();
+        LambdaExpr img = NodeFacade.LambdaExpr();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -978,7 +979,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(LineComment n, C ctx) throws Exception {
-        LineComment img = new LineComment();
+        LineComment img = NodeFacade.LineComment();
         img.setContent(n.getContent());
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -990,7 +991,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(LongLiteralExpr n, C ctx) throws Exception {
-        LongLiteralExpr img = new LongLiteralExpr();
+        LongLiteralExpr img = NodeFacade.LongLiteralExpr();
         img.setValue(n.getValue());
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -1002,7 +1003,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(MarkerAnnotationExpr n, C ctx) throws Exception {
-        MarkerAnnotationExpr img = new MarkerAnnotationExpr();
+        MarkerAnnotationExpr img = NodeFacade.MarkerAnnotationExpr();
         if (n.getName() != null) {
             img.setName((NameExpr) n.getName().accept(this, ctx));
         }
@@ -1016,7 +1017,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(MemberValuePair n, C ctx) throws Exception {
-        MemberValuePair img = new MemberValuePair();
+        MemberValuePair img = NodeFacade.MemberValuePair();
         img.setName(n.getName());
         if (n.getValue() != null) {
             img.setValue((Expression) n.getValue().accept(this, ctx));
@@ -1031,7 +1032,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(MethodCallExpr n, C ctx) throws Exception {
-        MethodCallExpr img = new MethodCallExpr();
+        MethodCallExpr img = NodeFacade.MethodCallExpr();
         if (n.getScope() != null) {
             img.setScope((Expression) n.getScope().accept(this, ctx));
         }
@@ -1052,7 +1053,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(MethodDeclaration n, C ctx) throws Exception {
-        MethodDeclaration img = new MethodDeclaration();
+        MethodDeclaration img = NodeFacade.MethodDeclaration();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -1088,7 +1089,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(MethodExprRef n, C ctx) throws Exception {
-        MethodExprRef img = new MethodExprRef();
+        MethodExprRef img = NodeFacade.MethodExprRef();
         if (n.getScope() != null) {
             img.setScope((Expression) n.getScope().accept(this, ctx));
         }
@@ -1106,7 +1107,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(MethodRef n, C ctx) throws Exception {
-        MethodRef img = new MethodRef();
+        MethodRef img = NodeFacade.MethodRef();
         if (n.getTypeArgs() != null) {
             img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
         }
@@ -1121,7 +1122,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(MethodTypeRef n, C ctx) throws Exception {
-        MethodTypeRef img = new MethodTypeRef();
+        MethodTypeRef img = NodeFacade.MethodTypeRef();
         if (n.getType() != null) {
             img.setType((Type) n.getType().accept(this, ctx));
         }
@@ -1139,7 +1140,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(Modifiers n, C ctx) throws Exception {
-        Modifiers img = new Modifiers();
+        Modifiers img = NodeFacade.Modifiers();
         img.setModifiers(n.getModifiers());
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -1151,7 +1152,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(NameExpr n, C ctx) throws Exception {
-        NameExpr img = new NameExpr();
+        NameExpr img = NodeFacade.NameExpr();
         img.setName(n.getName());
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -1163,7 +1164,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public <E extends Node> Node visit(NodeList<E> n, C ctx) throws Exception {
-        NodeList<E> img = new NodeList<E>();
+        NodeList<E> img = NodeFacade.NodeList();
         if (n.getNodes() != null) {
             List<E> nodes = new ArrayList<E>();
             for (E item : n.getNodes()) {
@@ -1183,7 +1184,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(NormalAnnotationExpr n, C ctx) throws Exception {
-        NormalAnnotationExpr img = new NormalAnnotationExpr();
+        NormalAnnotationExpr img = NodeFacade.NormalAnnotationExpr();
         if (n.getPairs() != null) {
             img.setPairs((NodeList<MemberValuePair>) n.getPairs().accept(this, ctx));
         }
@@ -1200,7 +1201,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(NullLiteralExpr n, C ctx) throws Exception {
-        NullLiteralExpr img = new NullLiteralExpr();
+        NullLiteralExpr img = NodeFacade.NullLiteralExpr();
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
         }
@@ -1211,7 +1212,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ObjectCreationExpr n, C ctx) throws Exception {
-        ObjectCreationExpr img = new ObjectCreationExpr();
+        ObjectCreationExpr img = NodeFacade.ObjectCreationExpr();
         if (n.getScope() != null) {
             img.setScope((Expression) n.getScope().accept(this, ctx));
         }
@@ -1237,7 +1238,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(PackageDeclaration n, C ctx) throws Exception {
-        PackageDeclaration img = new PackageDeclaration();
+        PackageDeclaration img = NodeFacade.PackageDeclaration();
         if (n.getName() != null) {
             img.setName((NameExpr) n.getName().accept(this, ctx));
         }
@@ -1251,7 +1252,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(Parameter n, C ctx) throws Exception {
-        Parameter img = new Parameter();
+        Parameter img = NodeFacade.Parameter();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -1274,7 +1275,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(PrimitiveType n, C ctx) throws Exception {
-        PrimitiveType img = new PrimitiveType();
+        PrimitiveType img = NodeFacade.PrimitiveType();
         img.setType(n.getType());
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -1291,7 +1292,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(Project n, C ctx) throws Exception {
-        Project img = new Project();
+        Project img = NodeFacade.Project();
         if (n.getCompilationUnits() != null) {
             img.setCompilationUnits((NodeList<CompilationUnit>) n.getCompilationUnits().accept(this, ctx));
         }
@@ -1305,7 +1306,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(QualifiedNameExpr n, C ctx) throws Exception {
-        QualifiedNameExpr img = new QualifiedNameExpr();
+        QualifiedNameExpr img = NodeFacade.QualifiedNameExpr();
         if (n.getQualifier() != null) {
             img.setQualifier((NameExpr) n.getQualifier().accept(this, ctx));
         }
@@ -1320,7 +1321,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ReferenceType n, C ctx) throws Exception {
-        ReferenceType img = new ReferenceType();
+        ReferenceType img = NodeFacade.ReferenceType();
         if (n.getType() != null) {
             img.setType((Type) n.getType().accept(this, ctx));
         }
@@ -1337,7 +1338,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ReturnStmt n, C ctx) throws Exception {
-        ReturnStmt img = new ReturnStmt();
+        ReturnStmt img = NodeFacade.ReturnStmt();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -1351,7 +1352,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(SingleMemberAnnotationExpr n, C ctx) throws Exception {
-        SingleMemberAnnotationExpr img = new SingleMemberAnnotationExpr();
+        SingleMemberAnnotationExpr img = NodeFacade.SingleMemberAnnotationExpr();
         if (n.getMemberValue() != null) {
             img.setMemberValue((Expression) n.getMemberValue().accept(this, ctx));
         }
@@ -1368,7 +1369,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(StringLiteralExpr n, C ctx) throws Exception {
-        StringLiteralExpr img = new StringLiteralExpr();
+        StringLiteralExpr img = NodeFacade.StringLiteralExpr();
         img.setValue(n.getValue());
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
@@ -1380,7 +1381,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(SuperExpr n, C ctx) throws Exception {
-        SuperExpr img = new SuperExpr();
+        SuperExpr img = NodeFacade.SuperExpr();
         if (n.getClassExpression() != null) {
             img.setClassExpression((Expression) n.getClassExpression().accept(this, ctx));
         }
@@ -1394,7 +1395,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(SwitchEntryStmt n, C ctx) throws Exception {
-        SwitchEntryStmt img = new SwitchEntryStmt();
+        SwitchEntryStmt img = NodeFacade.SwitchEntryStmt();
         if (n.getLabel() != null) {
             img.setLabel((Expression) n.getLabel().accept(this, ctx));
         }
@@ -1411,7 +1412,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(SwitchStmt n, C ctx) throws Exception {
-        SwitchStmt img = new SwitchStmt();
+        SwitchStmt img = NodeFacade.SwitchStmt();
         if (n.getSelector() != null) {
             img.setSelector((Expression) n.getSelector().accept(this, ctx));
         }
@@ -1428,7 +1429,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(SynchronizedStmt n, C ctx) throws Exception {
-        SynchronizedStmt img = new SynchronizedStmt();
+        SynchronizedStmt img = NodeFacade.SynchronizedStmt();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -1445,7 +1446,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ThisExpr n, C ctx) throws Exception {
-        ThisExpr img = new ThisExpr();
+        ThisExpr img = NodeFacade.ThisExpr();
         if (n.getClassExpression() != null) {
             img.setClassExpression((Expression) n.getClassExpression().accept(this, ctx));
         }
@@ -1459,7 +1460,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(ThrowStmt n, C ctx) throws Exception {
-        ThrowStmt img = new ThrowStmt();
+        ThrowStmt img = NodeFacade.ThrowStmt();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -1473,7 +1474,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(TryStmt n, C ctx) throws Exception {
-        TryStmt img = new TryStmt();
+        TryStmt img = NodeFacade.TryStmt();
         if (n.getResources() != null) {
             img.setResources((NodeList<VariableDeclarationExpr>) n.getResources().accept(this, ctx));
         }
@@ -1496,7 +1497,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(TypeDeclarationStmt n, C ctx) throws Exception {
-        TypeDeclarationStmt img = new TypeDeclarationStmt();
+        TypeDeclarationStmt img = NodeFacade.TypeDeclarationStmt();
         if (n.getTypeDeclaration() != null) {
             img.setTypeDeclaration((TypeDeclaration) n.getTypeDeclaration().accept(this, ctx));
         }
@@ -1510,7 +1511,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(TypeParameter n, C ctx) throws Exception {
-        TypeParameter img = new TypeParameter();
+        TypeParameter img = NodeFacade.TypeParameter();
         img.setName(n.getName());
         if (n.getTypeBound() != null) {
             img.setTypeBound((NodeList<ClassOrInterfaceType>) n.getTypeBound().accept(this, ctx));
@@ -1525,7 +1526,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(UnaryExpr n, C ctx) throws Exception {
-        UnaryExpr img = new UnaryExpr();
+        UnaryExpr img = NodeFacade.UnaryExpr();
         if (n.getExpression() != null) {
             img.setExpression((Expression) n.getExpression().accept(this, ctx));
         }
@@ -1545,7 +1546,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(VariableDeclarationExpr n, C ctx) throws Exception {
-        VariableDeclarationExpr img = new VariableDeclarationExpr();
+        VariableDeclarationExpr img = NodeFacade.VariableDeclarationExpr();
         if (n.getModifiers() != null) {
             img.setModifiers((Modifiers) n.getModifiers().accept(this, ctx));
         }
@@ -1565,7 +1566,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(VariableDeclarator n, C ctx) throws Exception {
-        VariableDeclarator img = new VariableDeclarator();
+        VariableDeclarator img = NodeFacade.VariableDeclarator();
         if (n.getId() != null) {
             img.setId((VariableDeclaratorId) n.getId().accept(this, ctx));
         }
@@ -1582,7 +1583,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(VariableDeclaratorId n, C ctx) throws Exception {
-        VariableDeclaratorId img = new VariableDeclaratorId();
+        VariableDeclaratorId img = NodeFacade.VariableDeclaratorId();
         img.setName(n.getName());
         if (n.getSlots() != null) {
             img.setSlots((NodeList<ArraySlot>) n.getSlots().accept(this, ctx));
@@ -1597,7 +1598,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(VoidType n, C ctx) throws Exception {
-        VoidType img = new VoidType();
+        VoidType img = NodeFacade.VoidType();
         if (n.getAnnotations() != null) {
             img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
         }
@@ -1608,7 +1609,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(WhileStmt n, C ctx) throws Exception {
-        WhileStmt img = new WhileStmt();
+        WhileStmt img = NodeFacade.WhileStmt();
         if (n.getCondition() != null) {
             img.setCondition((Expression) n.getCondition().accept(this, ctx));
         }
@@ -1625,7 +1626,7 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
     @Override
     public Node visit(WildcardType n, C ctx) throws Exception {
-        WildcardType img = new WildcardType();
+        WildcardType img = NodeFacade.WildcardType();
         if (n.getExtendsType() != null) {
             img.setExtendsType((ReferenceType) n.getExtendsType().accept(this, ctx));
         }

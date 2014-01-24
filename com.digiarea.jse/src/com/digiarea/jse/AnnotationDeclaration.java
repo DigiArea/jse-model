@@ -21,11 +21,11 @@ import com.digiarea.jse.visitor.GenericVisitor;
 
 public final class AnnotationDeclaration extends TypeDeclaration {
 
-    public AnnotationDeclaration() {
+    AnnotationDeclaration() {
         super();
     }
 
-    public AnnotationDeclaration(Modifiers modifiers, String name, NodeList<BodyDeclaration> members, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    AnnotationDeclaration(Modifiers modifiers, String name, NodeList<BodyDeclaration> members, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(modifiers, name, members, javaDoc, annotations, posBegin, posEnd);
     }
 

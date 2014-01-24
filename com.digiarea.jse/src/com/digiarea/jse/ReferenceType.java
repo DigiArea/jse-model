@@ -39,11 +39,11 @@ public final class ReferenceType extends Type {
         this.slots = slots;
     }
 
-    public ReferenceType() {
+    ReferenceType() {
         super();
     }
 
-    public ReferenceType(Type type, NodeList<ArraySlot> slots, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ReferenceType(Type type, NodeList<ArraySlot> slots, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.type = type;
         this.slots = slots;

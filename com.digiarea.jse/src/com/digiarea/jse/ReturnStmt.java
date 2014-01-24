@@ -29,11 +29,11 @@ public final class ReturnStmt extends Statement {
         this.expression = expression;
     }
 
-    public ReturnStmt() {
+    ReturnStmt() {
         super();
     }
 
-    public ReturnStmt(Expression expression, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ReturnStmt(Expression expression, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.expression = expression;
     }

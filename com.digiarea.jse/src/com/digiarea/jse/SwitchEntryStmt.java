@@ -39,11 +39,11 @@ public final class SwitchEntryStmt extends Statement {
         this.stmts = stmts;
     }
 
-    public SwitchEntryStmt() {
+    SwitchEntryStmt() {
         super();
     }
 
-    public SwitchEntryStmt(Expression label, NodeList<Statement> stmts, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    SwitchEntryStmt(Expression label, NodeList<Statement> stmts, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.label = label;
         this.stmts = stmts;

@@ -39,11 +39,11 @@ public final class DoStmt extends Statement {
         this.condition = condition;
     }
 
-    public DoStmt() {
+    DoStmt() {
         super();
     }
 
-    public DoStmt(Statement body, Expression condition, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    DoStmt(Statement body, Expression condition, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.body = body;
         this.condition = condition;

@@ -39,11 +39,11 @@ public final class InstanceOfExpr extends Expression {
         this.type = type;
     }
 
-    public InstanceOfExpr() {
+    InstanceOfExpr() {
         super();
     }
 
-    public InstanceOfExpr(Expression expression, Type type, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    InstanceOfExpr(Expression expression, Type type, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.expression = expression;
         this.type = type;

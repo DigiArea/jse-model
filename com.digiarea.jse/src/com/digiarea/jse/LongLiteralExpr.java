@@ -22,11 +22,11 @@ public class LongLiteralExpr extends StringLiteralExpr {
 
     protected static final String MIN_VALUE = "-" + UNSIGNED_MIN_VALUE + "L";
 
-    public LongLiteralExpr() {
+    LongLiteralExpr() {
         super();
     }
 
-    public LongLiteralExpr(String value, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    LongLiteralExpr(String value, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(value, annotations, posBegin, posEnd);
     }
 

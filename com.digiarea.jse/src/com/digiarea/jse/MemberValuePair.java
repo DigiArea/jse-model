@@ -39,11 +39,11 @@ public final class MemberValuePair extends Node {
         this.value = value;
     }
 
-    public MemberValuePair() {
+    MemberValuePair() {
         super();
     }
 
-    public MemberValuePair(String name, Expression value, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    MemberValuePair(String name, Expression value, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.name = name;
         this.value = value;

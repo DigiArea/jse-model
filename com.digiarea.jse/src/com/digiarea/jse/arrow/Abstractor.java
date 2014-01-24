@@ -21,7 +21,6 @@ import com.digiarea.jse.MethodDeclaration;
 import com.digiarea.jse.Modifiers;
 import com.digiarea.jse.Node;
 import com.digiarea.jse.NodeFacade;
-import com.digiarea.jse.NullLiteralExpr;
 import com.digiarea.jse.PrimitiveType;
 import com.digiarea.jse.Statement;
 import com.digiarea.jse.Type;
@@ -125,7 +124,7 @@ public class Abstractor extends Identity {
 							expr = NodeFacade.IntegerLiteralExpr(0);
 						}
 					} else {
-						expr = new NullLiteralExpr();
+						expr = NodeFacade.NullLiteralExpr();
 					}
 					stmts.add(NodeFacade.ReturnStmt(expr));
 				}

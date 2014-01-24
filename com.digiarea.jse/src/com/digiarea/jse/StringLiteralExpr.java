@@ -28,11 +28,11 @@ public class StringLiteralExpr extends LiteralExpr {
         this.value = value;
     }
 
-    public StringLiteralExpr() {
+    StringLiteralExpr() {
         super();
     }
 
-    public StringLiteralExpr(String value, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    StringLiteralExpr(String value, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.value = value;
     }

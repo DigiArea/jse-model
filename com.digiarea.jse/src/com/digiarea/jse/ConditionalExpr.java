@@ -48,11 +48,11 @@ public final class ConditionalExpr extends Expression {
         this.elseExpression = elseExpression;
     }
 
-    public ConditionalExpr() {
+    ConditionalExpr() {
         super();
     }
 
-    public ConditionalExpr(Expression condition, Expression thenExpression, Expression elseExpression, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    ConditionalExpr(Expression condition, Expression thenExpression, Expression elseExpression, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.condition = condition;
         this.thenExpression = thenExpression;

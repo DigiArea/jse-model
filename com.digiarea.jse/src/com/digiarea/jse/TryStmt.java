@@ -61,11 +61,11 @@ public final class TryStmt extends Statement {
         this.finallyBlock = finallyBlock;
     }
 
-    public TryStmt() {
+    TryStmt() {
         super();
     }
 
-    public TryStmt(NodeList<VariableDeclarationExpr> resources, BlockStmt tryBlock, NodeList<CatchClause> catchClauses, BlockStmt finallyBlock, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    TryStmt(NodeList<VariableDeclarationExpr> resources, BlockStmt tryBlock, NodeList<CatchClause> catchClauses, BlockStmt finallyBlock, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.resources = resources;
         this.tryBlock = tryBlock;

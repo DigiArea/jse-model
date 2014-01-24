@@ -43,11 +43,11 @@ public final class EnumDeclaration extends TypeDeclaration {
         this.entries = entries;
     }
 
-    public EnumDeclaration() {
+    EnumDeclaration() {
         super();
     }
 
-    public EnumDeclaration(NodeList<ClassOrInterfaceType> implementsList, NodeList<EnumConstantDeclaration> entries, Modifiers modifiers, String name, NodeList<BodyDeclaration> members, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+    EnumDeclaration(NodeList<ClassOrInterfaceType> implementsList, NodeList<EnumConstantDeclaration> entries, Modifiers modifiers, String name, NodeList<BodyDeclaration> members, JavadocComment javaDoc, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(modifiers, name, members, javaDoc, annotations, posBegin, posEnd);
         this.implementsList = implementsList;
         this.entries = entries;
