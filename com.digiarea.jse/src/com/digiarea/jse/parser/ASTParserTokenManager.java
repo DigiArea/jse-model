@@ -8,58 +8,50 @@ public class ASTParserTokenManager implements ASTParserConstants
 {
   private List<Comment> comments;
 
-  private final Stack<JavadocComment> javadocStack = new Stack<JavadocComment> ();
+  private final Deque<JavadocComment> javadocDeque = new ArrayDeque<JavadocComment> ();
 
   private JavadocComment lastJavadoc;
 
-  void pushJavadoc()
-  {
-    javadocStack.push(lastJavadoc);
-  }
-  JavadocComment popJavadoc()
-  {
-    if (javadocStack.empty())
-    {
-      return null;
-    } else
-    {
-      return javadocStack.pop();
+  void pushJavadoc() {
+    if (lastJavadoc != null) {
+      javadocDeque.push(lastJavadoc);
     }
   }
-  List<Comment> getComments()
-  {
+
+  JavadocComment popJavadoc() {
+    if (javadocDeque.isEmpty()) {
+      return null;
+    } else {
+      return javadocDeque.pop();
+    }
+  }
+
+  List<Comment> getComments() {
     return comments;
   }
 
-  void clearComments()
-  {
+  void clearComments() {
     comments = null;
-    javadocStack.clear();
+    javadocDeque.clear();
     lastJavadoc = null;
   }
 
-  private void CommonTokenAction(Token token)
-  {
+  private void CommonTokenAction(Token token) {
     lastJavadoc = null;
-    if (token.specialToken != null)
-    {
-      if (comments == null)
-      {
+    if (token.specialToken != null) {
+      if (comments == null) {
         comments = new LinkedList<Comment>();
       }
       Token special = token.specialToken;
-      if (special.kind == JAVA_DOC_COMMENT)
-      {
+      if (special.kind == JAVA_DOC_COMMENT) {
         lastJavadoc = NodeFacade.JavadocComment(special.image.substring(3, special.image.length() - 2));
         comments.add(lastJavadoc);
       }
-      else if (special.kind == SINGLE_LINE_COMMENT)
-      {
+      else if (special.kind == SINGLE_LINE_COMMENT) {
         LineComment comment = NodeFacade.LineComment(special.image.substring(2));
         comments.add(comment);
       }
-      else if (special.kind == MULTI_LINE_COMMENT)
-      {
+      else if (special.kind == MULTI_LINE_COMMENT) {
         BlockComment comment = NodeFacade.BlockComment(special.image.substring(2, special.image.length() - 2));
         comments.add(comment);
       }

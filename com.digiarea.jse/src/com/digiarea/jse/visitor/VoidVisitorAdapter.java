@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2011 - 2014 DigiArea, Inc. and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     DigiArea, Inc. - initial API and implementation
+ *******************************************************************************/
 package com.digiarea.jse.visitor;
 
 import com.digiarea.jse.visitor.VoidVisitor;
@@ -96,8 +106,16 @@ import com.digiarea.jse.VoidType;
 import com.digiarea.jse.WhileStmt;
 import com.digiarea.jse.WildcardType;
 
+/**
+ * The Class VoidVisitorAdapter.
+ *
+ * @param <C> the generic type
+ */
 public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.AnnotationDeclaration, java.lang.Object)
+     */
     @Override
     public void visit(AnnotationDeclaration n, C ctx) throws Exception {
         if (n.getModifiers() != null) {
@@ -114,6 +132,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.AnnotationMemberDeclaration, java.lang.Object)
+     */
     @Override
     public void visit(AnnotationMemberDeclaration n, C ctx) throws Exception {
         if (n.getModifiers() != null) {
@@ -133,6 +154,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ArrayAccessExpr, java.lang.Object)
+     */
     @Override
     public void visit(ArrayAccessExpr n, C ctx) throws Exception {
         if (n.getName() != null) {
@@ -146,6 +170,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ArrayCreationExpr, java.lang.Object)
+     */
     @Override
     public void visit(ArrayCreationExpr n, C ctx) throws Exception {
         if (n.getType() != null) {
@@ -162,6 +189,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ArrayInitializerExpr, java.lang.Object)
+     */
     @Override
     public void visit(ArrayInitializerExpr n, C ctx) throws Exception {
         if (n.getValues() != null) {
@@ -172,6 +202,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ArraySlot, java.lang.Object)
+     */
     @Override
     public void visit(ArraySlot n, C ctx) throws Exception {
         if (n.getExpression() != null) {
@@ -182,6 +215,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.AssertStmt, java.lang.Object)
+     */
     @Override
     public void visit(AssertStmt n, C ctx) throws Exception {
         if (n.getCheck() != null) {
@@ -195,6 +231,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.AssignExpr, java.lang.Object)
+     */
     @Override
     public void visit(AssignExpr n, C ctx) throws Exception {
         if (n.getTarget() != null) {
@@ -211,10 +250,16 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.AssignExpr.AssignOperator, java.lang.Object)
+     */
     @Override
     public void visit(AssignOperator n, C ctx) throws Exception {
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.BinaryExpr, java.lang.Object)
+     */
     @Override
     public void visit(BinaryExpr n, C ctx) throws Exception {
         if (n.getLeft() != null) {
@@ -231,10 +276,16 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.BinaryExpr.BinaryOperator, java.lang.Object)
+     */
     @Override
     public void visit(BinaryOperator n, C ctx) throws Exception {
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.BlockComment, java.lang.Object)
+     */
     @Override
     public void visit(BlockComment n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -242,6 +293,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.BlockStmt, java.lang.Object)
+     */
     @Override
     public void visit(BlockStmt n, C ctx) throws Exception {
         if (n.getStatements() != null) {
@@ -252,6 +306,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.BooleanLiteralExpr, java.lang.Object)
+     */
     @Override
     public void visit(BooleanLiteralExpr n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -259,6 +316,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.BreakStmt, java.lang.Object)
+     */
     @Override
     public void visit(BreakStmt n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -266,6 +326,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.CastExpr, java.lang.Object)
+     */
     @Override
     public void visit(CastExpr n, C ctx) throws Exception {
         if (n.getTypes() != null) {
@@ -279,6 +342,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.CatchClause, java.lang.Object)
+     */
     @Override
     public void visit(CatchClause n, C ctx) throws Exception {
         if (n.getTypes() != null) {
@@ -292,6 +358,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.CharLiteralExpr, java.lang.Object)
+     */
     @Override
     public void visit(CharLiteralExpr n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -299,6 +368,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ClassDeclaration, java.lang.Object)
+     */
     @Override
     public void visit(ClassDeclaration n, C ctx) throws Exception {
         if (n.getTypeParameters() != null) {
@@ -324,6 +396,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ClassExpr, java.lang.Object)
+     */
     @Override
     public void visit(ClassExpr n, C ctx) throws Exception {
         if (n.getType() != null) {
@@ -334,6 +409,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ClassOrInterfaceType, java.lang.Object)
+     */
     @Override
     public void visit(ClassOrInterfaceType n, C ctx) throws Exception {
         if (n.getScope() != null) {
@@ -350,6 +428,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.CompilationUnit, java.lang.Object)
+     */
     @Override
     public void visit(CompilationUnit n, C ctx) throws Exception {
         if (n.getPackageDeclaration() != null) {
@@ -369,6 +450,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ConditionalExpr, java.lang.Object)
+     */
     @Override
     public void visit(ConditionalExpr n, C ctx) throws Exception {
         if (n.getCondition() != null) {
@@ -385,6 +469,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ConstructorDeclaration, java.lang.Object)
+     */
     @Override
     public void visit(ConstructorDeclaration n, C ctx) throws Exception {
         if (n.getModifiers() != null) {
@@ -416,6 +503,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ContinueStmt, java.lang.Object)
+     */
     @Override
     public void visit(ContinueStmt n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -423,6 +513,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.CreationReference, java.lang.Object)
+     */
     @Override
     public void visit(CreationReference n, C ctx) throws Exception {
         if (n.getType() != null) {
@@ -436,6 +529,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.DoStmt, java.lang.Object)
+     */
     @Override
     public void visit(DoStmt n, C ctx) throws Exception {
         if (n.getBody() != null) {
@@ -449,6 +545,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.DoubleLiteralExpr, java.lang.Object)
+     */
     @Override
     public void visit(DoubleLiteralExpr n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -456,6 +555,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.Ellipsis, java.lang.Object)
+     */
     @Override
     public void visit(Ellipsis n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -463,6 +565,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.EmptyMemberDeclaration, java.lang.Object)
+     */
     @Override
     public void visit(EmptyMemberDeclaration n, C ctx) throws Exception {
         if (n.getJavaDoc() != null) {
@@ -473,6 +578,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.EmptyStmt, java.lang.Object)
+     */
     @Override
     public void visit(EmptyStmt n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -480,6 +588,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.EmptyTypeDeclaration, java.lang.Object)
+     */
     @Override
     public void visit(EmptyTypeDeclaration n, C ctx) throws Exception {
         if (n.getModifiers() != null) {
@@ -496,6 +607,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.EnclosedExpr, java.lang.Object)
+     */
     @Override
     public void visit(EnclosedExpr n, C ctx) throws Exception {
         if (n.getInner() != null) {
@@ -506,6 +620,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.EnumConstantDeclaration, java.lang.Object)
+     */
     @Override
     public void visit(EnumConstantDeclaration n, C ctx) throws Exception {
         if (n.getArgs() != null) {
@@ -522,6 +639,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.EnumDeclaration, java.lang.Object)
+     */
     @Override
     public void visit(EnumDeclaration n, C ctx) throws Exception {
         if (n.getImplementsList() != null) {
@@ -544,6 +664,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ExplicitConstructorInvocationStmt, java.lang.Object)
+     */
     @Override
     public void visit(ExplicitConstructorInvocationStmt n, C ctx) throws Exception {
         if (n.getTypeArgs() != null) {
@@ -560,6 +683,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ExpressionMethodReference, java.lang.Object)
+     */
     @Override
     public void visit(ExpressionMethodReference n, C ctx) throws Exception {
         if (n.getExpression() != null) {
@@ -573,6 +699,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ExpressionStmt, java.lang.Object)
+     */
     @Override
     public void visit(ExpressionStmt n, C ctx) throws Exception {
         if (n.getExpression() != null) {
@@ -583,6 +712,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.FieldAccessExpr, java.lang.Object)
+     */
     @Override
     public void visit(FieldAccessExpr n, C ctx) throws Exception {
         if (n.getScope() != null) {
@@ -596,6 +728,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.FieldDeclaration, java.lang.Object)
+     */
     @Override
     public void visit(FieldDeclaration n, C ctx) throws Exception {
         if (n.getModifiers() != null) {
@@ -615,6 +750,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ForeachStmt, java.lang.Object)
+     */
     @Override
     public void visit(ForeachStmt n, C ctx) throws Exception {
         if (n.getVariable() != null) {
@@ -631,6 +769,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ForStmt, java.lang.Object)
+     */
     @Override
     public void visit(ForStmt n, C ctx) throws Exception {
         if (n.getInit() != null) {
@@ -650,6 +791,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.IfStmt, java.lang.Object)
+     */
     @Override
     public void visit(IfStmt n, C ctx) throws Exception {
         if (n.getCondition() != null) {
@@ -666,6 +810,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ImportDeclaration, java.lang.Object)
+     */
     @Override
     public void visit(ImportDeclaration n, C ctx) throws Exception {
         if (n.getName() != null) {
@@ -676,6 +823,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.InitializerDeclaration, java.lang.Object)
+     */
     @Override
     public void visit(InitializerDeclaration n, C ctx) throws Exception {
         if (n.getBlock() != null) {
@@ -689,6 +839,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.InstanceOfExpr, java.lang.Object)
+     */
     @Override
     public void visit(InstanceOfExpr n, C ctx) throws Exception {
         if (n.getExpression() != null) {
@@ -702,6 +855,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.IntegerLiteralExpr, java.lang.Object)
+     */
     @Override
     public void visit(IntegerLiteralExpr n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -709,6 +865,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.InterfaceDeclaration, java.lang.Object)
+     */
     @Override
     public void visit(InterfaceDeclaration n, C ctx) throws Exception {
         if (n.getTypeParameters() != null) {
@@ -731,6 +890,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.JavadocComment, java.lang.Object)
+     */
     @Override
     public void visit(JavadocComment n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -738,6 +900,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.LabeledStmt, java.lang.Object)
+     */
     @Override
     public void visit(LabeledStmt n, C ctx) throws Exception {
         if (n.getStmt() != null) {
@@ -748,6 +913,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.LambdaBlock, java.lang.Object)
+     */
     @Override
     public void visit(LambdaBlock n, C ctx) throws Exception {
         if (n.getBlockStmt() != null) {
@@ -761,6 +929,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.LambdaExpr, java.lang.Object)
+     */
     @Override
     public void visit(LambdaExpr n, C ctx) throws Exception {
         if (n.getExpression() != null) {
@@ -774,6 +945,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.LineComment, java.lang.Object)
+     */
     @Override
     public void visit(LineComment n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -781,6 +955,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.LongLiteralExpr, java.lang.Object)
+     */
     @Override
     public void visit(LongLiteralExpr n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -788,6 +965,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.MarkerAnnotationExpr, java.lang.Object)
+     */
     @Override
     public void visit(MarkerAnnotationExpr n, C ctx) throws Exception {
         if (n.getName() != null) {
@@ -798,6 +978,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.MemberValuePair, java.lang.Object)
+     */
     @Override
     public void visit(MemberValuePair n, C ctx) throws Exception {
         if (n.getValue() != null) {
@@ -808,6 +991,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.MethodCallExpr, java.lang.Object)
+     */
     @Override
     public void visit(MethodCallExpr n, C ctx) throws Exception {
         if (n.getScope() != null) {
@@ -824,6 +1010,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.MethodDeclaration, java.lang.Object)
+     */
     @Override
     public void visit(MethodDeclaration n, C ctx) throws Exception {
         if (n.getModifiers() != null) {
@@ -861,6 +1050,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.Modifiers, java.lang.Object)
+     */
     @Override
     public void visit(Modifiers n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -868,6 +1060,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.NameExpr, java.lang.Object)
+     */
     @Override
     public void visit(NameExpr n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -875,6 +1070,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.NodeList, java.lang.Object)
+     */
     @Override
     public <E extends Node> void visit(NodeList<E> n, C ctx) throws Exception {
         if (n.getNodes() != null) {
@@ -889,6 +1087,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.NormalAnnotationExpr, java.lang.Object)
+     */
     @Override
     public void visit(NormalAnnotationExpr n, C ctx) throws Exception {
         if (n.getPairs() != null) {
@@ -902,6 +1103,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.NullLiteralExpr, java.lang.Object)
+     */
     @Override
     public void visit(NullLiteralExpr n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -909,6 +1113,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ObjectCreationExpr, java.lang.Object)
+     */
     @Override
     public void visit(ObjectCreationExpr n, C ctx) throws Exception {
         if (n.getScope() != null) {
@@ -931,6 +1138,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.PackageDeclaration, java.lang.Object)
+     */
     @Override
     public void visit(PackageDeclaration n, C ctx) throws Exception {
         if (n.getName() != null) {
@@ -941,6 +1151,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.Parameter, java.lang.Object)
+     */
     @Override
     public void visit(Parameter n, C ctx) throws Exception {
         if (n.getModifiers() != null) {
@@ -960,6 +1173,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.PrimitiveType, java.lang.Object)
+     */
     @Override
     public void visit(PrimitiveType n, C ctx) throws Exception {
         if (n.getType() != null) {
@@ -970,10 +1186,16 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.PrimitiveType.Primitive, java.lang.Object)
+     */
     @Override
     public void visit(Primitive n, C ctx) throws Exception {
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.Project, java.lang.Object)
+     */
     @Override
     public void visit(Project n, C ctx) throws Exception {
         if (n.getCompilationUnits() != null) {
@@ -984,6 +1206,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.QualifiedNameExpr, java.lang.Object)
+     */
     @Override
     public void visit(QualifiedNameExpr n, C ctx) throws Exception {
         if (n.getQualifier() != null) {
@@ -994,6 +1219,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ReferenceType, java.lang.Object)
+     */
     @Override
     public void visit(ReferenceType n, C ctx) throws Exception {
         if (n.getType() != null) {
@@ -1007,6 +1235,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ReturnStmt, java.lang.Object)
+     */
     @Override
     public void visit(ReturnStmt n, C ctx) throws Exception {
         if (n.getExpression() != null) {
@@ -1017,6 +1248,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.SingleMemberAnnotationExpr, java.lang.Object)
+     */
     @Override
     public void visit(SingleMemberAnnotationExpr n, C ctx) throws Exception {
         if (n.getMemberValue() != null) {
@@ -1030,6 +1264,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.StringLiteralExpr, java.lang.Object)
+     */
     @Override
     public void visit(StringLiteralExpr n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -1037,6 +1274,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.SuperExpr, java.lang.Object)
+     */
     @Override
     public void visit(SuperExpr n, C ctx) throws Exception {
         if (n.getClassExpression() != null) {
@@ -1047,6 +1287,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.SuperMethodReference, java.lang.Object)
+     */
     @Override
     public void visit(SuperMethodReference n, C ctx) throws Exception {
         if (n.getQualifier() != null) {
@@ -1060,6 +1303,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.SwitchEntryStmt, java.lang.Object)
+     */
     @Override
     public void visit(SwitchEntryStmt n, C ctx) throws Exception {
         if (n.getLabel() != null) {
@@ -1073,6 +1319,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.SwitchStmt, java.lang.Object)
+     */
     @Override
     public void visit(SwitchStmt n, C ctx) throws Exception {
         if (n.getSelector() != null) {
@@ -1086,6 +1335,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.SynchronizedStmt, java.lang.Object)
+     */
     @Override
     public void visit(SynchronizedStmt n, C ctx) throws Exception {
         if (n.getExpression() != null) {
@@ -1099,6 +1351,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ThisExpr, java.lang.Object)
+     */
     @Override
     public void visit(ThisExpr n, C ctx) throws Exception {
         if (n.getClassExpression() != null) {
@@ -1109,6 +1364,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ThrowStmt, java.lang.Object)
+     */
     @Override
     public void visit(ThrowStmt n, C ctx) throws Exception {
         if (n.getExpression() != null) {
@@ -1119,6 +1377,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.TryStmt, java.lang.Object)
+     */
     @Override
     public void visit(TryStmt n, C ctx) throws Exception {
         if (n.getResources() != null) {
@@ -1138,6 +1399,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.TypeDeclarationStmt, java.lang.Object)
+     */
     @Override
     public void visit(TypeDeclarationStmt n, C ctx) throws Exception {
         if (n.getTypeDeclaration() != null) {
@@ -1148,6 +1412,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.TypeMethodReference, java.lang.Object)
+     */
     @Override
     public void visit(TypeMethodReference n, C ctx) throws Exception {
         if (n.getType() != null) {
@@ -1161,6 +1428,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.TypeParameter, java.lang.Object)
+     */
     @Override
     public void visit(TypeParameter n, C ctx) throws Exception {
         if (n.getTypeBound() != null) {
@@ -1171,6 +1441,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.UnaryExpr, java.lang.Object)
+     */
     @Override
     public void visit(UnaryExpr n, C ctx) throws Exception {
         if (n.getExpression() != null) {
@@ -1184,10 +1457,16 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.UnaryExpr.UnaryOperator, java.lang.Object)
+     */
     @Override
     public void visit(UnaryOperator n, C ctx) throws Exception {
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.VariableDeclarationExpr, java.lang.Object)
+     */
     @Override
     public void visit(VariableDeclarationExpr n, C ctx) throws Exception {
         if (n.getModifiers() != null) {
@@ -1204,6 +1483,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.VariableDeclarator, java.lang.Object)
+     */
     @Override
     public void visit(VariableDeclarator n, C ctx) throws Exception {
         if (n.getId() != null) {
@@ -1217,6 +1499,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.VariableDeclaratorId, java.lang.Object)
+     */
     @Override
     public void visit(VariableDeclaratorId n, C ctx) throws Exception {
         if (n.getSlots() != null) {
@@ -1227,6 +1512,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.VoidType, java.lang.Object)
+     */
     @Override
     public void visit(VoidType n, C ctx) throws Exception {
         if (n.getAnnotations() != null) {
@@ -1234,6 +1522,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.WhileStmt, java.lang.Object)
+     */
     @Override
     public void visit(WhileStmt n, C ctx) throws Exception {
         if (n.getCondition() != null) {
@@ -1247,6 +1538,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.WildcardType, java.lang.Object)
+     */
     @Override
     public void visit(WildcardType n, C ctx) throws Exception {
         if (n.getExtendsType() != null) {
@@ -1260,6 +1554,9 @@ public class VoidVisitorAdapter<C> implements VoidVisitor<C> {
         }
     }
 
+    /**
+     * Instantiates a new void visitor adapter.
+     */
     public VoidVisitorAdapter() {
         super();
     }

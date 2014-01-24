@@ -1079,14 +1079,20 @@ public class TracePrinter implements VoidVisitor<SourcePrinter> {
 		}
 		printer.print(n.getName());
 		printer.print("(");
+		boolean reciever = false;
 		if (n.getReceiverType() != null) {
+			reciever = true;
             n.getReceiverType().accept(this, printer);
-        }
-        if (n.getReceiverQualifier() != null) {
-            n.getReceiverQualifier().accept(this, printer);
-            printer.print(".this");
+            if (n.getReceiverQualifier() != null) {
+                n.getReceiverQualifier().accept(this, printer);
+                printer.print(".");
+            }
+            printer.print("this");
         }
 		if (n.getParameters() != null) {
+			if (reciever) {
+				printer.print(",");
+			}
 			for (Iterator<Parameter> i = n.getParameters().iterator(); i
 					.hasNext();) {
 				Parameter p = i.next();
@@ -1138,14 +1144,20 @@ public class TracePrinter implements VoidVisitor<SourcePrinter> {
 		printer.print(" ");
 		printer.print(n.getName());
 		printer.print("(");
+		boolean reciever = false;
 		if (n.getReceiverType() != null) {
+			reciever = true;
             n.getReceiverType().accept(this, printer);
-        }
-        if (n.getReceiverQualifier() != null) {
-            n.getReceiverQualifier().accept(this, printer);
-            printer.print(".this");
+            if (n.getReceiverQualifier() != null) {
+                n.getReceiverQualifier().accept(this, printer);
+                printer.print(".");
+            }
+            printer.print("this");
         }
 		if (n.getParameters() != null) {
+			if (reciever) {
+				printer.print(",");
+			}
 			for (Iterator<Parameter> i = n.getParameters().iterator(); i
 					.hasNext();) {
 				Parameter p = i.next();
@@ -2185,6 +2197,9 @@ public class TracePrinter implements VoidVisitor<SourcePrinter> {
 		n.getExpression().accept(this, printer);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.TypeMethodReference, java.lang.Object)
+	 */
 	@Override
 	public void visit(TypeMethodReference n, SourcePrinter printer)
 			throws Exception {
@@ -2198,6 +2213,9 @@ public class TracePrinter implements VoidVisitor<SourcePrinter> {
 		printer.print(n.getMethodName());
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.ExpressionMethodReference, java.lang.Object)
+	 */
 	@Override
 	public void visit(ExpressionMethodReference n, SourcePrinter printer)
 			throws Exception {
@@ -2211,6 +2229,9 @@ public class TracePrinter implements VoidVisitor<SourcePrinter> {
 		printer.print(n.getMethodName());
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.CreationReference, java.lang.Object)
+	 */
 	@Override
 	public void visit(CreationReference n, SourcePrinter printer)
 			throws Exception {
@@ -2226,6 +2247,9 @@ public class TracePrinter implements VoidVisitor<SourcePrinter> {
 		printer.print("new");
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.SuperMethodReference, java.lang.Object)
+	 */
 	@Override
 	public void visit(SuperMethodReference n, SourcePrinter printer)
 			throws Exception {
@@ -2233,6 +2257,7 @@ public class TracePrinter implements VoidVisitor<SourcePrinter> {
 		printer.print(":->");
 		if (n.getQualifier() != null) {
 			n.getQualifier().accept(this, printer);
+			printer.print(".");
 		}
 		printer.print("super");
 		printer.print("::");
