@@ -327,8 +327,9 @@ public class NodeFacade extends NodeFactory {
 	public static MethodCallExpr MethodCallExpr(String name,
 			List<Expression> args) {
 		QualifiedNameExpr qName = QualifiedNameExpr(
-				QualifiedNameExpr(QualifiedNameExpr(NameExpr("com"), "dagxp"),
-						"jse"), "NodeFacade");
+				QualifiedNameExpr(
+						QualifiedNameExpr(NameExpr("com"), "digiarea"), "jse"),
+				"NodeFacade");
 		return MethodCallExpr(qName, null, name, NodeList(args), null, 0, 0);
 	}
 
