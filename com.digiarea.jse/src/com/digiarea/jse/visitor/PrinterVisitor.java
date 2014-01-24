@@ -261,7 +261,6 @@ public class PrinterVisitor implements VoidVisitor<SourcePrinter> {
 	@Override
 	public void visit(NameExpr n, SourcePrinter printer) throws Exception {
 		printer.print(n.getName());
-		printer.print(n.getName());
 	}
 
 	/*
