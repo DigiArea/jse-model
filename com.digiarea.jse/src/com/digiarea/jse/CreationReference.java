@@ -1,26 +1,31 @@
 package com.digiarea.jse;
 
+import com.digiarea.jse.MethodReference;
 import com.digiarea.jse.Type;
-import com.digiarea.jse.ArraySlot;
 import com.digiarea.jse.NodeList;
 import com.digiarea.jse.AnnotationExpr;
 import com.digiarea.jse.visitor.VoidVisitor;
 import com.digiarea.jse.visitor.GenericVisitor;
 
 /** 
- * The Class ReferenceType.
+ * Creation reference expression node type (added in JLS8 API).
+ *
+ * <pre>
+ * CreationReference:
+ *     Type <b>::</b>
+ *         [ <b>&lt;</b> Type { <b>,</b> Type } <b>&gt;</b> ]
+ *         <b>new</b>
+ * </pre>
+ *
+ * @since 3.3
+ * @noinstantiate This class is not intended to be instantiated by clients.
  */
-public final class ReferenceType extends Type {
+public class CreationReference extends MethodReference {
 
     /** 
-     * The type.
+     * The type; defaults to an unspecified type.
      */
-    private Type type;
-
-    /** 
-     * The slots.
-     */
-    private NodeList<ArraySlot> slots;
+    private Type type = null;
 
     public Type getType() {
         return type;
@@ -30,22 +35,13 @@ public final class ReferenceType extends Type {
         this.type = type;
     }
 
-    public NodeList<ArraySlot> getSlots() {
-        return slots;
-    }
-
-    public void setSlots(NodeList<ArraySlot> slots) {
-        this.slots = slots;
-    }
-
-    ReferenceType() {
+    CreationReference() {
         super();
     }
 
-    ReferenceType(Type type, NodeList<ArraySlot> slots, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
-        super(annotations, posBegin, posEnd);
+    CreationReference(Type type, NodeList<Type> typeArgs, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
+        super(typeArgs, annotations, posBegin, posEnd);
         this.type = type;
-        this.slots = slots;
     }
 
     @Override

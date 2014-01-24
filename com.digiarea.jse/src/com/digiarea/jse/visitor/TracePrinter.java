@@ -1079,6 +1079,13 @@ public class TracePrinter implements VoidVisitor<SourcePrinter> {
 		}
 		printer.print(n.getName());
 		printer.print("(");
+		if (n.getReceiverType() != null) {
+            n.getReceiverType().accept(this, printer);
+        }
+        if (n.getReceiverQualifier() != null) {
+            n.getReceiverQualifier().accept(this, printer);
+            printer.print(".this");
+        }
 		if (n.getParameters() != null) {
 			for (Iterator<Parameter> i = n.getParameters().iterator(); i
 					.hasNext();) {
@@ -1131,6 +1138,13 @@ public class TracePrinter implements VoidVisitor<SourcePrinter> {
 		printer.print(" ");
 		printer.print(n.getName());
 		printer.print("(");
+		if (n.getReceiverType() != null) {
+            n.getReceiverType().accept(this, printer);
+        }
+        if (n.getReceiverQualifier() != null) {
+            n.getReceiverQualifier().accept(this, printer);
+            printer.print(".this");
+        }
 		if (n.getParameters() != null) {
 			for (Iterator<Parameter> i = n.getParameters().iterator(); i
 					.hasNext();) {
@@ -2171,15 +2185,9 @@ public class TracePrinter implements VoidVisitor<SourcePrinter> {
 		n.getExpression().accept(this, printer);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.MethodTypeRef
-	 * , java.lang.Object)
-	 */
 	@Override
-	public void visit(MethodTypeRef n, SourcePrinter printer) throws Exception {
+	public void visit(TypeMethodReference n, SourcePrinter printer)
+			throws Exception {
 		printer.print(n.getClass().getName());
 		printer.print(":->");
 		n.getType().accept(this, printer);
@@ -2187,41 +2195,51 @@ public class TracePrinter implements VoidVisitor<SourcePrinter> {
 		if (n.getTypeArgs() != null) {
 			printTypeArgs(n.getTypeArgs(), printer);
 		}
-		printer.print(n.getName());
+		printer.print(n.getMethodName());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.MethodExprRef
-	 * , java.lang.Object)
-	 */
 	@Override
-	public void visit(MethodExprRef n, SourcePrinter printer) throws Exception {
+	public void visit(ExpressionMethodReference n, SourcePrinter printer)
+			throws Exception {
 		printer.print(n.getClass().getName());
 		printer.print(":->");
-		n.getScope().accept(this, printer);
+		n.getExpression().accept(this, printer);
 		printer.print("::");
 		if (n.getTypeArgs() != null) {
 			printTypeArgs(n.getTypeArgs(), printer);
 		}
-		printer.print(n.getName());
+		printer.print(n.getMethodName());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.digiarea.jse.visitor.VoidVisitor#visit(com.digiarea.jse.MethodRef,
-	 * java.lang.Object)
-	 */
 	@Override
-	public void visit(MethodRef n, SourcePrinter printer) throws Exception {
+	public void visit(CreationReference n, SourcePrinter printer)
+			throws Exception {
 		printer.print(n.getClass().getName());
 		printer.print(":->");
-		// Make literal presentation for this node
-		throw new Exception("No literal presentation for this node");
+		if (n.getType() != null) {
+			n.getType().accept(this, printer);
+		}
+		printer.print("::");
+		if (n.getTypeArgs() != null) {
+			printTypeArgs(n.getTypeArgs(), printer);
+		}
+		printer.print("new");
+	}
+
+	@Override
+	public void visit(SuperMethodReference n, SourcePrinter printer)
+			throws Exception {
+		printer.print(n.getClass().getName());
+		printer.print(":->");
+		if (n.getQualifier() != null) {
+			n.getQualifier().accept(this, printer);
+		}
+		printer.print("super");
+		printer.print("::");
+		if (n.getTypeArgs() != null) {
+			printTypeArgs(n.getTypeArgs(), printer);
+		}
+		printer.print(n.getMethodName());
 	}
 
 	/*
