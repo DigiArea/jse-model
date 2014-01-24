@@ -14,12 +14,25 @@ import com.digiarea.jse.Node;
 import com.digiarea.jse.AnnotationExpr;
 import com.digiarea.jse.NodeList;
 
+/** 
+ * The Class Type.
+ */
 public abstract class Type extends Node {
 
+    /**
+     * Instantiates a new type.
+     */
     Type() {
         super();
     }
 
+    /**
+     * Instantiates a new type.
+     *
+     * @param annotations the annotations
+     * @param posBegin the pos begin
+     * @param posEnd the pos end
+     */
     Type(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
     }

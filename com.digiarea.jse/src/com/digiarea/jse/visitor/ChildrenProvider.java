@@ -107,8 +107,16 @@ import com.digiarea.jse.VoidType;
 import com.digiarea.jse.WhileStmt;
 import com.digiarea.jse.WildcardType;
 
+/**
+ * The Class ChildrenProvider.
+ *
+ * @param <C> the generic type
+ */
 public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.AnnotationDeclaration, java.lang.Object)
+     */
     @Override
     public List<Object> visit(AnnotationDeclaration n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -130,6 +138,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.AnnotationMemberDeclaration, java.lang.Object)
+     */
     @Override
     public List<Object> visit(AnnotationMemberDeclaration n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -154,6 +165,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ArrayAccessExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ArrayAccessExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -171,6 +185,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ArrayCreationExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ArrayCreationExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -191,6 +208,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ArrayInitializerExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ArrayInitializerExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -205,6 +225,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ArraySlot, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ArraySlot n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -219,6 +242,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.AssertStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(AssertStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -236,6 +262,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.AssignExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(AssignExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -254,11 +283,17 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.AssignExpr.AssignOperator, java.lang.Object)
+     */
     @Override
     public List<Object> visit(AssignOperator n, Void ctx) throws Exception {
         return null;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.BinaryExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(BinaryExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -277,11 +312,17 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.BinaryExpr.BinaryOperator, java.lang.Object)
+     */
     @Override
     public List<Object> visit(BinaryOperator n, Void ctx) throws Exception {
         return null;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.BlockComment, java.lang.Object)
+     */
     @Override
     public List<Object> visit(BlockComment n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -294,6 +335,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.BlockStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(BlockStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -308,6 +352,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.BooleanLiteralExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(BooleanLiteralExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -320,6 +367,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.BreakStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(BreakStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -332,6 +382,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.CastExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(CastExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -349,6 +402,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.CatchClause, java.lang.Object)
+     */
     @Override
     public List<Object> visit(CatchClause n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -368,6 +424,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.CharLiteralExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(CharLiteralExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -380,6 +439,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ClassDeclaration, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ClassDeclaration n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -410,6 +472,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ClassExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ClassExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -424,6 +489,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ClassOrInterfaceType, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ClassOrInterfaceType n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -444,6 +512,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.CompilationUnit, java.lang.Object)
+     */
     @Override
     public List<Object> visit(CompilationUnit n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -468,6 +539,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ConditionalExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ConditionalExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -488,6 +562,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ConstructorDeclaration, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ConstructorDeclaration n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -498,6 +575,12 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
             img.add(n.getTypeParameters());
         }
         img.add(n.getName());
+        if (n.getReceiverType() != null) {
+            img.add(n.getReceiverType());
+        }
+        if (n.getReceiverQualifier() != null) {
+            img.add(n.getReceiverQualifier());
+        }
         if (n.getParameters() != null) {
             img.add(n.getParameters());
         }
@@ -518,6 +601,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ContinueStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ContinueStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -530,6 +616,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.DoStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(DoStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -547,6 +636,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.DoubleLiteralExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(DoubleLiteralExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -559,6 +651,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.Ellipsis, java.lang.Object)
+     */
     @Override
     public List<Object> visit(Ellipsis n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -570,6 +665,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.EmptyMemberDeclaration, java.lang.Object)
+     */
     @Override
     public List<Object> visit(EmptyMemberDeclaration n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -584,6 +682,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.EmptyStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(EmptyStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -595,6 +696,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.EmptyTypeDeclaration, java.lang.Object)
+     */
     @Override
     public List<Object> visit(EmptyTypeDeclaration n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -616,6 +720,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.EnclosedExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(EnclosedExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -630,6 +737,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.EnumConstantDeclaration, java.lang.Object)
+     */
     @Override
     public List<Object> visit(EnumConstantDeclaration n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -651,6 +761,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.EnumDeclaration, java.lang.Object)
+     */
     @Override
     public List<Object> visit(EnumDeclaration n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -678,6 +791,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ExplicitConstructorInvocationStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ExplicitConstructorInvocationStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -699,6 +815,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ExpressionStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ExpressionStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -713,6 +832,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.FieldAccessExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(FieldAccessExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -731,6 +853,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.FieldDeclaration, java.lang.Object)
+     */
     @Override
     public List<Object> visit(FieldDeclaration n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -754,6 +879,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ForeachStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ForeachStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -774,6 +902,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ForStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ForStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -797,6 +928,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.IfStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(IfStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -817,6 +951,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ImportDeclaration, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ImportDeclaration n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -833,6 +970,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.InitializerDeclaration, java.lang.Object)
+     */
     @Override
     public List<Object> visit(InitializerDeclaration n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -851,6 +991,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.InstanceOfExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(InstanceOfExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -868,6 +1011,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.IntegerLiteralExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(IntegerLiteralExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -880,6 +1026,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.InterfaceDeclaration, java.lang.Object)
+     */
     @Override
     public List<Object> visit(InterfaceDeclaration n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -907,6 +1056,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.JavadocComment, java.lang.Object)
+     */
     @Override
     public List<Object> visit(JavadocComment n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -919,6 +1071,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.LabeledStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(LabeledStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -934,6 +1089,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.LambdaBlock, java.lang.Object)
+     */
     @Override
     public List<Object> visit(LambdaBlock n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -951,6 +1109,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.LambdaExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(LambdaExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -968,6 +1129,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.LineComment, java.lang.Object)
+     */
     @Override
     public List<Object> visit(LineComment n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -980,6 +1144,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.LongLiteralExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(LongLiteralExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -992,6 +1159,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.MarkerAnnotationExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(MarkerAnnotationExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1006,6 +1176,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.MemberValuePair, java.lang.Object)
+     */
     @Override
     public List<Object> visit(MemberValuePair n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1021,6 +1194,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.MethodCallExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(MethodCallExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1042,6 +1218,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.MethodDeclaration, java.lang.Object)
+     */
     @Override
     public List<Object> visit(MethodDeclaration n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1055,6 +1234,12 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
             img.add(n.getType());
         }
         img.add(n.getName());
+        if (n.getReceiverType() != null) {
+            img.add(n.getReceiverType());
+        }
+        if (n.getReceiverQualifier() != null) {
+            img.add(n.getReceiverQualifier());
+        }
         if (n.getParameters() != null) {
             img.add(n.getParameters());
         }
@@ -1078,6 +1263,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.MethodExprRef, java.lang.Object)
+     */
     @Override
     public List<Object> visit(MethodExprRef n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1096,6 +1284,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.MethodRef, java.lang.Object)
+     */
     @Override
     public List<Object> visit(MethodRef n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1111,6 +1302,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.MethodTypeRef, java.lang.Object)
+     */
     @Override
     public List<Object> visit(MethodTypeRef n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1129,6 +1323,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.Modifiers, java.lang.Object)
+     */
     @Override
     public List<Object> visit(Modifiers n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1141,6 +1338,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.NameExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(NameExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1153,6 +1353,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.NodeList, java.lang.Object)
+     */
     @Override
     public <E extends Node> List<Object> visit(NodeList<E> n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1167,6 +1370,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.NormalAnnotationExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(NormalAnnotationExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1184,6 +1390,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.NullLiteralExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(NullLiteralExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1195,6 +1404,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ObjectCreationExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ObjectCreationExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1221,6 +1433,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.PackageDeclaration, java.lang.Object)
+     */
     @Override
     public List<Object> visit(PackageDeclaration n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1235,6 +1450,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.Parameter, java.lang.Object)
+     */
     @Override
     public List<Object> visit(Parameter n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1258,6 +1476,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.PrimitiveType, java.lang.Object)
+     */
     @Override
     public List<Object> visit(PrimitiveType n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1270,11 +1491,17 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.PrimitiveType.Primitive, java.lang.Object)
+     */
     @Override
     public List<Object> visit(Primitive n, Void ctx) throws Exception {
         return null;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.Project, java.lang.Object)
+     */
     @Override
     public List<Object> visit(Project n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1289,6 +1516,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.QualifiedNameExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(QualifiedNameExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1304,6 +1534,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ReferenceType, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ReferenceType n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1321,6 +1554,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ReturnStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ReturnStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1335,6 +1571,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.SingleMemberAnnotationExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(SingleMemberAnnotationExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1352,6 +1591,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.StringLiteralExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(StringLiteralExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1364,6 +1606,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.SuperExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(SuperExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1378,6 +1623,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.SwitchEntryStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(SwitchEntryStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1395,6 +1643,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.SwitchStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(SwitchStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1412,6 +1663,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.SynchronizedStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(SynchronizedStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1429,6 +1683,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ThisExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ThisExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1443,6 +1700,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ThrowStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(ThrowStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1457,6 +1717,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.TryStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(TryStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1480,6 +1743,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.TypeDeclarationStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(TypeDeclarationStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1494,6 +1760,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.TypeParameter, java.lang.Object)
+     */
     @Override
     public List<Object> visit(TypeParameter n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1509,6 +1778,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.UnaryExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(UnaryExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1524,11 +1796,17 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.UnaryExpr.UnaryOperator, java.lang.Object)
+     */
     @Override
     public List<Object> visit(UnaryOperator n, Void ctx) throws Exception {
         return null;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.VariableDeclarationExpr, java.lang.Object)
+     */
     @Override
     public List<Object> visit(VariableDeclarationExpr n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1549,6 +1827,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.VariableDeclarator, java.lang.Object)
+     */
     @Override
     public List<Object> visit(VariableDeclarator n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1566,6 +1847,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.VariableDeclaratorId, java.lang.Object)
+     */
     @Override
     public List<Object> visit(VariableDeclaratorId n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1581,6 +1865,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.VoidType, java.lang.Object)
+     */
     @Override
     public List<Object> visit(VoidType n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1592,6 +1879,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.WhileStmt, java.lang.Object)
+     */
     @Override
     public List<Object> visit(WhileStmt n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1609,6 +1899,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.WildcardType, java.lang.Object)
+     */
     @Override
     public List<Object> visit(WildcardType n, Void ctx) throws Exception {
         List<Object> img = new ArrayList<Object>();
@@ -1626,6 +1919,9 @@ public class ChildrenProvider<C> implements GenericVisitor<List<Object>, Void> {
         return img;
     }
 
+    /**
+     * Instantiates a new children provider.
+     */
     public ChildrenProvider() {
         super();
     }

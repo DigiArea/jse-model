@@ -51,8 +51,18 @@ import com.digiarea.jse.Type;
 import com.digiarea.jse.TypeDeclaration;
 import com.digiarea.jse.TypeParameter;
 
+/**
+ * The Class ReflectUtils.
+ */
 public final class ReflectUtils {
 
+	/**
+	 * Make compilation unit.
+	 *
+	 * @param qName the q name
+	 * @return the compilation unit
+	 * @throws ClassNotFoundException the class not found exception
+	 */
 	public static CompilationUnit makeCompilationUnit(String qName)
 			throws ClassNotFoundException {
 		Class<?> clazz = Class.forName(qName);
@@ -65,6 +75,12 @@ public final class ReflectUtils {
 				clazz.getCanonicalName());
 	}
 
+	/**
+	 * Make type declarations.
+	 *
+	 * @param clazz the clazz
+	 * @return the list
+	 */
 	public static List<TypeDeclaration> makeTypeDeclarations(Class<?> clazz) {
 		Class<?>[] clazzes = clazz.getDeclaredClasses();
 		List<TypeDeclaration> types = new ArrayList<TypeDeclaration>();
@@ -74,6 +90,12 @@ public final class ReflectUtils {
 		return types;
 	}
 
+	/**
+	 * Make type declaration.
+	 *
+	 * @param clazz the clazz
+	 * @return the type declaration
+	 */
 	public static TypeDeclaration makeTypeDeclaration(Class<?> clazz) {
 		if (clazz.isAnnotation()) {
 			return makeAnnotationDeclaration(clazz);
@@ -86,6 +108,12 @@ public final class ReflectUtils {
 		}
 	}
 
+	/**
+	 * Make class declaration.
+	 *
+	 * @param clazz the clazz
+	 * @return the class declaration
+	 */
 	public static ClassDeclaration makeClassDeclaration(Class<?> clazz) {
 		return NodeFacade.ClassDeclaration(
 				makeTypeParameters(clazz.getTypeParameters()),
@@ -96,6 +124,12 @@ public final class ReflectUtils {
 
 	}
 
+	/**
+	 * Make interface declaration.
+	 *
+	 * @param clazz the clazz
+	 * @return the interface declaration
+	 */
 	public static InterfaceDeclaration makeInterfaceDeclaration(Class<?> clazz) {
 		return NodeFacade.InterfaceDeclaration(
 				makeTypeParameters(clazz.getTypeParameters()),
@@ -104,6 +138,12 @@ public final class ReflectUtils {
 				makeAnnotations(clazz.getAnnotations()));
 	}
 
+	/**
+	 * Make enum declaration.
+	 *
+	 * @param clazz the clazz
+	 * @return the enum declaration
+	 */
 	public static EnumDeclaration makeEnumDeclaration(Class<?> clazz) {
 		// TODO try to fix enumerations members
 		int modifiers = Modifiers.removeModifier(clazz.getModifiers(),
@@ -113,12 +153,24 @@ public final class ReflectUtils {
 				null, makeAnnotations(clazz.getAnnotations()));
 	}
 
+	/**
+	 * Make annotation declaration.
+	 *
+	 * @param clazz the clazz
+	 * @return the annotation declaration
+	 */
 	public static AnnotationDeclaration makeAnnotationDeclaration(Class<?> clazz) {
 		return NodeFacade.AnnotationDeclaration(clazz.getModifiers(),
 				clazz.getSimpleName(), makeMembers(clazz), null,
 				makeAnnotations(clazz.getAnnotations()));
 	}
 
+	/**
+	 * Make members.
+	 *
+	 * @param clazz the clazz
+	 * @return the list
+	 */
 	public static List<BodyDeclaration> makeMembers(Class<?> clazz) {
 		List<BodyDeclaration> members = new ArrayList<BodyDeclaration>();
 		// make type declarations
@@ -132,6 +184,12 @@ public final class ReflectUtils {
 		return members;
 	}
 
+	/**
+	 * Make fields.
+	 *
+	 * @param clazz the clazz
+	 * @return the list
+	 */
 	public static List<FieldDeclaration> makeFields(Class<?> clazz) {
 		List<FieldDeclaration> result = new ArrayList<FieldDeclaration>();
 		Field[] fields = clazz.getDeclaredFields();
@@ -148,6 +206,12 @@ public final class ReflectUtils {
 		return result;
 	}
 
+	/**
+	 * Make constructors.
+	 *
+	 * @param clazz the clazz
+	 * @return the list
+	 */
 	public static List<ConstructorDeclaration> makeConstructors(Class<?> clazz) {
 		List<ConstructorDeclaration> result = new ArrayList<ConstructorDeclaration>();
 		Constructor<?>[] constructors = clazz.getConstructors();
@@ -166,6 +230,12 @@ public final class ReflectUtils {
 		return result;
 	}
 
+	/**
+	 * Make methods.
+	 *
+	 * @param clazz the clazz
+	 * @return the list
+	 */
 	public static List<MethodDeclaration> makeMethods(Class<?> clazz) {
 		List<MethodDeclaration> result = new ArrayList<MethodDeclaration>();
 		Method[] methids = clazz.getDeclaredMethods();
@@ -199,6 +269,12 @@ public final class ReflectUtils {
 		return result;
 	}
 
+	/**
+	 * Make throws list.
+	 *
+	 * @param exceptionTypes the exception types
+	 * @return the list
+	 */
 	public static List<ClassOrInterfaceType> makeThrowsList(
 			Class<?>[] exceptionTypes) {
 		List<ClassOrInterfaceType> result = new ArrayList<>();
@@ -212,6 +288,14 @@ public final class ReflectUtils {
 		}
 	}
 
+	/**
+	 * Make parameters.
+	 *
+	 * @param parameterTypes the parameter types
+	 * @param annotations the annotations
+	 * @param isVarArgs the is var args
+	 * @return the list
+	 */
 	public static List<Parameter> makeParameters(
 			java.lang.reflect.Type[] parameterTypes,
 			Annotation[][] annotations, boolean isVarArgs) {
@@ -235,10 +319,22 @@ public final class ReflectUtils {
 		}
 	}
 
+	/**
+	 * Make extends list.
+	 *
+	 * @param clazz the clazz
+	 * @return the list
+	 */
 	public static List<ClassOrInterfaceType> makeExtendsList(Class<?> clazz) {
 		return makeImplements(clazz);
 	}
 
+	/**
+	 * Make extends type.
+	 *
+	 * @param clazz the clazz
+	 * @return the class or interface type
+	 */
 	public static ClassOrInterfaceType makeExtendsType(Class<?> clazz) {
 		java.lang.reflect.Type type = clazz.getGenericSuperclass();
 		if (!type.equals(Object.class)) {
@@ -248,6 +344,12 @@ public final class ReflectUtils {
 		}
 	}
 
+	/**
+	 * Make type parameters.
+	 *
+	 * @param typeVariables the type variables
+	 * @return the list
+	 */
 	public static List<TypeParameter> makeTypeParameters(
 			TypeVariable<?>[] typeVariables) {
 		List<TypeParameter> result = new ArrayList<TypeParameter>();
@@ -262,6 +364,12 @@ public final class ReflectUtils {
 		}
 	}
 
+	/**
+	 * Make types.
+	 *
+	 * @param bounds the bounds
+	 * @return the list
+	 */
 	public static List<ClassOrInterfaceType> makeTypes(
 			java.lang.reflect.Type[] bounds) {
 		List<ClassOrInterfaceType> result = new ArrayList<ClassOrInterfaceType>();
@@ -278,6 +386,12 @@ public final class ReflectUtils {
 		}
 	}
 
+	/**
+	 * Make entries.
+	 *
+	 * @param clazz the clazz
+	 * @return the list
+	 */
 	public static List<EnumConstantDeclaration> makeEntries(Class<?> clazz) {
 		List<EnumConstantDeclaration> result = new ArrayList<EnumConstantDeclaration>();
 		Object[] enumConstants = clazz.getEnumConstants();
@@ -293,6 +407,12 @@ public final class ReflectUtils {
 		}
 	}
 
+	/**
+	 * Make implements.
+	 *
+	 * @param clazz the clazz
+	 * @return the list
+	 */
 	public static List<ClassOrInterfaceType> makeImplements(Class<?> clazz) {
 		List<ClassOrInterfaceType> result = new ArrayList<ClassOrInterfaceType>();
 		java.lang.reflect.Type[] types = clazz.getGenericInterfaces();
@@ -306,6 +426,12 @@ public final class ReflectUtils {
 		}
 	}
 
+	/**
+	 * Make annotations.
+	 *
+	 * @param annotations the annotations
+	 * @return the list
+	 */
 	public static List<AnnotationExpr> makeAnnotations(Annotation[] annotations) {
 		List<AnnotationExpr> result = new ArrayList<AnnotationExpr>();
 		for (Annotation annotation : annotations) {
@@ -337,6 +463,12 @@ public final class ReflectUtils {
 		}
 	}
 
+	/**
+	 * Make type.
+	 *
+	 * @param genericType the generic type
+	 * @return the type
+	 */
 	public static Type makeType(java.lang.reflect.Type genericType) {
 		List<Type> typeArgs = new ArrayList<Type>();
 		String name = "UNKNOWN";
@@ -398,6 +530,13 @@ public final class ReflectUtils {
 		return null;
 	}
 
+	/**
+	 * Make unique name.
+	 *
+	 * @param type the type
+	 * @param taken the taken
+	 * @return the string
+	 */
 	private static String makeUniqueName(Type type, List<String> taken) {
 		String name = makeName(type);
 		int i = 1;
@@ -408,6 +547,12 @@ public final class ReflectUtils {
 		return name;
 	}
 
+	/**
+	 * Make name.
+	 *
+	 * @param type the type
+	 * @return the string
+	 */
 	private static String makeName(Type type) {
 		Type inner = type;
 		boolean isUnique = true;
@@ -436,6 +581,12 @@ public final class ReflectUtils {
 		return "NAME";
 	}
 
+	/**
+	 * Make return.
+	 *
+	 * @param type the type
+	 * @return the expression
+	 */
 	private static Expression makeReturn(Type type) {
 		if (type instanceof ReferenceType
 				|| type instanceof ClassOrInterfaceType) {

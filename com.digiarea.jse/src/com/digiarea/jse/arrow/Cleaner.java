@@ -57,6 +57,9 @@ public class Cleaner extends Identity {
 		return super.visit(n, ctx);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.arrow.Identity#arrow(com.digiarea.jse.Project)
+	 */
 	@Override
 	public Project arrow(Project iProject) throws Exception {
 		Project img = NodeFacade.Project();

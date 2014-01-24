@@ -44,6 +44,9 @@ public class Quiver implements Arrow<Project, Project> {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.common.Arrow#arrow(java.lang.Object)
+	 */
 	@Override
 	public Project arrow(Project iProject) throws Exception {
 		Project result = iProject;
@@ -53,6 +56,11 @@ public class Quiver implements Arrow<Project, Project> {
 		return result;
 	}
 
+	/**
+	 * Adds the arrow.
+	 *
+	 * @param arrow the arrow
+	 */
 	public void addArrow(Arrow<Project, Project> arrow) {
 		arrows.add(arrow);
 	}

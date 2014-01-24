@@ -44,16 +44,34 @@ import com.digiarea.jse.Statement;
 import com.digiarea.jse.Type;
 import com.digiarea.jse.TypeDeclaration;
 
+/**
+ * The Class NodeUtils.
+ */
 public class NodeUtils {
 
+	/**
+	 * The Constant JAVAX_ANNOTATION_GENERATED.
+	 */
 	private static final String JAVAX_ANNOTATION_GENERATED = "javax.annotation.Generated";
 
+	/**
+	 * The Constant ADD_ALL.
+	 */
 	private static final String ADD_ALL = "addAll";
 
+	/**
+	 * The Constant SET.
+	 */
 	private static final String SET = "set";
 
+	/**
+	 * The Constant IS.
+	 */
 	private static final String IS = "is";
 
+	/**
+	 * The Constant GET.
+	 */
 	private static final String GET = "get";
 
 	/**
@@ -154,6 +172,13 @@ public class NodeUtils {
 		}
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @param name the name
+	 * @param dlim the dlim
+	 * @return the string
+	 */
 	public static String toString(NameExpr name, String dlim) {
 		if (name instanceof QualifiedNameExpr) {
 			NameExpr q = ((QualifiedNameExpr) name).getQualifier();
@@ -164,6 +189,12 @@ public class NodeUtils {
 		return name.getName();
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @param name the name
+	 * @return the string
+	 */
 	public static String toString(NameExpr name) {
 		return toString(name, Delimiter.DOT.toString());
 	}
@@ -181,10 +212,10 @@ public class NodeUtils {
 	 * 12:08:56 local time in the U.S. Pacific Time time zone. The comment
 	 * element is a place holder for any comments that the code generator may
 	 * want to include in the generated code.
-	 * 
-	 * @param value
-	 * @param comments
-	 * @return
+	 *
+	 * @param value the value
+	 * @param comments the comments
+	 * @return the normal annotation expr
 	 */
 	public static NormalAnnotationExpr makeGenerated(String[] value,
 			String comments) {
@@ -271,6 +302,13 @@ public class NodeUtils {
 				.toString()));
 	}
 
+	/**
+	 * Checks if is boolean.
+	 *
+	 * @param type the type
+	 * @param isNative the is native
+	 * @return true, if is boolean
+	 */
 	public static boolean isBoolean(Type type, boolean isNative) {
 		if (type instanceof PrimitiveType) {
 			return type.equals(NodeFacade.BOOLEAN_TYPE);
@@ -283,6 +321,12 @@ public class NodeUtils {
 		}
 	}
 
+	/**
+	 * Checks if is boolean.
+	 *
+	 * @param type the type
+	 * @return true, if is boolean
+	 */
 	public static boolean isBoolean(Type type) {
 		return isBoolean(type, false);
 	}
@@ -327,6 +371,12 @@ public class NodeUtils {
 		return null;
 	}
 
+	/**
+	 * Gets the modifiers.
+	 *
+	 * @param modifiers the modifiers
+	 * @return the modifiers
+	 */
 	public static int getModifiers(Expression modifiers) {
 		if (modifiers instanceof IntegerLiteralExpr) {
 			return Integer.valueOf(((IntegerLiteralExpr) modifiers).getValue());
@@ -343,6 +393,12 @@ public class NodeUtils {
 		return 0;
 	}
 
+	/**
+	 * Gets the modifiers value.
+	 *
+	 * @param name the name
+	 * @return the modifiers value
+	 */
 	public static int getModifiersValue(String name) {
 		if ("ABSTRACT".equals(name))
 			return Modifiers.ABSTRACT;
@@ -370,6 +426,12 @@ public class NodeUtils {
 			return 0;
 	}
 
+	/**
+	 * Modifiers to expression.
+	 *
+	 * @param modifiers the modifiers
+	 * @return the expression
+	 */
 	public static Expression modifiersToExpression(int modifiers) {
 		Expression expression = null;
 		Expression scope = NodeFacade.NameExpr("com.digiarea.jse.Modifiers");
@@ -420,6 +482,13 @@ public class NodeUtils {
 		return expression;
 	}
 
+	/**
+	 * Adds the modifiers.
+	 *
+	 * @param left the left
+	 * @param right the right
+	 * @return the expression
+	 */
 	private static final Expression addModifiers(Expression left,
 			Expression right) {
 		if (left == null) {
@@ -433,11 +502,10 @@ public class NodeUtils {
 
 	/**
 	 * Creates the getter declaration.
-	 * 
-	 * @param type
-	 *            the type
-	 * @param string
-	 *            the string
+	 *
+	 * @param type            the type
+	 * @param string            the string
+	 * @param isProperty the is property
 	 * @return the method declaration
 	 */
 	public static MethodDeclaration createGetterDeclaration(Type type,
@@ -464,6 +532,13 @@ public class NodeUtils {
 		return method;
 	}
 
+	/**
+	 * Creates the getter declaration.
+	 *
+	 * @param type the type
+	 * @param string the string
+	 * @return the method declaration
+	 */
 	public static MethodDeclaration createGetterDeclaration(Type type,
 			String string) {
 		return createGetterDeclaration(type, string, false);
@@ -471,11 +546,10 @@ public class NodeUtils {
 
 	/**
 	 * Creates the setter declaration.
-	 * 
-	 * @param type
-	 *            the type
-	 * @param string
-	 *            the string
+	 *
+	 * @param type            the type
+	 * @param string            the string
+	 * @param isProperty the is property
 	 * @return the method declaration
 	 */
 	public static MethodDeclaration createSetterDeclaration(Type type,
@@ -508,6 +582,13 @@ public class NodeUtils {
 		return method;
 	}
 
+	/**
+	 * Creates the setter declaration.
+	 *
+	 * @param type the type
+	 * @param string the string
+	 * @return the method declaration
+	 */
 	public static MethodDeclaration createSetterDeclaration(Type type,
 			String string) {
 		return createSetterDeclaration(type, string, false);

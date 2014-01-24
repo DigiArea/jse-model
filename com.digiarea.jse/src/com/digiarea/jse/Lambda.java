@@ -34,20 +34,44 @@ import com.digiarea.jse.AnnotationExpr;
  */
 public abstract class Lambda extends Expression {
 
+    /** 
+     * The parameters.
+     */
     private NodeList<Parameter> parameters = null;
 
+    /**
+     * Gets the parameters.
+     *
+     * @return the parameters
+     */
     public NodeList<Parameter> getParameters() {
         return parameters;
     }
 
+    /**
+     * Sets the parameters.
+     *
+     * @param parameters the new parameters
+     */
     public void setParameters(NodeList<Parameter> parameters) {
         this.parameters = parameters;
     }
 
+    /**
+     * Instantiates a new lambda.
+     */
     Lambda() {
         super();
     }
 
+    /**
+     * Instantiates a new lambda.
+     *
+     * @param parameters the parameters
+     * @param annotations the annotations
+     * @param posBegin the pos begin
+     * @param posEnd the pos end
+     */
     Lambda(NodeList<Parameter> parameters, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.parameters = parameters;

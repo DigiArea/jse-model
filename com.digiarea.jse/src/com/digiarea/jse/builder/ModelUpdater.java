@@ -34,35 +34,134 @@ import com.digiarea.jse.TypeDeclaration;
 import com.digiarea.jse.TypeParameter;
 import com.digiarea.jse.utils.NodeUtils;
 
+/**
+ * The Class ModelUpdater.
+ */
 public class ModelUpdater {
 
+	/**
+	 * The qualified name.
+	 */
 	private NameExpr qualifiedName;
+	
+	/**
+	 * The type declaration.
+	 */
 	private TypeDeclaration typeDeclaration;
+	
+	/**
+	 * The is interface.
+	 */
 	private boolean isInterface = false;
+	
+	/**
+	 * The is class.
+	 */
 	private boolean isClass = false;
+	
+	/**
+	 * The is abstract.
+	 */
 	private boolean isAbstract = false;
+	
+	/**
+	 * The is annotation.
+	 */
 	private boolean isAnnotation = false;
+	
+	/**
+	 * The is enumeration.
+	 */
 	private boolean isEnumeration = false;
+	
+	/**
+	 * The is generic.
+	 */
 	private boolean isGeneric = false;
+	
+	/**
+	 * The has extends.
+	 */
 	private boolean hasExtends = false;
+	
+	/**
+	 * The has public constructor.
+	 */
 	private boolean hasPublicConstructor = false;
+	
+	/**
+	 * The has default constructor.
+	 */
 	private boolean hasDefaultConstructor = false;
+	
+	/**
+	 * The hierarchy.
+	 */
 	private ModelHierarchy hierarchy;
+	
+	/**
+	 * The fields.
+	 */
 	private List<FieldDeclaration> fields = new ArrayList<FieldDeclaration>();
+	
+	/**
+	 * The entries.
+	 */
 	private List<EnumConstantDeclaration> entries = new ArrayList<EnumConstantDeclaration>();
+	
+	/**
+	 * The max constructor parameters.
+	 */
 	private List<Parameter> maxConstructorParameters = new ArrayList<Parameter>();
+	
+	/**
+	 * The extends type.
+	 */
 	private ClassOrInterfaceType extendsType = null;
+	
+	/**
+	 * The type parameters.
+	 */
 	private List<TypeParameter> typeParameters = null;
+	
+	/**
+	 * The extends list.
+	 */
 	private List<ClassOrInterfaceType> extendsList = null;
+	
+	/**
+	 * The implements list.
+	 */
 	private List<ClassOrInterfaceType> implementsList = null;
+	
+	/**
+	 * The annotations.
+	 */
 	private List<AnnotationExpr> annotations = null;
+	
+	/**
+	 * The annotation members.
+	 */
 	private List<AnnotationMemberDeclaration> annotationMembers = null;
 
+	/**
+	 * Instantiates a new model updater.
+	 *
+	 * @param unit the unit
+	 * @param hierarchy the hierarchy
+	 */
 	public ModelUpdater(CompilationUnit unit, ModelHierarchy hierarchy) {
 		this(NodeFacade.NameExpr(unit.getName()), NodeUtils.getMainType(unit),
 				hierarchy);
 	}
 
+	/**
+	 * Instantiates a new model updater.
+	 *
+	 * @param qualifiedName the qualified name
+	 * @param typeDeclaration the type declaration
+	 * @param hierarchy the hierarchy
+	 */
 	public ModelUpdater(NameExpr qualifiedName,
 			TypeDeclaration typeDeclaration, ModelHierarchy hierarchy) {
 		super();
@@ -120,6 +219,12 @@ public class ModelUpdater {
 		}
 	}
 
+	/**
+	 * Gets the max constructor parameters.
+	 *
+	 * @param clazz the clazz
+	 * @return the max constructor parameters
+	 */
 	private List<Parameter> getMaxConstructorParameters(ClassDeclaration clazz) {
 		List<Parameter> parameters = null;
 		int max = 0;
@@ -158,6 +263,14 @@ public class ModelUpdater {
 		}
 	}
 
+	/**
+	 * Gets the fields.
+	 *
+	 * @param clazz the clazz
+	 * @param withSupers the with supers
+	 * @param extendsType the extends type
+	 * @return the fields
+	 */
 	private List<FieldDeclaration> getFields(ClassDeclaration clazz,
 			boolean withSupers, ClassOrInterfaceType extendsType) {
 		List<FieldDeclaration> fields = new ArrayList<FieldDeclaration>();
@@ -165,6 +278,13 @@ public class ModelUpdater {
 		return fields;
 	}
 
+	/**
+	 * Gets the fields.
+	 *
+	 * @param clazz the clazz
+	 * @param withSupers the with supers
+	 * @return the fields
+	 */
 	private List<FieldDeclaration> getFields(EnumDeclaration clazz,
 			boolean withSupers) {
 		List<FieldDeclaration> fields = new ArrayList<FieldDeclaration>();
@@ -178,6 +298,14 @@ public class ModelUpdater {
 		return fields;
 	}
 
+	/**
+	 * Gets the fields.
+	 *
+	 * @param fields the fields
+	 * @param clazz the clazz
+	 * @param withSupers the with supers
+	 * @return the fields
+	 */
 	private void getFields(List<FieldDeclaration> fields,
 			ClassDeclaration clazz, boolean withSupers) {
 		// get fields from the declaration
@@ -195,6 +323,13 @@ public class ModelUpdater {
 		}
 	}
 
+	/**
+	 * Gets the fields.
+	 *
+	 * @param fields the fields
+	 * @param extType the ext type
+	 * @return the fields
+	 */
 	private void getFields(List<FieldDeclaration> fields, Type extType) {
 		for (CompilationUnit unit : hierarchy.getProject()
 				.getCompilationUnits()) {
@@ -208,94 +343,209 @@ public class ModelUpdater {
 		}
 	}
 
+	/**
+	 * Checks if is interface.
+	 *
+	 * @return true, if is interface
+	 */
 	public boolean isInterface() {
 		return isInterface;
 	}
 
+	/**
+	 * Checks if is class.
+	 *
+	 * @return true, if is class
+	 */
 	public boolean isClass() {
 		return isClass;
 	}
 
+	/**
+	 * Checks if is abstract.
+	 *
+	 * @return true, if is abstract
+	 */
 	public boolean isAbstract() {
 		return isAbstract;
 	}
 
+	/**
+	 * Checks if is annotation.
+	 *
+	 * @return true, if is annotation
+	 */
 	public boolean isAnnotation() {
 		return isAnnotation;
 	}
 
+	/**
+	 * Checks if is enumeration.
+	 *
+	 * @return true, if is enumeration
+	 */
 	public boolean isEnumeration() {
 		return isEnumeration;
 	}
 
+	/**
+	 * Adds the member.
+	 *
+	 * @param decl the decl
+	 */
 	public void addMember(BodyDeclaration decl) {
 		NodeUtils.addMember(typeDeclaration, decl);
 	}
 
+	/**
+	 * Gets the qualified name.
+	 *
+	 * @return the qualified name
+	 */
 	public NameExpr getQualifiedName() {
 		return qualifiedName;
 	}
 
+	/**
+	 * Gets the type declaration.
+	 *
+	 * @return the type declaration
+	 */
 	public TypeDeclaration getTypeDeclaration() {
 		return typeDeclaration;
 	}
 
+	/**
+	 * Checks for extends.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean hasExtends() {
 		return hasExtends;
 	}
 
+	/**
+	 * Sets the checks for public constructor.
+	 *
+	 * @param hasPublicConstructor the new checks for public constructor
+	 */
 	public void setHasPublicConstructor(boolean hasPublicConstructor) {
 		this.hasPublicConstructor = hasPublicConstructor;
 	}
 
+	/**
+	 * Checks for public constructor.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean hasPublicConstructor() {
 		return hasPublicConstructor;
 	}
 
+	/**
+	 * Gets the fields.
+	 *
+	 * @return the fields
+	 */
 	public List<FieldDeclaration> getFields() {
 		return fields;
 	}
 
+	/**
+	 * Gets the max constructor parameters.
+	 *
+	 * @return the max constructor parameters
+	 */
 	public List<Parameter> getMaxConstructorParameters() {
 		return maxConstructorParameters;
 	}
 
+	/**
+	 * Gets the extends type.
+	 *
+	 * @return the extends type
+	 */
 	public ClassOrInterfaceType getExtendsType() {
 		return extendsType;
 	}
 
+	/**
+	 * Gets the entries.
+	 *
+	 * @return the entries
+	 */
 	public List<EnumConstantDeclaration> getEntries() {
 		return entries;
 	}
 
+	/**
+	 * Gets the extends list.
+	 *
+	 * @return the extends list
+	 */
 	public List<ClassOrInterfaceType> getExtendsList() {
 		return extendsList;
 	}
 
+	/**
+	 * Gets the implements list.
+	 *
+	 * @return the implements list
+	 */
 	public List<ClassOrInterfaceType> getImplementsList() {
 		return implementsList;
 	}
 
+	/**
+	 * Gets the annotations.
+	 *
+	 * @return the annotations
+	 */
 	public List<AnnotationExpr> getAnnotations() {
 		return annotations;
 	}
 
+	/**
+	 * Gets the annotation members.
+	 *
+	 * @return the annotation members
+	 */
 	public List<AnnotationMemberDeclaration> getAnnotationMembers() {
 		return annotationMembers;
 	}
 
+	/**
+	 * Checks for default constructor.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean hasDefaultConstructor() {
 		return hasDefaultConstructor;
 	}
 
+	/**
+	 * Sets the checks for default constructor.
+	 *
+	 * @param hasDefaultConstructor the new checks for default constructor
+	 */
 	public void setHasDefaultConstructor(boolean hasDefaultConstructor) {
 		this.hasDefaultConstructor = hasDefaultConstructor;
 	}
 
+	/**
+	 * Gets the type parameters.
+	 *
+	 * @return the type parameters
+	 */
 	public List<TypeParameter> getTypeParameters() {
 		return typeParameters;
 	}
 
+	/**
+	 * Checks if is generic.
+	 *
+	 * @return true, if is generic
+	 */
 	public boolean isGeneric() {
 		return isGeneric;
 	}

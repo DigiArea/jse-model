@@ -16,32 +16,66 @@ import com.digiarea.jse.NodeList;
 import com.digiarea.jse.visitor.VoidVisitor;
 import com.digiarea.jse.visitor.GenericVisitor;
 
+/** 
+ * The Class QualifiedNameExpr.
+ */
 public final class QualifiedNameExpr extends NameExpr {
 
+    /** 
+     * The qualifier.
+     */
     private NameExpr qualifier;
 
+    /**
+     * Gets the qualifier.
+     *
+     * @return the qualifier
+     */
     public NameExpr getQualifier() {
         return qualifier;
     }
 
+    /**
+     * Sets the qualifier.
+     *
+     * @param qualifier the new qualifier
+     */
     public void setQualifier(NameExpr qualifier) {
         this.qualifier = qualifier;
     }
 
+    /**
+     * Instantiates a new qualified name expr.
+     */
     QualifiedNameExpr() {
         super();
     }
 
+    /**
+     * Instantiates a new qualified name expr.
+     *
+     * @param qualifier the qualifier
+     * @param name the name
+     * @param annotations the annotations
+     * @param posBegin the pos begin
+     * @param posEnd the pos end
+     */
     QualifiedNameExpr(NameExpr qualifier, String name, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(name, annotations, posBegin, posEnd);
         this.qualifier = qualifier;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.NameExpr#accept(com.digiarea.jse.visitor.VoidVisitor, java.lang.Object)
+     */
     @Override
     public <C> void accept(VoidVisitor<C> v, C ctx) throws Exception {
         v.visit(this, ctx);
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.NameExpr#accept(com.digiarea.jse.visitor.GenericVisitor, java.lang.Object)
+     */
     @Override
     public <R, C> R accept(GenericVisitor<R, C> v, C ctx) throws Exception {
         return v.visit(this, ctx);

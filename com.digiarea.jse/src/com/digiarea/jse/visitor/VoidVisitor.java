@@ -104,190 +104,840 @@ import com.digiarea.jse.VoidType;
 import com.digiarea.jse.WhileStmt;
 import com.digiarea.jse.WildcardType;
 
+/**
+ * The Interface VoidVisitor.
+ *
+ * @param <C> the generic type
+ */
 public interface VoidVisitor<C> {
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(AnnotationDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(AnnotationMemberDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ArrayAccessExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ArrayCreationExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ArrayInitializerExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ArraySlot n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(AssertStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(AssignExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(AssignOperator n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(BinaryExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(BinaryOperator n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(BlockComment n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(BlockStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(BooleanLiteralExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(BreakStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(CastExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(CatchClause n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(CharLiteralExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ClassDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ClassExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ClassOrInterfaceType n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(CompilationUnit n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ConditionalExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ConstructorDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ContinueStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(DoStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(DoubleLiteralExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(Ellipsis n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(EmptyMemberDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(EmptyStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(EmptyTypeDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(EnclosedExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(EnumConstantDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(EnumDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ExplicitConstructorInvocationStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ExpressionStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(FieldAccessExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(FieldDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ForeachStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ForStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(IfStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ImportDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(InitializerDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(InstanceOfExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(IntegerLiteralExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(InterfaceDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(JavadocComment n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(LabeledStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(LambdaBlock n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(LambdaExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(LineComment n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(LongLiteralExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(MarkerAnnotationExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(MemberValuePair n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(MethodCallExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(MethodDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(MethodExprRef n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(MethodRef n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(MethodTypeRef n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(Modifiers n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(NameExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param <E> the element type
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public <E extends Node> void visit(NodeList<E> n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(NormalAnnotationExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(NullLiteralExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ObjectCreationExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(PackageDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(Parameter n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(PrimitiveType n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(Primitive n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(Project n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(QualifiedNameExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ReferenceType n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ReturnStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(SingleMemberAnnotationExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(StringLiteralExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(SuperExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(SwitchEntryStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(SwitchStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(SynchronizedStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ThisExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(ThrowStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(TryStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(TypeDeclarationStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(TypeParameter n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(UnaryExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(UnaryOperator n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(VariableDeclarationExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(VariableDeclarator n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(VariableDeclaratorId n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(VoidType n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(WhileStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @throws Exception the exception
+     */
     public void visit(WildcardType n, C ctx) throws Exception;
 
 }

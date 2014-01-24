@@ -66,6 +66,9 @@ public class Renamer extends Quiver {
 			return renames.put(key, value);
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.NameExpr, com.digiarea.jse.arrow.Context)
+		 */
 		@Override
 		public Node visit(NameExpr n, Context ctx) throws Exception {
 			NameExpr img = (NameExpr) super.visit(n, ctx);
@@ -76,6 +79,9 @@ public class Renamer extends Quiver {
 			return img;
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.QualifiedNameExpr, com.digiarea.jse.arrow.Context)
+		 */
 		@Override
 		public Node visit(QualifiedNameExpr n, Context ctx) throws Exception {
 			QualifiedNameExpr img = (QualifiedNameExpr) super.visit(n, ctx);
@@ -86,6 +92,9 @@ public class Renamer extends Quiver {
 			return img;
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.PackageDeclaration, com.digiarea.jse.arrow.Context)
+		 */
 		@Override
 		public Node visit(PackageDeclaration n, Context ctx) throws Exception {
 			PackageDeclaration img = (PackageDeclaration) super.visit(n, ctx);
@@ -100,6 +109,9 @@ public class Renamer extends Quiver {
 			return img;
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.ConstructorDeclaration, com.digiarea.jse.arrow.Context)
+		 */
 		@Override
 		public Node visit(ConstructorDeclaration n, Context ctx)
 				throws Exception {
@@ -113,6 +125,9 @@ public class Renamer extends Quiver {
 			return img;
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.ClassDeclaration, com.digiarea.jse.arrow.Context)
+		 */
 		@Override
 		public Node visit(ClassDeclaration n, Context ctx) throws Exception {
 			CompilationUnit unit = ctx.getUnit();
@@ -124,6 +139,9 @@ public class Renamer extends Quiver {
 			return img;
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.CompilationUnit, com.digiarea.jse.arrow.Context)
+		 */
 		@Override
 		public Node visit(CompilationUnit n, Context ctx) throws Exception {
 			CompilationUnit img = (CompilationUnit) super.visit(n, ctx);

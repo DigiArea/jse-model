@@ -15,16 +15,35 @@ import com.digiarea.jse.*;
 /** Token Manager. */
 public class ASTParserTokenManager implements ASTParserConstants
 {
+  
+  /**
+   * The comments.
+   */
   private List<Comment> comments;
 
+  /**
+   * The javadoc stack.
+   */
   private final Stack<JavadocComment> javadocStack = new Stack<JavadocComment> ();
 
+  /**
+   * The last javadoc.
+   */
   private JavadocComment lastJavadoc;
 
+  /**
+   * Push javadoc.
+   */
   void pushJavadoc()
   {
     javadocStack.push(lastJavadoc);
   }
+  
+  /**
+   * Pop javadoc.
+   *
+   * @return the javadoc comment
+   */
   JavadocComment popJavadoc()
   {
     if (javadocStack.empty())
@@ -35,11 +54,20 @@ public class ASTParserTokenManager implements ASTParserConstants
       return javadocStack.pop();
     }
   }
+  
+  /**
+   * Gets the comments.
+   *
+   * @return the comments
+   */
   List<Comment> getComments()
   {
     return comments;
   }
 
+  /**
+   * Clear comments.
+   */
   void clearComments()
   {
     comments = null;
@@ -47,6 +75,11 @@ public class ASTParserTokenManager implements ASTParserConstants
     lastJavadoc = null;
   }
 
+  /**
+   * Common token action.
+   *
+   * @param token the token
+   */
   private void CommonTokenAction(Token token)
   {
     lastJavadoc = null;
@@ -75,15 +108,34 @@ public class ASTParserTokenManager implements ASTParserConstants
     }
   }
 
-  /** Fake getter :) */
+  /**
+   *  Fake getter :).
+   *
+   * @return the length of match
+   */
   int getLengthOfMatch() {
     return lengthOfMatch;
   }
 
   /** Debug output. */
   public  java.io.PrintStream debugStream = System.out;
-  /** Set debug output. */
+  
+  /**
+   *  Set debug output.
+   *
+   * @param ds the new debug stream
+   */
   public  void setDebugStream(java.io.PrintStream ds) { debugStream = ds; }
+
+/**
+ * Jj stop string literal dfa_0.
+ *
+ * @param pos the pos
+ * @param active0 the active0
+ * @param active1 the active1
+ * @param active2 the active2
+ * @return the int
+ */
 private final int jjStopStringLiteralDfa_0(int pos, long active0, long active1, long active2)
 {
    switch (pos)
@@ -212,16 +264,40 @@ private final int jjStopStringLiteralDfa_0(int pos, long active0, long active1, 
          return -1;
    }
 }
+
+/**
+ * Jj start nfa_0.
+ *
+ * @param pos the pos
+ * @param active0 the active0
+ * @param active1 the active1
+ * @param active2 the active2
+ * @return the int
+ */
 private final int jjStartNfa_0(int pos, long active0, long active1, long active2)
 {
    return jjMoveNfa_0(jjStopStringLiteralDfa_0(pos, active0, active1, active2), pos + 1);
 }
+
+/**
+ * Jj stop at pos.
+ *
+ * @param pos the pos
+ * @param kind the kind
+ * @return the int
+ */
 private int jjStopAtPos(int pos, int kind)
 {
    jjmatchedKind = kind;
    jjmatchedPos = pos;
    return pos + 1;
 }
+
+/**
+ * Jj move string literal dfa0_0.
+ *
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa0_0()
 {
    switch(curChar)
@@ -328,6 +404,15 @@ private int jjMoveStringLiteralDfa0_0()
          return jjMoveNfa_0(0, 0);
    }
 }
+
+/**
+ * Jj move string literal dfa1_0.
+ *
+ * @param active0 the active0
+ * @param active1 the active1
+ * @param active2 the active2
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa1_0(long active0, long active1, long active2)
 {
    try { curChar = input_stream.readChar(); }
@@ -451,6 +536,18 @@ private int jjMoveStringLiteralDfa1_0(long active0, long active1, long active2)
    }
    return jjStartNfa_0(0, active0, active1, active2);
 }
+
+/**
+ * Jj move string literal dfa2_0.
+ *
+ * @param old0 the old0
+ * @param active0 the active0
+ * @param old1 the old1
+ * @param active1 the active1
+ * @param old2 the old2
+ * @param active2 the active2
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa2_0(long old0, long active0, long old1, long active1, long old2, long active2)
 {
    if (((active0 &= old0) | (active1 &= old1) | (active2 &= old2)) == 0L)
@@ -527,6 +624,16 @@ private int jjMoveStringLiteralDfa2_0(long old0, long active0, long old1, long a
    }
    return jjStartNfa_0(1, active0, active1, 0L);
 }
+
+/**
+ * Jj move string literal dfa3_0.
+ *
+ * @param old0 the old0
+ * @param active0 the active0
+ * @param old1 the old1
+ * @param active1 the active1
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa3_0(long old0, long active0, long old1, long active1)
 {
    if (((active0 &= old0) | (active1 &= old1)) == 0L)
@@ -603,6 +710,16 @@ private int jjMoveStringLiteralDfa3_0(long old0, long active0, long old1, long a
    }
    return jjStartNfa_0(2, active0, active1, 0L);
 }
+
+/**
+ * Jj move string literal dfa4_0.
+ *
+ * @param old0 the old0
+ * @param active0 the active0
+ * @param old1 the old1
+ * @param active1 the active1
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa4_0(long old0, long active0, long old1, long active1)
 {
    if (((active0 &= old0) | (active1 &= old1)) == 0L)
@@ -675,6 +792,16 @@ private int jjMoveStringLiteralDfa4_0(long old0, long active0, long old1, long a
    }
    return jjStartNfa_0(3, active0, active1, 0L);
 }
+
+/**
+ * Jj move string literal dfa5_0.
+ *
+ * @param old0 the old0
+ * @param active0 the active0
+ * @param old1 the old1
+ * @param active1 the active1
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa5_0(long old0, long active0, long old1, long active1)
 {
    if (((active0 &= old0) | (active1 &= old1)) == 0L)
@@ -737,6 +864,14 @@ private int jjMoveStringLiteralDfa5_0(long old0, long active0, long old1, long a
    }
    return jjStartNfa_0(4, active0, 0L, 0L);
 }
+
+/**
+ * Jj move string literal dfa6_0.
+ *
+ * @param old0 the old0
+ * @param active0 the active0
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa6_0(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -787,6 +922,14 @@ private int jjMoveStringLiteralDfa6_0(long old0, long active0)
    }
    return jjStartNfa_0(5, active0, 0L, 0L);
 }
+
+/**
+ * Jj move string literal dfa7_0.
+ *
+ * @param old0 the old0
+ * @param active0 the active0
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa7_0(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -821,6 +964,14 @@ private int jjMoveStringLiteralDfa7_0(long old0, long active0)
    }
    return jjStartNfa_0(6, active0, 0L, 0L);
 }
+
+/**
+ * Jj move string literal dfa8_0.
+ *
+ * @param old0 the old0
+ * @param active0 the active0
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa8_0(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -853,6 +1004,14 @@ private int jjMoveStringLiteralDfa8_0(long old0, long active0)
    }
    return jjStartNfa_0(7, active0, 0L, 0L);
 }
+
+/**
+ * Jj move string literal dfa9_0.
+ *
+ * @param old0 the old0
+ * @param active0 the active0
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa9_0(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -879,6 +1038,14 @@ private int jjMoveStringLiteralDfa9_0(long old0, long active0)
    }
    return jjStartNfa_0(8, active0, 0L, 0L);
 }
+
+/**
+ * Jj move string literal dfa10_0.
+ *
+ * @param old0 the old0
+ * @param active0 the active0
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa10_0(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -897,6 +1064,14 @@ private int jjMoveStringLiteralDfa10_0(long old0, long active0)
    }
    return jjStartNfa_0(9, active0, 0L, 0L);
 }
+
+/**
+ * Jj move string literal dfa11_0.
+ *
+ * @param old0 the old0
+ * @param active0 the active0
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa11_0(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -917,6 +1092,15 @@ private int jjMoveStringLiteralDfa11_0(long old0, long active0)
    }
    return jjStartNfa_0(10, active0, 0L, 0L);
 }
+
+/**
+ * Jj start nfa with states_0.
+ *
+ * @param pos the pos
+ * @param kind the kind
+ * @param state the state
+ * @return the int
+ */
 private int jjStartNfaWithStates_0(int pos, int kind, int state)
 {
    jjmatchedKind = kind;
@@ -925,210 +1109,490 @@ private int jjStartNfaWithStates_0(int pos, int kind, int state)
    catch(java.io.IOException e) { return pos + 1; }
    return jjMoveNfa_0(state, pos + 1);
 }
+
+/**
+ * The Constant jjbitVec0.
+ */
 static final long[] jjbitVec0 = {
    0xfffffffffffffffeL, 0xffffffffffffffffL, 0xffffffffffffffffL, 0xffffffffffffffffL
 };
+
+/**
+ * The Constant jjbitVec2.
+ */
 static final long[] jjbitVec2 = {
    0x0L, 0x0L, 0xffffffffffffffffL, 0xffffffffffffffffL
 };
+
+/**
+ * The Constant jjbitVec3.
+ */
 static final long[] jjbitVec3 = {
    0xfff0000000200002L, 0xffffffffffffdfffL, 0xfffff00f7fffffffL, 0x12000000007fffffL
 };
+
+/**
+ * The Constant jjbitVec4.
+ */
 static final long[] jjbitVec4 = {
    0x0L, 0x0L, 0x420043c00000000L, 0xff7fffffff7fffffL
 };
+
+/**
+ * The Constant jjbitVec5.
+ */
 static final long[] jjbitVec5 = {
    0x7fffffffffffffL, 0xffffffffffff0000L, 0xffffffffffffffffL, 0x401f0003ffc3L
 };
+
+/**
+ * The Constant jjbitVec6.
+ */
 static final long[] jjbitVec6 = {
    0x0L, 0x400000000000000L, 0xfffffffbffffd740L, 0xfbfffffffff7fffL
 };
+
+/**
+ * The Constant jjbitVec7.
+ */
 static final long[] jjbitVec7 = {
    0xffffffffffffffffL, 0xffffffffffffffffL, 0xfffffffffffffc03L, 0x33fffffffff7fffL
 };
+
+/**
+ * The Constant jjbitVec8.
+ */
 static final long[] jjbitVec8 = {
    0xfffe00000000ffffL, 0xfffffffe027fffffL, 0xffL, 0x707ffffff0000L
 };
+
+/**
+ * The Constant jjbitVec9.
+ */
 static final long[] jjbitVec9 = {
    0x7fffffe00000000L, 0xfffec000000007ffL, 0xffffffffffffffffL, 0x9c00c060002fffffL
 };
+
+/**
+ * The Constant jjbitVec10.
+ */
 static final long[] jjbitVec10 = {
    0xfffffffd0000L, 0xe000L, 0x2003fffffffffL, 0x0L
 };
+
+/**
+ * The Constant jjbitVec11.
+ */
 static final long[] jjbitVec11 = {
    0x23fffffffffffff0L, 0x3ff010000L, 0x23c5fdfffff99fe0L, 0xf0003b0000000L
 };
+
+/**
+ * The Constant jjbitVec12.
+ */
 static final long[] jjbitVec12 = {
    0x36dfdfffff987e0L, 0x1c00005e000000L, 0x23edfdfffffbbfe0L, 0x2000300010000L
 };
+
+/**
+ * The Constant jjbitVec13.
+ */
 static final long[] jjbitVec13 = {
    0x23edfdfffff99fe0L, 0x20003b0000000L, 0x3bfc718d63dc7e8L, 0x200000000000000L
 };
+
+/**
+ * The Constant jjbitVec14.
+ */
 static final long[] jjbitVec14 = {
    0x3effdfffffddfe0L, 0x300000000L, 0x23effdfffffddfe0L, 0x340000000L
 };
+
+/**
+ * The Constant jjbitVec15.
+ */
 static final long[] jjbitVec15 = {
    0x3fffdfffffddfe0L, 0x300000000L, 0x2ffbfffffc7fffe0L, 0x7fL
 };
+
+/**
+ * The Constant jjbitVec16.
+ */
 static final long[] jjbitVec16 = {
    0x800dfffffffffffeL, 0x7fL, 0x200decaefef02596L, 0x3000005fL
 };
+
+/**
+ * The Constant jjbitVec17.
+ */
 static final long[] jjbitVec17 = {
    0x1L, 0x7fffffffeffL, 0xf00L, 0x0L
 };
+
+/**
+ * The Constant jjbitVec18.
+ */
 static final long[] jjbitVec18 = {
    0x6fbffffffffL, 0x3f0000L, 0xffffffff00000000L, 0x1ffffffffff003fL
 };
+
+/**
+ * The Constant jjbitVec19.
+ */
 static final long[] jjbitVec19 = {
    0xffffffffffffffffL, 0xffffffff83ffffffL, 0xffffff07ffffffffL, 0x3ffffffffffffffL
 };
+
+/**
+ * The Constant jjbitVec20.
+ */
 static final long[] jjbitVec20 = {
    0xffffffffffffff7fL, 0xffffffff3d7f3d7fL, 0x7f3d7fffffff3d7fL, 0xffff7fffff7f7f3dL
 };
+
+/**
+ * The Constant jjbitVec21.
+ */
 static final long[] jjbitVec21 = {
    0xffffffff7f3d7fffL, 0x7ffff7fL, 0xffffffff00000000L, 0x1fffffffffffffL
 };
+
+/**
+ * The Constant jjbitVec22.
+ */
 static final long[] jjbitVec22 = {
    0xffffffffffffffffL, 0x7f9fffffffffffL, 0xffffffff07fffffeL, 0x1c7ffffffffffL
 };
+
+/**
+ * The Constant jjbitVec23.
+ */
 static final long[] jjbitVec23 = {
    0x3ffff0003dfffL, 0x1dfff0003ffffL, 0xfffffffffffffL, 0x18800000L
 };
+
+/**
+ * The Constant jjbitVec24.
+ */
 static final long[] jjbitVec24 = {
    0xffffffff00000000L, 0xffffffffffffffL, 0x1ffffffffffL, 0x0L
 };
+
+/**
+ * The Constant jjbitVec25.
+ */
 static final long[] jjbitVec25 = {
    0x1fffffffL, 0x1f3fffffff0000L, 0x0L, 0x0L
 };
+
+/**
+ * The Constant jjbitVec26.
+ */
 static final long[] jjbitVec26 = {
    0xffffffffffffffffL, 0xfffffffffffL, 0x0L, 0x0L
 };
+
+/**
+ * The Constant jjbitVec27.
+ */
 static final long[] jjbitVec27 = {
    0xffffffffffffffffL, 0xffffffffffffffffL, 0xffffffff0fffffffL, 0x3ffffffffffffffL
 };
+
+/**
+ * The Constant jjbitVec28.
+ */
 static final long[] jjbitVec28 = {
    0xffffffff3f3fffffL, 0x3fffffffaaff3f3fL, 0x5fdfffffffffffffL, 0x1fdc1fff0fcf1fdcL
 };
+
+/**
+ * The Constant jjbitVec29.
+ */
 static final long[] jjbitVec29 = {
    0x8000000000000000L, 0x8002000000100001L, 0x3ffff00000000L, 0x0L
 };
+
+/**
+ * The Constant jjbitVec30.
+ */
 static final long[] jjbitVec30 = {
    0xe3fbbd503e2ffc84L, 0xffffffff000003e0L, 0xfL, 0x0L
 };
+
+/**
+ * The Constant jjbitVec31.
+ */
 static final long[] jjbitVec31 = {
    0x1f3e03fe000000e0L, 0xfffffffffffffffeL, 0xfffffffee07fffffL, 0xffffffffffffffffL
 };
+
+/**
+ * The Constant jjbitVec32.
+ */
 static final long[] jjbitVec32 = {
    0xfffe1fffffffffe0L, 0xffffffffffffffffL, 0xffffff00007fffL, 0xffff000000000000L
 };
+
+/**
+ * The Constant jjbitVec33.
+ */
 static final long[] jjbitVec33 = {
    0xffffffffffffffffL, 0xffffffffffffffffL, 0x3fffffffffffffL, 0x0L
 };
+
+/**
+ * The Constant jjbitVec34.
+ */
 static final long[] jjbitVec34 = {
    0xffffffffffffffffL, 0xffffffffffffffffL, 0x3fffffffffL, 0x0L
 };
+
+/**
+ * The Constant jjbitVec35.
+ */
 static final long[] jjbitVec35 = {
    0xffffffffffffffffL, 0xffffffffffffffffL, 0x1fffL, 0x0L
 };
+
+/**
+ * The Constant jjbitVec36.
+ */
 static final long[] jjbitVec36 = {
    0xffffffffffffffffL, 0xffffffffffffffffL, 0xfffffffffL, 0x0L
 };
+
+/**
+ * The Constant jjbitVec37.
+ */
 static final long[] jjbitVec37 = {
    0x6L, 0x0L, 0x0L, 0x0L
 };
+
+/**
+ * The Constant jjbitVec38.
+ */
 static final long[] jjbitVec38 = {
    0xffff3fffffffffffL, 0x7ffffffffffL, 0x0L, 0x0L
 };
+
+/**
+ * The Constant jjbitVec39.
+ */
 static final long[] jjbitVec39 = {
    0x5f7ffdffa0f8007fL, 0xffffffffffffffdbL, 0x3ffffffffffffL, 0xfffffffffff80000L
 };
+
+/**
+ * The Constant jjbitVec40.
+ */
 static final long[] jjbitVec40 = {
    0x3fffffffffffffffL, 0xffffffffffff0000L, 0xfffffffffffcffffL, 0x1fff0000000000ffL
 };
+
+/**
+ * The Constant jjbitVec41.
+ */
 static final long[] jjbitVec41 = {
    0x18000000000000L, 0xffdf02000000e000L, 0xffffffffffffffffL, 0x1fffffffffffffffL
 };
+
+/**
+ * The Constant jjbitVec42.
+ */
 static final long[] jjbitVec42 = {
    0x87fffffe00000010L, 0xffffffe007fffffeL, 0x7fffffffffffffffL, 0x631cfcfcfcL
 };
+
+/**
+ * The Constant jjbitVec43.
+ */
 static final long[] jjbitVec43 = {
    0x0L, 0x0L, 0x420243cffffffffL, 0xff7fffffff7fffffL
 };
+
+/**
+ * The Constant jjbitVec44.
+ */
 static final long[] jjbitVec44 = {
    0xffffffffffffffffL, 0x400ffffe0ffffffL, 0xfffffffbffffd740L, 0xfbfffffffff7fffL
 };
+
+/**
+ * The Constant jjbitVec45.
+ */
 static final long[] jjbitVec45 = {
    0xffffffffffffffffL, 0xffffffffffffffffL, 0xfffffffffffffc7bL, 0x33fffffffff7fffL
 };
+
+/**
+ * The Constant jjbitVec46.
+ */
 static final long[] jjbitVec46 = {
    0xfffe00000000ffffL, 0xfffffffe027fffffL, 0xbbfffffbfffe00ffL, 0x707ffffff0016L
 };
+
+/**
+ * The Constant jjbitVec47.
+ */
 static final long[] jjbitVec47 = {
    0x7fffffe003f000fL, 0xffffc3ff01ffffffL, 0xffffffffffffffffL, 0x9ffffdffbfefffffL
 };
+
+/**
+ * The Constant jjbitVec48.
+ */
 static final long[] jjbitVec48 = {
    0xffffffffffff8000L, 0xe7ffL, 0x3ffffffffffffL, 0x0L
 };
+
+/**
+ * The Constant jjbitVec49.
+ */
 static final long[] jjbitVec49 = {
    0xf3fffffffffffffeL, 0xffcfff1f3fffL, 0xf3c5fdfffff99feeL, 0xfffcfb080399fL
 };
+
+/**
+ * The Constant jjbitVec50.
+ */
 static final long[] jjbitVec50 = {
    0xd36dfdfffff987eeL, 0x1fffc05e003987L, 0xf3edfdfffffbbfeeL, 0x2ffcf00013bbfL
 };
+
+/**
+ * The Constant jjbitVec51.
+ */
 static final long[] jjbitVec51 = {
    0xf3edfdfffff99feeL, 0x2ffc3b0c0398fL, 0xc3bfc718d63dc7ecL, 0x200ff8000803dc7L
 };
+
+/**
+ * The Constant jjbitVec52.
+ */
 static final long[] jjbitVec52 = {
    0xc3effdfffffddfeeL, 0xffc300603ddfL, 0xf3effdfffffddfecL, 0xffc340603ddfL
 };
+
+/**
+ * The Constant jjbitVec53.
+ */
 static final long[] jjbitVec53 = {
    0xc3fffdfffffddfecL, 0xffc300803dcfL, 0x2ffbfffffc7fffecL, 0xc0000ff5f847fL
 };
+
+/**
+ * The Constant jjbitVec54.
+ */
 static final long[] jjbitVec54 = {
    0x87fffffffffffffeL, 0x3ff7fffL, 0x3bffecaefef02596L, 0x33ff3f5fL
 };
+
+/**
+ * The Constant jjbitVec55.
+ */
 static final long[] jjbitVec55 = {
    0xc2a003ff03000001L, 0xfffe07fffffffeffL, 0x1ffffffffeff0fdfL, 0x40L
 };
+
+/**
+ * The Constant jjbitVec56.
+ */
 static final long[] jjbitVec56 = {
    0x3c7f6fbffffffffL, 0x3ff03ffL, 0xffffffff00000000L, 0x1ffffffffff003fL
 };
+
+/**
+ * The Constant jjbitVec57.
+ */
 static final long[] jjbitVec57 = {
    0xffffffff7f3d7fffL, 0x3fe0007ffff7fL, 0xffffffff00000000L, 0x1fffffffffffffL
 };
+
+/**
+ * The Constant jjbitVec58.
+ */
 static final long[] jjbitVec58 = {
    0x1fffff001fdfffL, 0xddfff000fffffL, 0xffffffffffffffffL, 0x3ff388fffffL
 };
+
+/**
+ * The Constant jjbitVec59.
+ */
 static final long[] jjbitVec59 = {
    0xffffffff03ff3800L, 0xffffffffffffffL, 0x3ffffffffffL, 0x0L
 };
+
+/**
+ * The Constant jjbitVec60.
+ */
 static final long[] jjbitVec60 = {
    0xfff0fff1fffffffL, 0x1f3fffffffffc0L, 0x0L, 0x0L
 };
+
+/**
+ * The Constant jjbitVec61.
+ */
 static final long[] jjbitVec61 = {
    0x80007c000000f000L, 0x8002fc0f00100001L, 0x3ffff00000000L, 0x7e21fff0000L
 };
+
+/**
+ * The Constant jjbitVec62.
+ */
 static final long[] jjbitVec62 = {
    0x1f3efffe000000e0L, 0xfffffffffffffffeL, 0xfffffffee67fffffL, 0xffffffffffffffffL
 };
+
+/**
+ * The Constant jjbitVec63.
+ */
 static final long[] jjbitVec63 = {
    0x10000000000006L, 0x0L, 0x0L, 0x0L
 };
+
+/**
+ * The Constant jjbitVec64.
+ */
 static final long[] jjbitVec64 = {
    0x3L, 0x0L, 0x0L, 0x0L
 };
+
+/**
+ * The Constant jjbitVec65.
+ */
 static final long[] jjbitVec65 = {
    0x0L, 0x800000000000000L, 0x0L, 0x0L
 };
+
+/**
+ * The Constant jjbitVec66.
+ */
 static final long[] jjbitVec66 = {
    0x5f7ffdffe0f8007fL, 0xffffffffffffffdbL, 0x3ffffffffffffL, 0xfffffffffff80000L
 };
+
+/**
+ * The Constant jjbitVec67.
+ */
 static final long[] jjbitVec67 = {
    0x18000f0000ffffL, 0xffdf02000000e000L, 0xffffffffffffffffL, 0x9fffffffffffffffL
 };
+
+/**
+ * The Constant jjbitVec68.
+ */
 static final long[] jjbitVec68 = {
    0x87fffffe03ff0010L, 0xffffffe007fffffeL, 0x7fffffffffffffffL, 0xe0000631cfcfcfcL
 };
+
+/**
+ * Jj move nfa_0.
+ *
+ * @param startState the start state
+ * @param curPos the cur pos
+ * @return the int
+ */
 private int jjMoveNfa_0(int startState, int curPos)
 {
    int startsAt = 0;
@@ -1826,6 +2290,12 @@ private int jjMoveNfa_0(int startState, int curPos)
       catch(java.io.IOException e) { return curPos; }
    }
 }
+
+/**
+ * Jj move string literal dfa0_2.
+ *
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa0_2()
 {
    switch(curChar)
@@ -1836,6 +2306,13 @@ private int jjMoveStringLiteralDfa0_2()
          return 1;
    }
 }
+
+/**
+ * Jj move string literal dfa1_2.
+ *
+ * @param active0 the active0
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa1_2(long active0)
 {
    try { curChar = input_stream.readChar(); }
@@ -1853,6 +2330,12 @@ private int jjMoveStringLiteralDfa1_2(long active0)
    }
    return 2;
 }
+
+/**
+ * Jj move string literal dfa0_1.
+ *
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa0_1()
 {
    switch(curChar)
@@ -1863,6 +2346,13 @@ private int jjMoveStringLiteralDfa0_1()
          return 1;
    }
 }
+
+/**
+ * Jj move string literal dfa1_1.
+ *
+ * @param active0 the active0
+ * @return the int
+ */
 private int jjMoveStringLiteralDfa1_1(long active0)
 {
    try { curChar = input_stream.readChar(); }
@@ -1880,6 +2370,10 @@ private int jjMoveStringLiteralDfa1_1(long active0)
    }
    return 2;
 }
+
+/**
+ * The Constant jjnextStates.
+ */
 static final int[] jjnextStates = {
    40, 41, 6, 44, 45, 48, 49, 56, 63, 23, 24, 31, 32, 8, 10, 21, 
    65, 66, 67, 69, 71, 66, 72, 74, 76, 77, 79, 87, 57, 58, 60, 2, 
@@ -1887,6 +2381,17 @@ static final int[] jjnextStates = {
    6, 80, 81, 88, 89, 90, 4, 5, 11, 12, 14, 25, 33, 35, 42, 43, 
    44, 45, 46, 47, 48, 49, 53, 54, 85, 86, 91, 92, 
 };
+
+/**
+ * Jj can move_0.
+ *
+ * @param hiByte the hi byte
+ * @param i1 the i1
+ * @param i2 the i2
+ * @param l1 the l1
+ * @param l2 the l2
+ * @return true, if successful
+ */
 private static final boolean jjCanMove_0(int hiByte, int i1, int i2, long l1, long l2)
 {
    switch(hiByte)
@@ -1899,6 +2404,17 @@ private static final boolean jjCanMove_0(int hiByte, int i1, int i2, long l1, lo
          return false;
    }
 }
+
+/**
+ * Jj can move_1.
+ *
+ * @param hiByte the hi byte
+ * @param i1 the i1
+ * @param i2 the i2
+ * @param l1 the l1
+ * @param l2 the l2
+ * @return true, if successful
+ */
 private static final boolean jjCanMove_1(int hiByte, int i1, int i2, long l1, long l2)
 {
    switch(hiByte)
@@ -1989,6 +2505,17 @@ private static final boolean jjCanMove_1(int hiByte, int i1, int i2, long l1, lo
          return false;
    }
 }
+
+/**
+ * Jj can move_2.
+ *
+ * @param hiByte the hi byte
+ * @param i1 the i1
+ * @param i2 the i2
+ * @param l1 the l1
+ * @param l2 the l2
+ * @return true, if successful
+ */
 private static final boolean jjCanMove_2(int hiByte, int i1, int i2, long l1, long l2)
 {
    switch(hiByte)
@@ -2126,40 +2653,102 @@ public static final int[] jjnewLexState = {
    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
    -1, -1, -1, -1, -1, -1, -1, 
 };
+
+/**
+ * The Constant jjtoToken.
+ */
 static final long[] jjtoToken = {
    0xfffffffffffff001L, 0xfffffffffffe7087L, 0xfL, 
 };
+
+/**
+ * The Constant jjtoSkip.
+ */
 static final long[] jjtoSkip = {
    0x67eL, 0x0L, 0x0L, 
 };
+
+/**
+ * The Constant jjtoSpecial.
+ */
 static final long[] jjtoSpecial = {
    0x640L, 0x0L, 0x0L, 
 };
+
+/**
+ * The Constant jjtoMore.
+ */
 static final long[] jjtoMore = {
    0x980L, 0x0L, 0x0L, 
 };
+
+/**
+ * The input_stream.
+ */
 protected SimpleCharStream input_stream;
+
+/**
+ * The jjrounds.
+ */
 private final int[] jjrounds = new int[93];
+
+/**
+ * The jjstate set.
+ */
 private final int[] jjstateSet = new int[186];
+
+/**
+ * The jjimage.
+ */
 private final StringBuilder jjimage = new StringBuilder();
+
+/**
+ * The image.
+ */
 private StringBuilder image = jjimage;
+
+/**
+ * The jjimage len.
+ */
 private int jjimageLen;
+
+/**
+ * The length of match.
+ */
 private int lengthOfMatch;
+
+/**
+ * The cur char.
+ */
 protected char curChar;
-/** Constructor. */
+
+/**
+ *  Constructor.
+ *
+ * @param stream the stream
+ */
 public ASTParserTokenManager(SimpleCharStream stream){
    if (SimpleCharStream.staticFlag)
       throw new Error("ERROR: Cannot use a static CharStream class with a non-static lexical analyzer.");
    input_stream = stream;
 }
 
-/** Constructor. */
+/**
+ *  Constructor.
+ *
+ * @param stream the stream
+ * @param lexState the lex state
+ */
 public ASTParserTokenManager(SimpleCharStream stream, int lexState){
    this(stream);
    SwitchTo(lexState);
 }
 
-/** Reinitialise parser. */
+/**
+ *  Reinitialise parser.
+ *
+ * @param stream the stream
+ */
 public void ReInit(SimpleCharStream stream)
 {
    jjmatchedPos = jjnewStateCnt = 0;
@@ -2167,6 +2756,10 @@ public void ReInit(SimpleCharStream stream)
    input_stream = stream;
    ReInitRounds();
 }
+
+/**
+ * Re init rounds.
+ */
 private void ReInitRounds()
 {
    int i;
@@ -2175,14 +2768,23 @@ private void ReInitRounds()
       jjrounds[i] = 0x80000000;
 }
 
-/** Reinitialise parser. */
+/**
+ *  Reinitialise parser.
+ *
+ * @param stream the stream
+ * @param lexState the lex state
+ */
 public void ReInit(SimpleCharStream stream, int lexState)
 {
    ReInit(stream);
    SwitchTo(lexState);
 }
 
-/** Switch to specified lex state. */
+/**
+ *  Switch to specified lex state.
+ *
+ * @param lexState the lex state
+ */
 public void SwitchTo(int lexState)
 {
    if (lexState >= 3 || lexState < 0)
@@ -2191,6 +2793,11 @@ public void SwitchTo(int lexState)
       curLexState = lexState;
 }
 
+/**
+ * Jj fill token.
+ *
+ * @return the token
+ */
 protected Token jjFillToken()
 {
    final Token t;
@@ -2215,14 +2822,41 @@ protected Token jjFillToken()
    return t;
 }
 
+/**
+ * The cur lex state.
+ */
 int curLexState = 0;
+
+/**
+ * The default lex state.
+ */
 int defaultLexState = 0;
+
+/**
+ * The jjnew state cnt.
+ */
 int jjnewStateCnt;
+
+/**
+ * The jjround.
+ */
 int jjround;
+
+/**
+ * The jjmatched pos.
+ */
 int jjmatchedPos;
+
+/**
+ * The jjmatched kind.
+ */
 int jjmatchedKind;
 
-/** Get the next Token. */
+/**
+ *  Get the next Token.
+ *
+ * @return the next token
+ */
 public Token getNextToken() 
 {
   Token specialToken = null;
@@ -2350,6 +2984,11 @@ public Token getNextToken()
   }
 }
 
+/**
+ * Skip lexical actions.
+ *
+ * @param matchedToken the matched token
+ */
 void SkipLexicalActions(Token matchedToken)
 {
    switch(jjmatchedKind)
@@ -2358,6 +2997,10 @@ void SkipLexicalActions(Token matchedToken)
          break;
    }
 }
+
+/**
+ * More lexical actions.
+ */
 void MoreLexicalActions()
 {
    jjimageLen += (lengthOfMatch = jjmatchedPos + 1);
@@ -2372,6 +3015,12 @@ void MoreLexicalActions()
          break;
    }
 }
+
+/**
+ * Token lexical actions.
+ *
+ * @param matchedToken the matched token
+ */
 void TokenLexicalActions(Token matchedToken)
 {
    switch(jjmatchedKind)
@@ -2394,6 +3043,12 @@ void TokenLexicalActions(Token matchedToken)
          break;
    }
 }
+
+/**
+ * Jj check n add.
+ *
+ * @param state the state
+ */
 private void jjCheckNAdd(int state)
 {
    if (jjrounds[state] != jjround)
@@ -2402,18 +3057,38 @@ private void jjCheckNAdd(int state)
       jjrounds[state] = jjround;
    }
 }
+
+/**
+ * Jj add states.
+ *
+ * @param start the start
+ * @param end the end
+ */
 private void jjAddStates(int start, int end)
 {
    do {
       jjstateSet[jjnewStateCnt++] = jjnextStates[start];
    } while (start++ != end);
 }
+
+/**
+ * Jj check n add two states.
+ *
+ * @param state1 the state1
+ * @param state2 the state2
+ */
 private void jjCheckNAddTwoStates(int state1, int state2)
 {
    jjCheckNAdd(state1);
    jjCheckNAdd(state2);
 }
 
+/**
+ * Jj check n add states.
+ *
+ * @param start the start
+ * @param end the end
+ */
 private void jjCheckNAddStates(int start, int end)
 {
    do {

@@ -14,12 +14,25 @@ import com.digiarea.jse.Node;
 import com.digiarea.jse.AnnotationExpr;
 import com.digiarea.jse.NodeList;
 
+/** 
+ * The Class Expression.
+ */
 public abstract class Expression extends Node {
 
+    /**
+     * Instantiates a new expression.
+     */
     Expression() {
         super();
     }
 
+    /**
+     * Instantiates a new expression.
+     *
+     * @param annotations the annotations
+     * @param posBegin the pos begin
+     * @param posEnd the pos end
+     */
     Expression(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
     }

@@ -186,6 +186,9 @@ public class ResolverVisitor extends VoidVisitorAdapter<Context> {
 		};
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.visitor.VoidVisitorAdapter#visit(com.digiarea.jse.AnnotationDeclaration, java.lang.Object)
+	 */
 	@Override
 	public void visit(AnnotationDeclaration n, Context ctx) throws Exception {
 		NameExpr current = currentTypeName;
@@ -194,6 +197,9 @@ public class ResolverVisitor extends VoidVisitorAdapter<Context> {
 		currentTypeName = current;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.visitor.VoidVisitorAdapter#visit(com.digiarea.jse.ClassDeclaration, java.lang.Object)
+	 */
 	@Override
 	public void visit(ClassDeclaration n, Context ctx) throws Exception {
 		NameExpr current = currentTypeName;
@@ -202,6 +208,9 @@ public class ResolverVisitor extends VoidVisitorAdapter<Context> {
 		currentTypeName = current;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.visitor.VoidVisitorAdapter#visit(com.digiarea.jse.InterfaceDeclaration, java.lang.Object)
+	 */
 	@Override
 	public void visit(InterfaceDeclaration n, Context ctx) throws Exception {
 		NameExpr current = currentTypeName;
@@ -210,6 +219,9 @@ public class ResolverVisitor extends VoidVisitorAdapter<Context> {
 		currentTypeName = current;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.visitor.VoidVisitorAdapter#visit(com.digiarea.jse.EmptyTypeDeclaration, java.lang.Object)
+	 */
 	@Override
 	public void visit(EmptyTypeDeclaration n, Context ctx) throws Exception {
 		NameExpr current = currentTypeName;
@@ -218,6 +230,9 @@ public class ResolverVisitor extends VoidVisitorAdapter<Context> {
 		currentTypeName = current;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.visitor.VoidVisitorAdapter#visit(com.digiarea.jse.EnumDeclaration, java.lang.Object)
+	 */
 	@Override
 	public void visit(EnumDeclaration n, Context ctx) throws Exception {
 		NameExpr current = currentTypeName;
@@ -226,6 +241,9 @@ public class ResolverVisitor extends VoidVisitorAdapter<Context> {
 		currentTypeName = current;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.visitor.VoidVisitorAdapter#visit(com.digiarea.jse.CompilationUnit, java.lang.Object)
+	 */
 	@Override
 	public void visit(CompilationUnit n, Context ctx) throws Exception {
 		PackageDeclaration pkg = n.getPackageDeclaration();
@@ -239,6 +257,9 @@ public class ResolverVisitor extends VoidVisitorAdapter<Context> {
 		currentPackageName = null;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.visitor.VoidVisitorAdapter#visit(com.digiarea.jse.Project, java.lang.Object)
+	 */
 	@Override
 	public void visit(Project n, Context ctx) throws Exception {
 		if (n.getCompilationUnits() != null) {

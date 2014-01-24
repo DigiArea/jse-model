@@ -22,6 +22,9 @@ public class Enclosure {
 	/** The enclosure. */
 	private NameExpr enclosure;
 
+	/**
+	 * Instantiates a new enclosure.
+	 */
 	public Enclosure() {
 		super();
 	}
@@ -66,6 +69,11 @@ public class Enclosure {
 		this.enclosure = NodeFacade.QualifiedNameExpr(this.enclosure, name);
 	}
 
+	/**
+	 * Sets the.
+	 *
+	 * @param enclosure the enclosure
+	 */
 	public void set(NameExpr enclosure) {
 		this.enclosure = enclosure;
 	}

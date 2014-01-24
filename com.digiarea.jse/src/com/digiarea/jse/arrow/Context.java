@@ -36,6 +36,9 @@ public class Context {
 	/** The object. */
 	private Object object;
 
+	/**
+	 * The is name.
+	 */
 	private boolean isName = false;
 
 	/**
@@ -151,10 +154,20 @@ public class Context {
 		this.object = object;
 	}
 
+	/**
+	 * Checks if is name.
+	 *
+	 * @return true, if is name
+	 */
 	public boolean isName() {
 		return isName;
 	}
 
+	/**
+	 * Sets the name.
+	 *
+	 * @param isName the new name
+	 */
 	public void setName(boolean isName) {
 		this.isName = isName;
 	}

@@ -21,42 +21,94 @@ import com.digiarea.jse.visitor.PrinterVisitor;
 import com.digiarea.jse.visitor.TracePrinter;
 import com.digiarea.jse.visitor.VoidVisitor;
 
+/**
+ * The Class Node.
+ */
 public abstract class Node {
 
+	/**
+	 * The annotations.
+	 */
 	private NodeList<AnnotationExpr> annotations = null;
 
+	/**
+	 * The pos begin.
+	 */
 	protected int posBegin = 0;
 
+	/**
+	 * The pos end.
+	 */
 	protected int posEnd = 0;
 
+	/**
+	 * Gets the annotations.
+	 *
+	 * @return the annotations
+	 */
 	public NodeList<AnnotationExpr> getAnnotations() {
 		return annotations;
 	}
 
+	/**
+	 * Sets the annotations.
+	 *
+	 * @param annotations the new annotations
+	 */
 	public void setAnnotations(NodeList<AnnotationExpr> annotations) {
 		this.annotations = annotations;
 	}
 
+	/**
+	 * Gets the pos begin.
+	 *
+	 * @return the pos begin
+	 */
 	public int getPosBegin() {
 		return posBegin;
 	}
 
+	/**
+	 * Sets the pos begin.
+	 *
+	 * @param posBegin the new pos begin
+	 */
 	public void setPosBegin(int posBegin) {
 		this.posBegin = posBegin;
 	}
 
+	/**
+	 * Gets the pos end.
+	 *
+	 * @return the pos end
+	 */
 	public int getPosEnd() {
 		return posEnd;
 	}
 
+	/**
+	 * Sets the pos end.
+	 *
+	 * @param posEnd the new pos end
+	 */
 	public void setPosEnd(int posEnd) {
 		this.posEnd = posEnd;
 	}
 
+	/**
+	 * Instantiates a new node.
+	 */
 	Node() {
 		super();
 	}
 
+	/**
+	 * Instantiates a new node.
+	 *
+	 * @param annotations the annotations
+	 * @param posBegin the pos begin
+	 * @param posEnd the pos end
+	 */
 	Node(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
 		super();
 		this.annotations = annotations;
@@ -64,13 +116,37 @@ public abstract class Node {
 		this.posEnd = posEnd;
 	}
 
+	/**
+	 * Accept.
+	 *
+	 * @param <C> the generic type
+	 * @param v the v
+	 * @param ctx the ctx
+	 * @throws Exception the exception
+	 */
 	public abstract <C> void accept(VoidVisitor<C> v, C ctx) throws Exception;
 
+	/**
+	 * Accept.
+	 *
+	 * @param <R> the generic type
+	 * @param <C> the generic type
+	 * @param v the v
+	 * @param ctx the ctx
+	 * @return the r
+	 * @throws Exception the exception
+	 */
 	public abstract <R, C> R accept(GenericVisitor<R, C> v, C ctx)
 			throws Exception;
 
+	/**
+	 * The Constant CLONE.
+	 */
 	private static final CloneVisitor<Void> CLONE = new CloneVisitor<Void>();
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#clone()
+	 */
 	@Override
 	public final Node clone() throws CloneNotSupportedException {
 		try {
@@ -81,6 +157,9 @@ public abstract class Node {
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public final boolean equals(Object obj) {
 		try {
@@ -90,10 +169,19 @@ public abstract class Node {
 		}
 	}
 
+	/**
+	 * The Constant ENCODING.
+	 */
 	private static final String ENCODING = "UTF-8";
 
+	/**
+	 * The Constant PRINTER.
+	 */
 	private static final PrinterVisitor PRINTER = new PrinterVisitor();
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public final String toString() {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -107,8 +195,14 @@ public abstract class Node {
 		return result;
 	}
 
+	/**
+	 * The Constant TRACE_PRINTER.
+	 */
 	private static final TracePrinter TRACE_PRINTER = new TracePrinter();
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public final int hashCode() {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -122,8 +216,16 @@ public abstract class Node {
 		return result.hashCode();
 	}
 
+	/**
+	 * The Constant CRYPTO.
+	 */
 	private static final String CRYPTO = "SHA-256";
 
+	/**
+	 * Trace.
+	 *
+	 * @return the string
+	 */
 	public final String trace() {
 		try {
 			ByteArrayOutputStream out = new ByteArrayOutputStream();

@@ -16,21 +16,40 @@ import com.digiarea.jse.NodeList;
 import com.digiarea.jse.visitor.VoidVisitor;
 import com.digiarea.jse.visitor.GenericVisitor;
 
+/** 
+ * The Class NullLiteralExpr.
+ */
 public final class NullLiteralExpr extends LiteralExpr {
 
+    /**
+     * Instantiates a new null literal expr.
+     */
     NullLiteralExpr() {
         super();
     }
 
+    /**
+     * Instantiates a new null literal expr.
+     *
+     * @param annotations the annotations
+     * @param posBegin the pos begin
+     * @param posEnd the pos end
+     */
     NullLiteralExpr(NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.Node#accept(com.digiarea.jse.visitor.VoidVisitor, java.lang.Object)
+     */
     @Override
     public <C> void accept(VoidVisitor<C> v, C ctx) throws Exception {
         v.visit(this, ctx);
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.Node#accept(com.digiarea.jse.visitor.GenericVisitor, java.lang.Object)
+     */
     @Override
     public <R, C> R accept(GenericVisitor<R, C> v, C ctx) throws Exception {
         return v.visit(this, ctx);

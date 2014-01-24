@@ -81,6 +81,9 @@ public class Abstractor extends Identity {
 		return img;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.InterfaceDeclaration, com.digiarea.jse.arrow.Context)
+	 */
 	@Override
 	public Node visit(InterfaceDeclaration n, Context ctx) throws Exception {
 		ctx.setObject(new Boolean(true));

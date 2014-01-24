@@ -24,6 +24,9 @@ public class LangUtils {
 	public static final Type BOOLEAN_TYPE = NodeFacade
 			.ClassOrInterfaceType("java.lang.Boolean");
 
+	/**
+	 * The Constant BOOLEAN_PROPERTY_TYPE.
+	 */
 	public static final Type BOOLEAN_PROPERTY_TYPE = NodeFacade
 			.ClassOrInterfaceType("javafx.beans.property.BooleanProperty");
 
@@ -168,6 +171,12 @@ public class LangUtils {
 		return false;
 	}
 
+	/**
+	 * Checks if is qualified wrapped type.
+	 *
+	 * @param name the name
+	 * @return true, if is qualified wrapped type
+	 */
 	public static boolean isQualifiedWrappedType(String name) {
 		for (int i = 0; i < WRAPPED_TYPES.length; i++) {
 			if (WRAPPED_TYPES[i].equals(name)) {
@@ -177,6 +186,12 @@ public class LangUtils {
 		return false;
 	}
 
+	/**
+	 * Checks if is qualified property type.
+	 *
+	 * @param expr the expr
+	 * @return true, if is qualified property type
+	 */
 	public static boolean isQualifiedPropertyType(NameExpr expr) {
 		for (int i = 0; i < PROPERTY_TYPES.length; i++) {
 			if (PROPERTY_TYPES[i].equals(expr.toString())) {
@@ -186,6 +201,12 @@ public class LangUtils {
 		return false;
 	}
 
+	/**
+	 * Checks if is qualified property type.
+	 *
+	 * @param name the name
+	 * @return true, if is qualified property type
+	 */
 	public static boolean isQualifiedPropertyType(String name) {
 		for (int i = 0; i < PROPERTY_TYPES.length; i++) {
 			if (PROPERTY_TYPES[i].equals(name)) {
@@ -195,14 +216,32 @@ public class LangUtils {
 		return false;
 	}
 
+	/**
+	 * Checks if is byte.
+	 *
+	 * @param type the type
+	 * @return true, if is byte
+	 */
 	public static boolean isByte(Type type) {
 		return type.toString().equals(BYTE_TYPE.toString());
 	}
 
+	/**
+	 * Checks if is float.
+	 *
+	 * @param type the type
+	 * @return true, if is float
+	 */
 	public static boolean isFloat(Type type) {
 		return type.toString().equals(FLOAT_TYPE.toString());
 	}
 
+	/**
+	 * Checks if is short.
+	 *
+	 * @param type the type
+	 * @return true, if is short
+	 */
 	public static boolean isShort(Type type) {
 		return type.toString().equals(SHORT_TYPE.toString());
 	}
@@ -223,6 +262,9 @@ public class LangUtils {
 			"java.lang.Double", "java.lang.Float", "java.lang.Integer",
 			"java.lang.Long", "java.lang.Short" };
 
+	/**
+	 * The Constant PROPERTY_TYPES.
+	 */
 	private static final String[] PROPERTY_TYPES = {
 			// Wrapped types
 			"javafx.beans.property.BooleanProperty",

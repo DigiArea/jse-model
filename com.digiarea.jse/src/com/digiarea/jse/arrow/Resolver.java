@@ -118,6 +118,9 @@ public class Resolver implements Arrow<Project, Project> {
 			return img;
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.MethodDeclaration, com.digiarea.jse.arrow.Context)
+		 */
 		@Override
 		public Node visit(MethodDeclaration n, Context ctx) throws Exception {
 			MethodDeclaration img = (MethodDeclaration) super.visit(n, ctx);
@@ -153,6 +156,9 @@ public class Resolver implements Arrow<Project, Project> {
 			return img;
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.NameExpr, com.digiarea.jse.arrow.Context)
+		 */
 		@Override
 		public Node visit(NameExpr n, Context ctx) throws Exception {
 			NameExpr img = (NameExpr) super.visit(n, ctx);
@@ -162,6 +168,9 @@ public class Resolver implements Arrow<Project, Project> {
 			return img;
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.QualifiedNameExpr, com.digiarea.jse.arrow.Context)
+		 */
 		@Override
 		public Node visit(QualifiedNameExpr n, Context ctx) throws Exception {
 			QualifiedNameExpr img = (QualifiedNameExpr) super.visit(n, ctx);
@@ -185,6 +194,9 @@ public class Resolver implements Arrow<Project, Project> {
 			return img;
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.arrow.Identity#arrow(com.digiarea.jse.Project)
+		 */
 		@Override
 		public Project arrow(Project iProject) throws Exception {
 			Project img = NodeFacade.Project();
@@ -348,6 +360,9 @@ public class Resolver implements Arrow<Project, Project> {
 			return img;
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.MethodDeclaration, com.digiarea.jse.arrow.Context)
+		 */
 		@Override
 		public Node visit(MethodDeclaration n, Context ctx) throws Exception {
 			MethodDeclaration img = (MethodDeclaration) super.visit(n, ctx);
@@ -383,6 +398,9 @@ public class Resolver implements Arrow<Project, Project> {
 			return img;
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.QualifiedNameExpr, com.digiarea.jse.arrow.Context)
+		 */
 		@Override
 		public Node visit(QualifiedNameExpr n, Context ctx) throws Exception {
 			QualifiedNameExpr img = (QualifiedNameExpr) super.visit(n, ctx);
@@ -411,6 +429,9 @@ public class Resolver implements Arrow<Project, Project> {
 			return img;
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.arrow.Identity#arrow(com.digiarea.jse.Project)
+		 */
 		@Override
 		public Project arrow(Project iProject) throws Exception {
 			Project img = NodeFacade.Project();
@@ -499,6 +520,12 @@ public class Resolver implements Arrow<Project, Project> {
 
 	}
 
+	/**
+	 * Gets the simple unit name.
+	 *
+	 * @param ctx the ctx
+	 * @return the simple unit name
+	 */
 	private String getSimpleUnitName(Context ctx) {
 		return NodeFacade.NameExpr(ctx.getUnit().getName()).getName();
 	}
@@ -532,6 +559,9 @@ public class Resolver implements Arrow<Project, Project> {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.common.Arrow#arrow(java.lang.Object)
+	 */
 	@Override
 	public Project arrow(Project iProject) throws Exception {
 		return arrow.arrow(iProject);

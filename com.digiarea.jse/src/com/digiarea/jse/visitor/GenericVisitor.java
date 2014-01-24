@@ -104,190 +104,933 @@ import com.digiarea.jse.VoidType;
 import com.digiarea.jse.WhileStmt;
 import com.digiarea.jse.WildcardType;
 
+/**
+ * The Interface GenericVisitor.
+ *
+ * @param <R> the generic type
+ * @param <C> the generic type
+ */
 public interface GenericVisitor<R, C> {
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(AnnotationDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(AnnotationMemberDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ArrayAccessExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ArrayCreationExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ArrayInitializerExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ArraySlot n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(AssertStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(AssignExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(AssignOperator n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(BinaryExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(BinaryOperator n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(BlockComment n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(BlockStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(BooleanLiteralExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(BreakStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(CastExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(CatchClause n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(CharLiteralExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ClassDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ClassExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ClassOrInterfaceType n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(CompilationUnit n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ConditionalExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ConstructorDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ContinueStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(DoStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(DoubleLiteralExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(Ellipsis n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(EmptyMemberDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(EmptyStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(EmptyTypeDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(EnclosedExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(EnumConstantDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(EnumDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ExplicitConstructorInvocationStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ExpressionStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(FieldAccessExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(FieldDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ForeachStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ForStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(IfStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ImportDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(InitializerDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(InstanceOfExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(IntegerLiteralExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(InterfaceDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(JavadocComment n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(LabeledStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(LambdaBlock n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(LambdaExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(LineComment n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(LongLiteralExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(MarkerAnnotationExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(MemberValuePair n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(MethodCallExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(MethodDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(MethodExprRef n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(MethodRef n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(MethodTypeRef n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(Modifiers n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(NameExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param <E> the element type
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public <E extends Node> R visit(NodeList<E> n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(NormalAnnotationExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(NullLiteralExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ObjectCreationExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(PackageDeclaration n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(Parameter n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(PrimitiveType n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(Primitive n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(Project n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(QualifiedNameExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ReferenceType n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ReturnStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(SingleMemberAnnotationExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(StringLiteralExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(SuperExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(SwitchEntryStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(SwitchStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(SynchronizedStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ThisExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(ThrowStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(TryStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(TypeDeclarationStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(TypeParameter n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(UnaryExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(UnaryOperator n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(VariableDeclarationExpr n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(VariableDeclarator n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(VariableDeclaratorId n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(VoidType n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(WhileStmt n, C ctx) throws Exception;
 
+    /**
+     * Visit.
+     *
+     * @param n the n
+     * @param ctx the ctx
+     * @return the r
+     * @throws Exception the exception
+     */
     public R visit(WildcardType n, C ctx) throws Exception;
 
 }

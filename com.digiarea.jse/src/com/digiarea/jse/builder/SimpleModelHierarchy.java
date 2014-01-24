@@ -36,10 +36,19 @@ import com.digiarea.jse.utils.NodeUtils;
 import com.digiarea.jse.utils.ReflectUtils;
 import com.digiarea.jse.visitor.VoidVisitorAdapter;
 
+/**
+ * The Class SimpleModelHierarchy.
+ */
 public class SimpleModelHierarchy implements ModelHierarchy {
 
+	/**
+	 * The Class ModelScanner.
+	 */
 	private class ModelScanner extends VoidVisitorAdapter<Enclosure> {
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.visitor.VoidVisitorAdapter#visit(com.digiarea.jse.AnnotationDeclaration, java.lang.Object)
+		 */
 		@Override
 		public void visit(AnnotationDeclaration n, Enclosure ctx)
 				throws Exception {
@@ -51,6 +60,9 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 			ctx.cut();
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.visitor.VoidVisitorAdapter#visit(com.digiarea.jse.ClassDeclaration, java.lang.Object)
+		 */
 		@Override
 		public void visit(ClassDeclaration n, Enclosure ctx) throws Exception {
 			ctx.add(n.getName());
@@ -77,10 +89,10 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		}
 
 		/**
-		 * Dirty hack
-		 * 
-		 * @param annotations
-		 * @return
+		 * Dirty hack.
+		 *
+		 * @param annotations the annotations
+		 * @return true, if is root
 		 */
 		private boolean isRoot(List<AnnotationExpr> annotations) {
 			if (annotations != null) {
@@ -105,6 +117,9 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 			return false;
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.visitor.VoidVisitorAdapter#visit(com.digiarea.jse.EnumDeclaration, java.lang.Object)
+		 */
 		@Override
 		public void visit(EnumDeclaration n, Enclosure ctx) throws Exception {
 			ctx.add(n.getName());
@@ -115,6 +130,9 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 			ctx.cut();
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.visitor.VoidVisitorAdapter#visit(com.digiarea.jse.InterfaceDeclaration, java.lang.Object)
+		 */
 		@Override
 		public void visit(InterfaceDeclaration n, Enclosure ctx)
 				throws Exception {
@@ -126,12 +144,18 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 			ctx.cut();
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.visitor.VoidVisitorAdapter#visit(com.digiarea.jse.PackageDeclaration, java.lang.Object)
+		 */
 		@Override
 		public void visit(PackageDeclaration n, Enclosure ctx) throws Exception {
 			ctx.set(n.getName());
 			super.visit(n, ctx);
 		}
 
+		/* (non-Javadoc)
+		 * @see com.digiarea.jse.visitor.VoidVisitorAdapter#visit(com.digiarea.jse.Project, java.lang.Object)
+		 */
 		@Override
 		public void visit(Project n, Enclosure ctx) throws Exception {
 			if (n.getCompilationUnits() != null) {
@@ -143,17 +167,53 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 
 	}
 
+	/**
+	 * The updaters.
+	 */
 	private Map<String, ModelUpdater> updaters = new LinkedHashMap<String, ModelUpdater>();
+	
+	/**
+	 * The external.
+	 */
 	private Map<String, ModelUpdater> external = new HashMap<String, ModelUpdater>();
+	
+	/**
+	 * The builders.
+	 */
 	private Map<String, ModelBuilder> builders = new HashMap<String, ModelBuilder>();
+	
+	/**
+	 * The project.
+	 */
 	private Project project = null;
+	
+	/**
+	 * The visitors.
+	 */
 	private List<ModelVisitor> visitors;
+	
+	/**
+	 * The root.
+	 */
 	private ModelUpdater root = null;
 
+	/**
+	 * Instantiates a new simple model hierarchy.
+	 *
+	 * @param project the project
+	 * @throws Exception the exception
+	 */
 	public SimpleModelHierarchy(Project project) throws Exception {
 		this(project, null);
 	}
 
+	/**
+	 * Instantiates a new simple model hierarchy.
+	 *
+	 * @param project the project
+	 * @param visitors the visitors
+	 * @throws Exception the exception
+	 */
 	public SimpleModelHierarchy(Project project, List<ModelVisitor> visitors)
 			throws Exception {
 		super();
@@ -168,6 +228,9 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		// printUpdaters();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#update()
+	 */
 	@Override
 	public void update() throws Exception {
 		// scan the model
@@ -175,26 +238,41 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		new ModelScanner().visit(project, new Enclosure());
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#addModelVisitor(com.digiarea.jse.builder.ModelVisitor)
+	 */
 	@Override
 	public boolean addModelVisitor(ModelVisitor visitor) {
 		return visitors.add(visitor);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#removeModelVisitor(com.digiarea.jse.builder.ModelVisitor)
+	 */
 	@Override
 	public boolean removeModelVisitor(ModelVisitor visitor) {
 		return visitors.remove(visitor);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#clearModelVisitors()
+	 */
 	@Override
 	public void clearModelVisitors() {
 		visitors.clear();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#updaterExists(java.lang.String)
+	 */
 	@Override
 	public boolean updaterExists(String qualifiedName) {
 		return updaters.containsKey(qualifiedName);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#getUpdater(java.lang.String)
+	 */
 	@Override
 	public ModelUpdater getUpdater(String qualifiedName) {
 		if (updaters.containsKey(qualifiedName)) {
@@ -214,21 +292,33 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#getUpdaters()
+	 */
 	@Override
 	public Map<String, ModelUpdater> getUpdaters() {
 		return updaters;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#builderExists(java.lang.String)
+	 */
 	@Override
 	public boolean builderExists(String qualifiedName) {
 		return builders.containsKey(qualifiedName);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#getBuilder(java.lang.String)
+	 */
 	@Override
 	public ModelBuilder getBuilder(String qualifiedName) {
 		return builders.get(qualifiedName);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#removeBuilder(java.lang.String)
+	 */
 	@Override
 	public TypeDeclaration removeBuilder(String qualifiedName) {
 		if (builders.containsKey(qualifiedName)) {
@@ -240,6 +330,9 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#getBuilder(java.lang.String, com.digiarea.jse.builder.ModelBuilder.BuilderType)
+	 */
 	@Override
 	public ModelBuilder getBuilder(String qualifiedName, BuilderType builderType) {
 		if (builders.containsKey(qualifiedName)) {
@@ -252,11 +345,17 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#putBuilder(java.lang.String, com.digiarea.jse.builder.ModelBuilder)
+	 */
 	@Override
 	public ModelBuilder putBuilder(String qualifiedName, ModelBuilder value) {
 		return builders.put(qualifiedName, value);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#getBuilders()
+	 */
 	@Override
 	public Project getBuilders() {
 		List<CompilationUnit> compilationUnits = new ArrayList<CompilationUnit>();
@@ -266,16 +365,25 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		return NodeFacade.Project(compilationUnits);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#getProject()
+	 */
 	@Override
 	public Project getProject() {
 		return project;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#getResult()
+	 */
 	@Override
 	public Project getResult() {
 		return NodeUtils.mergeProjects(getBuilders(), getProject());
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#process()
+	 */
 	@Override
 	public final void process() throws Exception {
 		// visit nodes
@@ -287,6 +395,9 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#getSubTypes(com.digiarea.jse.builder.ModelUpdater)
+	 */
 	@Override
 	public List<ClassOrInterfaceType> getSubTypes(ModelUpdater u) {
 		List<ClassOrInterfaceType> values = new ArrayList<ClassOrInterfaceType>();
@@ -294,6 +405,13 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		return values;
 	}
 
+	/**
+	 * Gets the values.
+	 *
+	 * @param rootQName the root q name
+	 * @param values the values
+	 * @return the values
+	 */
 	private void getValues(String rootQName, List<ClassOrInterfaceType> values) {
 		for (Map.Entry<String, ModelUpdater> entry : updaters.entrySet()) {
 			ModelUpdater updater = entry.getValue();
@@ -308,6 +426,9 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#printUpdaters()
+	 */
 	@Override
 	public void printUpdaters() {
 		for (Map.Entry<String, ModelUpdater> entry : updaters.entrySet()) {
@@ -316,6 +437,9 @@ public class SimpleModelHierarchy implements ModelHierarchy {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.builder.ModelHierarchy#getRoot()
+	 */
 	@Override
 	public ModelUpdater getRoot() {
 		return root;

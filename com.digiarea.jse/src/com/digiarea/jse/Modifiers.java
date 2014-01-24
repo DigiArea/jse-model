@@ -81,15 +81,15 @@ public class Modifiers extends Node {
      */
     public static final int DEFAULT = 0x00001000;
 
+    /** 
+     * The modifiers.
+     */
     private int modifiers = 0;
 
     /** 
      * Adds the modifier.
      *
-     * @param modifiers
-     *            the modifiers
-     * @param mod
-     *            the mod
+     * @param mod            the mod
      * @return the int
      */
     public int addModifier(int mod) {
@@ -99,10 +99,7 @@ public class Modifiers extends Node {
     /** 
      * Checks for modifier.
      *
-     * @param modifiers
-     *            the modifiers
-     * @param modifier
-     *            the modifier
+     * @param modifier            the modifier
      * @return true, if successful
      */
     public boolean hasModifier(int modifier) {
@@ -112,8 +109,6 @@ public class Modifiers extends Node {
     /** 
      * Checks if is abstract.
      *
-     * @param modifiers
-     *            the modifiers
      * @return true, if is abstract
      */
     public boolean isAbstract() {
@@ -123,8 +118,6 @@ public class Modifiers extends Node {
     /** 
      * Checks if is final.
      *
-     * @param modifiers
-     *            the modifiers
      * @return true, if is final
      */
     public boolean isFinal() {
@@ -134,8 +127,6 @@ public class Modifiers extends Node {
     /** 
      * Checks if is native.
      *
-     * @param modifiers
-     *            the modifiers
      * @return true, if is native
      */
     public boolean isNative() {
@@ -145,8 +136,6 @@ public class Modifiers extends Node {
     /** 
      * Checks if is private.
      *
-     * @param modifiers
-     *            the modifiers
      * @return true, if is private
      */
     public boolean isPrivate() {
@@ -156,8 +145,6 @@ public class Modifiers extends Node {
     /** 
      * Checks if is protected.
      *
-     * @param modifiers
-     *            the modifiers
      * @return true, if is protected
      */
     public boolean isProtected() {
@@ -167,8 +154,6 @@ public class Modifiers extends Node {
     /** 
      * Checks if is public.
      *
-     * @param modifiers
-     *            the modifiers
      * @return true, if is public
      */
     public boolean isPublic() {
@@ -178,8 +163,6 @@ public class Modifiers extends Node {
     /** 
      * Checks if is static.
      *
-     * @param modifiers
-     *            the modifiers
      * @return true, if is static
      */
     public boolean isStatic() {
@@ -189,8 +172,6 @@ public class Modifiers extends Node {
     /** 
      * Checks if is strictfp.
      *
-     * @param modifiers
-     *            the modifiers
      * @return true, if is strictfp
      */
     public boolean isStrictfp() {
@@ -200,8 +181,6 @@ public class Modifiers extends Node {
     /** 
      * Checks if is synchronized.
      *
-     * @param modifiers
-     *            the modifiers
      * @return true, if is synchronized
      */
     public boolean isSynchronized() {
@@ -211,8 +190,6 @@ public class Modifiers extends Node {
     /** 
      * Checks if is transient.
      *
-     * @param modifiers
-     *            the modifiers
      * @return true, if is transient
      */
     public boolean isTransient() {
@@ -222,8 +199,6 @@ public class Modifiers extends Node {
     /** 
      * Checks if is volatile.
      *
-     * @param modifiers
-     *            the modifiers
      * @return true, if is volatile
      */
     public boolean isVolatile() {
@@ -233,8 +208,6 @@ public class Modifiers extends Node {
     /** 
      * Checks if is dafault.
      *
-     * @param modifiers
-     *            the modifiers
      * @return true, if is volatile
      */
     public boolean isDefault() {
@@ -244,10 +217,7 @@ public class Modifiers extends Node {
     /** 
      * Removes the modifier.
      *
-     * @param modifiers
-     *            the modifiers
-     * @param mod
-     *            the mod
+     * @param mod            the mod
      * @return the int
      */
     public int removeModifier(int mod) {
@@ -425,28 +395,55 @@ public class Modifiers extends Node {
         return modifiers & ~mod;
     }
 
+    /**
+     * Gets the modifiers.
+     *
+     * @return the modifiers
+     */
     public int getModifiers() {
         return modifiers;
     }
 
+    /**
+     * Sets the modifiers.
+     *
+     * @param modifiers the new modifiers
+     */
     public void setModifiers(int modifiers) {
         this.modifiers = modifiers;
     }
 
+    /**
+     * Instantiates a new modifiers.
+     */
     Modifiers() {
         super();
     }
 
+    /**
+     * Instantiates a new modifiers.
+     *
+     * @param modifiers the modifiers
+     * @param annotations the annotations
+     * @param posBegin the pos begin
+     * @param posEnd the pos end
+     */
     Modifiers(int modifiers, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.modifiers = modifiers;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.Node#accept(com.digiarea.jse.visitor.VoidVisitor, java.lang.Object)
+     */
     @Override
     public <C> void accept(VoidVisitor<C> v, C ctx) throws Exception {
         v.visit(this, ctx);
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.Node#accept(com.digiarea.jse.visitor.GenericVisitor, java.lang.Object)
+     */
     @Override
     public <R, C> R accept(GenericVisitor<R, C> v, C ctx) throws Exception {
         return v.visit(this, ctx);
