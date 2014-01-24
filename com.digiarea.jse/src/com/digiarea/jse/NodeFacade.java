@@ -1399,12 +1399,28 @@ public class NodeFacade extends NodeFactory {
 		return CastExpr(NodeList(types), expression, null, 0, 0);
 	}
 
+	/**
+	 * Type method reference.
+	 *
+	 * @param type the type
+	 * @param typeArgs the type args
+	 * @param methodName the method name
+	 * @return the type method reference
+	 */
 	public static TypeMethodReference TypeMethodReference(Type type,
 			List<Type> typeArgs, String methodName) {
 		return TypeMethodReference(type, methodName, NodeList(typeArgs), null,
 				0, 0);
 	}
 
+	/**
+	 * Expression method reference.
+	 *
+	 * @param scope the scope
+	 * @param typeArgs the type args
+	 * @param methodName the method name
+	 * @return the expression method reference
+	 */
 	public static ExpressionMethodReference ExpressionMethodReference(
 			Expression scope, List<Type> typeArgs, String methodName) {
 		return ExpressionMethodReference(scope, methodName, NodeList(typeArgs),

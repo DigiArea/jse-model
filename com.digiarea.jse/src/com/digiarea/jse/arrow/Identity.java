@@ -779,6 +779,9 @@ public class Identity implements GenericVisitor<Node, Context>,
 		return img;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.CreationReference, java.lang.Object)
+	 */
 	@Override
 	public Node visit(CreationReference n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
@@ -1591,6 +1594,9 @@ public class Identity implements GenericVisitor<Node, Context>,
 		return img;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ExpressionMethodReference, java.lang.Object)
+	 */
 	@Override
 	public Node visit(ExpressionMethodReference n, Context ctx)
 			throws Exception {
@@ -2015,6 +2021,9 @@ public class Identity implements GenericVisitor<Node, Context>,
 		return img;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.SuperMethodReference, java.lang.Object)
+	 */
 	@Override
 	public Node visit(SuperMethodReference n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
@@ -2212,6 +2221,9 @@ public class Identity implements GenericVisitor<Node, Context>,
 		return img;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.TypeMethodReference, java.lang.Object)
+	 */
 	@Override
 	public Node visit(TypeMethodReference n, Context ctx) throws Exception {
 		Node node = ctx.getNode();
