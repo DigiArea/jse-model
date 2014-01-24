@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2011 - 2014 DigiArea, Inc. and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     DigiArea, Inc. - initial API and implementation
- *******************************************************************************/
 package com.digiarea.jse.visitor;
 
 import com.digiarea.jse.Node;
@@ -53,6 +43,7 @@ import com.digiarea.jse.ConditionalExpr;
 import com.digiarea.jse.ConstructorDeclaration;
 import com.digiarea.jse.Parameter;
 import com.digiarea.jse.ContinueStmt;
+import com.digiarea.jse.CreationReference;
 import com.digiarea.jse.DoStmt;
 import com.digiarea.jse.DoubleLiteralExpr;
 import com.digiarea.jse.Ellipsis;
@@ -63,6 +54,7 @@ import com.digiarea.jse.EnclosedExpr;
 import com.digiarea.jse.EnumConstantDeclaration;
 import com.digiarea.jse.EnumDeclaration;
 import com.digiarea.jse.ExplicitConstructorInvocationStmt;
+import com.digiarea.jse.ExpressionMethodReference;
 import com.digiarea.jse.ExpressionStmt;
 import com.digiarea.jse.FieldAccessExpr;
 import com.digiarea.jse.FieldDeclaration;
@@ -84,9 +76,6 @@ import com.digiarea.jse.MarkerAnnotationExpr;
 import com.digiarea.jse.MemberValuePair;
 import com.digiarea.jse.MethodCallExpr;
 import com.digiarea.jse.MethodDeclaration;
-import com.digiarea.jse.MethodExprRef;
-import com.digiarea.jse.MethodRef;
-import com.digiarea.jse.MethodTypeRef;
 import java.util.List;
 import java.util.ArrayList;
 import com.digiarea.jse.NormalAnnotationExpr;
@@ -102,6 +91,7 @@ import com.digiarea.jse.ReturnStmt;
 import com.digiarea.jse.SingleMemberAnnotationExpr;
 import com.digiarea.jse.StringLiteralExpr;
 import com.digiarea.jse.SuperExpr;
+import com.digiarea.jse.SuperMethodReference;
 import com.digiarea.jse.SwitchEntryStmt;
 import com.digiarea.jse.SwitchStmt;
 import com.digiarea.jse.SynchronizedStmt;
@@ -109,23 +99,16 @@ import com.digiarea.jse.ThisExpr;
 import com.digiarea.jse.ThrowStmt;
 import com.digiarea.jse.TryStmt;
 import com.digiarea.jse.TypeDeclarationStmt;
+import com.digiarea.jse.TypeMethodReference;
 import com.digiarea.jse.UnaryExpr;
 import com.digiarea.jse.UnaryExpr.UnaryOperator;
 import com.digiarea.jse.VoidType;
 import com.digiarea.jse.WhileStmt;
 import com.digiarea.jse.WildcardType;
 
-/**
- * The Class CloneVisitor.
- *
- * @param <C> the generic type
- */
 @SuppressWarnings("unchecked")
 public class CloneVisitor<C> implements GenericVisitor<Node, C> {
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.AnnotationDeclaration, java.lang.Object)
-     */
     @Override
     public Node visit(AnnotationDeclaration n, C ctx) throws Exception {
         AnnotationDeclaration img = NodeFacade.AnnotationDeclaration();
@@ -147,9 +130,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.AnnotationMemberDeclaration, java.lang.Object)
-     */
     @Override
     public Node visit(AnnotationMemberDeclaration n, C ctx) throws Exception {
         AnnotationMemberDeclaration img = NodeFacade.AnnotationMemberDeclaration();
@@ -174,9 +154,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ArrayAccessExpr, java.lang.Object)
-     */
     @Override
     public Node visit(ArrayAccessExpr n, C ctx) throws Exception {
         ArrayAccessExpr img = NodeFacade.ArrayAccessExpr();
@@ -194,9 +171,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ArrayCreationExpr, java.lang.Object)
-     */
     @Override
     public Node visit(ArrayCreationExpr n, C ctx) throws Exception {
         ArrayCreationExpr img = NodeFacade.ArrayCreationExpr();
@@ -217,9 +191,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ArrayInitializerExpr, java.lang.Object)
-     */
     @Override
     public Node visit(ArrayInitializerExpr n, C ctx) throws Exception {
         ArrayInitializerExpr img = NodeFacade.ArrayInitializerExpr();
@@ -234,9 +205,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ArraySlot, java.lang.Object)
-     */
     @Override
     public Node visit(ArraySlot n, C ctx) throws Exception {
         ArraySlot img = NodeFacade.ArraySlot();
@@ -251,9 +219,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.AssertStmt, java.lang.Object)
-     */
     @Override
     public Node visit(AssertStmt n, C ctx) throws Exception {
         AssertStmt img = NodeFacade.AssertStmt();
@@ -271,9 +236,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.AssignExpr, java.lang.Object)
-     */
     @Override
     public Node visit(AssignExpr n, C ctx) throws Exception {
         AssignExpr img = NodeFacade.AssignExpr();
@@ -292,17 +254,11 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.AssignExpr.AssignOperator, java.lang.Object)
-     */
     @Override
     public Node visit(AssignOperator n, C ctx) throws Exception {
         return null;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.BinaryExpr, java.lang.Object)
-     */
     @Override
     public Node visit(BinaryExpr n, C ctx) throws Exception {
         BinaryExpr img = NodeFacade.BinaryExpr();
@@ -321,17 +277,11 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.BinaryExpr.BinaryOperator, java.lang.Object)
-     */
     @Override
     public Node visit(BinaryOperator n, C ctx) throws Exception {
         return null;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.BlockComment, java.lang.Object)
-     */
     @Override
     public Node visit(BlockComment n, C ctx) throws Exception {
         BlockComment img = NodeFacade.BlockComment();
@@ -344,9 +294,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.BlockStmt, java.lang.Object)
-     */
     @Override
     public Node visit(BlockStmt n, C ctx) throws Exception {
         BlockStmt img = NodeFacade.BlockStmt();
@@ -361,9 +308,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.BooleanLiteralExpr, java.lang.Object)
-     */
     @Override
     public Node visit(BooleanLiteralExpr n, C ctx) throws Exception {
         BooleanLiteralExpr img = NodeFacade.BooleanLiteralExpr();
@@ -376,9 +320,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.BreakStmt, java.lang.Object)
-     */
     @Override
     public Node visit(BreakStmt n, C ctx) throws Exception {
         BreakStmt img = NodeFacade.BreakStmt();
@@ -391,9 +332,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.CastExpr, java.lang.Object)
-     */
     @Override
     public Node visit(CastExpr n, C ctx) throws Exception {
         CastExpr img = NodeFacade.CastExpr();
@@ -411,9 +349,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.CatchClause, java.lang.Object)
-     */
     @Override
     public Node visit(CatchClause n, C ctx) throws Exception {
         CatchClause img = NodeFacade.CatchClause();
@@ -433,9 +368,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.CharLiteralExpr, java.lang.Object)
-     */
     @Override
     public Node visit(CharLiteralExpr n, C ctx) throws Exception {
         CharLiteralExpr img = NodeFacade.CharLiteralExpr();
@@ -448,9 +380,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ClassDeclaration, java.lang.Object)
-     */
     @Override
     public Node visit(ClassDeclaration n, C ctx) throws Exception {
         ClassDeclaration img = NodeFacade.ClassDeclaration();
@@ -481,9 +410,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ClassExpr, java.lang.Object)
-     */
     @Override
     public Node visit(ClassExpr n, C ctx) throws Exception {
         ClassExpr img = NodeFacade.ClassExpr();
@@ -498,9 +424,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ClassOrInterfaceType, java.lang.Object)
-     */
     @Override
     public Node visit(ClassOrInterfaceType n, C ctx) throws Exception {
         ClassOrInterfaceType img = NodeFacade.ClassOrInterfaceType();
@@ -521,9 +444,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.CompilationUnit, java.lang.Object)
-     */
     @Override
     public Node visit(CompilationUnit n, C ctx) throws Exception {
         CompilationUnit img = NodeFacade.CompilationUnit();
@@ -548,9 +468,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ConditionalExpr, java.lang.Object)
-     */
     @Override
     public Node visit(ConditionalExpr n, C ctx) throws Exception {
         ConditionalExpr img = NodeFacade.ConditionalExpr();
@@ -571,9 +488,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ConstructorDeclaration, java.lang.Object)
-     */
     @Override
     public Node visit(ConstructorDeclaration n, C ctx) throws Exception {
         ConstructorDeclaration img = NodeFacade.ConstructorDeclaration();
@@ -610,9 +524,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ContinueStmt, java.lang.Object)
-     */
     @Override
     public Node visit(ContinueStmt n, C ctx) throws Exception {
         ContinueStmt img = NodeFacade.ContinueStmt();
@@ -625,9 +536,23 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.DoStmt, java.lang.Object)
-     */
+    @Override
+    public Node visit(CreationReference n, C ctx) throws Exception {
+        CreationReference img = NodeFacade.CreationReference();
+        if (n.getType() != null) {
+            img.setType((Type) n.getType().accept(this, ctx));
+        }
+        if (n.getTypeArgs() != null) {
+            img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
+        }
+        if (n.getAnnotations() != null) {
+            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
+        }
+        img.setPosBegin(n.getPosBegin());
+        img.setPosEnd(n.getPosEnd());
+        return img;
+    }
+
     @Override
     public Node visit(DoStmt n, C ctx) throws Exception {
         DoStmt img = NodeFacade.DoStmt();
@@ -645,9 +570,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.DoubleLiteralExpr, java.lang.Object)
-     */
     @Override
     public Node visit(DoubleLiteralExpr n, C ctx) throws Exception {
         DoubleLiteralExpr img = NodeFacade.DoubleLiteralExpr();
@@ -660,9 +582,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.Ellipsis, java.lang.Object)
-     */
     @Override
     public Node visit(Ellipsis n, C ctx) throws Exception {
         Ellipsis img = NodeFacade.Ellipsis();
@@ -674,9 +593,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.EmptyMemberDeclaration, java.lang.Object)
-     */
     @Override
     public Node visit(EmptyMemberDeclaration n, C ctx) throws Exception {
         EmptyMemberDeclaration img = NodeFacade.EmptyMemberDeclaration();
@@ -691,9 +607,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.EmptyStmt, java.lang.Object)
-     */
     @Override
     public Node visit(EmptyStmt n, C ctx) throws Exception {
         EmptyStmt img = NodeFacade.EmptyStmt();
@@ -705,9 +618,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.EmptyTypeDeclaration, java.lang.Object)
-     */
     @Override
     public Node visit(EmptyTypeDeclaration n, C ctx) throws Exception {
         EmptyTypeDeclaration img = NodeFacade.EmptyTypeDeclaration();
@@ -729,9 +639,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.EnclosedExpr, java.lang.Object)
-     */
     @Override
     public Node visit(EnclosedExpr n, C ctx) throws Exception {
         EnclosedExpr img = NodeFacade.EnclosedExpr();
@@ -746,9 +653,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.EnumConstantDeclaration, java.lang.Object)
-     */
     @Override
     public Node visit(EnumConstantDeclaration n, C ctx) throws Exception {
         EnumConstantDeclaration img = NodeFacade.EnumConstantDeclaration();
@@ -770,9 +674,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.EnumDeclaration, java.lang.Object)
-     */
     @Override
     public Node visit(EnumDeclaration n, C ctx) throws Exception {
         EnumDeclaration img = NodeFacade.EnumDeclaration();
@@ -800,9 +701,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ExplicitConstructorInvocationStmt, java.lang.Object)
-     */
     @Override
     public Node visit(ExplicitConstructorInvocationStmt n, C ctx) throws Exception {
         ExplicitConstructorInvocationStmt img = NodeFacade.ExplicitConstructorInvocationStmt();
@@ -824,9 +722,24 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ExpressionStmt, java.lang.Object)
-     */
+    @Override
+    public Node visit(ExpressionMethodReference n, C ctx) throws Exception {
+        ExpressionMethodReference img = NodeFacade.ExpressionMethodReference();
+        if (n.getExpression() != null) {
+            img.setExpression((Expression) n.getExpression().accept(this, ctx));
+        }
+        img.setMethodName(n.getMethodName());
+        if (n.getTypeArgs() != null) {
+            img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
+        }
+        if (n.getAnnotations() != null) {
+            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
+        }
+        img.setPosBegin(n.getPosBegin());
+        img.setPosEnd(n.getPosEnd());
+        return img;
+    }
+
     @Override
     public Node visit(ExpressionStmt n, C ctx) throws Exception {
         ExpressionStmt img = NodeFacade.ExpressionStmt();
@@ -841,9 +754,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.FieldAccessExpr, java.lang.Object)
-     */
     @Override
     public Node visit(FieldAccessExpr n, C ctx) throws Exception {
         FieldAccessExpr img = NodeFacade.FieldAccessExpr();
@@ -862,9 +772,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.FieldDeclaration, java.lang.Object)
-     */
     @Override
     public Node visit(FieldDeclaration n, C ctx) throws Exception {
         FieldDeclaration img = NodeFacade.FieldDeclaration();
@@ -888,9 +795,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ForeachStmt, java.lang.Object)
-     */
     @Override
     public Node visit(ForeachStmt n, C ctx) throws Exception {
         ForeachStmt img = NodeFacade.ForeachStmt();
@@ -911,9 +815,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ForStmt, java.lang.Object)
-     */
     @Override
     public Node visit(ForStmt n, C ctx) throws Exception {
         ForStmt img = NodeFacade.ForStmt();
@@ -937,9 +838,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.IfStmt, java.lang.Object)
-     */
     @Override
     public Node visit(IfStmt n, C ctx) throws Exception {
         IfStmt img = NodeFacade.IfStmt();
@@ -960,9 +858,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ImportDeclaration, java.lang.Object)
-     */
     @Override
     public Node visit(ImportDeclaration n, C ctx) throws Exception {
         ImportDeclaration img = NodeFacade.ImportDeclaration();
@@ -979,9 +874,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.InitializerDeclaration, java.lang.Object)
-     */
     @Override
     public Node visit(InitializerDeclaration n, C ctx) throws Exception {
         InitializerDeclaration img = NodeFacade.InitializerDeclaration();
@@ -1000,9 +892,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.InstanceOfExpr, java.lang.Object)
-     */
     @Override
     public Node visit(InstanceOfExpr n, C ctx) throws Exception {
         InstanceOfExpr img = NodeFacade.InstanceOfExpr();
@@ -1020,9 +909,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.IntegerLiteralExpr, java.lang.Object)
-     */
     @Override
     public Node visit(IntegerLiteralExpr n, C ctx) throws Exception {
         IntegerLiteralExpr img = NodeFacade.IntegerLiteralExpr();
@@ -1035,9 +921,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.InterfaceDeclaration, java.lang.Object)
-     */
     @Override
     public Node visit(InterfaceDeclaration n, C ctx) throws Exception {
         InterfaceDeclaration img = NodeFacade.InterfaceDeclaration();
@@ -1065,9 +948,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.JavadocComment, java.lang.Object)
-     */
     @Override
     public Node visit(JavadocComment n, C ctx) throws Exception {
         JavadocComment img = NodeFacade.JavadocComment();
@@ -1080,9 +960,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.LabeledStmt, java.lang.Object)
-     */
     @Override
     public Node visit(LabeledStmt n, C ctx) throws Exception {
         LabeledStmt img = NodeFacade.LabeledStmt();
@@ -1098,9 +975,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.LambdaBlock, java.lang.Object)
-     */
     @Override
     public Node visit(LambdaBlock n, C ctx) throws Exception {
         LambdaBlock img = NodeFacade.LambdaBlock();
@@ -1118,9 +992,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.LambdaExpr, java.lang.Object)
-     */
     @Override
     public Node visit(LambdaExpr n, C ctx) throws Exception {
         LambdaExpr img = NodeFacade.LambdaExpr();
@@ -1138,9 +1009,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.LineComment, java.lang.Object)
-     */
     @Override
     public Node visit(LineComment n, C ctx) throws Exception {
         LineComment img = NodeFacade.LineComment();
@@ -1153,9 +1021,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.LongLiteralExpr, java.lang.Object)
-     */
     @Override
     public Node visit(LongLiteralExpr n, C ctx) throws Exception {
         LongLiteralExpr img = NodeFacade.LongLiteralExpr();
@@ -1168,9 +1033,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.MarkerAnnotationExpr, java.lang.Object)
-     */
     @Override
     public Node visit(MarkerAnnotationExpr n, C ctx) throws Exception {
         MarkerAnnotationExpr img = NodeFacade.MarkerAnnotationExpr();
@@ -1185,9 +1047,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.MemberValuePair, java.lang.Object)
-     */
     @Override
     public Node visit(MemberValuePair n, C ctx) throws Exception {
         MemberValuePair img = NodeFacade.MemberValuePair();
@@ -1203,9 +1062,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.MethodCallExpr, java.lang.Object)
-     */
     @Override
     public Node visit(MethodCallExpr n, C ctx) throws Exception {
         MethodCallExpr img = NodeFacade.MethodCallExpr();
@@ -1227,9 +1083,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.MethodDeclaration, java.lang.Object)
-     */
     @Override
     public Node visit(MethodDeclaration n, C ctx) throws Exception {
         MethodDeclaration img = NodeFacade.MethodDeclaration();
@@ -1272,69 +1125,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.MethodExprRef, java.lang.Object)
-     */
-    @Override
-    public Node visit(MethodExprRef n, C ctx) throws Exception {
-        MethodExprRef img = NodeFacade.MethodExprRef();
-        if (n.getScope() != null) {
-            img.setScope((Expression) n.getScope().accept(this, ctx));
-        }
-        if (n.getTypeArgs() != null) {
-            img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
-        }
-        img.setName(n.getName());
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        img.setPosBegin(n.getPosBegin());
-        img.setPosEnd(n.getPosEnd());
-        return img;
-    }
-
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.MethodRef, java.lang.Object)
-     */
-    @Override
-    public Node visit(MethodRef n, C ctx) throws Exception {
-        MethodRef img = NodeFacade.MethodRef();
-        if (n.getTypeArgs() != null) {
-            img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
-        }
-        img.setName(n.getName());
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        img.setPosBegin(n.getPosBegin());
-        img.setPosEnd(n.getPosEnd());
-        return img;
-    }
-
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.MethodTypeRef, java.lang.Object)
-     */
-    @Override
-    public Node visit(MethodTypeRef n, C ctx) throws Exception {
-        MethodTypeRef img = NodeFacade.MethodTypeRef();
-        if (n.getType() != null) {
-            img.setType((Type) n.getType().accept(this, ctx));
-        }
-        if (n.getTypeArgs() != null) {
-            img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
-        }
-        img.setName(n.getName());
-        if (n.getAnnotations() != null) {
-            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
-        }
-        img.setPosBegin(n.getPosBegin());
-        img.setPosEnd(n.getPosEnd());
-        return img;
-    }
-
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.Modifiers, java.lang.Object)
-     */
     @Override
     public Node visit(Modifiers n, C ctx) throws Exception {
         Modifiers img = NodeFacade.Modifiers();
@@ -1347,9 +1137,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.NameExpr, java.lang.Object)
-     */
     @Override
     public Node visit(NameExpr n, C ctx) throws Exception {
         NameExpr img = NodeFacade.NameExpr();
@@ -1362,9 +1149,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.NodeList, java.lang.Object)
-     */
     @Override
     public <E extends Node> Node visit(NodeList<E> n, C ctx) throws Exception {
         NodeList<E> img = NodeFacade.NodeList();
@@ -1385,9 +1169,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.NormalAnnotationExpr, java.lang.Object)
-     */
     @Override
     public Node visit(NormalAnnotationExpr n, C ctx) throws Exception {
         NormalAnnotationExpr img = NodeFacade.NormalAnnotationExpr();
@@ -1405,9 +1186,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.NullLiteralExpr, java.lang.Object)
-     */
     @Override
     public Node visit(NullLiteralExpr n, C ctx) throws Exception {
         NullLiteralExpr img = NodeFacade.NullLiteralExpr();
@@ -1419,9 +1197,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ObjectCreationExpr, java.lang.Object)
-     */
     @Override
     public Node visit(ObjectCreationExpr n, C ctx) throws Exception {
         ObjectCreationExpr img = NodeFacade.ObjectCreationExpr();
@@ -1448,9 +1223,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.PackageDeclaration, java.lang.Object)
-     */
     @Override
     public Node visit(PackageDeclaration n, C ctx) throws Exception {
         PackageDeclaration img = NodeFacade.PackageDeclaration();
@@ -1465,9 +1237,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.Parameter, java.lang.Object)
-     */
     @Override
     public Node visit(Parameter n, C ctx) throws Exception {
         Parameter img = NodeFacade.Parameter();
@@ -1491,9 +1260,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.PrimitiveType, java.lang.Object)
-     */
     @Override
     public Node visit(PrimitiveType n, C ctx) throws Exception {
         PrimitiveType img = NodeFacade.PrimitiveType();
@@ -1506,17 +1272,11 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.PrimitiveType.Primitive, java.lang.Object)
-     */
     @Override
     public Node visit(Primitive n, C ctx) throws Exception {
         return null;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.Project, java.lang.Object)
-     */
     @Override
     public Node visit(Project n, C ctx) throws Exception {
         Project img = NodeFacade.Project();
@@ -1531,9 +1291,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.QualifiedNameExpr, java.lang.Object)
-     */
     @Override
     public Node visit(QualifiedNameExpr n, C ctx) throws Exception {
         QualifiedNameExpr img = NodeFacade.QualifiedNameExpr();
@@ -1549,9 +1306,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ReferenceType, java.lang.Object)
-     */
     @Override
     public Node visit(ReferenceType n, C ctx) throws Exception {
         ReferenceType img = NodeFacade.ReferenceType();
@@ -1569,9 +1323,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ReturnStmt, java.lang.Object)
-     */
     @Override
     public Node visit(ReturnStmt n, C ctx) throws Exception {
         ReturnStmt img = NodeFacade.ReturnStmt();
@@ -1586,9 +1337,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.SingleMemberAnnotationExpr, java.lang.Object)
-     */
     @Override
     public Node visit(SingleMemberAnnotationExpr n, C ctx) throws Exception {
         SingleMemberAnnotationExpr img = NodeFacade.SingleMemberAnnotationExpr();
@@ -1606,9 +1354,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.StringLiteralExpr, java.lang.Object)
-     */
     @Override
     public Node visit(StringLiteralExpr n, C ctx) throws Exception {
         StringLiteralExpr img = NodeFacade.StringLiteralExpr();
@@ -1621,9 +1366,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.SuperExpr, java.lang.Object)
-     */
     @Override
     public Node visit(SuperExpr n, C ctx) throws Exception {
         SuperExpr img = NodeFacade.SuperExpr();
@@ -1638,9 +1380,24 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.SwitchEntryStmt, java.lang.Object)
-     */
+    @Override
+    public Node visit(SuperMethodReference n, C ctx) throws Exception {
+        SuperMethodReference img = NodeFacade.SuperMethodReference();
+        if (n.getQualifier() != null) {
+            img.setQualifier((NameExpr) n.getQualifier().accept(this, ctx));
+        }
+        img.setMethodName(n.getMethodName());
+        if (n.getTypeArgs() != null) {
+            img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
+        }
+        if (n.getAnnotations() != null) {
+            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
+        }
+        img.setPosBegin(n.getPosBegin());
+        img.setPosEnd(n.getPosEnd());
+        return img;
+    }
+
     @Override
     public Node visit(SwitchEntryStmt n, C ctx) throws Exception {
         SwitchEntryStmt img = NodeFacade.SwitchEntryStmt();
@@ -1658,9 +1415,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.SwitchStmt, java.lang.Object)
-     */
     @Override
     public Node visit(SwitchStmt n, C ctx) throws Exception {
         SwitchStmt img = NodeFacade.SwitchStmt();
@@ -1678,9 +1432,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.SynchronizedStmt, java.lang.Object)
-     */
     @Override
     public Node visit(SynchronizedStmt n, C ctx) throws Exception {
         SynchronizedStmt img = NodeFacade.SynchronizedStmt();
@@ -1698,9 +1449,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ThisExpr, java.lang.Object)
-     */
     @Override
     public Node visit(ThisExpr n, C ctx) throws Exception {
         ThisExpr img = NodeFacade.ThisExpr();
@@ -1715,9 +1463,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ThrowStmt, java.lang.Object)
-     */
     @Override
     public Node visit(ThrowStmt n, C ctx) throws Exception {
         ThrowStmt img = NodeFacade.ThrowStmt();
@@ -1732,9 +1477,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.TryStmt, java.lang.Object)
-     */
     @Override
     public Node visit(TryStmt n, C ctx) throws Exception {
         TryStmt img = NodeFacade.TryStmt();
@@ -1758,9 +1500,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.TypeDeclarationStmt, java.lang.Object)
-     */
     @Override
     public Node visit(TypeDeclarationStmt n, C ctx) throws Exception {
         TypeDeclarationStmt img = NodeFacade.TypeDeclarationStmt();
@@ -1775,9 +1514,24 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.TypeParameter, java.lang.Object)
-     */
+    @Override
+    public Node visit(TypeMethodReference n, C ctx) throws Exception {
+        TypeMethodReference img = NodeFacade.TypeMethodReference();
+        if (n.getType() != null) {
+            img.setType((Type) n.getType().accept(this, ctx));
+        }
+        img.setMethodName(n.getMethodName());
+        if (n.getTypeArgs() != null) {
+            img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
+        }
+        if (n.getAnnotations() != null) {
+            img.setAnnotations((NodeList<AnnotationExpr>) n.getAnnotations().accept(this, ctx));
+        }
+        img.setPosBegin(n.getPosBegin());
+        img.setPosEnd(n.getPosEnd());
+        return img;
+    }
+
     @Override
     public Node visit(TypeParameter n, C ctx) throws Exception {
         TypeParameter img = NodeFacade.TypeParameter();
@@ -1793,9 +1547,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.UnaryExpr, java.lang.Object)
-     */
     @Override
     public Node visit(UnaryExpr n, C ctx) throws Exception {
         UnaryExpr img = NodeFacade.UnaryExpr();
@@ -1811,17 +1562,11 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.UnaryExpr.UnaryOperator, java.lang.Object)
-     */
     @Override
     public Node visit(UnaryOperator n, C ctx) throws Exception {
         return null;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.VariableDeclarationExpr, java.lang.Object)
-     */
     @Override
     public Node visit(VariableDeclarationExpr n, C ctx) throws Exception {
         VariableDeclarationExpr img = NodeFacade.VariableDeclarationExpr();
@@ -1842,9 +1587,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.VariableDeclarator, java.lang.Object)
-     */
     @Override
     public Node visit(VariableDeclarator n, C ctx) throws Exception {
         VariableDeclarator img = NodeFacade.VariableDeclarator();
@@ -1862,9 +1604,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.VariableDeclaratorId, java.lang.Object)
-     */
     @Override
     public Node visit(VariableDeclaratorId n, C ctx) throws Exception {
         VariableDeclaratorId img = NodeFacade.VariableDeclaratorId();
@@ -1880,9 +1619,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.VoidType, java.lang.Object)
-     */
     @Override
     public Node visit(VoidType n, C ctx) throws Exception {
         VoidType img = NodeFacade.VoidType();
@@ -1894,9 +1630,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.WhileStmt, java.lang.Object)
-     */
     @Override
     public Node visit(WhileStmt n, C ctx) throws Exception {
         WhileStmt img = NodeFacade.WhileStmt();
@@ -1914,9 +1647,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /* (non-Javadoc)
-     * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.WildcardType, java.lang.Object)
-     */
     @Override
     public Node visit(WildcardType n, C ctx) throws Exception {
         WildcardType img = NodeFacade.WildcardType();
@@ -1934,9 +1664,6 @@ public class CloneVisitor<C> implements GenericVisitor<Node, C> {
         return img;
     }
 
-    /**
-     * Instantiates a new clone visitor.
-     */
     public CloneVisitor() {
         super();
     }

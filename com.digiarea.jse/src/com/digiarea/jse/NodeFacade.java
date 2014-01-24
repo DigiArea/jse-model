@@ -53,9 +53,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Array initializer expr.
-	 *
-	 * @param values the values
-	 * @param annotations the annotations
+	 * 
+	 * @param values
+	 *            the values
+	 * @param annotations
+	 *            the annotations
 	 * @return the array initializer expr
 	 */
 	public static ArrayInitializerExpr ArrayInitializerExpr(
@@ -66,9 +68,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Object creation expr.
-	 *
-	 * @param name the name
-	 * @param arguments the arguments
+	 * 
+	 * @param name
+	 *            the name
+	 * @param arguments
+	 *            the arguments
 	 * @return the object creation expr
 	 */
 	public static ObjectCreationExpr ObjectCreationExpr(String name,
@@ -79,10 +83,13 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Object creation expr.
-	 *
-	 * @param name the name
-	 * @param arguments the arguments
-	 * @param withDiamond the with diamond
+	 * 
+	 * @param name
+	 *            the name
+	 * @param arguments
+	 *            the arguments
+	 * @param withDiamond
+	 *            the with diamond
 	 * @return the object creation expr
 	 */
 	public static ObjectCreationExpr ObjectCreationExpr(String name,
@@ -101,9 +108,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Cast expr.
-	 *
-	 * @param qName the q name
-	 * @param img the img
+	 * 
+	 * @param qName
+	 *            the q name
+	 * @param img
+	 *            the img
 	 * @return the cast expr
 	 */
 	public static CastExpr CastExpr(String qName, Expression img) {
@@ -113,9 +122,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Field access expr.
-	 *
-	 * @param qName the q name
-	 * @param field the field
+	 * 
+	 * @param qName
+	 *            the q name
+	 * @param field
+	 *            the field
 	 * @return the field access expr
 	 */
 	public static FieldAccessExpr FieldAccessExpr(String qName, String field) {
@@ -124,8 +135,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Boolean literal expr.
-	 *
-	 * @param value the value
+	 * 
+	 * @param value
+	 *            the value
 	 * @return the boolean literal expr
 	 */
 	public static BooleanLiteralExpr BooleanLiteralExpr(boolean value) {
@@ -134,8 +146,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Integer literal expr.
-	 *
-	 * @param value the value
+	 * 
+	 * @param value
+	 *            the value
 	 * @return the integer literal expr
 	 */
 	public static IntegerLiteralExpr IntegerLiteralExpr(int value) {
@@ -144,8 +157,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Method call expr.
-	 *
-	 * @param nodes the nodes
+	 * 
+	 * @param nodes
+	 *            the nodes
 	 * @return the method call expr
 	 */
 	public static MethodCallExpr MethodCallExpr(List<Expression> nodes) {
@@ -156,8 +170,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Class expr.
-	 *
-	 * @param predicate the predicate
+	 * 
+	 * @param predicate
+	 *            the predicate
 	 * @return the class expr
 	 */
 	public static ClassExpr ClassExpr(Class<?> predicate) {
@@ -166,8 +181,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Javadoc comment.
-	 *
-	 * @param context the context
+	 * 
+	 * @param context
+	 *            the context
 	 * @return the javadoc comment
 	 */
 	public static JavadocComment JavadocComment(String context) {
@@ -176,8 +192,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Line comment.
-	 *
-	 * @param context the context
+	 * 
+	 * @param context
+	 *            the context
 	 * @return the line comment
 	 */
 	public static LineComment LineComment(String context) {
@@ -186,8 +203,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Block comment.
-	 *
-	 * @param context the context
+	 * 
+	 * @param context
+	 *            the context
 	 * @return the block comment
 	 */
 	public static BlockComment BlockComment(String context) {
@@ -196,8 +214,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Class or interface type.
-	 *
-	 * @param nameExpr the name expr
+	 * 
+	 * @param nameExpr
+	 *            the name expr
 	 * @return the class or interface type
 	 */
 	public static ClassOrInterfaceType ClassOrInterfaceType(NameExpr nameExpr) {
@@ -206,8 +225,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Class or interface type.
-	 *
-	 * @param qName the q name
+	 * 
+	 * @param qName
+	 *            the q name
 	 * @return the class or interface type
 	 */
 	public static ClassOrInterfaceType ClassOrInterfaceType(String qName) {
@@ -216,9 +236,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Class or interface type.
-	 *
-	 * @param classOrInterfaceType the class or interface type
-	 * @param nameExpr the name expr
+	 * 
+	 * @param classOrInterfaceType
+	 *            the class or interface type
+	 * @param nameExpr
+	 *            the name expr
 	 * @return the class or interface type
 	 */
 	public static ClassOrInterfaceType ClassOrInterfaceType(
@@ -228,8 +250,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Qualified name expr.
-	 *
-	 * @param name the name
+	 * 
+	 * @param name
+	 *            the name
 	 * @return the name expr
 	 */
 	public static NameExpr QualifiedNameExpr(String name) {
@@ -243,8 +266,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Name expr.
-	 *
-	 * @param name the name
+	 * 
+	 * @param name
+	 *            the name
 	 * @return the name expr
 	 */
 	public static NameExpr NameExpr(String name) {
@@ -253,12 +277,17 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Compilation unit.
-	 *
-	 * @param pakage the pakage
-	 * @param imports the imports
-	 * @param types the types
-	 * @param comments the comments
-	 * @param name the name
+	 * 
+	 * @param pakage
+	 *            the pakage
+	 * @param imports
+	 *            the imports
+	 * @param types
+	 *            the types
+	 * @param comments
+	 *            the comments
+	 * @param name
+	 *            the name
 	 * @return the compilation unit
 	 */
 	public static CompilationUnit CompilationUnit(PackageDeclaration pakage,
@@ -270,9 +299,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Package declaration.
-	 *
-	 * @param name the name
-	 * @param annotations the annotations
+	 * 
+	 * @param name
+	 *            the name
+	 * @param annotations
+	 *            the annotations
 	 * @return the package declaration
 	 */
 	public static PackageDeclaration PackageDeclaration(NameExpr name,
@@ -282,10 +313,13 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Import declaration.
-	 *
-	 * @param name the name
-	 * @param isStatic the is static
-	 * @param isAsterisk the is asterisk
+	 * 
+	 * @param name
+	 *            the name
+	 * @param isStatic
+	 *            the is static
+	 * @param isAsterisk
+	 *            the is asterisk
 	 * @return the import declaration
 	 */
 	public static ImportDeclaration ImportDeclaration(NameExpr name,
@@ -295,8 +329,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Empty type declaration.
-	 *
-	 * @param javaDoc the java doc
+	 * 
+	 * @param javaDoc
+	 *            the java doc
 	 * @return the empty type declaration
 	 */
 	public static EmptyTypeDeclaration EmptyTypeDeclaration(
@@ -306,15 +341,23 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Class declaration.
-	 *
-	 * @param typePar the type par
-	 * @param extendsType the extends type
-	 * @param impList the imp list
-	 * @param modifiers the modifiers
-	 * @param name the name
-	 * @param members the members
-	 * @param javaDoc the java doc
-	 * @param annotations the annotations
+	 * 
+	 * @param typePar
+	 *            the type par
+	 * @param extendsType
+	 *            the extends type
+	 * @param impList
+	 *            the imp list
+	 * @param modifiers
+	 *            the modifiers
+	 * @param name
+	 *            the name
+	 * @param members
+	 *            the members
+	 * @param javaDoc
+	 *            the java doc
+	 * @param annotations
+	 *            the annotations
 	 * @return the class declaration
 	 */
 	public static ClassDeclaration ClassDeclaration(
@@ -329,8 +372,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Modifiers.
-	 *
-	 * @param modifiers the modifiers
+	 * 
+	 * @param modifiers
+	 *            the modifiers
 	 * @return the modifiers
 	 */
 	public static Modifiers Modifiers(int modifiers) {
@@ -339,14 +383,21 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Interface declaration.
-	 *
-	 * @param typePar the type par
-	 * @param extList the ext list
-	 * @param modifiers the modifiers
-	 * @param name the name
-	 * @param members the members
-	 * @param javaDoc the java doc
-	 * @param annotations the annotations
+	 * 
+	 * @param typePar
+	 *            the type par
+	 * @param extList
+	 *            the ext list
+	 * @param modifiers
+	 *            the modifiers
+	 * @param name
+	 *            the name
+	 * @param members
+	 *            the members
+	 * @param javaDoc
+	 *            the java doc
+	 * @param annotations
+	 *            the annotations
 	 * @return the interface declaration
 	 */
 	public static InterfaceDeclaration InterfaceDeclaration(
@@ -360,14 +411,21 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Enum declaration.
-	 *
-	 * @param impList the imp list
-	 * @param entries the entries
-	 * @param modifiers the modifiers
-	 * @param name the name
-	 * @param members the members
-	 * @param javaDoc the java doc
-	 * @param annotations the annotations
+	 * 
+	 * @param impList
+	 *            the imp list
+	 * @param entries
+	 *            the entries
+	 * @param modifiers
+	 *            the modifiers
+	 * @param name
+	 *            the name
+	 * @param members
+	 *            the members
+	 * @param javaDoc
+	 *            the java doc
+	 * @param annotations
+	 *            the annotations
 	 * @return the enum declaration
 	 */
 	public static EnumDeclaration EnumDeclaration(
@@ -382,12 +440,17 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Enum constant declaration.
-	 *
-	 * @param name the name
-	 * @param args the args
-	 * @param classBody the class body
-	 * @param javaDoc the java doc
-	 * @param annotations the annotations
+	 * 
+	 * @param name
+	 *            the name
+	 * @param args
+	 *            the args
+	 * @param classBody
+	 *            the class body
+	 * @param javaDoc
+	 *            the java doc
+	 * @param annotations
+	 *            the annotations
 	 * @return the enum constant declaration
 	 */
 	public static EnumConstantDeclaration EnumConstantDeclaration(String name,
@@ -399,9 +462,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Type parameter.
-	 *
-	 * @param name the name
-	 * @param typeBound the type bound
+	 * 
+	 * @param name
+	 *            the name
+	 * @param typeBound
+	 *            the type bound
 	 * @return the type parameter
 	 */
 	public static TypeParameter TypeParameter(String name,
@@ -411,8 +476,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Empty member declaration.
-	 *
-	 * @param javaDoc the java doc
+	 * 
+	 * @param javaDoc
+	 *            the java doc
 	 * @return the body declaration
 	 */
 	public static BodyDeclaration EmptyMemberDeclaration(JavadocComment javaDoc) {
@@ -421,12 +487,17 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Field declaration.
-	 *
-	 * @param modifiers the modifiers
-	 * @param type the type
-	 * @param variables the variables
-	 * @param javaDoc the java doc
-	 * @param annotations the annotations
+	 * 
+	 * @param modifiers
+	 *            the modifiers
+	 * @param type
+	 *            the type
+	 * @param variables
+	 *            the variables
+	 * @param javaDoc
+	 *            the java doc
+	 * @param annotations
+	 *            the annotations
 	 * @return the field declaration
 	 */
 	public static FieldDeclaration FieldDeclaration(int modifiers, Type type,
@@ -438,9 +509,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Variable declarator.
-	 *
-	 * @param id the id
-	 * @param init the init
+	 * 
+	 * @param id
+	 *            the id
+	 * @param init
+	 *            the init
 	 * @return the variable declarator
 	 */
 	public static VariableDeclarator VariableDeclarator(
@@ -450,8 +523,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Array initializer expr.
-	 *
-	 * @param values the values
+	 * 
+	 * @param values
+	 *            the values
 	 * @return the array initializer expr
 	 */
 	public static ArrayInitializerExpr ArrayInitializerExpr(
@@ -461,17 +535,27 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Method declaration.
-	 *
-	 * @param modifiers the modifiers
-	 * @param typeParameters the type parameters
-	 * @param type the type
-	 * @param name the name
-	 * @param parameters the parameters
-	 * @param slots the slots
-	 * @param throwsList the throws list
-	 * @param body the body
-	 * @param javaDoc the java doc
-	 * @param annotations the annotations
+	 * 
+	 * @param modifiers
+	 *            the modifiers
+	 * @param typeParameters
+	 *            the type parameters
+	 * @param type
+	 *            the type
+	 * @param name
+	 *            the name
+	 * @param parameters
+	 *            the parameters
+	 * @param slots
+	 *            the slots
+	 * @param throwsList
+	 *            the throws list
+	 * @param body
+	 *            the body
+	 * @param javaDoc
+	 *            the java doc
+	 * @param annotations
+	 *            the annotations
 	 * @return the method declaration
 	 */
 	public static MethodDeclaration MethodDeclaration(int modifiers,
@@ -487,8 +571,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Block stmt.
-	 *
-	 * @param stmts the stmts
+	 * 
+	 * @param stmts
+	 *            the stmts
 	 * @return the block stmt
 	 */
 	public static BlockStmt BlockStmt(List<Statement> stmts) {
@@ -497,15 +582,23 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Constructor declaration.
-	 *
-	 * @param modifiers the modifiers
-	 * @param typeParameters the type parameters
-	 * @param name the name
-	 * @param parameters the parameters
-	 * @param throwsList the throws list
-	 * @param blockStmt the block stmt
-	 * @param javaDoc the java doc
-	 * @param annotations the annotations
+	 * 
+	 * @param modifiers
+	 *            the modifiers
+	 * @param typeParameters
+	 *            the type parameters
+	 * @param name
+	 *            the name
+	 * @param parameters
+	 *            the parameters
+	 * @param throwsList
+	 *            the throws list
+	 * @param blockStmt
+	 *            the block stmt
+	 * @param javaDoc
+	 *            the java doc
+	 * @param annotations
+	 *            the annotations
 	 * @return the constructor declaration
 	 */
 	public static ConstructorDeclaration ConstructorDeclaration(int modifiers,
@@ -521,11 +614,15 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Explicit constructor invocation stmt.
-	 *
-	 * @param typeArgs the type args
-	 * @param isThis the is this
-	 * @param expr the expr
-	 * @param args the args
+	 * 
+	 * @param typeArgs
+	 *            the type args
+	 * @param isThis
+	 *            the is this
+	 * @param expr
+	 *            the expr
+	 * @param args
+	 *            the args
 	 * @return the explicit constructor invocation stmt
 	 */
 	public static ExplicitConstructorInvocationStmt ExplicitConstructorInvocationStmt(
@@ -537,10 +634,13 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Initializer declaration.
-	 *
-	 * @param isStatic the is static
-	 * @param block the block
-	 * @param javaDoc the java doc
+	 * 
+	 * @param isStatic
+	 *            the is static
+	 * @param block
+	 *            the block
+	 * @param javaDoc
+	 *            the java doc
 	 * @return the initializer declaration
 	 */
 	public static InitializerDeclaration InitializerDeclaration(
@@ -550,10 +650,13 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Class or interface type.
-	 *
-	 * @param scope the scope
-	 * @param name the name
-	 * @param typeArgs the type args
+	 * 
+	 * @param scope
+	 *            the scope
+	 * @param name
+	 *            the name
+	 * @param typeArgs
+	 *            the type args
 	 * @return the class or interface type
 	 */
 	public static ClassOrInterfaceType ClassOrInterfaceType(
@@ -563,9 +666,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Wildcard type.
-	 *
-	 * @param extendsType the extends type
-	 * @param superType the super type
+	 * 
+	 * @param extendsType
+	 *            the extends type
+	 * @param superType
+	 *            the super type
 	 * @return the wildcard type
 	 */
 	public static WildcardType WildcardType(ReferenceType extendsType,
@@ -575,8 +680,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Primitive type.
-	 *
-	 * @param type the type
+	 * 
+	 * @param type
+	 *            the type
 	 * @return the primitive type
 	 */
 	public static PrimitiveType PrimitiveType(Primitive type) {
@@ -585,9 +691,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Qualified name expr.
-	 *
-	 * @param qualifier the qualifier
-	 * @param name the name
+	 * 
+	 * @param qualifier
+	 *            the qualifier
+	 * @param name
+	 *            the name
 	 * @return the qualified name expr
 	 */
 	public static QualifiedNameExpr QualifiedNameExpr(NameExpr qualifier,
@@ -597,10 +705,13 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Assign expr.
-	 *
-	 * @param target the target
-	 * @param value the value
-	 * @param operator the operator
+	 * 
+	 * @param target
+	 *            the target
+	 * @param value
+	 *            the value
+	 * @param operator
+	 *            the operator
 	 * @return the assign expr
 	 */
 	public static AssignExpr AssignExpr(Expression target, Expression value,
@@ -610,10 +721,13 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Conditional expr.
-	 *
-	 * @param condition the condition
-	 * @param thenExpression the then expression
-	 * @param elseExpression the else expression
+	 * 
+	 * @param condition
+	 *            the condition
+	 * @param thenExpression
+	 *            the then expression
+	 * @param elseExpression
+	 *            the else expression
 	 * @return the conditional expr
 	 */
 	public static ConditionalExpr ConditionalExpr(Expression condition,
@@ -624,10 +738,13 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Binary expr.
-	 *
-	 * @param left the left
-	 * @param right the right
-	 * @param operator the operator
+	 * 
+	 * @param left
+	 *            the left
+	 * @param right
+	 *            the right
+	 * @param operator
+	 *            the operator
 	 * @return the binary expr
 	 */
 	public static BinaryExpr BinaryExpr(Expression left, Expression right,
@@ -637,9 +754,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Instance of expr.
-	 *
-	 * @param expression the expression
-	 * @param type the type
+	 * 
+	 * @param expression
+	 *            the expression
+	 * @param type
+	 *            the type
 	 * @return the instance of expr
 	 */
 	public static InstanceOfExpr InstanceOfExpr(Expression expression, Type type) {
@@ -648,9 +767,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Unary expr.
-	 *
-	 * @param expression the expression
-	 * @param operator the operator
+	 * 
+	 * @param expression
+	 *            the expression
+	 * @param operator
+	 *            the operator
 	 * @return the unary expr
 	 */
 	public static UnaryExpr UnaryExpr(Expression expression,
@@ -660,9 +781,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Cast expr.
-	 *
-	 * @param type the type
-	 * @param expression the expression
+	 * 
+	 * @param type
+	 *            the type
+	 * @param expression
+	 *            the expression
 	 * @return the cast expr
 	 */
 	public static CastExpr CastExpr(Type type, Expression expression) {
@@ -671,10 +794,13 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Field access expr.
-	 *
-	 * @param scope the scope
-	 * @param typeArgs the type args
-	 * @param field the field
+	 * 
+	 * @param scope
+	 *            the scope
+	 * @param typeArgs
+	 *            the type args
+	 * @param field
+	 *            the field
 	 * @return the field access expr
 	 */
 	public static FieldAccessExpr FieldAccessExpr(Expression scope,
@@ -684,11 +810,15 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Method call expr.
-	 *
-	 * @param scope the scope
-	 * @param typeArgs the type args
-	 * @param name the name
-	 * @param args the args
+	 * 
+	 * @param scope
+	 *            the scope
+	 * @param typeArgs
+	 *            the type args
+	 * @param name
+	 *            the name
+	 * @param args
+	 *            the args
 	 * @return the method call expr
 	 */
 	public static MethodCallExpr MethodCallExpr(Expression scope,
@@ -699,9 +829,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Method call expr.
-	 *
-	 * @param name the name
-	 * @param args the args
+	 * 
+	 * @param name
+	 *            the name
+	 * @param args
+	 *            the args
 	 * @return the method call expr
 	 */
 	public static MethodCallExpr MethodCallExpr(String name,
@@ -715,8 +847,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Enclosed expr.
-	 *
-	 * @param inner the inner
+	 * 
+	 * @param inner
+	 *            the inner
 	 * @return the enclosed expr
 	 */
 	public static EnclosedExpr EnclosedExpr(Expression inner) {
@@ -725,8 +858,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Class expr.
-	 *
-	 * @param type the type
+	 * 
+	 * @param type
+	 *            the type
 	 * @return the class expr
 	 */
 	public static ClassExpr ClassExpr(Type type) {
@@ -735,8 +869,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Super expr.
-	 *
-	 * @param classExpression the class expression
+	 * 
+	 * @param classExpression
+	 *            the class expression
 	 * @return the super expr
 	 */
 	public static SuperExpr SuperExpr(Expression classExpression) {
@@ -745,8 +880,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * This expr.
-	 *
-	 * @param classExpression the class expression
+	 * 
+	 * @param classExpression
+	 *            the class expression
 	 * @return the this expr
 	 */
 	public static ThisExpr ThisExpr(Expression classExpression) {
@@ -755,9 +891,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Array access expr.
-	 *
-	 * @param name the name
-	 * @param index the index
+	 * 
+	 * @param name
+	 *            the name
+	 * @param index
+	 *            the index
 	 * @return the array access expr
 	 */
 	public static ArrayAccessExpr ArrayAccessExpr(Expression name,
@@ -767,8 +905,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Integer literal expr.
-	 *
-	 * @param value the value
+	 * 
+	 * @param value
+	 *            the value
 	 * @return the integer literal expr
 	 */
 	public static IntegerLiteralExpr IntegerLiteralExpr(String value) {
@@ -777,8 +916,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Long literal expr.
-	 *
-	 * @param value the value
+	 * 
+	 * @param value
+	 *            the value
 	 * @return the long literal expr
 	 */
 	public static LongLiteralExpr LongLiteralExpr(String value) {
@@ -787,8 +927,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Double literal expr.
-	 *
-	 * @param value the value
+	 * 
+	 * @param value
+	 *            the value
 	 * @return the double literal expr
 	 */
 	public static DoubleLiteralExpr DoubleLiteralExpr(String value) {
@@ -797,8 +938,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Char literal expr.
-	 *
-	 * @param value the value
+	 * 
+	 * @param value
+	 *            the value
 	 * @return the char literal expr
 	 */
 	public static CharLiteralExpr CharLiteralExpr(String value) {
@@ -807,12 +949,17 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Object creation expr.
-	 *
-	 * @param scope the scope
-	 * @param type the type
-	 * @param typeArgs the type args
-	 * @param args the args
-	 * @param anonymousClassBody the anonymous class body
+	 * 
+	 * @param scope
+	 *            the scope
+	 * @param type
+	 *            the type
+	 * @param typeArgs
+	 *            the type args
+	 * @param args
+	 *            the args
+	 * @param anonymousClassBody
+	 *            the anonymous class body
 	 * @return the object creation expr
 	 */
 	public static ObjectCreationExpr ObjectCreationExpr(Expression scope,
@@ -824,9 +971,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Assert stmt.
-	 *
-	 * @param check the check
-	 * @param message the message
+	 * 
+	 * @param check
+	 *            the check
+	 * @param message
+	 *            the message
 	 * @return the assert stmt
 	 */
 	public static AssertStmt AssertStmt(Expression check, Expression message) {
@@ -835,9 +984,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Labeled stmt.
-	 *
-	 * @param label the label
-	 * @param stmt the stmt
+	 * 
+	 * @param label
+	 *            the label
+	 * @param stmt
+	 *            the stmt
 	 * @return the labeled stmt
 	 */
 	public static LabeledStmt LabeledStmt(String label, Statement stmt) {
@@ -846,8 +997,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Type declaration stmt.
-	 *
-	 * @param typeDeclaration the type declaration
+	 * 
+	 * @param typeDeclaration
+	 *            the type declaration
 	 * @return the type declaration stmt
 	 */
 	public static TypeDeclarationStmt TypeDeclarationStmt(
@@ -857,8 +1009,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Expression stmt.
-	 *
-	 * @param expression the expression
+	 * 
+	 * @param expression
+	 *            the expression
 	 * @return the expression stmt
 	 */
 	public static ExpressionStmt ExpressionStmt(Expression expression) {
@@ -867,11 +1020,15 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Variable declaration expr.
-	 *
-	 * @param modifiers the modifiers
-	 * @param type the type
-	 * @param vars the vars
-	 * @param annotations the annotations
+	 * 
+	 * @param modifiers
+	 *            the modifiers
+	 * @param type
+	 *            the type
+	 * @param vars
+	 *            the vars
+	 * @param annotations
+	 *            the annotations
 	 * @return the variable declaration expr
 	 */
 	public static VariableDeclarationExpr VariableDeclarationExpr(
@@ -883,9 +1040,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Switch stmt.
-	 *
-	 * @param selector the selector
-	 * @param entries the entries
+	 * 
+	 * @param selector
+	 *            the selector
+	 * @param entries
+	 *            the entries
 	 * @return the switch stmt
 	 */
 	public static SwitchStmt SwitchStmt(Expression selector,
@@ -895,9 +1054,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Switch entry stmt.
-	 *
-	 * @param label the label
-	 * @param stmts the stmts
+	 * 
+	 * @param label
+	 *            the label
+	 * @param stmts
+	 *            the stmts
 	 * @return the switch entry stmt
 	 */
 	public static SwitchEntryStmt SwitchEntryStmt(Expression label,
@@ -907,10 +1068,13 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * If stmt.
-	 *
-	 * @param condition the condition
-	 * @param thenStmt the then stmt
-	 * @param elseStmt the else stmt
+	 * 
+	 * @param condition
+	 *            the condition
+	 * @param thenStmt
+	 *            the then stmt
+	 * @param elseStmt
+	 *            the else stmt
 	 * @return the if stmt
 	 */
 	public static IfStmt IfStmt(Expression condition, Statement thenStmt,
@@ -920,9 +1084,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * While stmt.
-	 *
-	 * @param condition the condition
-	 * @param body the body
+	 * 
+	 * @param condition
+	 *            the condition
+	 * @param body
+	 *            the body
 	 * @return the while stmt
 	 */
 	public static WhileStmt WhileStmt(Expression condition, Statement body) {
@@ -931,9 +1097,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Do stmt.
-	 *
-	 * @param body the body
-	 * @param condition the condition
+	 * 
+	 * @param body
+	 *            the body
+	 * @param condition
+	 *            the condition
 	 * @return the do stmt
 	 */
 	public static DoStmt DoStmt(Statement body, Expression condition) {
@@ -942,10 +1110,13 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Foreach stmt.
-	 *
-	 * @param variable the variable
-	 * @param iterable the iterable
-	 * @param body the body
+	 * 
+	 * @param variable
+	 *            the variable
+	 * @param iterable
+	 *            the iterable
+	 * @param body
+	 *            the body
 	 * @return the statement
 	 */
 	public static Statement ForeachStmt(VariableDeclarationExpr variable,
@@ -955,11 +1126,15 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * For stmt.
-	 *
-	 * @param init the init
-	 * @param compare the compare
-	 * @param update the update
-	 * @param body the body
+	 * 
+	 * @param init
+	 *            the init
+	 * @param compare
+	 *            the compare
+	 * @param update
+	 *            the update
+	 * @param body
+	 *            the body
 	 * @return the statement
 	 */
 	public static Statement ForStmt(List<Expression> init, Expression compare,
@@ -970,8 +1145,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Break stmt.
-	 *
-	 * @param id the id
+	 * 
+	 * @param id
+	 *            the id
 	 * @return the break stmt
 	 */
 	public static BreakStmt BreakStmt(String id) {
@@ -980,8 +1156,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Continue stmt.
-	 *
-	 * @param id the id
+	 * 
+	 * @param id
+	 *            the id
 	 * @return the continue stmt
 	 */
 	public static ContinueStmt ContinueStmt(String id) {
@@ -990,8 +1167,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Return stmt.
-	 *
-	 * @param expression the expression
+	 * 
+	 * @param expression
+	 *            the expression
 	 * @return the return stmt
 	 */
 	public static ReturnStmt ReturnStmt(Expression expression) {
@@ -1000,8 +1178,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Throw stmt.
-	 *
-	 * @param expression the expression
+	 * 
+	 * @param expression
+	 *            the expression
 	 * @return the throw stmt
 	 */
 	public static ThrowStmt ThrowStmt(Expression expression) {
@@ -1010,9 +1189,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Synchronized stmt.
-	 *
-	 * @param expression the expression
-	 * @param block the block
+	 * 
+	 * @param expression
+	 *            the expression
+	 * @param block
+	 *            the block
 	 * @return the synchronized stmt
 	 */
 	public static SynchronizedStmt SynchronizedStmt(Expression expression,
@@ -1022,11 +1203,15 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Catch clause.
-	 *
-	 * @param isFinal the is final
-	 * @param types the types
-	 * @param name the name
-	 * @param catchBlock the catch block
+	 * 
+	 * @param isFinal
+	 *            the is final
+	 * @param types
+	 *            the types
+	 * @param name
+	 *            the name
+	 * @param catchBlock
+	 *            the catch block
 	 * @return the catch clause
 	 */
 	public static CatchClause CatchClause(boolean isFinal, List<Type> types,
@@ -1037,11 +1222,15 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Try stmt.
-	 *
-	 * @param resources the resources
-	 * @param tryBlock the try block
-	 * @param catchClauses the catch clauses
-	 * @param finallyBlock the finally block
+	 * 
+	 * @param resources
+	 *            the resources
+	 * @param tryBlock
+	 *            the try block
+	 * @param catchClauses
+	 *            the catch clauses
+	 * @param finallyBlock
+	 *            the finally block
 	 * @return the try stmt
 	 */
 	public static TryStmt TryStmt(List<VariableDeclarationExpr> resources,
@@ -1053,9 +1242,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Normal annotation expr.
-	 *
-	 * @param pairs the pairs
-	 * @param name the name
+	 * 
+	 * @param pairs
+	 *            the pairs
+	 * @param name
+	 *            the name
 	 * @return the normal annotation expr
 	 */
 	public static NormalAnnotationExpr NormalAnnotationExpr(
@@ -1065,8 +1256,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Marker annotation expr.
-	 *
-	 * @param name the name
+	 * 
+	 * @param name
+	 *            the name
 	 * @return the marker annotation expr
 	 */
 	public static MarkerAnnotationExpr MarkerAnnotationExpr(NameExpr name) {
@@ -1075,9 +1267,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Single member annotation expr.
-	 *
-	 * @param memberValue the member value
-	 * @param name the name
+	 * 
+	 * @param memberValue
+	 *            the member value
+	 * @param name
+	 *            the name
 	 * @return the single member annotation expr
 	 */
 	public static SingleMemberAnnotationExpr SingleMemberAnnotationExpr(
@@ -1087,9 +1281,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Member value pair.
-	 *
-	 * @param name the name
-	 * @param value the value
+	 * 
+	 * @param name
+	 *            the name
+	 * @param value
+	 *            the value
 	 * @return the member value pair
 	 */
 	public static MemberValuePair MemberValuePair(String name, Expression value) {
@@ -1098,12 +1294,17 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Annotation declaration.
-	 *
-	 * @param modifiers the modifiers
-	 * @param name the name
-	 * @param members the members
-	 * @param javaDoc the java doc
-	 * @param annotations the annotations
+	 * 
+	 * @param modifiers
+	 *            the modifiers
+	 * @param name
+	 *            the name
+	 * @param members
+	 *            the members
+	 * @param javaDoc
+	 *            the java doc
+	 * @param annotations
+	 *            the annotations
 	 * @return the annotation declaration
 	 */
 	public static AnnotationDeclaration AnnotationDeclaration(int modifiers,
@@ -1115,13 +1316,19 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Annotation member declaration.
-	 *
-	 * @param modifiers the modifiers
-	 * @param type the type
-	 * @param name the name
-	 * @param defaultValue the default value
-	 * @param javaDoc the java doc
-	 * @param annotations the annotations
+	 * 
+	 * @param modifiers
+	 *            the modifiers
+	 * @param type
+	 *            the type
+	 * @param name
+	 *            the name
+	 * @param defaultValue
+	 *            the default value
+	 * @param javaDoc
+	 *            the java doc
+	 * @param annotations
+	 *            the annotations
 	 * @return the annotation member declaration
 	 */
 	public static AnnotationMemberDeclaration AnnotationMemberDeclaration(
@@ -1133,9 +1340,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * This method return null when nodes equals null.
-	 *
-	 * @param <E> the element type
-	 * @param nodes the nodes
+	 * 
+	 * @param <E>
+	 *            the element type
+	 * @param nodes
+	 *            the nodes
 	 * @return the node list
 	 */
 	public static <E extends Node> NodeList<E> NodeList(List<E> nodes) {
@@ -1147,9 +1356,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * This method return null when node equals null.
-	 *
-	 * @param <E> the element type
-	 * @param node the node
+	 * 
+	 * @param <E>
+	 *            the element type
+	 * @param node
+	 *            the node
 	 * @return the node list
 	 */
 	public static <E extends Node> NodeList<E> NodeList(E node) {
@@ -1161,9 +1372,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * This method return null when node equals null.
-	 *
-	 * @param <E> the element type
-	 * @param node the node
+	 * 
+	 * @param <E>
+	 *            the element type
+	 * @param node
+	 *            the node
 	 * @return the node list
 	 */
 	public static <E extends Node> NodeList<E> NodeList(E[] node) {
@@ -1175,47 +1388,38 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Cast expr.
-	 *
-	 * @param types the types
-	 * @param expression the expression
+	 * 
+	 * @param types
+	 *            the types
+	 * @param expression
+	 *            the expression
 	 * @return the expression
 	 */
 	public static Expression CastExpr(List<Type> types, Expression expression) {
 		return CastExpr(NodeList(types), expression, null, 0, 0);
 	}
 
-	/**
-	 * Method type ref.
-	 *
-	 * @param type the type
-	 * @param typeArgs the type args
-	 * @param image the image
-	 * @return the expression
-	 */
-	public static Expression MethodTypeRef(Type type, List<Type> typeArgs,
-			String image) {
-		return MethodTypeRef(type, NodeList(typeArgs), image, null, 0, 0);
+	public static TypeMethodReference TypeMethodReference(Type type,
+			List<Type> typeArgs, String methodName) {
+		return TypeMethodReference(type, methodName, NodeList(typeArgs), null,
+				0, 0);
 	}
 
-	/**
-	 * Method expr ref.
-	 *
-	 * @param scope the scope
-	 * @param typeArgs the type args
-	 * @param name the name
-	 * @return the expression
-	 */
-	public static Expression MethodExprRef(Expression scope,
-			List<Type> typeArgs, String name) {
-		return MethodExprRef(scope, NodeList(typeArgs), name, null, 0, 0);
+	public static ExpressionMethodReference ExpressionMethodReference(
+			Expression scope, List<Type> typeArgs, String methodName) {
+		return ExpressionMethodReference(scope, methodName, NodeList(typeArgs),
+				null, 0, 0);
 	}
 
 	/**
 	 * Type parameter.
-	 *
-	 * @param name the name
-	 * @param typeBound the type bound
-	 * @param annotations the annotations
+	 * 
+	 * @param name
+	 *            the name
+	 * @param typeBound
+	 *            the type bound
+	 * @param annotations
+	 *            the annotations
 	 * @return the type parameter
 	 */
 	public static TypeParameter TypeParameter(String name,
@@ -1227,11 +1431,15 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Class or interface type.
-	 *
-	 * @param scope the scope
-	 * @param name the name
-	 * @param typeArgs the type args
-	 * @param annotations the annotations
+	 * 
+	 * @param scope
+	 *            the scope
+	 * @param name
+	 *            the name
+	 * @param typeArgs
+	 *            the type args
+	 * @param annotations
+	 *            the annotations
 	 * @return the class or interface type
 	 */
 	public static ClassOrInterfaceType ClassOrInterfaceType(
@@ -1243,8 +1451,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Array slot.
-	 *
-	 * @param annotations the annotations
+	 * 
+	 * @param annotations
+	 *            the annotations
 	 * @return the array slot
 	 */
 	public static ArraySlot ArraySlot(List<AnnotationExpr> annotations) {
@@ -1253,9 +1462,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Reference type.
-	 *
-	 * @param type the type
-	 * @param slots the slots
+	 * 
+	 * @param type
+	 *            the type
+	 * @param slots
+	 *            the slots
 	 * @return the reference type
 	 */
 	public static ReferenceType ReferenceType(Type type, List<ArraySlot> slots) {
@@ -1264,8 +1475,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Ellipsis.
-	 *
-	 * @param annotations the annotations
+	 * 
+	 * @param annotations
+	 *            the annotations
 	 * @return the ellipsis
 	 */
 	public static Ellipsis Ellipsis(List<AnnotationExpr> annotations) {
@@ -1274,12 +1486,17 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Parameter.
-	 *
-	 * @param modifiers the modifiers
-	 * @param type the type
-	 * @param ellipsis the ellipsis
-	 * @param id the id
-	 * @param annotations the annotations
+	 * 
+	 * @param modifiers
+	 *            the modifiers
+	 * @param type
+	 *            the type
+	 * @param ellipsis
+	 *            the ellipsis
+	 * @param id
+	 *            the id
+	 * @param annotations
+	 *            the annotations
 	 * @return the parameter
 	 */
 	public static Parameter Parameter(int modifiers, Type type,
@@ -1291,9 +1508,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Parameter.
-	 *
-	 * @param type the type
-	 * @param name the name
+	 * 
+	 * @param type
+	 *            the type
+	 * @param name
+	 *            the name
 	 * @return the parameter
 	 */
 	public static Parameter Parameter(Type type, String name) {
@@ -1302,10 +1521,13 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Array creation expr.
-	 *
-	 * @param type the type
-	 * @param slots the slots
-	 * @param initializer the initializer
+	 * 
+	 * @param type
+	 *            the type
+	 * @param slots
+	 *            the slots
+	 * @param initializer
+	 *            the initializer
 	 * @return the array creation expr
 	 */
 	public static ArrayCreationExpr ArrayCreationExpr(Type type,
@@ -1315,8 +1537,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Array slot.
-	 *
-	 * @param expression the expression
+	 * 
+	 * @param expression
+	 *            the expression
 	 * @return the array slot
 	 */
 	public static ArraySlot ArraySlot(Expression expression) {
@@ -1325,9 +1548,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Array slot.
-	 *
-	 * @param expression the expression
-	 * @param annotations the annotations
+	 * 
+	 * @param expression
+	 *            the expression
+	 * @param annotations
+	 *            the annotations
 	 * @return the array slot
 	 */
 	public static ArraySlot ArraySlot(Expression expression,
@@ -1337,9 +1562,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Variable declarator id.
-	 *
-	 * @param name the name
-	 * @param slots the slots
+	 * 
+	 * @param name
+	 *            the name
+	 * @param slots
+	 *            the slots
 	 * @return the variable declarator id
 	 */
 	public static VariableDeclaratorId VariableDeclaratorId(String name,
@@ -1349,8 +1576,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * String literal expr.
-	 *
-	 * @param value the value
+	 * 
+	 * @param value
+	 *            the value
 	 * @return the string literal expr
 	 */
 	public static StringLiteralExpr StringLiteralExpr(String value) {
@@ -1359,9 +1587,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Lambda block.
-	 *
-	 * @param blockStmt the block stmt
-	 * @param parameters the parameters
+	 * 
+	 * @param blockStmt
+	 *            the block stmt
+	 * @param parameters
+	 *            the parameters
 	 * @return the lambda block
 	 */
 	public static LambdaBlock LambdaBlock(BlockStmt blockStmt,
@@ -1371,9 +1601,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Lambda expr.
-	 *
-	 * @param expression the expression
-	 * @param parameters the parameters
+	 * 
+	 * @param expression
+	 *            the expression
+	 * @param parameters
+	 *            the parameters
 	 * @return the lambda expr
 	 */
 	public static LambdaExpr LambdaExpr(Expression expression,
@@ -1383,9 +1615,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Name expr.
-	 *
-	 * @param base the base
-	 * @param values the values
+	 * 
+	 * @param base
+	 *            the base
+	 * @param values
+	 *            the values
 	 * @return the name expr
 	 */
 	public static NameExpr NameExpr(NameExpr base, String... values) {
@@ -1399,8 +1633,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Variable declarator id.
-	 *
-	 * @param name the name
+	 * 
+	 * @param name
+	 *            the name
 	 * @return the variable declarator id
 	 */
 	public static VariableDeclaratorId VariableDeclaratorId(String name) {
@@ -1409,10 +1644,13 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Variable declaration expr.
-	 *
-	 * @param type the type
-	 * @param name the name
-	 * @param init the init
+	 * 
+	 * @param type
+	 *            the type
+	 * @param name
+	 *            the name
+	 * @param init
+	 *            the init
 	 * @return the variable declaration expr
 	 */
 	public static VariableDeclarationExpr VariableDeclarationExpr(Type type,
@@ -1424,9 +1662,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Reference type.
-	 *
-	 * @param type the type
-	 * @param slotsNumber the slots number
+	 * 
+	 * @param type
+	 *            the type
+	 * @param slotsNumber
+	 *            the slots number
 	 * @return the reference type
 	 */
 	public static ReferenceType ReferenceType(Type type, int slotsNumber) {
@@ -1443,9 +1683,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Method call expr.
-	 *
-	 * @param scope the scope
-	 * @param name the name
+	 * 
+	 * @param scope
+	 *            the scope
+	 * @param name
+	 *            the name
 	 * @return the method call expr
 	 */
 	public static MethodCallExpr MethodCallExpr(Expression scope, String name) {
@@ -1454,9 +1696,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Constructor declaration.
-	 *
-	 * @param modifiers the modifiers
-	 * @param name the name
+	 * 
+	 * @param modifiers
+	 *            the modifiers
+	 * @param name
+	 *            the name
 	 * @return the constructor declaration
 	 */
 	public static ConstructorDeclaration ConstructorDeclaration(int modifiers,
@@ -1467,8 +1711,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Project.
-	 *
-	 * @param units the units
+	 * 
+	 * @param units
+	 *            the units
 	 * @return the project
 	 */
 	public static Project Project(List<CompilationUnit> units) {
@@ -1477,9 +1722,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Method declaration.
-	 *
-	 * @param returnType the return type
-	 * @param methodName the method name
+	 * 
+	 * @param returnType
+	 *            the return type
+	 * @param methodName
+	 *            the method name
 	 * @return the method declaration
 	 */
 	public static MethodDeclaration MethodDeclaration(Type returnType,
@@ -1490,8 +1737,9 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Enum constant declaration.
-	 *
-	 * @param name the name
+	 * 
+	 * @param name
+	 *            the name
 	 * @return the enum constant declaration
 	 */
 	public static EnumConstantDeclaration EnumConstantDeclaration(String name) {
@@ -1500,11 +1748,15 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Field declaration.
-	 *
-	 * @param modifiers the modifiers
-	 * @param type the type
-	 * @param name the name
-	 * @param init the init
+	 * 
+	 * @param modifiers
+	 *            the modifiers
+	 * @param type
+	 *            the type
+	 * @param name
+	 *            the name
+	 * @param init
+	 *            the init
 	 * @return the field declaration
 	 */
 	public static FieldDeclaration FieldDeclaration(int modifiers, Type type,
