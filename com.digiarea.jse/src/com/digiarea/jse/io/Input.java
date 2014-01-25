@@ -195,7 +195,7 @@ public class Input implements Runnable {
 		try {
 			Files.walkFileTree(p, fv);
 		} catch (Exception e) {
-			throw new Error(e.getMessage());
+			e.printStackTrace();
 		}
 		project.setCompilationUnits(NodeFacade.NodeList(compilationUnits, null,
 				0, 0));

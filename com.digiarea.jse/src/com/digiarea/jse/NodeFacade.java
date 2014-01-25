@@ -571,21 +571,35 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Method declaration.
-	 *
-	 * @param modifiers the modifiers
-	 * @param typeParameters the type parameters
-	 * @param type the type
-	 * @param name the name
-	 * @param receiverType the receiver type
-	 * @param receiverQualifier the receiver qualifier
-	 * @param parameters the parameters
-	 * @param slots the slots
-	 * @param throwsList the throws list
-	 * @param body the body
-	 * @param javaDoc the java doc
-	 * @param annotations the annotations
-	 * @param posBegin the pos begin
-	 * @param posEnd the pos end
+	 * 
+	 * @param modifiers
+	 *            the modifiers
+	 * @param typeParameters
+	 *            the type parameters
+	 * @param type
+	 *            the type
+	 * @param name
+	 *            the name
+	 * @param receiverType
+	 *            the receiver type
+	 * @param receiverQualifier
+	 *            the receiver qualifier
+	 * @param parameters
+	 *            the parameters
+	 * @param slots
+	 *            the slots
+	 * @param throwsList
+	 *            the throws list
+	 * @param body
+	 *            the body
+	 * @param javaDoc
+	 *            the java doc
+	 * @param annotations
+	 *            the annotations
+	 * @param posBegin
+	 *            the pos begin
+	 * @param posEnd
+	 *            the pos end
 	 * @return the method declaration
 	 */
 	public static MethodDeclaration MethodDeclaration(int modifiers,
@@ -647,19 +661,31 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Constructor declaration.
-	 *
-	 * @param modifiers the modifiers
-	 * @param typeParameters the type parameters
-	 * @param name the name
-	 * @param receiverType the receiver type
-	 * @param receiverQualifier the receiver qualifier
-	 * @param parameters the parameters
-	 * @param throwsList the throws list
-	 * @param blockStmt the block stmt
-	 * @param javaDoc the java doc
-	 * @param annotations the annotations
-	 * @param posBegin the pos begin
-	 * @param posEnd the pos end
+	 * 
+	 * @param modifiers
+	 *            the modifiers
+	 * @param typeParameters
+	 *            the type parameters
+	 * @param name
+	 *            the name
+	 * @param receiverType
+	 *            the receiver type
+	 * @param receiverQualifier
+	 *            the receiver qualifier
+	 * @param parameters
+	 *            the parameters
+	 * @param throwsList
+	 *            the throws list
+	 * @param blockStmt
+	 *            the block stmt
+	 * @param javaDoc
+	 *            the java doc
+	 * @param annotations
+	 *            the annotations
+	 * @param posBegin
+	 *            the pos begin
+	 * @param posEnd
+	 *            the pos end
 	 * @return the constructor declaration
 	 */
 	public static ConstructorDeclaration ConstructorDeclaration(int modifiers,
@@ -1181,7 +1207,7 @@ public class NodeFacade extends NodeFactory {
 	 *            the body
 	 * @return the statement
 	 */
-	public static Statement ForeachStmt(VariableDeclarationExpr variable,
+	public static ForeachStmt ForeachStmt(VariableDeclarationExpr variable,
 			Expression iterable, Statement body) {
 		return ForeachStmt(variable, iterable, body, null, 0, 0);
 	}
@@ -1461,13 +1487,15 @@ public class NodeFacade extends NodeFactory {
 		return CastExpr(NodeList(types), expression, null, 0, 0);
 	}
 
-
 	/**
 	 * Type method reference.
-	 *
-	 * @param type the type
-	 * @param typeArgs the type args
-	 * @param methodName the method name
+	 * 
+	 * @param type
+	 *            the type
+	 * @param typeArgs
+	 *            the type args
+	 * @param methodName
+	 *            the method name
 	 * @return the type method reference
 	 */
 	public static TypeMethodReference TypeMethodReference(Type type,
@@ -1476,13 +1504,15 @@ public class NodeFacade extends NodeFactory {
 				0, 0);
 	}
 
-
 	/**
 	 * Expression method reference.
-	 *
-	 * @param scope the scope
-	 * @param typeArgs the type args
-	 * @param methodName the method name
+	 * 
+	 * @param scope
+	 *            the scope
+	 * @param typeArgs
+	 *            the type args
+	 * @param methodName
+	 *            the method name
 	 * @return the expression method reference
 	 */
 	public static ExpressionMethodReference ExpressionMethodReference(
@@ -1493,10 +1523,13 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Super method reference.
-	 *
-	 * @param scope the scope
-	 * @param typeArgs the type args
-	 * @param methodName the method name
+	 * 
+	 * @param scope
+	 *            the scope
+	 * @param typeArgs
+	 *            the type args
+	 * @param methodName
+	 *            the method name
 	 * @return the super method reference
 	 */
 	public static SuperMethodReference SuperMethodReference(Expression scope,
@@ -1507,9 +1540,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Creation reference.
-	 *
-	 * @param scope the scope
-	 * @param typeArgs the type args
+	 * 
+	 * @param scope
+	 *            the scope
+	 * @param typeArgs
+	 *            the type args
 	 * @return the creation reference
 	 */
 	public static CreationReference CreationReference(Expression scope,
@@ -1520,9 +1555,11 @@ public class NodeFacade extends NodeFactory {
 
 	/**
 	 * Creation reference.
-	 *
-	 * @param type the type
-	 * @param typeArgs the type args
+	 * 
+	 * @param type
+	 *            the type
+	 * @param typeArgs
+	 *            the type args
 	 * @return the creation reference
 	 */
 	public static CreationReference CreationReference(Type type,
@@ -1884,4 +1921,34 @@ public class NodeFacade extends NodeFactory {
 				init);
 		return FieldDeclaration(modifiers, type, Arrays.asList(var), null, null);
 	}
+
+	public static MethodDeclaration MethodDeclaration(int modifiers, Type type,
+			String name) {
+		return MethodDeclaration(modifiers, null, type, name, null, null, null,
+				null, null, null);
+	}
+
+	public static ObjectCreationExpr ObjectCreationExpr(
+			ClassOrInterfaceType type, List<Expression> arguments) {
+		return ObjectCreationExpr(null, type, null, NodeList(arguments), null,
+				null, 0, 0);
+	}
+
+	public static ObjectCreationExpr ObjectCreationExpr(
+			ClassOrInterfaceType type) {
+		return ObjectCreationExpr(null, type, null, null, null, null, 0, 0);
+	}
+
+	public static ConstructorDeclaration ConstructorDeclaration(int modifiers,
+			String name, List<Parameter> params) {
+		return ConstructorDeclaration(Modifiers(modifiers), null, name, null,
+				null, NodeList(params), null, null, null, null, 0, 0);
+	}
+
+	public static MethodDeclaration MethodDeclaration(int modifiers,
+			Type type, String name, List<Parameter> params) {
+		return MethodDeclaration(Modifiers(modifiers), null, type, name, null,
+				null, NodeList(params), null, null, null, null, null, 0, 0);
+	}
+
 }

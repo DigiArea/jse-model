@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.digiarea.jse.utils;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ import com.digiarea.jse.Modifiers;
 import com.digiarea.jse.NameExpr;
 import com.digiarea.jse.NodeFacade;
 import com.digiarea.jse.NormalAnnotationExpr;
+import com.digiarea.jse.PackageDeclaration;
 import com.digiarea.jse.Parameter;
 import com.digiarea.jse.PrimitiveType;
 import com.digiarea.jse.Project;
@@ -174,9 +176,11 @@ public class NodeUtils {
 
 	/**
 	 * To string.
-	 *
-	 * @param name the name
-	 * @param dlim the dlim
+	 * 
+	 * @param name
+	 *            the name
+	 * @param dlim
+	 *            the dlim
 	 * @return the string
 	 */
 	public static String toString(NameExpr name, String dlim) {
@@ -191,8 +195,9 @@ public class NodeUtils {
 
 	/**
 	 * To string.
-	 *
-	 * @param name the name
+	 * 
+	 * @param name
+	 *            the name
 	 * @return the string
 	 */
 	public static String toString(NameExpr name) {
@@ -212,9 +217,11 @@ public class NodeUtils {
 	 * 12:08:56 local time in the U.S. Pacific Time time zone. The comment
 	 * element is a place holder for any comments that the code generator may
 	 * want to include in the generated code.
-	 *
-	 * @param value the value
-	 * @param comments the comments
+	 * 
+	 * @param value
+	 *            the value
+	 * @param comments
+	 *            the comments
 	 * @return the normal annotation expr
 	 */
 	public static NormalAnnotationExpr makeGenerated(String[] value,
@@ -304,9 +311,11 @@ public class NodeUtils {
 
 	/**
 	 * Checks if is boolean.
-	 *
-	 * @param type the type
-	 * @param isNative the is native
+	 * 
+	 * @param type
+	 *            the type
+	 * @param isNative
+	 *            the is native
 	 * @return true, if is boolean
 	 */
 	public static boolean isBoolean(Type type, boolean isNative) {
@@ -323,8 +332,9 @@ public class NodeUtils {
 
 	/**
 	 * Checks if is boolean.
-	 *
-	 * @param type the type
+	 * 
+	 * @param type
+	 *            the type
 	 * @return true, if is boolean
 	 */
 	public static boolean isBoolean(Type type) {
@@ -363,7 +373,7 @@ public class NodeUtils {
 		if (unit.getTypes() != null) {
 			for (TypeDeclaration type : unit.getTypes()) {
 				if (type.getName().equals(
-						NodeFacade.NameExpr(unit.getName()).getName())) {
+						NodeFacade.QualifiedNameExpr(unit.getName()).getName())) {
 					return type;
 				}
 			}
@@ -373,8 +383,9 @@ public class NodeUtils {
 
 	/**
 	 * Gets the modifiers.
-	 *
-	 * @param modifiers the modifiers
+	 * 
+	 * @param modifiers
+	 *            the modifiers
 	 * @return the modifiers
 	 */
 	public static int getModifiers(Expression modifiers) {
@@ -395,8 +406,9 @@ public class NodeUtils {
 
 	/**
 	 * Gets the modifiers value.
-	 *
-	 * @param name the name
+	 * 
+	 * @param name
+	 *            the name
 	 * @return the modifiers value
 	 */
 	public static int getModifiersValue(String name) {
@@ -428,8 +440,9 @@ public class NodeUtils {
 
 	/**
 	 * Modifiers to expression.
-	 *
-	 * @param modifiers the modifiers
+	 * 
+	 * @param modifiers
+	 *            the modifiers
 	 * @return the expression
 	 */
 	public static Expression modifiersToExpression(int modifiers) {
@@ -484,9 +497,11 @@ public class NodeUtils {
 
 	/**
 	 * Adds the modifiers.
-	 *
-	 * @param left the left
-	 * @param right the right
+	 * 
+	 * @param left
+	 *            the left
+	 * @param right
+	 *            the right
 	 * @return the expression
 	 */
 	private static final Expression addModifiers(Expression left,
@@ -502,10 +517,13 @@ public class NodeUtils {
 
 	/**
 	 * Creates the getter declaration.
-	 *
-	 * @param type            the type
-	 * @param string            the string
-	 * @param isProperty the is property
+	 * 
+	 * @param type
+	 *            the type
+	 * @param string
+	 *            the string
+	 * @param isProperty
+	 *            the is property
 	 * @return the method declaration
 	 */
 	public static MethodDeclaration createGetterDeclaration(Type type,
@@ -534,9 +552,11 @@ public class NodeUtils {
 
 	/**
 	 * Creates the getter declaration.
-	 *
-	 * @param type the type
-	 * @param string the string
+	 * 
+	 * @param type
+	 *            the type
+	 * @param string
+	 *            the string
 	 * @return the method declaration
 	 */
 	public static MethodDeclaration createGetterDeclaration(Type type,
@@ -546,10 +566,13 @@ public class NodeUtils {
 
 	/**
 	 * Creates the setter declaration.
-	 *
-	 * @param type            the type
-	 * @param string            the string
-	 * @param isProperty the is property
+	 * 
+	 * @param type
+	 *            the type
+	 * @param string
+	 *            the string
+	 * @param isProperty
+	 *            the is property
 	 * @return the method declaration
 	 */
 	public static MethodDeclaration createSetterDeclaration(Type type,
@@ -584,9 +607,11 @@ public class NodeUtils {
 
 	/**
 	 * Creates the setter declaration.
-	 *
-	 * @param type the type
-	 * @param string the string
+	 * 
+	 * @param type
+	 *            the type
+	 * @param string
+	 *            the string
 	 * @return the method declaration
 	 */
 	public static MethodDeclaration createSetterDeclaration(Type type,
@@ -630,6 +655,104 @@ public class NodeUtils {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * Creates the path from name expr.
+	 * 
+	 * @param expr
+	 *            the expr
+	 * @return the string
+	 */
+	public static String createPathFromNameExpr(NameExpr expr) {
+		return toString(expr, File.separator);
+	}
+
+	/**
+	 * Creates the path from qualified name.
+	 * 
+	 * @param qName
+	 *            the q name
+	 * @return the string
+	 */
+	public static String createPathFromQualifiedName(String qName) {
+		return createPathFromNameExpr(NodeFacade.QualifiedNameExpr(qName));
+	}
+
+	/**
+	 * Creates the compilation unit.
+	 * 
+	 * @param qName
+	 *            the q name
+	 * @return the compilation unit
+	 */
+	public static CompilationUnit createCompilationUnit(String qName) {
+		return createCompilationUnit(qName, false);
+	}
+
+	public static CompilationUnit createCompilationUnit(String qName,
+			boolean isInterface) {
+		NameExpr name = NodeFacade.QualifiedNameExpr(qName);
+		TypeDeclaration type;
+		if (isInterface) {
+			type = NodeFacade.InterfaceDeclaration(null, null,
+					Modifiers.PUBLIC, name.getName(), null, null, null);
+		} else {
+			type = NodeFacade.ClassDeclaration(null, null, null,
+					Modifiers.PUBLIC, name.getName(), null, null, null);
+		}
+		PackageDeclaration pkg = null;
+		if (name instanceof QualifiedNameExpr) {
+			pkg = NodeFacade.PackageDeclaration(
+					((QualifiedNameExpr) name).getQualifier(), null);
+		}
+		return NodeFacade.CompilationUnit(pkg, null, Arrays.asList(type), null,
+				toString(name));
+	}
+
+	/**
+	 * Checks if is class.
+	 * 
+	 * @param type
+	 *            the type
+	 * @return true, if is class
+	 */
+	public static boolean isClass(Type type) {
+		if (type instanceof ReferenceType) {
+			return isClass(((ReferenceType) type).getType());
+		} else if (type instanceof ClassOrInterfaceType) {
+			String name = NodeUtils.toNameExpr((ClassOrInterfaceType) type)
+					.toString();
+			return name.equals("java.lang.Class");
+		}
+		return false;
+	}
+
+	public static ClassOrInterfaceType createListType(Type type) {
+		ClassOrInterfaceType list = NodeFacade
+				.ClassOrInterfaceType("java.util.List");
+		list.setTypeArgs(NodeFacade.NodeList(Arrays.asList(type)));
+		return list;
+	}
+
+	/**
+	 * Adds the field and acsessors.
+	 * 
+	 * @param decl
+	 *            the decl
+	 * @param type
+	 *            the type
+	 * @param name
+	 *            the name
+	 * @param init
+	 *            the init
+	 */
+	public static void addFieldAndAccessors(TypeDeclaration decl, Type type,
+			String name, Expression init) {
+		addMember(decl, NodeFacade.FieldDeclaration(Modifiers.PRIVATE, type,
+				name, init));
+		addMember(decl, createGetterDeclaration(type, name));
+		addMember(decl, createSetterDeclaration(type, name));
 	}
 
 }
