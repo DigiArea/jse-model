@@ -1000,6 +1000,7 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 		if (n.getReceiverType() != null) {
 			reciever = true;
             n.getReceiverType().accept(this, printer);
+            printer.print(" ");
             if (n.getReceiverQualifier() != null) {
                 n.getReceiverQualifier().accept(this, printer);
                 printer.print(".");
@@ -1020,7 +1021,6 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 			}
 		}
 		printer.print(")");
-
 		if (n.getThrowsList() != null && n.getThrowsList().size() > 0) {
 			printer.print(" throws ");
 			for (Iterator<ClassOrInterfaceType> i = n.getThrowsList()
@@ -1063,6 +1063,7 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 		if (n.getReceiverType() != null) {
 			reciever = true;
             n.getReceiverType().accept(this, printer);
+            printer.print(" ");
             if (n.getReceiverQualifier() != null) {
                 n.getReceiverQualifier().accept(this, printer);
                 printer.print(".");

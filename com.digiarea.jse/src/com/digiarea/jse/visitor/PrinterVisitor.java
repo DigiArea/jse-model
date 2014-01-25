@@ -1007,7 +1007,6 @@ public class PrinterVisitor implements VoidVisitor<SourcePrinter> {
 		if (n.getModifiers() != null) {
 			n.getModifiers().accept(this, printer);
 		}
-
 		printTypeParameters(n.getTypeParameters(), printer);
 		if (n.getTypeParameters() != null) {
 			printer.print(" ");
@@ -1018,6 +1017,7 @@ public class PrinterVisitor implements VoidVisitor<SourcePrinter> {
 		if (n.getReceiverType() != null) {
 			reciever = true;
             n.getReceiverType().accept(this, printer);
+            printer.print(" ");
             if (n.getReceiverQualifier() != null) {
                 n.getReceiverQualifier().accept(this, printer);
                 printer.print(".");
@@ -1038,7 +1038,6 @@ public class PrinterVisitor implements VoidVisitor<SourcePrinter> {
 			}
 		}
 		printer.print(")");
-
 		if (n.getThrowsList() != null && n.getThrowsList().size() > 0) {
 			printer.print(" throws ");
 			for (Iterator<ClassOrInterfaceType> i = n.getThrowsList()
@@ -1081,6 +1080,7 @@ public class PrinterVisitor implements VoidVisitor<SourcePrinter> {
 		if (n.getReceiverType() != null) {
 			reciever = true;
             n.getReceiverType().accept(this, printer);
+            printer.print(" ");
             if (n.getReceiverQualifier() != null) {
                 n.getReceiverQualifier().accept(this, printer);
                 printer.print(".");

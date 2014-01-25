@@ -569,6 +569,25 @@ public class NodeFacade extends NodeFactory {
 				body, javaDoc, NodeList(annotations), 0, 0);
 	}
 
+	/**
+	 * Method declaration.
+	 *
+	 * @param modifiers the modifiers
+	 * @param typeParameters the type parameters
+	 * @param type the type
+	 * @param name the name
+	 * @param receiverType the receiver type
+	 * @param receiverQualifier the receiver qualifier
+	 * @param parameters the parameters
+	 * @param slots the slots
+	 * @param throwsList the throws list
+	 * @param body the body
+	 * @param javaDoc the java doc
+	 * @param annotations the annotations
+	 * @param posBegin the pos begin
+	 * @param posEnd the pos end
+	 * @return the method declaration
+	 */
 	public static MethodDeclaration MethodDeclaration(int modifiers,
 			List<TypeParameter> typeParameters, Type type, String name,
 			Type receiverType, NameExpr receiverQualifier,
@@ -626,6 +645,23 @@ public class NodeFacade extends NodeFactory {
 				NodeList(annotations), 0, 0);
 	}
 
+	/**
+	 * Constructor declaration.
+	 *
+	 * @param modifiers the modifiers
+	 * @param typeParameters the type parameters
+	 * @param name the name
+	 * @param receiverType the receiver type
+	 * @param receiverQualifier the receiver qualifier
+	 * @param parameters the parameters
+	 * @param throwsList the throws list
+	 * @param blockStmt the block stmt
+	 * @param javaDoc the java doc
+	 * @param annotations the annotations
+	 * @param posBegin the pos begin
+	 * @param posEnd the pos end
+	 * @return the constructor declaration
+	 */
 	public static ConstructorDeclaration ConstructorDeclaration(int modifiers,
 			List<TypeParameter> typeParameters, String name, Type receiverType,
 			NameExpr receiverQualifier, List<Parameter> parameters,
@@ -1425,15 +1461,13 @@ public class NodeFacade extends NodeFactory {
 		return CastExpr(NodeList(types), expression, null, 0, 0);
 	}
 
+
 	/**
 	 * Type method reference.
-	 * 
-	 * @param type
-	 *            the type
-	 * @param typeArgs
-	 *            the type args
-	 * @param methodName
-	 *            the method name
+	 *
+	 * @param type the type
+	 * @param typeArgs the type args
+	 * @param methodName the method name
 	 * @return the type method reference
 	 */
 	public static TypeMethodReference TypeMethodReference(Type type,
@@ -1442,15 +1476,13 @@ public class NodeFacade extends NodeFactory {
 				0, 0);
 	}
 
+
 	/**
 	 * Expression method reference.
-	 * 
-	 * @param scope
-	 *            the scope
-	 * @param typeArgs
-	 *            the type args
-	 * @param methodName
-	 *            the method name
+	 *
+	 * @param scope the scope
+	 * @param typeArgs the type args
+	 * @param methodName the method name
 	 * @return the expression method reference
 	 */
 	public static ExpressionMethodReference ExpressionMethodReference(
@@ -1459,18 +1491,40 @@ public class NodeFacade extends NodeFactory {
 				null, 0, 0);
 	}
 
+	/**
+	 * Super method reference.
+	 *
+	 * @param scope the scope
+	 * @param typeArgs the type args
+	 * @param methodName the method name
+	 * @return the super method reference
+	 */
 	public static SuperMethodReference SuperMethodReference(Expression scope,
 			List<Type> typeArgs, String methodName) {
 		return SuperMethodReference((NameExpr) scope, methodName,
 				NodeList(typeArgs), null, 0, 0);
 	}
 
+	/**
+	 * Creation reference.
+	 *
+	 * @param scope the scope
+	 * @param typeArgs the type args
+	 * @return the creation reference
+	 */
 	public static CreationReference CreationReference(Expression scope,
 			List<Type> typeArgs) {
 		return CreationReference(ClassOrInterfaceType((NameExpr) scope),
 				NodeList(typeArgs), null, 0, 0);
 	}
 
+	/**
+	 * Creation reference.
+	 *
+	 * @param type the type
+	 * @param typeArgs the type args
+	 * @return the creation reference
+	 */
 	public static CreationReference CreationReference(Type type,
 			List<Type> typeArgs) {
 		return CreationReference(type, NodeList(typeArgs), null, 0, 0);
