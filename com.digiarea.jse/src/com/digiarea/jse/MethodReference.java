@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2011 - 2014 DigiArea, Inc. and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     DigiArea, Inc. - initial API and implementation
- *******************************************************************************/
 package com.digiarea.jse;
 
 import com.digiarea.jse.Expression;
@@ -46,39 +36,18 @@ public abstract class MethodReference extends Expression {
      */
     private NodeList<Type> typeArgs;
 
-    /**
-     * Gets the type args.
-     *
-     * @return the type args
-     */
     public NodeList<Type> getTypeArgs() {
         return typeArgs;
     }
 
-    /**
-     * Sets the type args.
-     *
-     * @param typeArgs the new type args
-     */
     public void setTypeArgs(NodeList<Type> typeArgs) {
         this.typeArgs = typeArgs;
     }
 
-    /**
-     * Instantiates a new method reference.
-     */
     MethodReference() {
         super();
     }
 
-    /**
-     * Instantiates a new method reference.
-     *
-     * @param typeArgs the type args
-     * @param annotations the annotations
-     * @param posBegin the pos begin
-     * @param posEnd the pos end
-     */
     MethodReference(NodeList<Type> typeArgs, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.typeArgs = typeArgs;

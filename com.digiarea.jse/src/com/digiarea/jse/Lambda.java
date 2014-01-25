@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2011 - 2014 DigiArea, Inc. and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     DigiArea, Inc. - initial API and implementation
- *******************************************************************************/
 package com.digiarea.jse;
 
 import com.digiarea.jse.Expression;
@@ -39,39 +29,18 @@ public abstract class Lambda extends Expression {
      */
     private NodeList<Parameter> parameters = null;
 
-    /**
-     * Gets the parameters.
-     *
-     * @return the parameters
-     */
     public NodeList<Parameter> getParameters() {
         return parameters;
     }
 
-    /**
-     * Sets the parameters.
-     *
-     * @param parameters the new parameters
-     */
     public void setParameters(NodeList<Parameter> parameters) {
         this.parameters = parameters;
     }
 
-    /**
-     * Instantiates a new lambda.
-     */
     Lambda() {
         super();
     }
 
-    /**
-     * Instantiates a new lambda.
-     *
-     * @param parameters the parameters
-     * @param annotations the annotations
-     * @param posBegin the pos begin
-     * @param posEnd the pos end
-     */
     Lambda(NodeList<Parameter> parameters, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.parameters = parameters;
