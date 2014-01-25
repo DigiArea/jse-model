@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2011 - 2014 DigiArea, Inc. and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     DigiArea, Inc. - initial API and implementation
+ *******************************************************************************/
 package com.digiarea.jse;
 
 import com.digiarea.jse.Statement;
@@ -23,37 +33,75 @@ public final class SynchronizedStmt extends Statement {
      */
     private BlockStmt block;
 
+    /**
+     * Gets the expression.
+     *
+     * @return the expression
+     */
     public Expression getExpression() {
         return expression;
     }
 
+    /**
+     * Sets the expression.
+     *
+     * @param expression the new expression
+     */
     public void setExpression(Expression expression) {
         this.expression = expression;
     }
 
+    /**
+     * Gets the block.
+     *
+     * @return the block
+     */
     public BlockStmt getBlock() {
         return block;
     }
 
+    /**
+     * Sets the block.
+     *
+     * @param block the new block
+     */
     public void setBlock(BlockStmt block) {
         this.block = block;
     }
 
+    /**
+     * Instantiates a new synchronized stmt.
+     */
     SynchronizedStmt() {
         super();
     }
 
+    /**
+     * Instantiates a new synchronized stmt.
+     *
+     * @param expression the expression
+     * @param block the block
+     * @param annotations the annotations
+     * @param posBegin the pos begin
+     * @param posEnd the pos end
+     */
     SynchronizedStmt(Expression expression, BlockStmt block, NodeList<AnnotationExpr> annotations, int posBegin, int posEnd) {
         super(annotations, posBegin, posEnd);
         this.expression = expression;
         this.block = block;
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.Node#accept(com.digiarea.jse.visitor.VoidVisitor, java.lang.Object)
+     */
     @Override
     public <C> void accept(VoidVisitor<C> v, C ctx) throws Exception {
         v.visit(this, ctx);
     }
 
+    /* (non-Javadoc)
+     * @see com.digiarea.jse.Node#accept(com.digiarea.jse.visitor.GenericVisitor, java.lang.Object)
+     */
     @Override
     public <R, C> R accept(GenericVisitor<R, C> v, C ctx) throws Exception {
         return v.visit(this, ctx);
