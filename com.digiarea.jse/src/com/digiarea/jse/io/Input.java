@@ -48,17 +48,17 @@ public class Input implements Runnable {
 	 * The encoding.
 	 */
 	private String encoding = null;
-	
+
 	/**
 	 * The recursive.
 	 */
 	private boolean recursive = false;
-	
+
 	/**
 	 * The path.
 	 */
 	private String path = null;
-	
+
 	/**
 	 * The project.
 	 */
@@ -73,11 +73,15 @@ public class Input implements Runnable {
 
 	/**
 	 * Instantiates a new input.
-	 *
-	 * @param encoding the encoding
-	 * @param recursive the recursive
-	 * @param path the path
-	 * @param project the project
+	 * 
+	 * @param encoding
+	 *            the encoding
+	 * @param recursive
+	 *            the recursive
+	 * @param path
+	 *            the path
+	 * @param project
+	 *            the project
 	 */
 	public Input(String encoding, boolean recursive, String path,
 			Project project) {
@@ -94,7 +98,7 @@ public class Input implements Runnable {
 
 	/**
 	 * Gets the encoding.
-	 *
+	 * 
 	 * @return the encoding
 	 */
 	public String getEncoding() {
@@ -103,8 +107,9 @@ public class Input implements Runnable {
 
 	/**
 	 * Sets the encoding.
-	 *
-	 * @param encoding the new encoding
+	 * 
+	 * @param encoding
+	 *            the new encoding
 	 */
 	public void setEncoding(String encoding) {
 		this.encoding = encoding;
@@ -112,7 +117,7 @@ public class Input implements Runnable {
 
 	/**
 	 * Checks if is recursive.
-	 *
+	 * 
 	 * @return true, if is recursive
 	 */
 	public boolean isRecursive() {
@@ -121,8 +126,9 @@ public class Input implements Runnable {
 
 	/**
 	 * Sets the recursive.
-	 *
-	 * @param recursive the new recursive
+	 * 
+	 * @param recursive
+	 *            the new recursive
 	 */
 	public void setRecursive(boolean recursive) {
 		this.recursive = recursive;
@@ -130,7 +136,7 @@ public class Input implements Runnable {
 
 	/**
 	 * Gets the path.
-	 *
+	 * 
 	 * @return the path
 	 */
 	public String getPath() {
@@ -139,8 +145,9 @@ public class Input implements Runnable {
 
 	/**
 	 * Sets the path.
-	 *
-	 * @param path the new path
+	 * 
+	 * @param path
+	 *            the new path
 	 */
 	public void setPath(String path) {
 		this.path = path;
@@ -148,7 +155,7 @@ public class Input implements Runnable {
 
 	/**
 	 * Gets the project.
-	 *
+	 * 
 	 * @return the project
 	 */
 	public Project getProject() {
@@ -157,14 +164,17 @@ public class Input implements Runnable {
 
 	/**
 	 * Sets the project.
-	 *
-	 * @param project the new project
+	 * 
+	 * @param project
+	 *            the new project
 	 */
 	public void setProject(Project project) {
 		this.project = project;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Runnable#run()
 	 */
 	@Override
@@ -172,15 +182,23 @@ public class Input implements Runnable {
 		final List<CompilationUnit> compilationUnits = new ArrayList<>();
 		final Path p = Paths.get(path);
 		final FileVisitor<Path> fv = new SimpleFileVisitor<Path>() {
+
+			@Override
+			public FileVisitResult preVisitDirectory(Path dir,
+					BasicFileAttributes attrs) throws IOException {
+				if (recursive || dir.equals(p)) {
+					return FileVisitResult.CONTINUE;
+				} else {
+					return FileVisitResult.SKIP_SUBTREE;
+				}
+			}
+
 			@Override
 			public FileVisitResult visitFile(Path item,
 					BasicFileAttributes attrs) throws IOException {
-				// System.out.println(file);
 				File file = item.toFile();
-				if (file.isDirectory()) {
-					return recursive ? FileVisitResult.CONTINUE
-							: FileVisitResult.SKIP_SUBTREE;
-				} else if (item.toString().endsWith(EXT)) {
+				if (item.toString().endsWith(EXT)) {
+					// System.out.println(item);
 					try (FileInputStream stream = new FileInputStream(file)) {
 						compilationUnits.add(new ASTParser(stream, encoding)
 								.CompilationUnit(getUnitName(file)));
@@ -191,6 +209,7 @@ public class Input implements Runnable {
 				}
 				return FileVisitResult.CONTINUE;
 			}
+
 		};
 		try {
 			Files.walkFileTree(p, fv);
@@ -203,8 +222,9 @@ public class Input implements Runnable {
 
 	/**
 	 * Gets the unit name.
-	 *
-	 * @param file the file
+	 * 
+	 * @param file
+	 *            the file
 	 * @return the unit name
 	 */
 	private String getUnitName(File file) {

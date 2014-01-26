@@ -162,7 +162,7 @@ public class NodeFacade extends NodeFactory {
 	 *            the nodes
 	 * @return the method call expr
 	 */
-	public static MethodCallExpr MethodCallExpr(List<Expression> nodes) {
+	public static MethodCallExpr FacadeMethodCallExpr(List<Expression> nodes) {
 		return MethodCallExpr(
 				QualifiedNameExpr(QualifiedNameExpr(NameExpr("java"), "util"),
 						"Arrays"), null, "asList", nodes);
@@ -925,6 +925,11 @@ public class NodeFacade extends NodeFactory {
 	 * @return the method call expr
 	 */
 	public static MethodCallExpr MethodCallExpr(String name,
+			List<Expression> args) {
+		return MethodCallExpr(null, null, name, NodeList(args), null, 0, 0);
+	}
+
+	public static MethodCallExpr FacadeMethodCallExpr(String name,
 			List<Expression> args) {
 		QualifiedNameExpr qName = QualifiedNameExpr(
 				QualifiedNameExpr(
@@ -1887,8 +1892,8 @@ public class NodeFacade extends NodeFactory {
 	 */
 	public static MethodDeclaration MethodDeclaration(Type returnType,
 			String methodName) {
-		return MethodDeclaration(0, null, returnType, methodName, null, null,
-				null, null, null, null);
+		return MethodDeclaration(Modifiers.PUBLIC, null, returnType,
+				methodName, null, null, null, null, null, null);
 	}
 
 	/**
@@ -1945,8 +1950,8 @@ public class NodeFacade extends NodeFactory {
 				null, NodeList(params), null, null, null, null, 0, 0);
 	}
 
-	public static MethodDeclaration MethodDeclaration(int modifiers,
-			Type type, String name, List<Parameter> params) {
+	public static MethodDeclaration MethodDeclaration(int modifiers, Type type,
+			String name, List<Parameter> params) {
 		return MethodDeclaration(Modifiers(modifiers), null, type, name, null,
 				null, NodeList(params), null, null, null, null, null, 0, 0);
 	}

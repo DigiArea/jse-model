@@ -281,7 +281,7 @@ public abstract class ModelBuilder {
 	 */
 	public ModelBuilder(String qualifiedName) {
 		super();
-		this.qualifiedName = NodeFacade.NameExpr(qualifiedName);
+		this.qualifiedName = NodeFacade.QualifiedNameExpr(qualifiedName);
 		this.type = NodeFacade.ClassOrInterfaceType(this.qualifiedName);
 	}
 

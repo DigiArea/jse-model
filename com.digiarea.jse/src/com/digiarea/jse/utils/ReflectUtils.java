@@ -68,7 +68,7 @@ public final class ReflectUtils {
 		Class<?> clazz = Class.forName(qName);
 		Package pack = clazz.getPackage();
 		PackageDeclaration pkg = NodeFacade.PackageDeclaration(
-				NodeFacade.NameExpr(pack.getName()),
+				NodeFacade.QualifiedNameExpr(pack.getName()),
 				makeAnnotations(pack.getAnnotations()));
 		return NodeFacade.CompilationUnit(pkg, null,
 				Arrays.asList(makeTypeDeclaration(clazz)), null,
@@ -436,7 +436,7 @@ public final class ReflectUtils {
 		List<AnnotationExpr> result = new ArrayList<AnnotationExpr>();
 		for (Annotation annotation : annotations) {
 			Class<?> clazz = annotation.annotationType();
-			NameExpr name = NodeFacade.NameExpr(clazz.getName());
+			NameExpr name = NodeFacade.QualifiedNameExpr(clazz.getName());
 			Method[] methods = clazz.getDeclaredMethods();
 			if (methods.length == 0) {
 				result.add(NodeFacade.MarkerAnnotationExpr(name));

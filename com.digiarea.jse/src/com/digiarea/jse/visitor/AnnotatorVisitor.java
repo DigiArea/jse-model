@@ -102,7 +102,8 @@ import com.digiarea.jse.utils.Enclosure;
 
 public class AnnotatorVisitor<C> implements VoidVisitor<C> {
 
-	protected Enclosure enclosure = new Enclosure(NodeFacade.NameExpr(""));
+	protected Enclosure enclosure = new Enclosure(
+			NodeFacade.QualifiedNameExpr(""));
 
 	protected void processAnnotations(Node node, C ctx) throws Exception {
 		List<AnnotationExpr> annotations = node.getAnnotations();

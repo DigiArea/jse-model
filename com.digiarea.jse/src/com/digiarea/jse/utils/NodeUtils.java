@@ -31,6 +31,7 @@ import com.digiarea.jse.Expression;
 import com.digiarea.jse.FieldAccessExpr;
 import com.digiarea.jse.IntegerLiteralExpr;
 import com.digiarea.jse.MemberValuePair;
+import com.digiarea.jse.MethodCallExpr;
 import com.digiarea.jse.MethodDeclaration;
 import com.digiarea.jse.Modifiers;
 import com.digiarea.jse.NameExpr;
@@ -45,6 +46,7 @@ import com.digiarea.jse.ReferenceType;
 import com.digiarea.jse.Statement;
 import com.digiarea.jse.Type;
 import com.digiarea.jse.TypeDeclaration;
+import com.digiarea.jse.TypeParameter;
 
 /**
  * The Class NodeUtils.
@@ -166,7 +168,7 @@ public class NodeUtils {
 	 * @return the qualified name
 	 */
 	public static QualifiedNameExpr getQualifiedName(CompilationUnit unit) {
-		NameExpr qualifiedName = NodeFacade.NameExpr(unit.getName());
+		NameExpr qualifiedName = NodeFacade.QualifiedNameExpr(unit.getName());
 		if (qualifiedName instanceof QualifiedNameExpr) {
 			return (QualifiedNameExpr) qualifiedName;
 		} else {
@@ -241,7 +243,7 @@ public class NodeUtils {
 		pairs.add(NodeFacade.MemberValuePair("date",
 				NodeFacade.StringLiteralExpr(df.format(new Date()))));
 		return NodeFacade.NormalAnnotationExpr(pairs,
-				NodeFacade.NameExpr(JAVAX_ANNOTATION_GENERATED));
+				NodeFacade.QualifiedNameExpr(JAVAX_ANNOTATION_GENERATED));
 
 	}
 
@@ -305,7 +307,7 @@ public class NodeUtils {
 	 * @return true, if is wrapped
 	 */
 	public static boolean isWrapped(Type type) {
-		return LangUtils.isQualifiedWrappedType(NodeFacade.NameExpr(type
+		return LangUtils.isQualifiedWrappedType(NodeFacade.QualifiedNameExpr(type
 				.toString()));
 	}
 
@@ -447,7 +449,7 @@ public class NodeUtils {
 	 */
 	public static Expression modifiersToExpression(int modifiers) {
 		Expression expression = null;
-		Expression scope = NodeFacade.NameExpr("com.digiarea.jse.Modifiers");
+		Expression scope = NodeFacade.QualifiedNameExpr("com.digiarea.jse.Modifiers");
 		if (Modifiers.isPrivate(modifiers)) {
 			expression = addModifiers(expression,
 					NodeFacade.FieldAccessExpr(scope, null, "PRIVATE"));
@@ -541,7 +543,7 @@ public class NodeUtils {
 		}
 		MethodDeclaration method = NodeFacade.MethodDeclaration(type,
 				methodName);
-		Expression result = NodeFacade.NameExpr(string);
+		Expression result = NodeFacade.QualifiedNameExpr(string);
 		if (isProperty) {
 			result = NodeFacade.MethodCallExpr(result, GET);
 		}
@@ -589,7 +591,7 @@ public class NodeUtils {
 		MethodDeclaration method = NodeFacade.MethodDeclaration(
 				Modifiers.PUBLIC, null, NodeFacade.VOID_TYPE, methodName,
 				Arrays.asList(param), null, null, null, null, null);
-		Expression expr = NodeFacade.NameExpr(string);
+		Expression expr = NodeFacade.QualifiedNameExpr(string);
 		if (isProperty) {
 			String name = isList(type) ? ADD_ALL : SET;
 			expr = NodeFacade.MethodCallExpr(NodeFacade.FieldAccessExpr(
@@ -753,6 +755,154 @@ public class NodeUtils {
 				name, init));
 		addMember(decl, createGetterDeclaration(type, name));
 		addMember(decl, createSetterDeclaration(type, name));
+	}
+
+	public static List<TypeParameter> getTypeParameters(String... strings) {
+		List<TypeParameter> typeParameters = new ArrayList<TypeParameter>();
+		for (String string : strings) {
+			typeParameters.add(NodeFacade.TypeParameter(string, null));
+		}
+		return typeParameters;
+	}
+
+	/**
+	 * Method is considered a Getter if
+	 * <ul>
+	 * <li>it return type is not void</li>
+	 * <li>number of method parameters is zero</li>
+	 * <li>method name starts with 'get' or return type is boolean and name
+	 * starts with 'is'</li>
+	 * </ul>
+	 * 
+	 * @param method
+	 * @return
+	 */
+	public static boolean isGetter(MethodDeclaration method) {
+		return method.getType().getClass() != NodeFacade.VOID_TYPE.getClass()
+				&& (method.getParameters() == null || method.getParameters()
+						.size() == 0)
+				&& (method.getName().substring(0, 3).equals(GET) || (method
+						.getType().getClass() == NodeFacade.BOOLEAN_TYPE
+						.getClass() && method.getName().substring(0, 2)
+						.equals(IS)));
+	}
+
+	public static MethodCallExpr getGetterCall(Expression scope,
+			String fieldName, boolean isBoolean) {
+		String methodName = null;
+		if (isBoolean) {
+			if (fieldName.substring(0, 2).equals(IS)) {
+				methodName = fieldName;
+			} else {
+				methodName = IS + StringUtils.firstToUpper(fieldName);
+			}
+		} else {
+			methodName = GET + StringUtils.firstToUpper(fieldName);
+		}
+		return NodeFacade.MethodCallExpr(scope, methodName);
+	}
+
+	public static String getGetterName(String fieldName, boolean isBoolean) {
+		String methodName = null;
+		if (isBoolean) {
+			if (fieldName.substring(0, 2).equals(IS)) {
+				methodName = fieldName;
+			} else {
+				methodName = IS + StringUtils.firstToUpper(fieldName);
+			}
+		} else {
+			methodName = GET + StringUtils.firstToUpper(fieldName);
+		}
+		return methodName;
+	}
+
+	/**
+	 * Method is considered a Setter if
+	 * <ul>
+	 * <li>it return type is void</li>
+	 * <li>number of method parameters is one</li>
+	 * <li>method name starts with 'set'</li>
+	 * </ul>
+	 * 
+	 * @param method
+	 * @return
+	 */
+	public static boolean isSetter(MethodDeclaration method) {
+		return method.getType().getClass() == NodeFacade.VOID_TYPE.getClass()
+				&& method.getParameters().size() == 1
+				&& method.getName().substring(0, 3).equals(SET);
+	}
+
+	public static MethodCallExpr getSetterCall(Expression scope,
+			String fieldName, Expression arg, boolean isBoolean) {
+		String methodName = null;
+		if (isBoolean && fieldName.length() > 2
+				&& fieldName.substring(0, 2).equals(IS)) {
+			methodName = SET + StringUtils.firstToUpper(fieldName.substring(2));
+		} else {
+			methodName = SET + StringUtils.firstToUpper(fieldName);
+		}
+		return NodeFacade.MethodCallExpr(scope, null, methodName,
+				Arrays.asList(arg));
+	}
+
+	public static String getSetterName(String fieldName, boolean isBoolean) {
+		String methodName = null;
+		if (isBoolean && fieldName.length() > 2
+				&& fieldName.substring(0, 2).equals(IS)) {
+			methodName = SET + StringUtils.firstToUpper(fieldName.substring(2));
+		} else {
+			methodName = SET + StringUtils.firstToUpper(fieldName);
+		}
+		return methodName;
+	}
+
+	public static boolean isGeneric(Type type) {
+		if (type instanceof ReferenceType) {
+			return isGeneric(((ReferenceType) type).getType());
+		} else if (type instanceof ClassOrInterfaceType) {
+			List<Type> types = ((ClassOrInterfaceType) type).getTypeArgs();
+			return types != null && types.size() > 0;
+		}
+		return false;
+	}
+
+	public static Type getRowType(Type type) {
+		if (type instanceof ReferenceType) {
+			return getRowType(((ReferenceType) type).getType());
+		} else if (type instanceof ClassOrInterfaceType) {
+			ClassOrInterfaceType cType = (ClassOrInterfaceType) type;
+			try {
+				cType = (ClassOrInterfaceType) cType.clone();
+				cType.setTypeArgs(null);
+				return cType;
+			} catch (CloneNotSupportedException e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Gets the class or interface type.
+	 * 
+	 * @param type
+	 *            the type
+	 * @return the class or interface type
+	 */
+	public static ClassOrInterfaceType getClassOrInterfaceType(Type type) {
+		if (type instanceof ClassOrInterfaceType) {
+			return (ClassOrInterfaceType) type;
+		} else if (type instanceof ReferenceType) {
+			ReferenceType rType = (ReferenceType) type;
+			Type t = rType.getType();
+			if (t instanceof ClassOrInterfaceType && rType.getSlots() != null
+					&& rType.getSlots().size() == 0) {
+				return (ClassOrInterfaceType) t;
+			}
+		}
+		return null;
 	}
 
 }

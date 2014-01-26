@@ -43,102 +43,102 @@ public class ModelUpdater {
 	 * The qualified name.
 	 */
 	private NameExpr qualifiedName;
-	
+
 	/**
 	 * The type declaration.
 	 */
 	private TypeDeclaration typeDeclaration;
-	
+
 	/**
 	 * The is interface.
 	 */
 	private boolean isInterface = false;
-	
+
 	/**
 	 * The is class.
 	 */
 	private boolean isClass = false;
-	
+
 	/**
 	 * The is abstract.
 	 */
 	private boolean isAbstract = false;
-	
+
 	/**
 	 * The is annotation.
 	 */
 	private boolean isAnnotation = false;
-	
+
 	/**
 	 * The is enumeration.
 	 */
 	private boolean isEnumeration = false;
-	
+
 	/**
 	 * The is generic.
 	 */
 	private boolean isGeneric = false;
-	
+
 	/**
 	 * The has extends.
 	 */
 	private boolean hasExtends = false;
-	
+
 	/**
 	 * The has public constructor.
 	 */
 	private boolean hasPublicConstructor = false;
-	
+
 	/**
 	 * The has default constructor.
 	 */
 	private boolean hasDefaultConstructor = false;
-	
+
 	/**
 	 * The hierarchy.
 	 */
 	private ModelHierarchy hierarchy;
-	
+
 	/**
 	 * The fields.
 	 */
 	private List<FieldDeclaration> fields = new ArrayList<FieldDeclaration>();
-	
+
 	/**
 	 * The entries.
 	 */
 	private List<EnumConstantDeclaration> entries = new ArrayList<EnumConstantDeclaration>();
-	
+
 	/**
 	 * The max constructor parameters.
 	 */
 	private List<Parameter> maxConstructorParameters = new ArrayList<Parameter>();
-	
+
 	/**
 	 * The extends type.
 	 */
 	private ClassOrInterfaceType extendsType = null;
-	
+
 	/**
 	 * The type parameters.
 	 */
 	private List<TypeParameter> typeParameters = null;
-	
+
 	/**
 	 * The extends list.
 	 */
 	private List<ClassOrInterfaceType> extendsList = null;
-	
+
 	/**
 	 * The implements list.
 	 */
 	private List<ClassOrInterfaceType> implementsList = null;
-	
+
 	/**
 	 * The annotations.
 	 */
 	private List<AnnotationExpr> annotations = null;
-	
+
 	/**
 	 * The annotation members.
 	 */
@@ -146,21 +146,26 @@ public class ModelUpdater {
 
 	/**
 	 * Instantiates a new model updater.
-	 *
-	 * @param unit the unit
-	 * @param hierarchy the hierarchy
+	 * 
+	 * @param unit
+	 *            the unit
+	 * @param hierarchy
+	 *            the hierarchy
 	 */
 	public ModelUpdater(CompilationUnit unit, ModelHierarchy hierarchy) {
-		this(NodeFacade.NameExpr(unit.getName()), NodeUtils.getMainType(unit),
-				hierarchy);
+		this(NodeFacade.QualifiedNameExpr(unit.getName()), NodeUtils
+				.getMainType(unit), hierarchy);
 	}
 
 	/**
 	 * Instantiates a new model updater.
-	 *
-	 * @param qualifiedName the qualified name
-	 * @param typeDeclaration the type declaration
-	 * @param hierarchy the hierarchy
+	 * 
+	 * @param qualifiedName
+	 *            the qualified name
+	 * @param typeDeclaration
+	 *            the type declaration
+	 * @param hierarchy
+	 *            the hierarchy
 	 */
 	public ModelUpdater(NameExpr qualifiedName,
 			TypeDeclaration typeDeclaration, ModelHierarchy hierarchy) {
@@ -221,8 +226,9 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the max constructor parameters.
-	 *
-	 * @param clazz the clazz
+	 * 
+	 * @param clazz
+	 *            the clazz
 	 * @return the max constructor parameters
 	 */
 	private List<Parameter> getMaxConstructorParameters(ClassDeclaration clazz) {
@@ -265,10 +271,13 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the fields.
-	 *
-	 * @param clazz the clazz
-	 * @param withSupers the with supers
-	 * @param extendsType the extends type
+	 * 
+	 * @param clazz
+	 *            the clazz
+	 * @param withSupers
+	 *            the with supers
+	 * @param extendsType
+	 *            the extends type
 	 * @return the fields
 	 */
 	private List<FieldDeclaration> getFields(ClassDeclaration clazz,
@@ -280,9 +289,11 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the fields.
-	 *
-	 * @param clazz the clazz
-	 * @param withSupers the with supers
+	 * 
+	 * @param clazz
+	 *            the clazz
+	 * @param withSupers
+	 *            the with supers
 	 * @return the fields
 	 */
 	private List<FieldDeclaration> getFields(EnumDeclaration clazz,
@@ -300,10 +311,13 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the fields.
-	 *
-	 * @param fields the fields
-	 * @param clazz the clazz
-	 * @param withSupers the with supers
+	 * 
+	 * @param fields
+	 *            the fields
+	 * @param clazz
+	 *            the clazz
+	 * @param withSupers
+	 *            the with supers
 	 * @return the fields
 	 */
 	private void getFields(List<FieldDeclaration> fields,
@@ -325,9 +339,11 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the fields.
-	 *
-	 * @param fields the fields
-	 * @param extType the ext type
+	 * 
+	 * @param fields
+	 *            the fields
+	 * @param extType
+	 *            the ext type
 	 * @return the fields
 	 */
 	private void getFields(List<FieldDeclaration> fields, Type extType) {
@@ -345,7 +361,7 @@ public class ModelUpdater {
 
 	/**
 	 * Checks if is interface.
-	 *
+	 * 
 	 * @return true, if is interface
 	 */
 	public boolean isInterface() {
@@ -354,7 +370,7 @@ public class ModelUpdater {
 
 	/**
 	 * Checks if is class.
-	 *
+	 * 
 	 * @return true, if is class
 	 */
 	public boolean isClass() {
@@ -363,7 +379,7 @@ public class ModelUpdater {
 
 	/**
 	 * Checks if is abstract.
-	 *
+	 * 
 	 * @return true, if is abstract
 	 */
 	public boolean isAbstract() {
@@ -372,7 +388,7 @@ public class ModelUpdater {
 
 	/**
 	 * Checks if is annotation.
-	 *
+	 * 
 	 * @return true, if is annotation
 	 */
 	public boolean isAnnotation() {
@@ -381,7 +397,7 @@ public class ModelUpdater {
 
 	/**
 	 * Checks if is enumeration.
-	 *
+	 * 
 	 * @return true, if is enumeration
 	 */
 	public boolean isEnumeration() {
@@ -390,8 +406,9 @@ public class ModelUpdater {
 
 	/**
 	 * Adds the member.
-	 *
-	 * @param decl the decl
+	 * 
+	 * @param decl
+	 *            the decl
 	 */
 	public void addMember(BodyDeclaration decl) {
 		NodeUtils.addMember(typeDeclaration, decl);
@@ -399,7 +416,7 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the qualified name.
-	 *
+	 * 
 	 * @return the qualified name
 	 */
 	public NameExpr getQualifiedName() {
@@ -408,7 +425,7 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the type declaration.
-	 *
+	 * 
 	 * @return the type declaration
 	 */
 	public TypeDeclaration getTypeDeclaration() {
@@ -417,7 +434,7 @@ public class ModelUpdater {
 
 	/**
 	 * Checks for extends.
-	 *
+	 * 
 	 * @return true, if successful
 	 */
 	public boolean hasExtends() {
@@ -426,8 +443,9 @@ public class ModelUpdater {
 
 	/**
 	 * Sets the checks for public constructor.
-	 *
-	 * @param hasPublicConstructor the new checks for public constructor
+	 * 
+	 * @param hasPublicConstructor
+	 *            the new checks for public constructor
 	 */
 	public void setHasPublicConstructor(boolean hasPublicConstructor) {
 		this.hasPublicConstructor = hasPublicConstructor;
@@ -435,7 +453,7 @@ public class ModelUpdater {
 
 	/**
 	 * Checks for public constructor.
-	 *
+	 * 
 	 * @return true, if successful
 	 */
 	public boolean hasPublicConstructor() {
@@ -444,7 +462,7 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the fields.
-	 *
+	 * 
 	 * @return the fields
 	 */
 	public List<FieldDeclaration> getFields() {
@@ -453,7 +471,7 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the max constructor parameters.
-	 *
+	 * 
 	 * @return the max constructor parameters
 	 */
 	public List<Parameter> getMaxConstructorParameters() {
@@ -462,7 +480,7 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the extends type.
-	 *
+	 * 
 	 * @return the extends type
 	 */
 	public ClassOrInterfaceType getExtendsType() {
@@ -471,7 +489,7 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the entries.
-	 *
+	 * 
 	 * @return the entries
 	 */
 	public List<EnumConstantDeclaration> getEntries() {
@@ -480,7 +498,7 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the extends list.
-	 *
+	 * 
 	 * @return the extends list
 	 */
 	public List<ClassOrInterfaceType> getExtendsList() {
@@ -489,7 +507,7 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the implements list.
-	 *
+	 * 
 	 * @return the implements list
 	 */
 	public List<ClassOrInterfaceType> getImplementsList() {
@@ -498,7 +516,7 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the annotations.
-	 *
+	 * 
 	 * @return the annotations
 	 */
 	public List<AnnotationExpr> getAnnotations() {
@@ -507,7 +525,7 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the annotation members.
-	 *
+	 * 
 	 * @return the annotation members
 	 */
 	public List<AnnotationMemberDeclaration> getAnnotationMembers() {
@@ -516,7 +534,7 @@ public class ModelUpdater {
 
 	/**
 	 * Checks for default constructor.
-	 *
+	 * 
 	 * @return true, if successful
 	 */
 	public boolean hasDefaultConstructor() {
@@ -525,8 +543,9 @@ public class ModelUpdater {
 
 	/**
 	 * Sets the checks for default constructor.
-	 *
-	 * @param hasDefaultConstructor the new checks for default constructor
+	 * 
+	 * @param hasDefaultConstructor
+	 *            the new checks for default constructor
 	 */
 	public void setHasDefaultConstructor(boolean hasDefaultConstructor) {
 		this.hasDefaultConstructor = hasDefaultConstructor;
@@ -534,7 +553,7 @@ public class ModelUpdater {
 
 	/**
 	 * Gets the type parameters.
-	 *
+	 * 
 	 * @return the type parameters
 	 */
 	public List<TypeParameter> getTypeParameters() {
@@ -543,7 +562,7 @@ public class ModelUpdater {
 
 	/**
 	 * Checks if is generic.
-	 *
+	 * 
 	 * @return true, if is generic
 	 */
 	public boolean isGeneric() {

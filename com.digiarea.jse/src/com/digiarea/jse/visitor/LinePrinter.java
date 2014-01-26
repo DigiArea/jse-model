@@ -269,8 +269,10 @@ public class LinePrinter implements VoidVisitor<SourcePrinter> {
 	@Override
 	public void visit(QualifiedNameExpr n, SourcePrinter printer)
 			throws Exception {
-		n.getQualifier().accept(this, printer);
-		printer.print(".");
+		if (n.getQualifier() != null) {
+			n.getQualifier().accept(this, printer);
+			printer.print(".");
+		}
 		printer.print(n.getName());
 	}
 

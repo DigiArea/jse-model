@@ -282,7 +282,7 @@ public class ResolverVisitor extends VoidVisitorAdapter<Context> {
 			currentTypeName = NodeFacade.QualifiedNameExpr(currentTypeName,
 					name);
 		} else {
-			currentTypeName = NodeFacade.NameExpr(name);
+			currentTypeName = NodeFacade.QualifiedNameExpr(name);
 		}
 		if (resolved.containsKey(currentPackageName)) {
 			resolved.get(currentPackageName).add(currentTypeName);
