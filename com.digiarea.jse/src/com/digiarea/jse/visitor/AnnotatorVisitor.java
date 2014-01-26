@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2011 - 2014 DigiArea, Inc. and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     DigiArea, Inc. - initial API and implementation
+ *******************************************************************************/
 package com.digiarea.jse.visitor;
 
 import java.util.List;
@@ -100,11 +110,26 @@ import com.digiarea.jse.WhileStmt;
 import com.digiarea.jse.WildcardType;
 import com.digiarea.jse.utils.Enclosure;
 
+/**
+ * The Class AnnotatorVisitor.
+ *
+ * @param <C> the generic type
+ */
 public class AnnotatorVisitor<C> implements VoidVisitor<C> {
 
+	/**
+	 * The enclosure.
+	 */
 	protected Enclosure enclosure = new Enclosure(
 			NodeFacade.QualifiedNameExpr(""));
 
+	/**
+	 * Process annotations.
+	 *
+	 * @param node the node
+	 * @param ctx the ctx
+	 * @throws Exception the exception
+	 */
 	protected void processAnnotations(Node node, C ctx) throws Exception {
 		List<AnnotationExpr> annotations = node.getAnnotations();
 		if (annotations != null) {

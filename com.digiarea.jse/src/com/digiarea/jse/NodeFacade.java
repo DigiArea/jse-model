@@ -929,6 +929,13 @@ public class NodeFacade extends NodeFactory {
 		return MethodCallExpr(null, null, name, NodeList(args), null, 0, 0);
 	}
 
+	/**
+	 * Facade method call expr.
+	 *
+	 * @param name the name
+	 * @param args the args
+	 * @return the method call expr
+	 */
 	public static MethodCallExpr FacadeMethodCallExpr(String name,
 			List<Expression> args) {
 		QualifiedNameExpr qName = QualifiedNameExpr(
@@ -1927,29 +1934,67 @@ public class NodeFacade extends NodeFactory {
 		return FieldDeclaration(modifiers, type, Arrays.asList(var), null, null);
 	}
 
+	/**
+	 * Method declaration.
+	 *
+	 * @param modifiers the modifiers
+	 * @param type the type
+	 * @param name the name
+	 * @return the method declaration
+	 */
 	public static MethodDeclaration MethodDeclaration(int modifiers, Type type,
 			String name) {
 		return MethodDeclaration(modifiers, null, type, name, null, null, null,
 				null, null, null);
 	}
 
+	/**
+	 * Object creation expr.
+	 *
+	 * @param type the type
+	 * @param arguments the arguments
+	 * @return the object creation expr
+	 */
 	public static ObjectCreationExpr ObjectCreationExpr(
 			ClassOrInterfaceType type, List<Expression> arguments) {
 		return ObjectCreationExpr(null, type, null, NodeList(arguments), null,
 				null, 0, 0);
 	}
 
+	/**
+	 * Object creation expr.
+	 *
+	 * @param type the type
+	 * @return the object creation expr
+	 */
 	public static ObjectCreationExpr ObjectCreationExpr(
 			ClassOrInterfaceType type) {
 		return ObjectCreationExpr(null, type, null, null, null, null, 0, 0);
 	}
 
+	/**
+	 * Constructor declaration.
+	 *
+	 * @param modifiers the modifiers
+	 * @param name the name
+	 * @param params the params
+	 * @return the constructor declaration
+	 */
 	public static ConstructorDeclaration ConstructorDeclaration(int modifiers,
 			String name, List<Parameter> params) {
 		return ConstructorDeclaration(Modifiers(modifiers), null, name, null,
 				null, NodeList(params), null, null, null, null, 0, 0);
 	}
 
+	/**
+	 * Method declaration.
+	 *
+	 * @param modifiers the modifiers
+	 * @param type the type
+	 * @param name the name
+	 * @param params the params
+	 * @return the method declaration
+	 */
 	public static MethodDeclaration MethodDeclaration(int modifiers, Type type,
 			String name, List<Parameter> params) {
 		return MethodDeclaration(Modifiers(modifiers), null, type, name, null,

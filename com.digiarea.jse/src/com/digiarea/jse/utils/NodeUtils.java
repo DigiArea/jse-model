@@ -692,6 +692,13 @@ public class NodeUtils {
 		return createCompilationUnit(qName, false);
 	}
 
+	/**
+	 * Creates the compilation unit.
+	 *
+	 * @param qName the q name
+	 * @param isInterface the is interface
+	 * @return the compilation unit
+	 */
 	public static CompilationUnit createCompilationUnit(String qName,
 			boolean isInterface) {
 		NameExpr name = NodeFacade.QualifiedNameExpr(qName);
@@ -730,6 +737,12 @@ public class NodeUtils {
 		return false;
 	}
 
+	/**
+	 * Creates the list type.
+	 *
+	 * @param type the type
+	 * @return the class or interface type
+	 */
 	public static ClassOrInterfaceType createListType(Type type) {
 		ClassOrInterfaceType list = NodeFacade
 				.ClassOrInterfaceType("java.util.List");
@@ -757,6 +770,12 @@ public class NodeUtils {
 		addMember(decl, createSetterDeclaration(type, name));
 	}
 
+	/**
+	 * Gets the type parameters.
+	 *
+	 * @param strings the strings
+	 * @return the type parameters
+	 */
 	public static List<TypeParameter> getTypeParameters(String... strings) {
 		List<TypeParameter> typeParameters = new ArrayList<TypeParameter>();
 		for (String string : strings) {
@@ -772,10 +791,10 @@ public class NodeUtils {
 	 * <li>number of method parameters is zero</li>
 	 * <li>method name starts with 'get' or return type is boolean and name
 	 * starts with 'is'</li>
-	 * </ul>
-	 * 
-	 * @param method
-	 * @return
+	 * </ul>.
+	 *
+	 * @param method the method
+	 * @return true, if is getter
 	 */
 	public static boolean isGetter(MethodDeclaration method) {
 		return method.getType().getClass() != NodeFacade.VOID_TYPE.getClass()
@@ -787,6 +806,14 @@ public class NodeUtils {
 						.equals(IS)));
 	}
 
+	/**
+	 * Gets the getter call.
+	 *
+	 * @param scope the scope
+	 * @param fieldName the field name
+	 * @param isBoolean the is boolean
+	 * @return the getter call
+	 */
 	public static MethodCallExpr getGetterCall(Expression scope,
 			String fieldName, boolean isBoolean) {
 		String methodName = null;
@@ -802,6 +829,13 @@ public class NodeUtils {
 		return NodeFacade.MethodCallExpr(scope, methodName);
 	}
 
+	/**
+	 * Gets the getter name.
+	 *
+	 * @param fieldName the field name
+	 * @param isBoolean the is boolean
+	 * @return the getter name
+	 */
 	public static String getGetterName(String fieldName, boolean isBoolean) {
 		String methodName = null;
 		if (isBoolean) {
@@ -822,10 +856,10 @@ public class NodeUtils {
 	 * <li>it return type is void</li>
 	 * <li>number of method parameters is one</li>
 	 * <li>method name starts with 'set'</li>
-	 * </ul>
-	 * 
-	 * @param method
-	 * @return
+	 * </ul>.
+	 *
+	 * @param method the method
+	 * @return true, if is setter
 	 */
 	public static boolean isSetter(MethodDeclaration method) {
 		return method.getType().getClass() == NodeFacade.VOID_TYPE.getClass()
@@ -833,6 +867,15 @@ public class NodeUtils {
 				&& method.getName().substring(0, 3).equals(SET);
 	}
 
+	/**
+	 * Gets the setter call.
+	 *
+	 * @param scope the scope
+	 * @param fieldName the field name
+	 * @param arg the arg
+	 * @param isBoolean the is boolean
+	 * @return the setter call
+	 */
 	public static MethodCallExpr getSetterCall(Expression scope,
 			String fieldName, Expression arg, boolean isBoolean) {
 		String methodName = null;
@@ -846,6 +889,13 @@ public class NodeUtils {
 				Arrays.asList(arg));
 	}
 
+	/**
+	 * Gets the setter name.
+	 *
+	 * @param fieldName the field name
+	 * @param isBoolean the is boolean
+	 * @return the setter name
+	 */
 	public static String getSetterName(String fieldName, boolean isBoolean) {
 		String methodName = null;
 		if (isBoolean && fieldName.length() > 2
@@ -857,6 +907,12 @@ public class NodeUtils {
 		return methodName;
 	}
 
+	/**
+	 * Checks if is generic.
+	 *
+	 * @param type the type
+	 * @return true, if is generic
+	 */
 	public static boolean isGeneric(Type type) {
 		if (type instanceof ReferenceType) {
 			return isGeneric(((ReferenceType) type).getType());
@@ -867,6 +923,12 @@ public class NodeUtils {
 		return false;
 	}
 
+	/**
+	 * Gets the row type.
+	 *
+	 * @param type the type
+	 * @return the row type
+	 */
 	public static Type getRowType(Type type) {
 		if (type instanceof ReferenceType) {
 			return getRowType(((ReferenceType) type).getType());
