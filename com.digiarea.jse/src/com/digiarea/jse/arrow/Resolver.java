@@ -21,7 +21,6 @@ import com.digiarea.jse.FieldAccessExpr;
 import com.digiarea.jse.ImportDeclaration;
 import com.digiarea.jse.MarkerAnnotationExpr;
 import com.digiarea.jse.MethodCallExpr;
-import com.digiarea.jse.MethodDeclaration;
 import com.digiarea.jse.NameExpr;
 import com.digiarea.jse.Node;
 import com.digiarea.jse.NodeFacade;
@@ -118,28 +117,6 @@ public class Resolver implements Arrow<Project, Project> {
 			return img;
 		}
 
-		/* (non-Javadoc)
-		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.MethodDeclaration, com.digiarea.jse.arrow.Context)
-		 */
-		@Override
-		public Node visit(MethodDeclaration n, Context ctx) throws Exception {
-			MethodDeclaration img = (MethodDeclaration) super.visit(n, ctx);
-			if (img.getThrowsList() != null) {
-				List<ClassOrInterfaceType> throwsList = new ArrayList<>();
-				for (ClassOrInterfaceType type : img.getThrowsList()) {
-					NameExpr name = type.getName();
-					if (!(name instanceof QualifiedNameExpr)) {
-						throwsList.add(NodeFacade.ClassOrInterfaceType(resolve(
-								name.getName(), ctx)));
-					} else {
-						throwsList.add(NodeFacade.ClassOrInterfaceType(name));
-					}
-				}
-				img.setThrowsList(NodeFacade.NodeList(throwsList));
-			}
-			return img;
-		}
-
 		/*
 		 * (non-Javadoc)
 		 * 
@@ -156,8 +133,11 @@ public class Resolver implements Arrow<Project, Project> {
 			return img;
 		}
 
-		/* (non-Javadoc)
-		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.NameExpr, com.digiarea.jse.arrow.Context)
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.NameExpr,
+		 * com.digiarea.jse.arrow.Context)
 		 */
 		@Override
 		public Node visit(NameExpr n, Context ctx) throws Exception {
@@ -168,8 +148,12 @@ public class Resolver implements Arrow<Project, Project> {
 			return img;
 		}
 
-		/* (non-Javadoc)
-		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.QualifiedNameExpr, com.digiarea.jse.arrow.Context)
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.QualifiedNameExpr
+		 * , com.digiarea.jse.arrow.Context)
 		 */
 		@Override
 		public Node visit(QualifiedNameExpr n, Context ctx) throws Exception {
@@ -194,7 +178,9 @@ public class Resolver implements Arrow<Project, Project> {
 			return img;
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see com.digiarea.jse.arrow.Identity#arrow(com.digiarea.jse.Project)
 		 */
 		@Override
@@ -360,26 +346,6 @@ public class Resolver implements Arrow<Project, Project> {
 			return img;
 		}
 
-		/* (non-Javadoc)
-		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.MethodDeclaration, com.digiarea.jse.arrow.Context)
-		 */
-		@Override
-		public Node visit(MethodDeclaration n, Context ctx) throws Exception {
-			MethodDeclaration img = (MethodDeclaration) super.visit(n, ctx);
-			if (img.getThrowsList() != null) {
-				List<ClassOrInterfaceType> throws_ = new ArrayList<>();
-				ctx.setName(true);
-				for (ClassOrInterfaceType type : img.getThrowsList()) {
-					NameExpr name = type.getName();
-					throws_.add(NodeFacade.ClassOrInterfaceType(unresolve(name,
-							ctx)));
-				}
-				ctx.setName(false);
-				img.setThrowsList(NodeFacade.NodeList(throws_));
-			}
-			return img;
-		}
-
 		/*
 		 * (non-Javadoc)
 		 * 
@@ -398,8 +364,12 @@ public class Resolver implements Arrow<Project, Project> {
 			return img;
 		}
 
-		/* (non-Javadoc)
-		 * @see com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.QualifiedNameExpr, com.digiarea.jse.arrow.Context)
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.digiarea.jse.arrow.Identity#visit(com.digiarea.jse.QualifiedNameExpr
+		 * , com.digiarea.jse.arrow.Context)
 		 */
 		@Override
 		public Node visit(QualifiedNameExpr n, Context ctx) throws Exception {
@@ -429,7 +399,9 @@ public class Resolver implements Arrow<Project, Project> {
 			return img;
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see com.digiarea.jse.arrow.Identity#arrow(com.digiarea.jse.Project)
 		 */
 		@Override
@@ -522,12 +494,13 @@ public class Resolver implements Arrow<Project, Project> {
 
 	/**
 	 * Gets the simple unit name.
-	 *
-	 * @param ctx the ctx
+	 * 
+	 * @param ctx
+	 *            the ctx
 	 * @return the simple unit name
 	 */
 	private String getSimpleUnitName(Context ctx) {
-		return NodeFacade.NameExpr(ctx.getUnit().getName()).getName();
+		return NodeFacade.QualifiedNameExpr(ctx.getUnit().getName()).getName();
 	}
 
 	/**
@@ -559,7 +532,9 @@ public class Resolver implements Arrow<Project, Project> {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.digiarea.common.Arrow#arrow(java.lang.Object)
 	 */
 	@Override

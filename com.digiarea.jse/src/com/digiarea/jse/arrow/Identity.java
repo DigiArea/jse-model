@@ -631,7 +631,9 @@ public class Identity implements GenericVisitor<Node, Context>,
 			img.setScope((ClassOrInterfaceType) n.getScope().accept(this, ctx));
 		}
 		if (n.getName() != null) {
+			ctx.setName(true);
 			img.setName((NameExpr) n.getName().accept(this, ctx));
+			ctx.setName(false);
 		}
 		if (n.getTypeArgs() != null) {
 			img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
@@ -743,8 +745,10 @@ public class Identity implements GenericVisitor<Node, Context>,
 					this, ctx));
 		}
 		if (n.getThrowsList() != null) {
+			ctx.setName(true);
 			img.setThrowsList((NodeList<ClassOrInterfaceType>) n
 					.getThrowsList().accept(this, ctx));
+			ctx.setName(false);
 		}
 		if (n.getBlock() != null) {
 			img.setBlock((BlockStmt) n.getBlock().accept(this, ctx));
@@ -779,8 +783,11 @@ public class Identity implements GenericVisitor<Node, Context>,
 		return img;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.CreationReference, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.
+	 * CreationReference, java.lang.Object)
 	 */
 	@Override
 	public Node visit(CreationReference n, Context ctx) throws Exception {
@@ -1083,7 +1090,9 @@ public class Identity implements GenericVisitor<Node, Context>,
 		FieldAccessExpr img = NodeFacade.FieldAccessExpr();
 		ctx.setNode(img);
 		if (n.getScope() != null) {
+			ctx.setName(true);
 			img.setScope((Expression) n.getScope().accept(this, ctx));
+			ctx.setName(false);
 		}
 		if (n.getTypeArgs() != null) {
 			img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
@@ -1228,7 +1237,9 @@ public class Identity implements GenericVisitor<Node, Context>,
 		ImportDeclaration img = NodeFacade.ImportDeclaration();
 		ctx.setNode(img);
 		if (n.getName() != null) {
+			ctx.setName(true);
 			img.setName((NameExpr) n.getName().accept(this, ctx));
+			ctx.setName(false);
 		}
 		img.setStatic(n.isStatic());
 		img.setAsterisk(n.isAsterisk());
@@ -1484,7 +1495,9 @@ public class Identity implements GenericVisitor<Node, Context>,
 		MarkerAnnotationExpr img = NodeFacade.MarkerAnnotationExpr();
 		ctx.setNode(img);
 		if (n.getName() != null) {
+			ctx.setName(true);
 			img.setName((NameExpr) n.getName().accept(this, ctx));
+			ctx.setName(false);
 		}
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
 		img.setPosBegin(n.getPosBegin());
@@ -1528,10 +1541,14 @@ public class Identity implements GenericVisitor<Node, Context>,
 		MethodCallExpr img = NodeFacade.MethodCallExpr();
 		ctx.setNode(img);
 		if (n.getScope() != null) {
+			ctx.setName(true);
 			img.setScope((Expression) n.getScope().accept(this, ctx));
+			ctx.setName(false);
 		}
 		if (n.getTypeArgs() != null) {
+			ctx.setName(true);
 			img.setTypeArgs((NodeList<Type>) n.getTypeArgs().accept(this, ctx));
+			ctx.setName(false);
 		}
 		img.setName(n.getName());
 		if (n.getArgs() != null) {
@@ -1578,8 +1595,10 @@ public class Identity implements GenericVisitor<Node, Context>,
 			img.setSlots((NodeList<ArraySlot>) n.getSlots().accept(this, ctx));
 		}
 		if (n.getThrowsList() != null) {
+			ctx.setName(true);
 			img.setThrowsList((NodeList<ClassOrInterfaceType>) n
 					.getThrowsList().accept(this, ctx));
+			ctx.setName(false);
 		}
 		if (n.getBlock() != null) {
 			img.setBlock((BlockStmt) n.getBlock().accept(this, ctx));
@@ -1594,8 +1613,11 @@ public class Identity implements GenericVisitor<Node, Context>,
 		return img;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.ExpressionMethodReference, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.
+	 * ExpressionMethodReference, java.lang.Object)
 	 */
 	@Override
 	public Node visit(ExpressionMethodReference n, Context ctx)
@@ -1706,7 +1728,9 @@ public class Identity implements GenericVisitor<Node, Context>,
 					ctx));
 		}
 		if (n.getName() != null) {
+			ctx.setName(true);
 			img.setName((NameExpr) n.getName().accept(this, ctx));
+			ctx.setName(false);
 		}
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
 		img.setPosBegin(n.getPosBegin());
@@ -1779,7 +1803,9 @@ public class Identity implements GenericVisitor<Node, Context>,
 		PackageDeclaration img = NodeFacade.PackageDeclaration();
 		ctx.setNode(img);
 		if (n.getName() != null) {
+			ctx.setName(true);
 			img.setName((NameExpr) n.getName().accept(this, ctx));
+			ctx.setName(false);
 		}
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
 		img.setPosBegin(n.getPosBegin());
@@ -1970,7 +1996,9 @@ public class Identity implements GenericVisitor<Node, Context>,
 					.accept(this, ctx));
 		}
 		if (n.getName() != null) {
+			ctx.setName(true);
 			img.setName((NameExpr) n.getName().accept(this, ctx));
+			ctx.setName(false);
 		}
 		img.setAnnotations(copyAnnotations(n.getAnnotations(), n, ctx));
 		img.setPosBegin(n.getPosBegin());
@@ -2021,8 +2049,11 @@ public class Identity implements GenericVisitor<Node, Context>,
 		return img;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.SuperMethodReference, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.
+	 * SuperMethodReference, java.lang.Object)
 	 */
 	@Override
 	public Node visit(SuperMethodReference n, Context ctx) throws Exception {
@@ -2221,8 +2252,11 @@ public class Identity implements GenericVisitor<Node, Context>,
 		return img;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.TypeMethodReference, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.digiarea.jse.visitor.GenericVisitor#visit(com.digiarea.jse.
+	 * TypeMethodReference, java.lang.Object)
 	 */
 	@Override
 	public Node visit(TypeMethodReference n, Context ctx) throws Exception {
