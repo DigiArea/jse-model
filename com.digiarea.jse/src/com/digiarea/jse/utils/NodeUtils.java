@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -962,6 +963,59 @@ public class NodeUtils {
 			if (t instanceof ClassOrInterfaceType && rType.getSlots() != null
 					&& rType.getSlots().size() == 0) {
 				return (ClassOrInterfaceType) t;
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Removes the compilation unit.
+	 * 
+	 * @param project
+	 *            the project
+	 * @param qualifiedNames
+	 *            the qualified names
+	 */
+	public static void removeCompilationUnit(Project project,
+			String[] qualifiedNames) {
+		for (int i = 0; i < qualifiedNames.length; i++) {
+			removeCompilationUnit(project, qualifiedNames[i]);
+		}
+	}
+	
+	/**
+	 * Removes the compilation unit.
+	 * 
+	 * @param project
+	 *            the project
+	 * @param qualifiedName
+	 *            the qualified name
+	 * @return true, if successful
+	 */
+	public static boolean removeCompilationUnit(Project project,
+			String qualifiedName) {
+		List<CompilationUnit> units = project.getCompilationUnits();
+		for (Iterator<CompilationUnit> iterator = units.iterator(); iterator
+				.hasNext();) {
+			CompilationUnit cu = iterator.next();
+			String id = getQualifiedName(cu).toString();
+			if (qualifiedName.equals(id)) {
+				iterator.remove();
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static CompilationUnit selectCompilationUnit(Project project,
+			String qualifiedName) {
+		List<CompilationUnit> units = project.getCompilationUnits();
+		for (Iterator<CompilationUnit> iterator = units.iterator(); iterator
+				.hasNext();) {
+			CompilationUnit cu = iterator.next();
+			String id = getQualifiedName(cu).toString();
+			if (qualifiedName.equals(id)) {
+				return cu;
 			}
 		}
 		return null;
